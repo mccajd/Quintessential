@@ -11,7 +11,11 @@ config_version=5
 [application]
 
 config/name="beaconator"
+<<<<<<< HEAD
 run/main_scene="res://point_click_proto.tscn"
+=======
+run/main_scene="res://beacon_puzzle_main.tscn"
+>>>>>>> dfc1b02 (Add objects, main scene)
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
