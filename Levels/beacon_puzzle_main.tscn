@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b16x2m82ri0xj"]
 
-[ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://beacon_node_menu.tscn" id="1_fh8ox"]
-[ext_resource type="PackedScene" uid="uid://geda8gmbwuga" path="res://beacon_node_button.tscn" id="2_svd78"]
-[ext_resource type="PackedScene" uid="uid://j1dft6uobs3e" path="res://beacon_tower.tscn" id="3_aiidj"]
-[ext_resource type="PackedScene" uid="uid://dt8namvmtn1ty" path="res://beacon_node.tscn" id="4_b3dfw"]
+[ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://Scenes/beacon_node_menu.tscn" id="1_fh8ox"]
+[ext_resource type="PackedScene" uid="uid://geda8gmbwuga" path="res://Scenes/beacon_node_button.tscn" id="2_svd78"]
+[ext_resource type="PackedScene" uid="uid://j1dft6uobs3e" path="res://Scenes/beacon_tower.tscn" id="3_aiidj"]
+[ext_resource type="PackedScene" uid="uid://dt8namvmtn1ty" path="res://Scenes/beacon_node.tscn" id="4_b3dfw"]
 
 [node name="BeaconPuzzleMain" type="Node"]
 
