@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ufw7gh1k1xn"]
+
+[ext_resource type="PackedScene" uid="uid://j1dft6uobs3e" path="res://Scenes/beacon_tower.tscn" id="1_2jj6c"]
+[ext_resource type="PackedScene" uid="uid://dt8namvmtn1ty" path="res://Scenes/beacon_node.tscn" id="2_3e62l"]
+
+[node name="RelationProto" type="Node"]
+
+[node name="BeaconTower" parent="." instance=ExtResource("1_2jj6c")]
+position = Vector2(432, 2)
+
+[node name="BeaconNode" parent="BeaconTower" instance=ExtResource("2_3e62l")]
+position = Vector2(28, 244)
+
+[node name="BeaconNode2" parent="BeaconTower" instance=ExtResource("2_3e62l")]
+position = Vector2(173, 242)
