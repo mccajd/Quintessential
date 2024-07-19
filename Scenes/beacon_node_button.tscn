@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://geda8gmbwuga"]
 
-[ext_resource type="Script" path="res://beacon_node_button.gd" id="1_7k370"]
+[ext_resource type="Script" path="res://Scripts/beacon_node_button.gd" id="1_7k370"]
 [ext_resource type="Texture2D" uid="uid://b62didt4gkchj" path="res://assets/beacon/node-button.png" id="1_bevce"]
 [ext_resource type="Texture2D" uid="uid://crr377n6ee5dl" path="res://assets/beacon/node-button-depressed.png" id="2_ox82v"]
 
