@@ -2,6 +2,7 @@ extends Area2D
 
 signal clicked
 var hovered = false
+@export var transformation_type = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
