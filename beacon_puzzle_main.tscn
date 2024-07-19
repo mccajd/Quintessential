@@ -8,7 +8,7 @@
 [node name="BeaconPuzzleMain" type="Node"]
 
 [node name="BeaconNodeMenu" parent="." instance=ExtResource("1_fh8ox")]
-position = Vector2(-22, 0)
+position = Vector2(145, 23)
 
 [node name="BeaconNodeButton3" parent="BeaconNodeMenu" instance=ExtResource("2_svd78")]
 position = Vector2(309, 383)
@@ -20,7 +20,7 @@ position = Vector2(174, 438)
 position = Vector2(40, 394)
 
 [node name="BeaconTower" parent="." instance=ExtResource("3_aiidj")]
-position = Vector2(466, 0)
+position = Vector2(627, 3)
 
 [node name="BeaconNode" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(103, 484)
@@ -41,4 +41,4 @@ position = Vector2(-31, 206)
 position = Vector2(232, 207)
 
 [node name="BeaconNode7" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
-position = Vector2(100, 126)
+position = Vector2(100, 132)
