@@ -1,3 +1,4 @@
+class_name BeaconButton
 extends Area2D
 
 signal clicked

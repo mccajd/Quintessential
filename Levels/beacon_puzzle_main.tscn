@@ -1,26 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=8 format=3 uid="uid://b16x2m82ri0xj"]
 
 [ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://Scenes/beacon_node_menu.tscn" id="1_fh8ox"]
 [ext_resource type="PackedScene" uid="uid://geda8gmbwuga" path="res://Scenes/beacon_node_button.tscn" id="2_svd78"]
 [ext_resource type="PackedScene" uid="uid://j1dft6uobs3e" path="res://Scenes/beacon_tower.tscn" id="3_aiidj"]
 [ext_resource type="PackedScene" uid="uid://dt8namvmtn1ty" path="res://Scenes/beacon_node.tscn" id="4_b3dfw"]
+[ext_resource type="Texture2D" uid="uid://r65av6xkmun3" path="res://assets/beacon/beacon-node-empty.png" id="5_o6nu5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tft4m"]
+font_size = 22
+font_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
+
+[sub_resource type="GDScript" id="GDScript_vcol3"]
+resource_name = "ShowNodeMenuButton"
+script/source = "extends BeaconButton
+
+var beaconNodeMenu = null
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	beaconNodeMenu = get_parent().get_node(\"BeaconNodeMenu\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if (hovered && Input.is_action_just_pressed(\"select\")):
+		$AnimatedSprite2D.play(\"depressed\")
+		beaconNodeMenu.visible = !beaconNodeMenu.visible
+		return
+	$AnimatedSprite2D.play(\"default\")
+"
 
 [node name="BeaconPuzzleMain" type="Node"]
 
-[node name="BeaconNodeMenu" parent="." instance=ExtResource("1_fh8ox")]
-position = Vector2(145, 23)
-
-[node name="BeaconNodeButton3" parent="BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(309, 383)
-
-[node name="BeaconNodeButton2" parent="BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(174, 438)
-
-[node name="BeaconNodeButton" parent="BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(40, 394)
-
 [node name="BeaconTower" parent="." instance=ExtResource("3_aiidj")]
-position = Vector2(627, 3)
+position = Vector2(664, 0)
 
 [node name="BeaconNode" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(103, 484)
@@ -38,7 +50,127 @@ position = Vector2(101, 283)
 position = Vector2(-31, 206)
 
 [node name="BeaconNode6" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
-position = Vector2(232, 207)
+position = Vector2(232, 208)
 
 [node name="BeaconNode7" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(100, 132)
+
+[node name="MockUI" type="Node" parent="."]
+
+[node name="InventoryContainer" type="HBoxContainer" parent="MockUI"]
+offset_left = 180.0
+offset_top = 580.0
+offset_right = 652.0
+offset_bottom = 644.0
+
+[node name="Slot1" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot2" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot3" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot4" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot5" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot6" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot7" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="ThreePrimesContainer" type="HBoxContainer" parent="MockUI"]
+offset_left = 223.0
+offset_top = 647.0
+offset_right = 618.0
+offset_bottom = 769.0
+scale = Vector2(0.977618, 0.902249)
+
+[node name="TextureRect" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+layout_mode = 2
+texture = ExtResource("5_o6nu5")
+
+[node name="TextureRect2" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+layout_mode = 2
+texture = ExtResource("5_o6nu5")
+
+[node name="TextureRect3" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+layout_mode = 2
+texture = ExtResource("5_o6nu5")
+
+[node name="PlayerView" type="Node" parent="MockUI"]
+
+[node name="ColorRect" type="ColorRect" parent="MockUI/PlayerView"]
+offset_left = 187.0
+offset_top = 566.0
+offset_right = 227.0
+offset_bottom = 606.0
+scale = Vector2(11.39, -12.8981)
+
+[node name="Label" type="Label" parent="MockUI/PlayerView"]
+offset_left = 228.0
+offset_top = 252.0
+offset_right = 615.0
+offset_bottom = 351.0
+text = "Player View: this is where the player 
+explores the environment for 
+more resources"
+label_settings = SubResource("LabelSettings_tft4m")
+
+[node name="BeaconNodeView" type="Node" parent="MockUI"]
+
+[node name="BeaconNodeMenu" parent="MockUI/BeaconNodeView" instance=ExtResource("1_fh8ox")]
+visible = false
+position = Vector2(184, 16)
+
+[node name="BeaconNodeButton3" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(309, 383)
+
+[node name="BeaconNodeButton2" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(174, 438)
+
+[node name="BeaconNodeButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(40, 394)
+
+[node name="ShowNodeMenuButton" parent="MockUI/BeaconNodeView" instance=ExtResource("2_svd78")]
+position = Vector2(558, -2)
+script = SubResource("GDScript_vcol3")
+
+[node name="TowerExteriorView" type="Node" parent="MockUI"]
+
+[node name="ColorRect" type="ColorRect" parent="MockUI/TowerExteriorView"]
+offset_left = 14.0
+offset_top = 48.0
+offset_right = 54.0
+offset_bottom = 88.0
+scale = Vector2(3.91332, 12.962)
+
+[node name="Label2" type="Label" parent="MockUI/TowerExteriorView"]
+offset_left = 20.0
+offset_top = 247.0
+offset_right = 166.0
+offset_bottom = 380.0
+text = "Tower View: 
+Where player 
+sees progress 
+of shadows"
+label_settings = SubResource("LabelSettings_tft4m")
