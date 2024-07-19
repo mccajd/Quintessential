@@ -37,3 +37,9 @@ animation = &"empty"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(66, 61)
 shape = SubResource("CircleShape2D_3wxxm")
+
+[node name="SlottedItemPreview" type="TextureRect" parent="."]
+offset_left = 32.0
+offset_top = 28.0
+offset_right = 99.0
+offset_bottom = 97.0
