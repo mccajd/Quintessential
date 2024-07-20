@@ -21,7 +21,7 @@ func _ready():
 	beaconNodeMenu = get_parent().get_node(\"BeaconNodeMenu\")
 	playerView = get_parent().get_parent().get_node(\"PlayerView\").get_children()
 
-func _on_clicked():
+func _on_clicked(transformation_type: String): # note.jmc - probably remove this discarded param later
 	# HACK.jmc - seems the player view as it currently stands eats mouse inputs
 	var currentVisibility = beaconNodeMenu.visible
 	for child in playerView:
@@ -139,17 +139,27 @@ label_settings = SubResource("LabelSettings_tft4m")
 [node name="BeaconNodeView" type="Node" parent="MockUI"]
 
 [node name="BeaconNodeMenu" parent="MockUI/BeaconNodeView" instance=ExtResource("1_fh8ox")]
-visible = false
 position = Vector2(184, 16)
 
-[node name="BeaconNodeButton3" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(309, 383)
+[node name="SolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(31, 378)
+transformation_type = "solution"
 
-[node name="BeaconNodeButton2" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(174, 438)
+[node name="DissolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(98, 450)
+transformation_type = "dissolution"
 
-[node name="BeaconNodeButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(40, 394)
+[node name="AscensionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(170, 381)
+transformation_type = "ascension"
+
+[node name="SublimationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(245, 451)
+transformation_type = "sublimation"
+
+[node name="DistillationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(314, 379)
+transformation_type = "distillation"
 
 [node name="ShowNodeMenuButton" parent="MockUI/BeaconNodeView" instance=ExtResource("2_svd78")]
 position = Vector2(558, -2)

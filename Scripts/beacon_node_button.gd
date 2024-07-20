@@ -21,7 +21,7 @@ func _process(delta):
 		$AnimatedSprite2D.play("default")
 	
 	if (Input.is_action_just_pressed("select")):
-		clicked.emit()
+		clicked.emit(transformation_type)
 
 
 func _on_mouse_entered():
