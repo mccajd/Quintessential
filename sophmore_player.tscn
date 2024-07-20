@@ -7,17 +7,19 @@ resource_name = "player"
 script/source = "extends CharacterBody2D
 
 
-
+var speed = 400
 var astar_grid  : AStarGrid2D
 var tile_map    : TileMap
 var tile_size   : Vector2i
 var start_tile  : Vector2i
+var target      : Vector2i
 var target_tile : Vector2i
 
 func _ready():
 	tile_map = get_parent().find_child(\"TileMap\")
 	tile_size = tile_map.tile_set.tile_size
-	position = tile_map.local_to_map(Vector2i(1,1))
+	
+	target = position
 	start_tile = to_local(Vector2i.ZERO)
 	
 	astar_grid = AStarGrid2D.new()
@@ -30,20 +32,26 @@ func _ready():
 	$Line2D.default_color = Color.AQUAMARINE
 	
 func _physics_process(delta):
-	pass
+	velocity = position.direction_to(target)*speed
 	
+	if position.distance_to(target) > 10:
+		move_and_slide()
+
+		pass
+		
 func _input(event):
 	if event.is_action_pressed(\"lmb_click\"):
-		target_tile = tile_map.local_to_map(get_global_mouse_position())
+		target = get_global_mouse_position()
+		target_tile = tile_map.local_to_map(target)
 		update_path()
 		astar_grid.update()
 		queue_redraw()
 		
 func _draw():
 	draw_path()
+	pass
 
 func draw_path():
-	draw_rect(Rect2(start_tile, tile_size*2), Color.AQUAMARINE)
 	draw_rect(Rect2(target_tile*tile_size*2, tile_size*2), Color.AQUAMARINE)
 	update_path()
 	
@@ -59,7 +67,6 @@ scale = Vector2(0.5, 0.5)
 script = SubResource("GDScript_1c1ks")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("1_00c11")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -67,5 +74,3 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_dchqe")
 
 [node name="Line2D" type="Line2D" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="."]
