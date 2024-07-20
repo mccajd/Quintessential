@@ -14,13 +14,14 @@ var tile_size   : Vector2i
 var start_tile  : Vector2i
 var target      : Vector2i
 var target_tile : Vector2i
+var path        : PackedVector2Array 
 
 func _ready():
 	tile_map = get_parent().find_child(\"TileMap\")
 	tile_size = tile_map.tile_set.tile_size
 	
 	target = position
-	start_tile = to_local(Vector2i.ZERO)
+	start_tile = tile_map.local_to_map(Vector2i.ZERO)
 	
 	astar_grid = AStarGrid2D.new()
 	astar_grid.region = tile_map.get_used_rect()
@@ -32,18 +33,15 @@ func _ready():
 	$Line2D.default_color = Color.AQUAMARINE
 	
 func _physics_process(delta):
-	velocity = position.direction_to(target)*speed
-	
-	if position.distance_to(target) > 10:
-		move_and_slide()
-
-		pass
+	pass
 		
 func _input(event):
 	if event.is_action_pressed(\"lmb_click\"):
 		target = get_global_mouse_position()
-		target_tile = tile_map.local_to_map(target)
+		target_tile = tile_map.local_to_map(tile_map.get_global_mouse_position())
 		update_path()
+		path = astar_grid.get_point_path(start_tile,target_tile)
+		print(\"path: \", path)
 		astar_grid.update()
 		queue_redraw()
 		
@@ -52,11 +50,14 @@ func _draw():
 	pass
 
 func draw_path():
-	draw_rect(Rect2(target_tile*tile_size*2, tile_size*2), Color.AQUAMARINE)
+	draw_circle(target_tile, 16.0, Color.AQUAMARINE)
 	update_path()
+	if !path.is_empty():
+		draw_circle(path[path.size()-1]*2, 16.0, Color.AQUAMARINE)
 	
 func update_path():
-	$Line2D.points = astar_grid.get_point_path(start_tile,target_tile)
+	$Line2D.points = path
+	$Line2D.scale = Vector2(2,2)
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dchqe"]
