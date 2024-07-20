@@ -19,10 +19,13 @@ script/source = "extends BeaconButton
 
 var beaconNodeMenu = null
 var playerView = null
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	beaconNodeMenu = get_parent().get_node(\"BeaconNodeMenu\")
-	playerView = get_parent().get_parent().get_node(\"PlayerView\").get_children()
+	beaconNodeMenu = get_parent()
+	playerView = get_parent().get_parent().get_parent().get_node(\"PlayerView\").get_children()
+	
+#func _process(delta):
+	
 
 func _on_clicked(transformation_type: String): # note.jmc - probably remove this discarded param later
 	# HACK.jmc - seems the player view as it currently stands eats mouse inputs
@@ -30,6 +33,7 @@ func _on_clicked(transformation_type: String): # note.jmc - probably remove this
 	for child in playerView:
 		child.visible = currentVisibility
 	beaconNodeMenu.visible = !currentVisibility
+	#self.visible = false
 "
 
 [node name="BeaconPuzzleMain" type="Node"]
@@ -161,6 +165,17 @@ label_settings = SubResource("LabelSettings_tft4m")
 [node name="BeaconNodeMenu" parent="MockUI/BeaconNodeView" instance=ExtResource("1_fh8ox")]
 position = Vector2(184, 16)
 
+[node name="SelectedNodeLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+offset_left = 195.0
+offset_top = 21.0
+offset_right = 303.0
+offset_bottom = 48.0
+text = "none selected"
+
+[node name="ShowNodeMenuButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(374, -18)
+script = SubResource("GDScript_vcol3")
+
 [node name="SolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
 position = Vector2(31, 378)
 transformation_type = "solution"
@@ -180,10 +195,6 @@ transformation_type = "sublimation"
 [node name="DistillationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
 position = Vector2(314, 379)
 transformation_type = "distillation"
-
-[node name="ShowNodeMenuButton" parent="MockUI/BeaconNodeView" instance=ExtResource("2_svd78")]
-position = Vector2(558, -2)
-script = SubResource("GDScript_vcol3")
 
 [node name="TowerExteriorView" type="Node" parent="MockUI"]
 
@@ -205,4 +216,12 @@ sees progress
 of shadows"
 label_settings = SubResource("LabelSettings_tft4m")
 
-[connection signal="clicked" from="MockUI/BeaconNodeView/ShowNodeMenuButton" to="MockUI/BeaconNodeView/ShowNodeMenuButton" method="_on_clicked"]
+[connection signal="node_selected" from="BeaconTower" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_beacon_tower_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode1" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode2" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode3" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode4" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode5" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode6" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode7" to="BeaconTower" method="_on_node_selected"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/ShowNodeMenuButton" to="MockUI/BeaconNodeView/BeaconNodeMenu/ShowNodeMenuButton" method="_on_clicked"]

@@ -6,6 +6,8 @@ class_name BeaconNode
 @export var availableNodeIds: Array[int]
 @export var connectedNodeIds: Array[int]
 
+var hovered = false
+
 var inputs: Array = []
 var outputs = []
 var selectedTransformation: String
@@ -14,11 +16,13 @@ signal selected
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	input_pickable = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	_handle_button_logic()
+	
 	if (inputs.any(func(item): !!item)):
 		$AnimatedSprite2D.play("filled")
 		return
@@ -36,5 +40,14 @@ func remove_item():
 		$SlottedItemPreview.texture = null
 		return
 
-func _selected():
-	selected.emit(self)
+func _handle_button_logic():
+	if (!hovered): return
+
+	if (Input.is_action_just_pressed("select")):
+		selected.emit(self)
+
+func _on_mouse_entered():
+	hovered = true
+
+func _on_mouse_exited():
+	hovered = false
