@@ -1,9 +1,14 @@
 extends Area2D
 
-var id
+class_name BeaconNode
+
+@export var id: int
+@export var availableNodeIds: Array[int]
+@export var connectedNodeIds: Array[int]
+
 var inputs: Array = []
 var outputs = []
-var selectedTransformation
+var selectedTransformation: String
 var slottedItem: Item
 signal selected
 
@@ -30,3 +35,6 @@ func remove_item():
 		slottedItem = null
 		$SlottedItemPreview.texture = null
 		return
+
+func _selected():
+	selected.emit(self)

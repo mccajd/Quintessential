@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=10 format=3 uid="uid://b16x2m82ri0xj"]
 
 [ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://Scenes/beacon_node_menu.tscn" id="1_fh8ox"]
+[ext_resource type="Script" path="res://Scripts/beacon_tower.gd" id="2_mlleh"]
 [ext_resource type="PackedScene" uid="uid://geda8gmbwuga" path="res://Scenes/beacon_node_button.tscn" id="2_svd78"]
 [ext_resource type="PackedScene" uid="uid://j1dft6uobs3e" path="res://Scenes/beacon_tower.tscn" id="3_aiidj"]
 [ext_resource type="PackedScene" uid="uid://dt8namvmtn1ty" path="res://Scenes/beacon_node.tscn" id="4_b3dfw"]
 [ext_resource type="Texture2D" uid="uid://r65av6xkmun3" path="res://assets/beacon/beacon-node-empty.png" id="5_o6nu5"]
+
+[sub_resource type="GDScript" id="GDScript_tquvq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tft4m"]
 font_size = 22
@@ -33,27 +36,43 @@ func _on_clicked(transformation_type: String): # note.jmc - probably remove this
 
 [node name="BeaconTower" parent="." instance=ExtResource("3_aiidj")]
 position = Vector2(664, 0)
+script = ExtResource("2_mlleh")
 
 [node name="BeaconNode1" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(103, 484)
+id = 1
+availableNodeIds = Array[int]([2, 3])
+connectedNodeIds = Array[int]([0, 0])
 
 [node name="BeaconNode2" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(-18, 375)
+id = 2
+availableNodeIds = Array[int]([1, 4, 5])
 
 [node name="BeaconNode3" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(216, 383)
+id = 3
+availableNodeIds = Array[int]([1, 4, 6])
 
 [node name="BeaconNode4" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(101, 283)
+id = 4
+availableNodeIds = Array[int]([2, 3, 5, 6, 7])
 
 [node name="BeaconNode5" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(-31, 206)
+id = 5
+availableNodeIds = Array[int]([2, 4, 7])
 
 [node name="BeaconNode6" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(232, 208)
+id = 6
+availableNodeIds = Array[int]([3, 4, 7])
 
 [node name="BeaconNode7" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(100, 132)
+id = 7
+availableNodeIds = Array[int]([4, 5, 6])
 
 [node name="MockUI" type="Node" parent="."]
 
@@ -62,6 +81,7 @@ offset_left = 180.0
 offset_top = 580.0
 offset_right = 652.0
 offset_bottom = 644.0
+script = SubResource("GDScript_tquvq")
 
 [node name="Slot1" type="ColorRect" parent="MockUI/InventoryContainer"]
 custom_minimum_size = Vector2(64, 64)
