@@ -7,7 +7,7 @@ resource_name = "player"
 script/source = "extends CharacterBody2D
 
 
-var speed = 400
+const speed = 4
 var astar_grid  : AStarGrid2D
 var tile_map    : TileMap
 var tile_size   : Vector2i
@@ -35,34 +35,26 @@ func _ready():
 func _physics_process(delta):
 	move_to_point()
 	pass
-		
-func move_to_point():
 	
+func get_direction(start:Vector2, dest:Vector2):
+	return (dest-start)
+	
+func move_to_point():
 	if !path.is_empty():
-		var cur_position = tile_map.local_to_map(position)
-		var point = tile_map.local_to_map(Vector2i(path[0]))
-
-		print(\"path: \", path)
-		#print(\"sign of path: \", sign(path[0]))
-		#print(\"move towards: \", sign(point)*Vector2i(1,1))
-
-		if cur_position != point:
-			print(sign(point)*Vector2i(1,1))
-			cur_position += sign(point)*Vector2i(1,1)
-			cur_position = tile_map.map_to_local(Vector2(cur_position))
-			position     = cur_position
-			start_tile   = cur_position
+		var cur_position = position-Vector2(32,32)
+		if path[0] != cur_position:
+			#direction vector of A->B = (B.X-A.X)(B.Y-A.Y)
+			position += sign(path[0]-cur_position)*speed
 		else:
-			print(\"removing the index of: \", path[0])
 			path.remove_at(0)
-	else:
-		print(\"EMPTY\")
+			
 func _input(event):
 	if event.is_action_pressed(\"lmb_click\"):
 		target = get_global_mouse_position()
 		target_tile = tile_map.local_to_map(target)
-		update_path()
+		start_tile  = tile_map.local_to_map(position-Vector2(32,32))
 		path = astar_grid.get_point_path(start_tile,target_tile)
+		print(\"path: \", path)
 		queue_redraw()
 		
 func _draw():
@@ -74,6 +66,7 @@ func draw_path():
 	update_path()
 	if !path.is_empty():
 		draw_circle(path[path.size()-1]*2, 16.0, Color.AQUAMARINE)
+		pass
 	
 func update_path():
 	$Line2D.points = path
@@ -88,7 +81,6 @@ scale = Vector2(0.5, 0.5)
 script = SubResource("GDScript_1c1ks")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("1_00c11")
 
 [node name="Line2D" type="Line2D" parent="."]
