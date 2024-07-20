@@ -34,7 +34,7 @@ func _on_clicked(transformation_type: String): # note.jmc - probably remove this
 [node name="BeaconTower" parent="." instance=ExtResource("3_aiidj")]
 position = Vector2(664, 0)
 
-[node name="BeaconNode" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
+[node name="BeaconNode1" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(103, 484)
 
 [node name="BeaconNode2" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
