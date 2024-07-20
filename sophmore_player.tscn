@@ -13,22 +13,17 @@ var tile_map    : TileMap
 var tile_size   : Vector2i
 var start_tile  : Vector2i
 var target_tile : Vector2i
-var grid_size   : Vector2i
-
 
 func _ready():
 	tile_map = get_parent().find_child(\"TileMap\")
 	tile_size = tile_map.tile_set.tile_size
-	
+	position = tile_map.local_to_map(Vector2i(1,1))
 	start_tile = to_local(Vector2i.ZERO)
 	
-	grid_size = Vector2i(get_viewport_rect().size) / tile_size
-	print(\"rect: \", tile_map.get_used_rect())
 	astar_grid = AStarGrid2D.new()
 	astar_grid.region = tile_map.get_used_rect()
-	print(astar_grid.region)
 	astar_grid.cell_size = tile_size
-	astar_grid.offset = tile_size/2
+	astar_grid.offset = Vector2i.ZERO
 	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ALWAYS
 	astar_grid.update()
 	
@@ -53,6 +48,7 @@ func draw_path():
 	update_path()
 	
 func update_path():
+	print(astar_grid.get_point_path(start_tile,target_tile))
 	$Line2D.points = astar_grid.get_point_path(start_tile,target_tile)
 "
 
@@ -60,7 +56,7 @@ func update_path():
 size = Vector2(127, 127)
 
 [node name="SophmorePlayer" type="CharacterBody2D"]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.5, 0.5)
 script = SubResource("GDScript_1c1ks")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

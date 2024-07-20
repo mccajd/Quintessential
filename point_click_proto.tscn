@@ -11,7 +11,6 @@ var player = preload(\"res://sophmore_player.tscn\")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var new_player = player.instantiate()
-	new_player.tile_size = $TileMap.tile_set.tile_size
 	add_child(new_player)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
