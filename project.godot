@@ -11,14 +11,9 @@ config_version=5
 [application]
 
 config/name="beaconator"
-run/main_scene="res://Levels/beacon_puzzle_main.tscn"
+run/main_scene="res://point_click_proto.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[display]
-
-window/size/viewport_width=1024
-window/size/viewport_height=768
 
 [dotnet]
 
@@ -26,9 +21,9 @@ project/assembly_name="beaconator"
 
 [input]
 
-select={
+lmb_click={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(121, 22),"global_position":Vector2(125, 63),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(180, 17),"global_position":Vector2(184, 58),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
 
