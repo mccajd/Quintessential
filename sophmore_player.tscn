@@ -33,16 +33,36 @@ func _ready():
 	$Line2D.default_color = Color.AQUAMARINE
 	
 func _physics_process(delta):
+	move_to_point()
 	pass
 		
+func move_to_point():
+	
+	if !path.is_empty():
+		var cur_position = tile_map.local_to_map(position)
+		var point = tile_map.local_to_map(Vector2i(path[0]))
+
+		print(\"path: \", path)
+		#print(\"sign of path: \", sign(path[0]))
+		#print(\"move towards: \", sign(point)*Vector2i(1,1))
+
+		if cur_position != point:
+			print(sign(point)*Vector2i(1,1))
+			cur_position += sign(point)*Vector2i(1,1)
+			cur_position = tile_map.map_to_local(Vector2(cur_position))
+			position     = cur_position
+			start_tile   = cur_position
+		else:
+			print(\"removing the index of: \", path[0])
+			path.remove_at(0)
+	else:
+		print(\"EMPTY\")
 func _input(event):
 	if event.is_action_pressed(\"lmb_click\"):
 		target = get_global_mouse_position()
-		target_tile = tile_map.local_to_map(tile_map.get_global_mouse_position())
+		target_tile = tile_map.local_to_map(target)
 		update_path()
 		path = astar_grid.get_point_path(start_tile,target_tile)
-		print(\"path: \", path)
-		astar_grid.update()
 		queue_redraw()
 		
 func _draw():
@@ -50,7 +70,7 @@ func _draw():
 	pass
 
 func draw_path():
-	draw_circle(target_tile, 16.0, Color.AQUAMARINE)
+	draw_circle(start_tile, 16.0, Color.AQUAMARINE)
 	update_path()
 	if !path.is_empty():
 		draw_circle(path[path.size()-1]*2, 16.0, Color.AQUAMARINE)
@@ -68,10 +88,11 @@ scale = Vector2(0.5, 0.5)
 script = SubResource("GDScript_1c1ks")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_00c11")
+
+[node name="Line2D" type="Line2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_dchqe")
-
-[node name="Line2D" type="Line2D" parent="."]
