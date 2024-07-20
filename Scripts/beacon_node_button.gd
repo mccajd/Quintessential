@@ -3,24 +3,32 @@ extends Area2D
 
 signal clicked
 var hovered = false
+
+@export var toggled = false
 @export var transformation_type = ""
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	input_pickable = true
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (hovered && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+	if (!hovered): return
+	
+	if (Input.is_action_pressed("select")):
 		$AnimatedSprite2D.play("depressed")
-		return
-	$AnimatedSprite2D.play("default")
-	pass
+	else:
+		$AnimatedSprite2D.play("default")
+	
+	if (Input.is_action_just_pressed("select")):
+		clicked.emit()
 
-func _mouse_enter():
+
+func _on_mouse_entered():
+	$AnimatedSprite2D.play("hovered")
 	hovered = true
-	
-func _mouse_exit():
+
+
+func _on_mouse_exited():
+	$AnimatedSprite2D.play("default")
 	hovered = false
-	

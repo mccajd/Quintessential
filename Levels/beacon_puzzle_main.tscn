@@ -15,18 +15,18 @@ resource_name = "ShowNodeMenuButton"
 script/source = "extends BeaconButton
 
 var beaconNodeMenu = null
+var playerView = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	beaconNodeMenu = get_parent().get_node(\"BeaconNodeMenu\")
+	playerView = get_parent().get_parent().get_node(\"PlayerView\").get_children()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if (hovered && Input.is_action_just_pressed(\"select\")):
-		$AnimatedSprite2D.play(\"depressed\")
-		beaconNodeMenu.visible = !beaconNodeMenu.visible
-		return
-	$AnimatedSprite2D.play(\"default\")
+func _on_clicked():
+	# HACK.jmc - seems the player view as it currently stands eats mouse inputs
+	var currentVisibility = beaconNodeMenu.visible
+	for child in playerView:
+		child.visible = currentVisibility
+	beaconNodeMenu.visible = !currentVisibility
 "
 
 [node name="BeaconPuzzleMain" type="Node"]
@@ -174,3 +174,5 @@ Where player
 sees progress 
 of shadows"
 label_settings = SubResource("LabelSettings_tft4m")
+
+[connection signal="clicked" from="MockUI/BeaconNodeView/ShowNodeMenuButton" to="MockUI/BeaconNodeView/ShowNodeMenuButton" method="_on_clicked"]
