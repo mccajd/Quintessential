@@ -172,29 +172,43 @@ offset_right = 303.0
 offset_bottom = 48.0
 text = "none selected"
 
+[node name="SelectedTransformationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+offset_left = 331.0
+offset_top = 135.0
+offset_right = 439.0
+offset_bottom = 158.0
+text = "neutral
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ShowNodeMenuButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
 position = Vector2(374, -18)
 script = SubResource("GDScript_vcol3")
 
 [node name="SolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(31, 378)
+position = Vector2(15, 358)
 transformation_type = "solution"
 
 [node name="DissolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(98, 450)
+position = Vector2(82, 447)
 transformation_type = "dissolution"
 
 [node name="AscensionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(170, 381)
+position = Vector2(175, 356)
 transformation_type = "ascension"
 
 [node name="SublimationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(245, 451)
+position = Vector2(251, 449)
 transformation_type = "sublimation"
 
 [node name="DistillationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(314, 379)
+position = Vector2(329, 360)
 transformation_type = "distillation"
+
+[node name="ClearButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(332, 160)
+transformation_type = "neutral"
 
 [node name="TowerExteriorView" type="Node" parent="MockUI"]
 
@@ -225,3 +239,9 @@ label_settings = SubResource("LabelSettings_tft4m")
 [connection signal="selected" from="BeaconTower/BeaconNode6" to="BeaconTower" method="_on_node_selected"]
 [connection signal="selected" from="BeaconTower/BeaconNode7" to="BeaconTower" method="_on_node_selected"]
 [connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/ShowNodeMenuButton" to="MockUI/BeaconNodeView/BeaconNodeMenu/ShowNodeMenuButton" method="_on_clicked"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/SolutionButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/DissolutionButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/AscensionButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/SublimationButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/DistillationButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/ClearButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]

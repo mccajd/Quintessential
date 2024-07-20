@@ -10,7 +10,7 @@ var hovered = false
 
 var inputs: Array = []
 var outputs = []
-var selectedTransformation: String
+@export var selected_transformation: String = "neutral"
 var slottedItem: Item
 signal selected
 
@@ -39,6 +39,9 @@ func remove_item():
 		slottedItem = null
 		$SlottedItemPreview.texture = null
 		return
+
+func set_transformation(type: String):
+	selected_transformation = type
 
 func _handle_button_logic():
 	if (!hovered): return
