@@ -10,3 +10,5 @@ class_name OutputItem
 # we need the player to choose a specific metal)
 @export var additional_transformation: String
 
+func _init(item: String):
+	item_key = item

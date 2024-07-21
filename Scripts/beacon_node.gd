@@ -14,11 +14,12 @@ var outputs
 @export var selected_transformation: String = "neutral"
 #var slottedItem: Item
 
-var products: Array[Item]
+var products: Array[OutputItem]
 
 var transformer: ItemTransformer
 
 signal selected
+signal transformed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,7 +35,11 @@ func _process(delta):
 		$AnimatedSprite2D.play("filled")
 		return
 	$AnimatedSprite2D.play("empty")
-	outputs = transformer.transform(selected_transformation, inputs)
+	
+	var new_outputs = transformer.transform(selected_transformation, inputs)
+	if !Helpers.compare_arrays(outputs, new_outputs):
+		outputs = new_outputs
+		_set_products()
 
 #func add_item(item: Item):
 	#if slottedItem == null:
@@ -62,3 +67,12 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	hovered = false
+
+func _set_products():
+	# potential UX later to preserve the destination node.
+	products.clear()
+	if outputs != null:
+		for item in outputs:
+			var output_item = OutputItem.new(item)
+			products.push_front(output_item)
+	transformed.emit(id, products)

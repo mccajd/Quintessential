@@ -263,6 +263,7 @@ label_settings = SubResource("LabelSettings_tft4m")
 
 [connection signal="node_selected" from="BeaconTower" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_beacon_tower_node_selected"]
 [connection signal="selected" from="BeaconTower/BeaconNode1" to="BeaconTower" method="_on_node_selected"]
+[connection signal="transformed" from="BeaconTower/BeaconNode1" to="BeaconTower" method="_on_transformed"]
 [connection signal="selected" from="BeaconTower/BeaconNode2" to="BeaconTower" method="_on_node_selected"]
 [connection signal="selected" from="BeaconTower/BeaconNode3" to="BeaconTower" method="_on_node_selected"]
 [connection signal="selected" from="BeaconTower/BeaconNode4" to="BeaconTower" method="_on_node_selected"]

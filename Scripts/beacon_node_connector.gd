@@ -2,6 +2,8 @@ extends Node2D
 
 var enabled: bool
 
+# TODO.jmc - evaluate whether it makes sense to store refs to the connected nodes here.
+
 func _ready():
 	enabled = false
 
