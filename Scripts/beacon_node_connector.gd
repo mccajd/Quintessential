@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var connection: Array[int]
 var enabled: bool
 
 # TODO.jmc - evaluate whether it makes sense to store refs to the connected nodes here.
@@ -18,3 +19,11 @@ func enable():
 	
 func disable():
 	enabled = false
+
+
+func _on_beacon_tower_connections_updated(connections):
+	for connection_array in connections:
+		if Helpers.compare_arrays(connection, connection_array):
+			enable()
+			return
+	disable()

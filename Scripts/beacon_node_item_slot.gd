@@ -3,6 +3,7 @@ extends Area2D
 class_name BeaconNodeItemSlot
 
 var item_key
+var hovered = false
 
 func _ready():
 	$BackgroundTextureRect.texture = load("res://assets/beacon/node-bg-slot.png")
@@ -18,3 +19,11 @@ func _process(delta):
 
 func set_item(key):
 	item_key = key
+
+
+func _on_mouse_entered():
+	hovered = true
+
+func _on_mouse_exited():
+	hovered = false
+

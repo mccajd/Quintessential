@@ -4,7 +4,8 @@ class_name BeaconNode
 
 @export var id: int
 @export var availableNodeIds: Array[int]
-@export var connectedNodeIds: Array[int]
+# Four output slots = array of size 4.  Might as well weaponize this ref type shite
+var selected_destination_nodes = [-1, -1, -1, -1]
 
 var hovered = false
 
@@ -55,6 +56,19 @@ func _process(delta):
 
 func set_transformation(type: String):
 	selected_transformation = type
+
+func set_destination_node(slot_id, destination_node_id):
+	selected_destination_nodes[slot_id] = destination_node_id
+
+func get_active_connections():
+	var rtn = []
+	
+	for i in selected_destination_nodes.size():
+		if i >= products.size(): return rtn
+		var destination = selected_destination_nodes[i]
+		if destination == -1: continue
+		rtn.push_front(destination)
+	return rtn
 
 func _handle_button_logic():
 	if (!hovered): return

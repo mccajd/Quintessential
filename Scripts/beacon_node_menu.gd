@@ -22,8 +22,8 @@ func _process(delta):
 	#get_node("SelectedInputLabel").text = _render_string_label(selected_node.inputs)
 	#get_node("SelectedOutputLabel").text = _render_string_label(selected_node.outputs) if selected_node.inputs else "no inputs"
 	
-	_set_input_slots()
-	_set_output_slots()
+	_set_input_slot_items()
+	_set_output_slot_items()
 	
 
 func _on_beacon_tower_node_selected(node: BeaconNode):
@@ -34,6 +34,7 @@ func _on_beacon_tower_node_selected(node: BeaconNode):
 		return
 
 	selected_node = node
+	_set_output_slots()
 	_set_visibility(true)
 	
 
@@ -55,7 +56,13 @@ func _render_string_label(strings):
 	
 	return rtn
 
-func _set_input_slots():
+func _set_output_slots():
+	for i in output_slot_names.size():
+		var node = get_node("OutputContainer").get_node(output_slot_names[i])
+		node.node_destination_options = selected_node.availableNodeIds
+		node.selected_node_destination = selected_node.selected_destination_nodes[i]
+
+func _set_input_slot_items():
 	if !selected_node: return
 	
 	for i in input_slot_names.size():
@@ -65,7 +72,7 @@ func _set_input_slots():
 			continue
 		node.set_item(selected_node.inputs[i])
 
-func _set_output_slots():
+func _set_output_slot_items():
 	if !selected_node: return
 	
 	for i in output_slot_names.size():
@@ -74,3 +81,7 @@ func _set_output_slots():
 			node.set_item(null)
 			continue
 		node.set_item(selected_node.products[i].item_key)
+
+
+func _on_output_slot_destination_updated(slot_source_id: int, destination_node_id: int):
+	selected_node.set_destination_node(slot_source_id, destination_node_id)
