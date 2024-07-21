@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=13 format=3 uid="uid://b16x2m82ri0xj"]
 
 [ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://Scenes/beacon_node_menu.tscn" id="1_fh8ox"]
 [ext_resource type="Script" path="res://Scripts/beacon_tower.gd" id="2_mlleh"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://k06cwvfdpar" path="res://Scenes/beacon_node_connector.tscn" id="4_oglsy"]
 [ext_resource type="Texture2D" uid="uid://r65av6xkmun3" path="res://assets/beacon/beacon-node-empty.png" id="5_o6nu5"]
 [ext_resource type="PackedScene" path="res://Scenes/beacon_node_item_slot.tscn" id="7_t800s"]
+[ext_resource type="Script" path="res://Scripts/beacon_node_output_slot.gd" id="8_16phh"]
 
 [sub_resource type="GDScript" id="GDScript_tquvq"]
 
@@ -207,15 +208,19 @@ offset_bottom = 293.0
 scale = Vector2(1.613, 1.613)
 
 [node name="OutputSlot1" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
+script = ExtResource("8_16phh")
 
 [node name="OutputSlot2" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
 position = Vector2(45, 0)
+script = ExtResource("8_16phh")
 
 [node name="OutputSlot3" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
 position = Vector2(90, 0)
+script = ExtResource("8_16phh")
 
 [node name="OutputSlot4" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
 position = Vector2(135, 0)
+script = ExtResource("8_16phh")
 
 [node name="SelectedNodeLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
 offset_left = 195.0

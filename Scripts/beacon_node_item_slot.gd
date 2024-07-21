@@ -1,8 +1,8 @@
 extends Area2D
 
+class_name BeaconNodeItemSlot
+
 var item_key
-#var node_destination_options: Array[int]
-#var selected_node_destination: int
 
 func _ready():
 	$BackgroundTextureRect.texture = load("res://assets/beacon/node-bg-slot.png")
