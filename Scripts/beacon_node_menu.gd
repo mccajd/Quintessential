@@ -4,6 +4,9 @@ var playerView = null
 
 var selected_node: BeaconNode
 
+# may be a more programatic way to handle this.
+const output_slot_names = ["OutputSlot1", "OutputSlot2", "OutputSlot3", "OutputSlot4"]
+
 func _ready():
 	visible = false
 	input_pickable = false
@@ -17,6 +20,8 @@ func _process(delta):
 	
 	get_node("SelectedInputLabel").text = _render_string_label(selected_node.inputs)
 	get_node("SelectedOutputLabel").text = _render_string_label(selected_node.outputs) if selected_node.inputs else "no inputs"
+	
+	_set_output_slots()
 	
 
 func _on_beacon_tower_node_selected(node: BeaconNode):
@@ -47,3 +52,13 @@ func _render_string_label(strings):
 		rtn += s
 	
 	return rtn
+
+func _set_output_slots():
+	if !selected_node: return
+	
+	for i in output_slot_names.size():
+		var node = get_node("OutputContainer").get_node(output_slot_names[i])
+		if i >= selected_node.products.size():
+			node.set_output_item(null)
+			continue
+		node.set_output_item(selected_node.products[i])
