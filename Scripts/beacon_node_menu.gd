@@ -5,6 +5,7 @@ var playerView = null
 var selected_node: BeaconNode
 
 # may be a more programatic way to handle this.
+const input_slot_names = ["InputSlot1", "InputSlot2", "InputSlot3", "InputSlot4"]
 const output_slot_names = ["OutputSlot1", "OutputSlot2", "OutputSlot3", "OutputSlot4"]
 
 func _ready():
@@ -18,9 +19,10 @@ func _process(delta):
 	
 	if !selected_node: return
 	
-	get_node("SelectedInputLabel").text = _render_string_label(selected_node.inputs)
-	get_node("SelectedOutputLabel").text = _render_string_label(selected_node.outputs) if selected_node.inputs else "no inputs"
+	#get_node("SelectedInputLabel").text = _render_string_label(selected_node.inputs)
+	#get_node("SelectedOutputLabel").text = _render_string_label(selected_node.outputs) if selected_node.inputs else "no inputs"
 	
+	_set_input_slots()
 	_set_output_slots()
 	
 
@@ -53,12 +55,22 @@ func _render_string_label(strings):
 	
 	return rtn
 
+func _set_input_slots():
+	if !selected_node: return
+	
+	for i in input_slot_names.size():
+		var node = get_node("InputContainer").get_node(input_slot_names[i])
+		if i >= selected_node.inputs.size():
+			node.set_item(null)
+			continue
+		node.set_item(selected_node.inputs[i])
+
 func _set_output_slots():
 	if !selected_node: return
 	
 	for i in output_slot_names.size():
 		var node = get_node("OutputContainer").get_node(output_slot_names[i])
 		if i >= selected_node.products.size():
-			node.set_output_item(null)
+			node.set_item(null)
 			continue
-		node.set_output_item(selected_node.products[i])
+		node.set_item(selected_node.products[i].item_key)

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dt8namvmtn1ty" path="res://Scenes/beacon_node.tscn" id="4_b3dfw"]
 [ext_resource type="PackedScene" uid="uid://k06cwvfdpar" path="res://Scenes/beacon_node_connector.tscn" id="4_oglsy"]
 [ext_resource type="Texture2D" uid="uid://r65av6xkmun3" path="res://assets/beacon/beacon-node-empty.png" id="5_o6nu5"]
-[ext_resource type="PackedScene" uid="uid://chme11eyldqed" path="res://Scenes/beacon_node_output_slot.tscn" id="7_t800s"]
+[ext_resource type="PackedScene" path="res://Scenes/beacon_node_item_slot.tscn" id="7_t800s"]
 
 [sub_resource type="GDScript" id="GDScript_tquvq"]
 
@@ -181,6 +181,24 @@ label_settings = SubResource("LabelSettings_tft4m")
 [node name="BeaconNodeMenu" parent="MockUI/BeaconNodeView" instance=ExtResource("1_fh8ox")]
 position = Vector2(184, 16)
 
+[node name="InputContainer" type="HBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+offset_left = 34.0
+offset_top = 71.0
+offset_right = 209.0
+offset_bottom = 111.0
+scale = Vector2(1.613, 1.613)
+
+[node name="InputSlot1" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
+
+[node name="InputSlot2" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
+position = Vector2(45, 0)
+
+[node name="InputSlot3" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
+position = Vector2(90, 0)
+
+[node name="InputSlot4" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
+position = Vector2(135, 0)
+
 [node name="OutputContainer" type="HBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
 offset_left = 34.0
 offset_top = 253.0
@@ -217,6 +235,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SelectedInputLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+visible = false
 offset_left = 37.0
 offset_top = 71.0
 offset_right = 297.0
