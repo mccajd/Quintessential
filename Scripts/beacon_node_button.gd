@@ -9,6 +9,7 @@ var hovered = false
 
 
 func _ready():
+	$AnimatedSprite2D.play("default")
 	input_pickable = true
 
 
@@ -18,7 +19,7 @@ func _process(delta):
 	if (Input.is_action_pressed("select")):
 		$AnimatedSprite2D.play("depressed")
 	else:
-		$AnimatedSprite2D.play("default")
+		$AnimatedSprite2D.play("hovered")
 	
 	if (Input.is_action_just_pressed("select")):
 		clicked.emit(transformation_type)
