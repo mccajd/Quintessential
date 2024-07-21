@@ -7,7 +7,7 @@ resource_name = "player"
 script/source = "extends CharacterBody2D
 
 
-const speed = 4
+const speed = 2
 var astar_grid  : AStarGrid2D
 var tile_map    : TileMap
 var tile_size   : Vector2i
