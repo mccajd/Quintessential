@@ -3,6 +3,7 @@ extends Node
 class_name ItemTransformer
 
 func transform(type: String, item_keys: Array[String]):
+	# TODO.jmc - implement the rest of the transformations.
 	match type:
 		"solution":
 			return _transform_solution(item_keys)
