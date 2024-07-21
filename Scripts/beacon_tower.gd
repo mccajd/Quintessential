@@ -2,8 +2,10 @@ extends Area2D
 
 var node_outputs: Dictionary
 
-signal node_selected
+const node_names = ["BeaconNode1", "BeaconNode2", "BeaconNode3", "BeaconNode4", "BeaconNode5", "BeaconNode6", "BeaconNode7"]
 
+signal node_selected
+signal connections_updated
 
 func _ready():
 	pass
@@ -25,4 +27,14 @@ func _on_transformed(node_id: int, output_items: Array[OutputItem]):
 
 
 func _set_connectors():
-	pass
+	# note - this is called every frame.  if this turns out to be non-performant
+	#  i'll come back to it
+	var connections = []
+	
+	for name in node_names:
+		var beacon_node = get_node(name)
+		for connection in beacon_node.get_active_connections():
+			connections.push_front([beacon_node.id, connection])
+	
+	connections_updated.emit(connections)
+	
