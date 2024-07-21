@@ -47,17 +47,19 @@ position = Vector2(103, 484)
 id = 1
 availableNodeIds = Array[int]([2, 3])
 connectedNodeIds = Array[int]([0, 0])
-inputs = Array[String](["water_mote", "water_mote"])
+inputs = Array[String](["water_mote", "water_mote", "fire_mote"])
 
 [node name="BeaconNode2" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(-18, 375)
 id = 2
 availableNodeIds = Array[int]([1, 4, 5])
+inputs = Array[String](["water_mote", "water_mote"])
 
 [node name="BeaconNode3" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(216, 383)
 id = 3
 availableNodeIds = Array[int]([1, 4, 6])
+inputs = Array[String](["air_mote", "air_mote"])
 
 [node name="BeaconNode4" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(101, 283)
