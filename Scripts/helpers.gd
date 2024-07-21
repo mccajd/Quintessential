@@ -1,6 +1,6 @@
 class_name Helpers
 
-static func compare_arrays(arr1, arr2) -> bool:
+static func compare_arrays(arr1, arr2):
 	if arr1 == null && arr2 == null:
 		return true
 	if arr1 == null || arr2 == null:
