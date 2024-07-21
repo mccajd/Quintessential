@@ -8,15 +8,22 @@ class_name BeaconNode
 
 var hovered = false
 
-var inputs: Array = []
-var outputs = []
+# @export here for debugging; this should be set by the player/internal systems
+@export var inputs: Array[String]
+var outputs
 @export var selected_transformation: String = "neutral"
 var slottedItem: Item
+
+var products: Array[Item]
+
+var transformer: ItemTransformer
+
 signal selected
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	input_pickable = true
+	transformer = ItemTransformer.new()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +34,7 @@ func _process(delta):
 		$AnimatedSprite2D.play("filled")
 		return
 	$AnimatedSprite2D.play("empty")
+	outputs = transformer.transform(selected_transformation, inputs)
 
 func add_item(item: Item):
 	if slottedItem == null:
