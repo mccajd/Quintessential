@@ -6,6 +6,7 @@ var enabled: bool
 # TODO.jmc - evaluate whether it makes sense to store refs to the connected nodes here.
 
 func _ready():
+	get_parent().connections_updated.connect(_on_beacon_tower_connections_updated)
 	enabled = false
 
 func _process(delta):

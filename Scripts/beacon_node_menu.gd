@@ -58,9 +58,7 @@ func _render_string_label(strings):
 
 func _set_output_slots():
 	for i in output_slot_names.size():
-		var node = get_node("OutputContainer").get_node(output_slot_names[i])
-		node.node_destination_options = selected_node.availableNodeIds
-		node.selected_node_destination = selected_node.selected_destination_nodes[i]
+		get_node("OutputContainer").get_node(output_slot_names[i]).set_values(selected_node)
 
 func _set_input_slot_items():
 	if !selected_node: return

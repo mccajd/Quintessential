@@ -18,6 +18,11 @@ func _process(delta):
 		destination_updated.emit(slot_id, selected_node_destination)
 		get_node("DestinationLabel").text = str(selected_node_destination) if selected_node_destination > -1 else ""
 
+func set_values(selected_node: BeaconNode):
+	node_destination_options = selected_node.availableNodeIds
+	selected_node_destination = selected_node.selected_destination_nodes[slot_id]
+	get_node("DestinationLabel").text = str(selected_node_destination) if selected_node_destination > -1 else ""
+
 func _update_selected_node():
 	if selected_node_destination == -1:
 		selected_node_destination = node_destination_options.front()
