@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://k06cwvfdpar"]
+
+[ext_resource type="Texture2D" uid="uid://c8gcb8qkjsn5f" path="res://assets/beacon/beacon-node-connector-off.png" id="1_alja2"]
+[ext_resource type="Script" path="res://Scripts/beacon_node_connector.gd" id="1_mrnm5"]
+[ext_resource type="Texture2D" uid="uid://dvsomxv2whtjr" path="res://assets/beacon/beacon-node-connector.png" id="2_ec2co"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g2kp1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_alja2")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ec2co")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[node name="BeaconNodeConnector" type="Node2D"]
+script = ExtResource("1_mrnm5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(19, 91)
+sprite_frames = SubResource("SpriteFrames_g2kp1")
+animation = &"off"

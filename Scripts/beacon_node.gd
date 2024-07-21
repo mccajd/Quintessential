@@ -12,7 +12,7 @@ var hovered = false
 @export var inputs: Array[String]
 var outputs
 @export var selected_transformation: String = "neutral"
-var slottedItem: Item
+#var slottedItem: Item
 
 var products: Array[Item]
 
@@ -36,17 +36,17 @@ func _process(delta):
 	$AnimatedSprite2D.play("empty")
 	outputs = transformer.transform(selected_transformation, inputs)
 
-func add_item(item: Item):
-	if slottedItem == null:
-		slottedItem = item
-		$SlottedItemPreview.texture = item.sprite
-		return
-
-func remove_item():
-	if slottedItem:
-		slottedItem = null
-		$SlottedItemPreview.texture = null
-		return
+#func add_item(item: Item):
+	#if slottedItem == null:
+		#slottedItem = item
+		#$SlottedItemPreview.texture = item.sprite
+		#return
+#
+#func remove_item():
+	#if slottedItem:
+		#slottedItem = null
+		#$SlottedItemPreview.texture = null
+		#return
 
 func set_transformation(type: String):
 	selected_transformation = type
