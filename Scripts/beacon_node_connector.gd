@@ -6,7 +6,10 @@ func _ready():
 	enabled = false
 
 func _process(delta):
-	$AnimatedSprite2D.play("on") if enabled else $AnimatedSprite2D.play("off")
+	if enabled:
+		$AnimatedSprite2D.play("on")
+		return
+	$AnimatedSprite2D.play("off")
 
 func enable():
 	enabled = true
