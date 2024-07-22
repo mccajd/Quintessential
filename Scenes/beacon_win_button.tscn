@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5sx25l2mobnd"]
+
+[ext_resource type="Texture2D" uid="uid://sbbi7456qa7m" path="res://assets/beacon/beacon-win-button.png" id="1_nc21o"]
+[ext_resource type="Texture2D" uid="uid://8nfw6dhdpgp6" path="res://assets/beacon/beacon-win-button-depressed.png" id="2_ogcu8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iiv5q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nc21o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ogcu8")
+}],
+"loop": true,
+"name": &"depressed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34g8p"]
+size = Vector2(489, 79)
+
+[node name="BeaconWinButton" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(254, 49)
+sprite_frames = SubResource("SpriteFrames_iiv5q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(253.5, 49.5)
+shape = SubResource("RectangleShape2D_34g8p")
