@@ -1,6 +1,7 @@
 extends Area2D
 
 var node_outputs: Dictionary
+var selected_node: BeaconNode
 
 const node_names = ["BeaconNode1", "BeaconNode2", "BeaconNode3", "BeaconNode4", "BeaconNode5", "BeaconNode6", "BeaconNode7"]
 
@@ -20,6 +21,8 @@ func _on_node_selected(node: BeaconNode):
 	#		for the selection menu.  for now i'm encapsulating the node selection event
 	#		here with the intent to enhance it with more info later.
 	node_selected.emit(node)
+	selected_node = null if selected_node == node else node
+	_set_selected_node_effects()
 
 
 func _on_transformed(node_id: int, output_items: Array[OutputItem]):
@@ -37,4 +40,11 @@ func _set_connectors():
 			connections.push_front([beacon_node.id, connection])
 	
 	connections_updated.emit(connections)
+
+
+func _set_selected_node_effects():
+	for name in node_names:
+		var beacon_node = get_node(name)
+		if beacon_node == selected_node: continue
+		beacon_node.disable_selection_effects()
 	
