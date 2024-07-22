@@ -36,7 +36,9 @@ func _on_clicked(transformation_type: String): # note.jmc - probably remove this
 	for child in playerView:
 		child.visible = currentVisibility
 	beaconNodeMenu.visible = !currentVisibility
-	#self.visible = false
+	
+	# HACK.jmc - this is unbelievably fragile lmao
+	get_parent().get_parent().get_parent().get_parent().get_node(\"BeaconTower\")._on_node_selected(null)
 "
 
 [node name="BeaconPuzzleMain" type="Node"]
@@ -45,49 +47,49 @@ func _on_clicked(transformation_type: String): # note.jmc - probably remove this
 position = Vector2(664, 0)
 script = ExtResource("2_mlleh")
 
-[node name="BeaconNode1" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
+[node name="BeaconNode1" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(103, 484)
 id = 1
 availableNodeIds = Array[int]([2, 3])
 inputs = Array[String](["water_mote", "water_mote", "fire_mote"])
 
-[node name="BeaconNode2" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
+[node name="BeaconNode2" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(-18, 375)
 id = 2
 availableNodeIds = Array[int]([1, 4, 5])
 inputs = Array[String](["water_mote", "water_mote"])
 
-[node name="BeaconNode3" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
+[node name="BeaconNode3" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(216, 383)
 id = 3
 availableNodeIds = Array[int]([1, 4, 6])
 inputs = Array[String](["air_mote", "air_mote"])
 
-[node name="BeaconNode4" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
+[node name="BeaconNode4" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(101, 283)
 id = 4
 availableNodeIds = Array[int]([2, 3, 5, 6, 7])
 inputs = Array[String](["seawater"])
 
-[node name="BeaconNode5" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
+[node name="BeaconNode5" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(-31, 206)
 id = 5
 availableNodeIds = Array[int]([2, 4, 7])
 inputs = Array[String](["earth"])
 
-[node name="BeaconNode6" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
+[node name="BeaconNode6" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(232, 208)
 id = 6
 availableNodeIds = Array[int]([3, 4, 7])
 inputs = Array[String](["fire_mote", "gold"])
 
-[node name="BeaconNode7" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
+[node name="BeaconNode7" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(100, 132)
 id = 7

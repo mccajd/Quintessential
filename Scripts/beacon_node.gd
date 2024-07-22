@@ -60,10 +60,15 @@ func get_active_connections():
 	return rtn
 
 
+func disable_selection_effects():
+	$SelectionSprite2D.visible = false
+
+
 func _handle_button_logic():
 	if (!hovered): return
 
 	if (Input.is_action_just_pressed("select")):
+		$SelectionSprite2D.visible = true
 		selected.emit(self)
 
 

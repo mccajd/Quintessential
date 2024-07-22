@@ -28,7 +28,7 @@ func _process(delta):
 
 func _on_beacon_tower_node_selected(node: BeaconNode):
 	# minor UX - clear the current node if selected again.
-	if (node == selected_node):
+	if (node == selected_node || node == null):
 		selected_node = null
 		_set_visibility(false)
 		return
