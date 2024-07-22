@@ -16,11 +16,33 @@ const itemDB = {
 	'fire_mote' : { 'name' : 'Fire Mote', 'description': 'An item.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/fire_mote.png', 'id' : 12 },
 	'air_mote' : { 'name' : 'Air Mote', 'description': 'An item.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/air_mote.png', 'id' : 13 },
 	'earth_mote' : { 'name' : 'Earth Mote', 'description': 'An item.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/earth_mote.png', 'id' : 14 },
+	'ship_metal' : { 'name' : 'Ship Metal', 'description': 'Metal from a sunken ship.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 15 },
 }
 
 const solution_recipes = [
 	{ "required_ingredients": ["water_mote", "water_mote"], "items": ["water"] },
+	{ "required_ingredients": ["water"], "items": ["water_mote", "water_mote"] },
 	{ "required_ingredients": ["fire_mote", "fire_mote"], "items": ["fire"] },
+	{ "required_ingredients": ["fire"], "items": ["fire_mote", "fire_mote"] },
 	{ "required_ingredients": ["air_mote", "air_mote"], "items": ["air"] },
+	{ "required_ingredients": ["air"], "items": ["air_mote", "air_mote"] },
 	{ "required_ingredients": ["earth_mote", "earth_mote"], "items": ["earth"] },
+	{ "required_ingredients": ["earth"], "items": ["earth_mote", "earth_mote"] },
+]
+
+const dissolution_recipes = [
+	{ "required_ingredients": ["sulfur", "seawater"], "items": ["water", "salt"] },
+	{ "required_ingredients": ["sulfur", "seawater"], "items": ["water", "salt"] },
+]
+
+const sublimation_recipes = [
+	{ "required_ingredients": ["salt", "gold"], "items": ["silver"] },
+]
+
+const distillation_recipes = [
+	
+]
+
+const ascension_recipes = [
+	{ "required_ingredients": ["quicksilver", "base_metal"], "items": ["gold"] },
 ]
