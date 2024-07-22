@@ -1,0 +1,439 @@
+[gd_scene load_steps=13 format=3 uid="uid://b16x2m82ri0xj"]
+
+[ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://Scenes/beacon_node_menu.tscn" id="1_fh8ox"]
+[ext_resource type="Script" path="res://Scripts/beacon_tower.gd" id="2_mlleh"]
+[ext_resource type="PackedScene" uid="uid://geda8gmbwuga" path="res://Scenes/beacon_node_button.tscn" id="2_svd78"]
+[ext_resource type="PackedScene" uid="uid://j1dft6uobs3e" path="res://Scenes/beacon_tower.tscn" id="3_aiidj"]
+[ext_resource type="PackedScene" uid="uid://dt8namvmtn1ty" path="res://Scenes/beacon_node.tscn" id="4_b3dfw"]
+[ext_resource type="PackedScene" uid="uid://k06cwvfdpar" path="res://Scenes/beacon_node_connector.tscn" id="4_oglsy"]
+[ext_resource type="Texture2D" uid="uid://r65av6xkmun3" path="res://assets/beacon/beacon-node-empty.png" id="5_o6nu5"]
+[ext_resource type="PackedScene" path="res://Scenes/beacon_node_item_slot.tscn" id="7_t800s"]
+[ext_resource type="Script" path="res://Scripts/beacon_node_output_slot.gd" id="8_16phh"]
+
+[sub_resource type="GDScript" id="GDScript_tquvq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tft4m"]
+font_size = 22
+font_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
+
+[sub_resource type="GDScript" id="GDScript_vcol3"]
+resource_name = "ShowNodeMenuButton"
+script/source = "extends BeaconButton
+
+var beaconNodeMenu = null
+var playerView = null
+
+func _ready():
+	beaconNodeMenu = get_parent()
+	playerView = get_parent().get_parent().get_parent().get_node(\"PlayerView\").get_children()
+	
+#func _process(delta):
+	
+
+func _on_clicked(transformation_type: String): # note.jmc - probably remove this discarded param later
+	# HACK.jmc - seems the player view as it currently stands eats mouse inputs
+	var currentVisibility = beaconNodeMenu.visible
+	for child in playerView:
+		child.visible = currentVisibility
+	beaconNodeMenu.visible = !currentVisibility
+	
+	# HACK.jmc - this is unbelievably fragile lmao
+	get_parent().get_parent().get_parent().get_parent().get_node(\"BeaconTower\")._on_node_selected(null)
+"
+
+[node name="BeaconPuzzleMain" type="Node"]
+
+[node name="BeaconTower" parent="." instance=ExtResource("3_aiidj")]
+position = Vector2(664, 0)
+script = ExtResource("2_mlleh")
+
+[node name="BeaconNode1" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
+z_index = 1
+position = Vector2(103, 484)
+id = 1
+availableNodeIds = Array[int]([2, 3])
+inputs = Array[String](["water_mote", "water_mote", "fire_mote"])
+
+[node name="BeaconNode2" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
+z_index = 1
+position = Vector2(-18, 375)
+id = 2
+availableNodeIds = Array[int]([1, 4, 5])
+inputs = Array[String](["water_mote", "water_mote"])
+
+[node name="BeaconNode3" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
+z_index = 1
+position = Vector2(216, 383)
+id = 3
+availableNodeIds = Array[int]([1, 4, 6])
+inputs = Array[String](["air_mote", "air_mote"])
+
+[node name="BeaconNode4" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
+z_index = 1
+position = Vector2(101, 283)
+id = 4
+availableNodeIds = Array[int]([2, 3, 5, 6, 7])
+inputs = Array[String](["seawater"])
+
+[node name="BeaconNode5" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
+z_index = 1
+position = Vector2(-31, 206)
+id = 5
+availableNodeIds = Array[int]([2, 4, 7])
+inputs = Array[String](["earth"])
+
+[node name="BeaconNode6" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
+z_index = 1
+position = Vector2(232, 208)
+id = 6
+availableNodeIds = Array[int]([3, 4, 7])
+inputs = Array[String](["fire_mote", "gold"])
+
+[node name="BeaconNode7" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
+z_index = 1
+position = Vector2(100, 132)
+id = 7
+availableNodeIds = Array[int]([4, 5, 6])
+
+[node name="Connector1-2" parent="BeaconTower" instance=ExtResource("4_oglsy")]
+position = Vector2(41, 463)
+rotation = -0.785398
+scale = Vector2(1, 1)
+connection = Array[int]([1, 2])
+
+[node name="Connector1-3" parent="BeaconTower" instance=ExtResource("4_oglsy")]
+position = Vector2(266, 423)
+rotation = 0.785398
+connection = Array[int]([1, 3])
+
+[node name="Connector2-4" parent="BeaconTower" instance=ExtResource("4_oglsy")]
+position = Vector2(173, 312)
+rotation = 0.883137
+scale = Vector2(1, 1)
+connection = Array[int]([2, 4])
+
+[node name="Connector2-5" parent="BeaconTower" instance=ExtResource("4_oglsy")]
+position = Vector2(8, 271)
+rotation = -0.0977384
+scale = Vector2(1, 1)
+connection = Array[int]([2, 5])
+
+[node name="Connector3-4" parent="BeaconTower" instance=ExtResource("4_oglsy")]
+position = Vector2(157, 361)
+rotation = -0.884882
+scale = Vector2(1, 1)
+connection = Array[int]([3, 4])
+
+[node name="Connector3-6" parent="BeaconTower" instance=ExtResource("4_oglsy")]
+position = Vector2(285, 255)
+rotation = 0.0977384
+scale = Vector2(1, 1)
+connection = Array[int]([3, 6])
+
+[node name="Connector4-5" parent="BeaconTower" instance=ExtResource("4_oglsy")]
+position = Vector2(182, 333)
+rotation = 2.06123
+scale = Vector2(1, 1)
+connection = Array[int]([4, 5])
+
+[node name="Connector4-6" parent="BeaconTower" instance=ExtResource("4_oglsy")]
+position = Vector2(194, 355)
+rotation = -2.16072
+scale = Vector2(1, 1)
+connection = Array[int]([4, 6])
+
+[node name="Connector4-7" parent="BeaconTower" instance=ExtResource("4_oglsy")]
+position = Vector2(147, 183)
+scale = Vector2(1, 1)
+connection = Array[int]([4, 7])
+
+[node name="Connector5-7" parent="BeaconTower" instance=ExtResource("4_oglsy")]
+position = Vector2(153, 169)
+rotation = 0.98262
+scale = Vector2(1, 1)
+connection = Array[int]([5, 7])
+
+[node name="Connector6-7" parent="BeaconTower" instance=ExtResource("4_oglsy")]
+position = Vector2(147, 188)
+rotation = -0.980875
+scale = Vector2(1, 1)
+connection = Array[int]([6, 7])
+
+[node name="MockUI" type="Node" parent="."]
+
+[node name="InventoryContainer" type="HBoxContainer" parent="MockUI"]
+offset_left = 180.0
+offset_top = 580.0
+offset_right = 652.0
+offset_bottom = 644.0
+script = SubResource("GDScript_tquvq")
+
+[node name="Slot1" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot2" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot3" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot4" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot5" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot6" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="Slot7" type="ColorRect" parent="MockUI/InventoryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.478462, 0.233416, 0.0780104, 1)
+
+[node name="ThreePrimesContainer" type="HBoxContainer" parent="MockUI"]
+offset_left = 223.0
+offset_top = 647.0
+offset_right = 618.0
+offset_bottom = 769.0
+scale = Vector2(0.977618, 0.902249)
+
+[node name="TextureRect" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+layout_mode = 2
+texture = ExtResource("5_o6nu5")
+
+[node name="TextureRect2" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+layout_mode = 2
+texture = ExtResource("5_o6nu5")
+
+[node name="TextureRect3" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+layout_mode = 2
+texture = ExtResource("5_o6nu5")
+
+[node name="PlayerView" type="Node" parent="MockUI"]
+
+[node name="ColorRect" type="ColorRect" parent="MockUI/PlayerView"]
+offset_left = 187.0
+offset_top = 566.0
+offset_right = 227.0
+offset_bottom = 606.0
+scale = Vector2(11.39, -12.8981)
+
+[node name="Label" type="Label" parent="MockUI/PlayerView"]
+offset_left = 228.0
+offset_top = 252.0
+offset_right = 615.0
+offset_bottom = 351.0
+text = "Player View: this is where the player 
+explores the environment for 
+more resources"
+label_settings = SubResource("LabelSettings_tft4m")
+
+[node name="BeaconNodeView" type="Node" parent="MockUI"]
+
+[node name="BeaconNodeMenu" parent="MockUI/BeaconNodeView" instance=ExtResource("1_fh8ox")]
+position = Vector2(184, 16)
+
+[node name="InputContainer" type="HBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+offset_left = 34.0
+offset_top = 71.0
+offset_right = 209.0
+offset_bottom = 111.0
+scale = Vector2(1.613, 1.613)
+
+[node name="InputSlot1" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
+
+[node name="InputSlot2" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
+position = Vector2(45, 0)
+
+[node name="InputSlot3" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
+position = Vector2(90, 0)
+
+[node name="InputSlot4" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
+position = Vector2(135, 0)
+
+[node name="OutputContainer" type="HBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+offset_left = 34.0
+offset_top = 253.0
+offset_right = 209.0
+offset_bottom = 293.0
+scale = Vector2(1.613, 1.613)
+
+[node name="OutputSlot1" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
+script = ExtResource("8_16phh")
+slot_id = 0
+
+[node name="DestinationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1"]
+offset_left = 25.0
+offset_top = 38.0
+offset_right = 66.0
+offset_bottom = 61.0
+scale = Vector2(0.397905, 0.603794)
+
+[node name="OutputSlot2" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
+position = Vector2(45, 0)
+script = ExtResource("8_16phh")
+slot_id = 1
+
+[node name="DestinationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot2"]
+offset_left = 25.0
+offset_top = 38.0
+offset_right = 84.0
+offset_bottom = 61.0
+scale = Vector2(0.265203, 0.567695)
+
+[node name="OutputSlot3" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
+position = Vector2(90, 0)
+script = ExtResource("8_16phh")
+slot_id = 2
+
+[node name="DestinationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot3"]
+offset_left = 25.0
+offset_top = 38.0
+offset_right = 84.0
+offset_bottom = 61.0
+scale = Vector2(0.339598, 0.567696)
+
+[node name="OutputSlot4" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
+position = Vector2(135, 0)
+script = ExtResource("8_16phh")
+slot_id = 3
+
+[node name="DestinationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot4"]
+offset_left = 25.0
+offset_top = 38.0
+offset_right = 84.0
+offset_bottom = 61.0
+scale = Vector2(0.265203, 0.567695)
+
+[node name="SelectedNodeLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+offset_left = 195.0
+offset_top = 21.0
+offset_right = 303.0
+offset_bottom = 48.0
+text = "none selected"
+
+[node name="SelectedTransformationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+offset_left = 331.0
+offset_top = 135.0
+offset_right = 439.0
+offset_bottom = 158.0
+text = "neutral
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectedInputLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+visible = false
+offset_left = 37.0
+offset_top = 71.0
+offset_right = 297.0
+offset_bottom = 172.0
+text = "none"
+autowrap_mode = 2
+
+[node name="SelectedOutputLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+visible = false
+offset_left = 37.0
+offset_top = 236.0
+offset_right = 297.0
+offset_bottom = 266.0
+text = "none"
+autowrap_mode = 2
+
+[node name="ShowNodeMenuButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(374, -18)
+script = SubResource("GDScript_vcol3")
+
+[node name="SolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(15, 358)
+transformation_type = "solution"
+
+[node name="DissolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(82, 447)
+transformation_type = "dissolution"
+
+[node name="AscensionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(175, 356)
+transformation_type = "ascension"
+
+[node name="SublimationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(251, 449)
+transformation_type = "sublimation"
+
+[node name="DistillationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(329, 360)
+transformation_type = "distillation"
+
+[node name="ClearButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
+position = Vector2(332, 160)
+transformation_type = "neutral"
+
+[node name="TowerExteriorView" type="Node" parent="MockUI"]
+
+[node name="ColorRect" type="ColorRect" parent="MockUI/TowerExteriorView"]
+offset_left = 14.0
+offset_top = 48.0
+offset_right = 54.0
+offset_bottom = 88.0
+scale = Vector2(3.91332, 12.962)
+
+[node name="Label2" type="Label" parent="MockUI/TowerExteriorView"]
+offset_left = 20.0
+offset_top = 247.0
+offset_right = 166.0
+offset_bottom = 380.0
+text = "Tower View: 
+Where player 
+sees progress 
+of shadows"
+label_settings = SubResource("LabelSettings_tft4m")
+
+[connection signal="node_selected" from="BeaconTower" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_beacon_tower_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode1" to="BeaconTower" method="_on_node_selected"]
+[connection signal="transformed" from="BeaconTower/BeaconNode1" to="BeaconTower" method="_on_transformed"]
+[connection signal="selected" from="BeaconTower/BeaconNode2" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode3" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode4" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode5" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode6" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode7" to="BeaconTower" method="_on_node_selected"]
+[connection signal="mouse_entered" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot2" to="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot2" to="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot3" to="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot3" to="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot4" to="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot4" to="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot4" method="_on_mouse_exited"]
+[connection signal="destination_updated" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_output_slot_destination_updated"]
+[connection signal="mouse_entered" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1" method="_on_mouse_exited"]
+[connection signal="destination_updated" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot2" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_output_slot_destination_updated"]
+[connection signal="mouse_entered" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot2" to="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot2" to="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot2" method="_on_mouse_exited"]
+[connection signal="destination_updated" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot3" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_output_slot_destination_updated"]
+[connection signal="mouse_entered" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot3" to="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot3" to="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot3" method="_on_mouse_exited"]
+[connection signal="destination_updated" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot4" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_output_slot_destination_updated"]
+[connection signal="mouse_entered" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot4" to="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot4" to="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot4" method="_on_mouse_exited"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/ShowNodeMenuButton" to="MockUI/BeaconNodeView/BeaconNodeMenu/ShowNodeMenuButton" method="_on_clicked"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/SolutionButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/DissolutionButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/AscensionButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/SublimationButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/DistillationButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
+[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/ClearButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]

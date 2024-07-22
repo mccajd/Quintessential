@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://dt8namvmtn1ty"]
+
+[ext_resource type="Script" path="res://Scripts/beacon_node.gd" id="1_hn6iq"]
+[ext_resource type="Texture2D" uid="uid://r65av6xkmun3" path="res://assets/beacon/beacon-node-empty.png" id="2_jmdrg"]
+[ext_resource type="Texture2D" uid="uid://cofbj22tbg5oi" path="res://assets/beacon/beacon-node-filled.png" id="3_nm6o8"]
+[ext_resource type="Texture2D" uid="uid://d38d3pg5qofs3" path="res://assets/beacon/beacon-node-selected.png" id="4_d8wnx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o4skf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jmdrg")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nm6o8")
+}],
+"loop": true,
+"name": &"filled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_d8wnx")
+}],
+"loop": true,
+"name": &"selected",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3wxxm"]
+radius = 56.2228
+
+[node name="BeaconNode" type="Area2D"]
+script = ExtResource("1_hn6iq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(66, 61)
+sprite_frames = SubResource("SpriteFrames_o4skf")
+animation = &"filled"
+
+[node name="SelectionSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(66, 61)
+sprite_frames = SubResource("SpriteFrames_o4skf")
+animation = &"selected"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(66, 61)
+shape = SubResource("CircleShape2D_3wxxm")
+
+[node name="SlottedItemPreview" type="TextureRect" parent="."]
+offset_left = 32.0
+offset_top = 28.0
+offset_right = 99.0
+offset_bottom = 97.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

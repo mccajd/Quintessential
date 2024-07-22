@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://j1dft6uobs3e"]
+
+[ext_resource type="Texture2D" uid="uid://do0yk84slnfsl" path="res://assets/beacon/beacon-bg.png" id="1_tnbta"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8r74l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tnbta")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdfgd"]
+size = Vector2(323, 634)
+
+[node name="BeaconTower" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(167.25, 319.875)
+scale = Vector2(1.01094, 0.804917)
+sprite_frames = SubResource("SpriteFrames_8r74l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(166.5, 319)
+shape = SubResource("RectangleShape2D_pdfgd")
