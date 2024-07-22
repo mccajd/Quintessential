@@ -6,12 +6,15 @@ func transform(type: String, item_keys: Array[String]):
 	# TODO.jmc - implement the rest of the transformations.
 	match type:
 		"solution":
-			return _transform_solution(item_keys)
+			return _transform(Items.solution_recipes, item_keys)
 		_:
 			return item_keys
 
-func _transform_solution(item_keys: Array[String]):
-	for recipe in Items.solution_recipes:
+func _transform(recipes, item_keys: Array[String]):
+	# NOTE.jmc - the more I work in godot the less I like its "support" for typing
+	# 	let's just have a gentlemans agreement to make sure dictionary items
+	#	have a "required_ingredients" string and an "items" array
+	for recipe in recipes:
 		if find_match(recipe, item_keys):
 			return recipe.items
 	return null
