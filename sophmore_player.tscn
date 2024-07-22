@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://deotuon6iqc5s"]
 
-[ext_resource type="Texture2D" uid="uid://yooteyg1faxw" path="res://assets/wanderer.png" id="1_ultck"]
+[ext_resource type="Texture2D" uid="uid://8o53undix7kt" path="res://assets/wanderer0.02.png" id="1_4xo07"]
 
 [sub_resource type="GDScript" id="GDScript_1c1ks"]
 resource_name = "player"
@@ -64,7 +64,7 @@ script = SubResource("GDScript_1c1ks")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_ultck")
+texture = ExtResource("1_4xo07")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -0.5)
