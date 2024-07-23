@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dt8namvmtn1ty" path="res://Scenes/beacon_node.tscn" id="4_b3dfw"]
 [ext_resource type="PackedScene" uid="uid://k06cwvfdpar" path="res://Scenes/beacon_node_connector.tscn" id="4_oglsy"]
 [ext_resource type="Texture2D" uid="uid://r65av6xkmun3" path="res://assets/beacon/beacon-node-empty.png" id="5_o6nu5"]
-[ext_resource type="PackedScene" uid="uid://chme11eyldqed" path="res://Scenes/beacon_node_item_slot.tscn" id="7_t800s"]
+[ext_resource type="PackedScene" path="res://Scenes/beacon_node_item_slot.tscn" id="7_t800s"]
 [ext_resource type="Script" path="res://Scripts/beacon_node_output_slot.gd" id="8_16phh"]
 
 [sub_resource type="GDScript" id="GDScript_tquvq"]
@@ -98,6 +98,7 @@ availableNodeIds = Array[int]([4, 5, 6])
 [node name="Connector1-2" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(41, 463)
 rotation = -0.785398
+scale = Vector2(1, 1)
 connection = Array[int]([1, 2])
 
 [node name="Connector1-3" parent="BeaconTower" instance=ExtResource("4_oglsy")]
@@ -108,45 +109,54 @@ connection = Array[int]([1, 3])
 [node name="Connector2-4" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(173, 312)
 rotation = 0.883137
+scale = Vector2(1, 1)
 connection = Array[int]([2, 4])
 
 [node name="Connector2-5" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(8, 271)
 rotation = -0.0977384
+scale = Vector2(1, 1)
 connection = Array[int]([2, 5])
 
 [node name="Connector3-4" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(157, 361)
 rotation = -0.884882
+scale = Vector2(1, 1)
 connection = Array[int]([3, 4])
 
 [node name="Connector3-6" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(285, 255)
 rotation = 0.0977384
+scale = Vector2(1, 1)
 connection = Array[int]([3, 6])
 
 [node name="Connector4-5" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(182, 333)
 rotation = 2.06123
+scale = Vector2(1, 1)
 connection = Array[int]([4, 5])
 
 [node name="Connector4-6" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(194, 355)
 rotation = -2.16072
+scale = Vector2(1, 1)
 connection = Array[int]([4, 6])
 
 [node name="Connector4-7" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(147, 183)
+scale = Vector2(1, 1)
 connection = Array[int]([4, 7])
 
 [node name="Connector5-7" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(153, 169)
 rotation = 0.98262
+scale = Vector2(1, 1)
 connection = Array[int]([5, 7])
 
 [node name="Connector6-7" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(147, 188)
 rotation = -0.980875
+scale = Vector2(1, 1)
 connection = Array[int]([6, 7])
 
 [node name="MockUI" type="Node" parent="."]
