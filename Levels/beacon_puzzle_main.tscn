@@ -69,7 +69,7 @@ z_index = 1
 position = Vector2(216, 383)
 id = 3
 availableNodeIds = Array[int]([1, 4, 6])
-inputs = Array[String](["air_mote", "air_mote"])
+inputs = Array[String](["air"])
 
 [node name="BeaconNode4" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
@@ -306,10 +306,10 @@ label_settings = SubResource("LabelSettings_tft4m")
 position = Vector2(184, 16)
 
 [node name="InputContainer" type="HBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
-offset_left = 34.0
-offset_top = 71.0
-offset_right = 209.0
-offset_bottom = 111.0
+offset_left = 126.0
+offset_top = 82.0
+offset_right = 301.0
+offset_bottom = 122.0
 scale = Vector2(1.613, 1.613)
 
 [node name="InputSlot1" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
@@ -324,10 +324,10 @@ position = Vector2(90, 0)
 position = Vector2(135, 0)
 
 [node name="OutputContainer" type="HBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
-offset_left = 34.0
-offset_top = 253.0
-offset_right = 209.0
-offset_bottom = 293.0
+offset_left = 122.0
+offset_top = 468.0
+offset_right = 297.0
+offset_bottom = 508.0
 scale = Vector2(1.613, 1.613)
 
 [node name="OutputSlot1" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
@@ -378,17 +378,17 @@ offset_bottom = 61.0
 scale = Vector2(0.265203, 0.567695)
 
 [node name="SelectedNodeLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
-offset_left = 195.0
+offset_left = 130.0
 offset_top = 21.0
-offset_right = 303.0
+offset_right = 238.0
 offset_bottom = 48.0
 text = "none selected"
 
 [node name="SelectedTransformationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
-offset_left = 331.0
-offset_top = 135.0
-offset_right = 439.0
-offset_bottom = 158.0
+offset_left = 224.0
+offset_top = 309.0
+offset_right = 307.0
+offset_bottom = 332.0
 text = "neutral
 "
 horizontal_alignment = 1
@@ -413,37 +413,39 @@ text = "none"
 autowrap_mode = 2
 
 [node name="AvailableItemsLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
-offset_left = 29.0
-offset_top = 146.0
-offset_right = 325.0
-offset_bottom = 201.0
+offset_left = 14.0
+offset_top = 53.0
+offset_right = 120.0
+offset_bottom = 108.0
 
 [node name="ShowNodeMenuButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(374, -18)
+position = Vector2(400, -3)
+scale = Vector2(0.54, 0.54)
 script = SubResource("GDScript_vcol3")
 
 [node name="SolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(15, 358)
+position = Vector2(104, 214)
 transformation_type = "solution"
 
 [node name="DissolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(82, 447)
+position = Vector2(112, 317)
 transformation_type = "dissolution"
 
 [node name="AscensionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(175, 356)
+position = Vector2(209, 188)
 transformation_type = "ascension"
 
 [node name="SublimationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(251, 449)
+position = Vector2(308, 317)
 transformation_type = "sublimation"
 
 [node name="DistillationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(329, 360)
+position = Vector2(313, 213)
 transformation_type = "distillation"
 
 [node name="ClearButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(332, 160)
+position = Vector2(222, 355)
+scale = Vector2(0.8, 0.8)
 transformation_type = "neutral"
 
 [node name="TowerExteriorView" type="Node" parent="MockUI"]
