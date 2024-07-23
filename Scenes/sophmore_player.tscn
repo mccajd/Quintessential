@@ -8,6 +8,7 @@ script/source = "extends CharacterBody2D
 
 
 const speed = 2
+
 var astar_grid  : AStarGrid2D
 var tile_map    : TileMap
 var tile_size   : Vector2i
@@ -27,16 +28,46 @@ func _ready():
 	astar_grid.region = tile_map.get_used_rect()
 	astar_grid.cell_size = tile_size
 	astar_grid.offset = Vector2i.ZERO
+
 	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar_grid.update()
+	set_solid_tiles()
 	
 func _physics_process(delta):
 	move_to_point()
 	pass
 	
-func get_direction(start:Vector2, dest:Vector2):
-	return (dest-start)
-	
+func _input(event):
+	if event.is_action_pressed(\"select\"):
+		target = get_global_mouse_position()
+		target_tile = tile_map.local_to_map(target)
+		start_tile  = tile_map.local_to_map(position-Vector2(32,32))
+		print(\"tile: \", target_tile)
+		print(\"target: \", target_tile, \" is solid: \",astar_grid.is_point_solid(target_tile))
+		
+		target_tile = find_valid_dest(target_tile)
+		
+		path = astar_grid.get_point_path(start_tile,target_tile)
+
+func find_valid_dest(cur_dest:Vector2i)->Vector2i:
+	if astar_grid.is_point_solid(target_tile):
+		var neighbor = cur_dest
+		var shortest_path = astar_grid.get_point_path(start_tile,cur_dest)
+		# TODO.hmw a more robust algorithm for finding the optimal destination when given a solid
+		# point should be devised, but this is Good 'nuff:TM: for now
+		for cell in range(tile_map.tile_set.CELL_NEIGHBOR_RIGHT_SIDE, tile_map.tile_set.CELL_NEIGHBOR_TOP_RIGHT_CORNER+1):
+			neighbor = tile_map.get_neighbor_cell(cur_dest, cell)
+			
+			if astar_grid.is_point_solid(neighbor):
+				continue
+			else:
+				var new_path = astar_grid.get_point_path(start_tile,neighbor)
+				shortest_path = new_path if len(new_path) < len(shortest_path) else shortest_path
+		
+		return neighbor
+	else:
+		return target_tile
+		
 func move_to_point():
 	if !path.is_empty():
 		var cur_position = position-Vector2(32,32)
@@ -46,13 +77,10 @@ func move_to_point():
 		else:
 			path.remove_at(0)
 			
-func _input(event):
-	if event.is_action_pressed(\"select\"):
-		target = get_global_mouse_position()
-		target_tile = tile_map.local_to_map(target)
-		start_tile  = tile_map.local_to_map(position-Vector2(32,32))
-		path = astar_grid.get_point_path(start_tile,target_tile)
-		queue_redraw()
+
+func set_solid_tiles():
+	for tile_pos in tile_map.get_used_cells_by_id(0, 0,Vector2i(2,0)):
+		astar_grid.set_point_solid(tile_pos)
 
 func set_start_pos(pos:Vector2i=Vector2i.ZERO):
 	global_position = tile_map.map_to_local(pos)
