@@ -21,6 +21,7 @@ func _process(delta):
 	
 	#get_node("SelectedInputLabel").text = _render_string_label(selected_node.inputs)
 	#get_node("SelectedOutputLabel").text = _render_string_label(selected_node.outputs) if selected_node.inputs else "no inputs"
+	get_node("AvailableItemsLabel").text = _render_string_label(selected_node.available_items)
 	
 	_set_input_slot_items()
 	_set_output_slot_items()

@@ -14,8 +14,10 @@ var hovered = false
 @export var inputs: Array[String]
 var outputs
 @export var selected_transformation: String = "neutral"
+var available_items
 
 var products: Array[OutputItem]
+var output_dictionary: Dictionary
 
 var transformer: ItemTransformer
 
@@ -51,12 +53,20 @@ func set_destination_node(slot_id, destination_node_id):
 
 func get_active_connections():
 	var rtn = []
+	var items: Dictionary
 	
 	for i in selected_destination_nodes.size():
-		if i >= products.size(): return rtn
+		if i >= products.size(): break
 		var destination = selected_destination_nodes[i]
 		if destination == -1: continue
 		rtn.push_front(destination)
+		if !items.has(destination):
+			items[destination] = [products[i].item_key]
+			continue
+		var new_items = items[destination].push_front(products[i].item_key)
+		items[destination] = new_items
+	
+	output_dictionary = items
 	return rtn
 
 

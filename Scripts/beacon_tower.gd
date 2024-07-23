@@ -4,6 +4,7 @@ var node_outputs: Dictionary
 var selected_node: BeaconNode
 
 const node_names = ["BeaconNode1", "BeaconNode2", "BeaconNode3", "BeaconNode4", "BeaconNode5", "BeaconNode6", "BeaconNode7"]
+const recepticle_names = ["BeaconRecepticle1", "BeaconRecepticle2", "BeaconRecepticle3"]
 
 signal node_selected
 signal connections_updated
@@ -33,11 +34,26 @@ func _set_connectors():
 	# note - this is called every frame.  if this turns out to be non-performant
 	#  i'll come back to it
 	var connections = []
+	var outputs: Dictionary
 	
 	for name in node_names:
 		var beacon_node = get_node(name)
 		for connection in beacon_node.get_active_connections():
 			connections.push_front([beacon_node.id, connection])
+			for entry in beacon_node.output_dictionary.keys():
+				if !outputs.has(entry):
+					outputs[entry] = beacon_node.output_dictionary[entry]
+					continue
+				var new_items = outputs[entry] + beacon_node.output_dictionary[entry]
+				outputs[entry] = new_items
+	
+	# The code equivalent of realizing you forgot the car keys at the grocery
+	for name in node_names + recepticle_names:
+		var beacon_node_or_recepticle = get_node(name)
+		if outputs.has(beacon_node_or_recepticle.id):
+			beacon_node_or_recepticle.available_items = outputs[beacon_node_or_recepticle.id]
+		else:
+			beacon_node_or_recepticle.available_items = []
 	
 	connections_updated.emit(connections)
 
@@ -47,4 +63,21 @@ func _set_selected_node_effects():
 		var beacon_node = get_node(name)
 		if beacon_node == selected_node: continue
 		beacon_node.disable_selection_effects()
+
+
+func _on_beacon_submit_button_pressed():
+	if _get_win_status():
+		get_node("BeaconWinConditionText").text = "u won!"
+	else:
+		get_node("BeaconWinConditionText").text = "u lost bitch ahahaha!"
 	
+	get_node("BeaconWinConditionText").visible = true
+	await get_tree().create_timer(3).timeout
+	get_node("BeaconWinConditionText").visible = false
+
+
+func _get_win_status():
+	for name in recepticle_names:
+		if !get_node(name).complete(): return false
+	return true
+
