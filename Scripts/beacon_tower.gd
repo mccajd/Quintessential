@@ -47,6 +47,7 @@ func _set_connectors():
 				var new_items = outputs[entry] + beacon_node.output_dictionary[entry]
 				outputs[entry] = new_items
 	
+	# The code equivalent of realizing you forgot the car keys at the grocery
 	for name in node_names:
 		var beacon_node = get_node(name)
 		if outputs.has(beacon_node.id):
