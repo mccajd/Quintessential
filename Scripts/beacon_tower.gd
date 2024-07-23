@@ -4,7 +4,7 @@ var node_outputs: Dictionary
 var selected_node: BeaconNode
 
 const node_names = ["BeaconNode1", "BeaconNode2", "BeaconNode3", "BeaconNode4", "BeaconNode5", "BeaconNode6", "BeaconNode7"]
-const recepticle_names = ["BeaconRecepticle1", "BeaconRecepticle2", "BeaconRecepticle3", ]
+const recepticle_names = ["BeaconRecepticle1", "BeaconRecepticle2", "BeaconRecepticle3"]
 
 signal node_selected
 signal connections_updated
@@ -34,11 +34,23 @@ func _set_connectors():
 	# note - this is called every frame.  if this turns out to be non-performant
 	#  i'll come back to it
 	var connections = []
+	var outputs: Dictionary
 	
 	for name in node_names:
 		var beacon_node = get_node(name)
 		for connection in beacon_node.get_active_connections():
 			connections.push_front([beacon_node.id, connection])
+			for entry in beacon_node.output_dictionary.keys():
+				if !outputs.has(entry):
+					outputs[entry] = beacon_node.output_dictionary[entry]
+					continue
+				var new_items = outputs[entry] + beacon_node.output_dictionary[entry]
+				outputs[entry] = new_items
+	
+	for name in node_names:
+		var beacon_node = get_node(name)
+		if outputs.has(beacon_node.id):
+			beacon_node.available_items = outputs[beacon_node.id]
 	
 	connections_updated.emit(connections)
 
@@ -65,3 +77,4 @@ func _get_win_status():
 	for name in recepticle_names:
 		if !get_node(name).complete(): return false
 	return true
+

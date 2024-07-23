@@ -409,6 +409,12 @@ offset_bottom = 266.0
 text = "none"
 autowrap_mode = 2
 
+[node name="AvailableItemsLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+offset_left = 29.0
+offset_top = 146.0
+offset_right = 325.0
+offset_bottom = 201.0
+
 [node name="ShowNodeMenuButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
 position = Vector2(374, -18)
 script = SubResource("GDScript_vcol3")
