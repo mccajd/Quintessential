@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://qiy0l1ii2gdr"]
+
+[ext_resource type="Texture2D" uid="uid://8o53undix7kt" path="res://assets/wanderer0.02.png" id="1_4xo07"]
+
+[sub_resource type="GDScript" id="GDScript_1c1ks"]
+resource_name = "player"
+script/source = "extends CharacterBody2D
+
+
+const speed = 2
+
+var astar_grid  : AStarGrid2D
+var tile_map    : TileMap
+var tile_size   : Vector2i
+var start_tile  : Vector2i
+var target      : Vector2i
+var target_tile : Vector2i
+var path        : PackedVector2Array 
+
+func _ready():
+	tile_map = get_parent().find_child(\"TileMap\")
+	tile_size = tile_map.tile_set.tile_size
+	
+	target = position
+	start_tile = tile_map.local_to_map(Vector2i.ZERO)
+	
+	astar_grid = AStarGrid2D.new()
+	astar_grid.region = tile_map.get_used_rect()
+	astar_grid.cell_size = tile_size
+	astar_grid.offset = Vector2i.ZERO
+
+	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	astar_grid.update()
+	set_solid_tiles()
+	
+func _physics_process(delta):
+	move_to_point()
+	pass
+	
+func _input(event):
+	if event.is_action_pressed(\"select\"):
+		target = get_global_mouse_position()
+		target_tile = tile_map.local_to_map(target)
+		start_tile  = tile_map.local_to_map(position-Vector2(32,32))
+		print(\"tile: \", target_tile)
+		print(\"target: \", target_tile, \" is solid: \",astar_grid.is_point_solid(target_tile))
+		
+		target_tile = find_valid_dest(target_tile)
+		
+		path = astar_grid.get_point_path(start_tile,target_tile)
+
+func find_valid_dest(cur_dest:Vector2i)->Vector2i:
+	if astar_grid.is_point_solid(target_tile):
+		var neighbor = cur_dest
+		var shortest_path = astar_grid.get_point_path(start_tile,cur_dest)
+		# TODO.hmw a more robust algorithm for finding the optimal destination when given a solid
+		# point should be devised, but this is Good 'nuff:TM: for now
+		for cell in range(tile_map.tile_set.CELL_NEIGHBOR_RIGHT_SIDE, tile_map.tile_set.CELL_NEIGHBOR_TOP_RIGHT_CORNER+1):
+			neighbor = tile_map.get_neighbor_cell(cur_dest, cell)
+			
+			if astar_grid.is_point_solid(neighbor):
+				continue
+			else:
+				var new_path = astar_grid.get_point_path(start_tile,neighbor)
+				shortest_path = new_path if len(new_path) < len(shortest_path) else shortest_path
+		
+		return neighbor
+	else:
+		return target_tile
+		
+func move_to_point():
+	if !path.is_empty():
+		var cur_position = position-Vector2(32,32)
+		if path[0] != cur_position:
+			#direction vector of A->B = (B.X-A.X)(B.Y-A.Y)
+			position += sign(path[0]-cur_position)*speed
+		else:
+			path.remove_at(0)
+			
+
+func set_solid_tiles():
+	for tile_pos in tile_map.get_used_cells_by_id(0, 0,Vector2i(2,0)):
+		astar_grid.set_point_solid(tile_pos)
+
+func set_start_pos(pos:Vector2i=Vector2i.ZERO):
+	global_position = tile_map.map_to_local(pos)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dchqe"]
+size = Vector2(54, 127)
+
+[node name="SophmorePlayer" type="CharacterBody2D"]
+position = Vector2(0, -5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+script = SubResource("GDScript_1c1ks")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_4xo07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_dchqe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
