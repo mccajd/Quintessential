@@ -83,20 +83,21 @@ z_index = 1
 position = Vector2(-31, 206)
 id = 5
 availableNodeIds = Array[int]([2, 4, 7, 100])
-inputs = Array[String](["earth"])
+inputs = Array[String](["earth", "salt"])
 
 [node name="BeaconNode6" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(232, 208)
 id = 6
 availableNodeIds = Array[int]([3, 4, 7, 300])
-inputs = Array[String](["fire_mote", "gold"])
+inputs = Array[String](["fire_mote", "silver"])
 
 [node name="BeaconNode7" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(100, 132)
 id = 7
 availableNodeIds = Array[int]([4, 5, 6, 100, 200, 300])
+inputs = Array[String](["fire"])
 
 [node name="Connector1-2" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(41, 463)
@@ -214,6 +215,8 @@ offset_top = 726.0
 offset_right = 252.0
 offset_bottom = 749.0
 text = "u lost bitch ahahaha"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MockUI" type="Node" parent="."]
 

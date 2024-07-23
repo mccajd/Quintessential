@@ -48,10 +48,12 @@ func _set_connectors():
 				outputs[entry] = new_items
 	
 	# The code equivalent of realizing you forgot the car keys at the grocery
-	for name in node_names:
-		var beacon_node = get_node(name)
-		if outputs.has(beacon_node.id):
-			beacon_node.available_items = outputs[beacon_node.id]
+	for name in node_names + recepticle_names:
+		var beacon_node_or_recepticle = get_node(name)
+		if outputs.has(beacon_node_or_recepticle.id):
+			beacon_node_or_recepticle.available_items = outputs[beacon_node_or_recepticle.id]
+		else:
+			beacon_node_or_recepticle.available_items = []
 	
 	connections_updated.emit(connections)
 

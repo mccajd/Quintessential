@@ -63,7 +63,7 @@ func get_active_connections():
 		if !items.has(destination):
 			items[destination] = [products[i].item_key]
 			continue
-		var new_items = items.get(destination).push_front(products[i].item_key)
+		var new_items = items[destination].push_front(products[i].item_key)
 		items[destination] = new_items
 	
 	output_dictionary = items
