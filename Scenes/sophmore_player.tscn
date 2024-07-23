@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://deotuon6iqc5s"]
+[gd_scene load_steps=4 format=3 uid="uid://qiy0l1ii2gdr"]
 
 [ext_resource type="Texture2D" uid="uid://8o53undix7kt" path="res://assets/wanderer0.02.png" id="1_4xo07"]
 
@@ -27,7 +27,7 @@ func _ready():
 	astar_grid.region = tile_map.get_used_rect()
 	astar_grid.cell_size = tile_size
 	astar_grid.offset = Vector2i.ZERO
-	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ALWAYS
+	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar_grid.update()
 	
 func _physics_process(delta):
@@ -47,18 +47,22 @@ func move_to_point():
 			path.remove_at(0)
 			
 func _input(event):
-	if event.is_action_pressed(\"lmb_click\"):
+	if event.is_action_pressed(\"select\"):
 		target = get_global_mouse_position()
 		target_tile = tile_map.local_to_map(target)
 		start_tile  = tile_map.local_to_map(position-Vector2(32,32))
 		path = astar_grid.get_point_path(start_tile,target_tile)
 		queue_redraw()
+
+func set_start_pos(pos:Vector2i=Vector2i.ZERO):
+	global_position = tile_map.map_to_local(pos)
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dchqe"]
 size = Vector2(54, 127)
 
 [node name="SophmorePlayer" type="CharacterBody2D"]
+position = Vector2(0, -5)
 scale = Vector2(0.5, 0.5)
 script = SubResource("GDScript_1c1ks")
 
@@ -69,3 +73,5 @@ texture = ExtResource("1_4xo07")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_dchqe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
