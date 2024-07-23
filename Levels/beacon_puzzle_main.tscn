@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=16 format=3 uid="uid://b16x2m82ri0xj"]
 
 [ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://Scenes/beacon_node_menu.tscn" id="1_fh8ox"]
 [ext_resource type="Script" path="res://Scripts/beacon_tower.gd" id="2_mlleh"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://j1dft6uobs3e" path="res://Scenes/beacon_tower.tscn" id="3_aiidj"]
 [ext_resource type="PackedScene" uid="uid://dt8namvmtn1ty" path="res://Scenes/beacon_node.tscn" id="4_b3dfw"]
 [ext_resource type="PackedScene" uid="uid://k06cwvfdpar" path="res://Scenes/beacon_node_connector.tscn" id="4_oglsy"]
-[ext_resource type="PackedScene" uid="uid://b5sx25l2mobnd" path="res://Scenes/beacon_win_button.tscn" id="5_fha7e"]
 [ext_resource type="Texture2D" uid="uid://r65av6xkmun3" path="res://assets/beacon/beacon-node-empty.png" id="5_o6nu5"]
+[ext_resource type="Texture2D" uid="uid://sbbi7456qa7m" path="res://assets/beacon/beacon-win-button.png" id="6_10oew"]
 [ext_resource type="Script" path="res://Scripts/beacon_recepticle.gd" id="6_imhgj"]
+[ext_resource type="Texture2D" uid="uid://8nfw6dhdpgp6" path="res://assets/beacon/beacon-win-button-depressed.png" id="7_n5v4e"]
 [ext_resource type="PackedScene" uid="uid://chme11eyldqed" path="res://Scenes/beacon_node_item_slot.tscn" id="7_t800s"]
 [ext_resource type="Script" path="res://Scripts/beacon_node_output_slot.gd" id="8_16phh"]
 
@@ -175,28 +176,44 @@ position = Vector2(276, 76)
 rotation = 0.883137
 connection = Array[int]([7, 300])
 
-[node name="BeaconWinButton" parent="BeaconTower" instance=ExtResource("5_fha7e")]
-z_index = 2
-position = Vector2(8, 644)
-scale = Vector2(0.625, 0.815)
-
 [node name="BeaconRecepticle1" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(16, 68)
 scale = Vector2(0.42, 0.42)
 script = ExtResource("6_imhgj")
 id = 100
+expected_input = "salt"
 
 [node name="BeaconRecepticle2" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(138, 19)
 scale = Vector2(0.42, 0.42)
 script = ExtResource("6_imhgj")
 id = 200
+expected_input = "fire"
 
 [node name="BeaconRecepticle3" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
 position = Vector2(259, 66)
 scale = Vector2(0.42, 0.42)
 script = ExtResource("6_imhgj")
 id = 300
+expected_input = "silver"
+
+[node name="BeaconSubmitButton" type="TextureButton" parent="BeaconTower"]
+offset_left = 13.0
+offset_top = 651.0
+offset_right = 515.0
+offset_bottom = 744.0
+scale = Vector2(0.62359, 0.72)
+texture_normal = ExtResource("6_10oew")
+texture_pressed = ExtResource("7_n5v4e")
+stretch_mode = 0
+
+[node name="BeaconWinConditionText" type="Label" parent="BeaconTower"]
+visible = false
+offset_left = 94.0
+offset_top = 726.0
+offset_right = 252.0
+offset_bottom = 749.0
+text = "u lost bitch ahahaha"
 
 [node name="MockUI" type="Node" parent="."]
 
@@ -449,6 +466,7 @@ label_settings = SubResource("LabelSettings_tft4m")
 [connection signal="selected" from="BeaconTower/BeaconNode5" to="BeaconTower" method="_on_node_selected"]
 [connection signal="selected" from="BeaconTower/BeaconNode6" to="BeaconTower" method="_on_node_selected"]
 [connection signal="selected" from="BeaconTower/BeaconNode7" to="BeaconTower" method="_on_node_selected"]
+[connection signal="pressed" from="BeaconTower/BeaconSubmitButton" to="BeaconTower" method="_on_beacon_submit_button_pressed"]
 [connection signal="mouse_entered" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot2" to="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot2" method="_on_mouse_entered"]

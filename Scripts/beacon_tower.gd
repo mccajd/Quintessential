@@ -4,6 +4,7 @@ var node_outputs: Dictionary
 var selected_node: BeaconNode
 
 const node_names = ["BeaconNode1", "BeaconNode2", "BeaconNode3", "BeaconNode4", "BeaconNode5", "BeaconNode6", "BeaconNode7"]
+const recepticle_names = ["BeaconRecepticle1", "BeaconRecepticle2", "BeaconRecepticle3", ]
 
 signal node_selected
 signal connections_updated
@@ -47,4 +48,20 @@ func _set_selected_node_effects():
 		var beacon_node = get_node(name)
 		if beacon_node == selected_node: continue
 		beacon_node.disable_selection_effects()
+
+
+func _on_beacon_submit_button_pressed():
+	if _get_win_status():
+		get_node("BeaconWinConditionText").text = "u won!"
+	else:
+		get_node("BeaconWinConditionText").text = "u lost bitch ahahaha!"
 	
+	get_node("BeaconWinConditionText").visible = true
+	await get_tree().create_timer(3).timeout
+	get_node("BeaconWinConditionText").visible = false
+
+
+func _get_win_status():
+	for name in recepticle_names:
+		if !get_node(name).complete(): return false
+	return true
