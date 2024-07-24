@@ -3,8 +3,8 @@ extends Node
 class_name ItemInSlot
 
 var item_key: String
-var slot_name
+var slot_id
 
-func _init(key, name):
+func _init(key, id):
 	item_key = key
-	slot_name = name
+	slot_id = id

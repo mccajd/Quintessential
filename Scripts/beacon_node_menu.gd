@@ -40,7 +40,7 @@ func _on_beacon_tower_node_selected(node: BeaconNode):
 	_set_output_slots()
 	_set_visibility(true)
 	_set_available_items()
-	
+
 
 func _set_visibility(value: bool):
 	visible = value
@@ -100,13 +100,14 @@ func _set_available_items():
 	
 	for i in selected_node.available_items.size():
 		var item = selected_node.available_items[i]
-		var new_item = ItemDraggable.new(item.item_key, item.slot_name, i)
+		var new_item = ItemDraggable.new(item.item_key, item.slot_id, i)
 		
 		box.add_child(new_item)
 
 
 func _on_item_dropped(slot_id, item_index):
 	selected_node.set_input_item(slot_id, item_index)
+	_set_available_items()
 
 
 func _on_beacon_tower_connections_updated(connections):
