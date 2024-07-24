@@ -79,7 +79,8 @@ func move_to_point():
 			
 
 func set_solid_tiles():
-	for tile_pos in tile_map.get_used_cells_by_id(0, 0,Vector2i(2,0)):
+	#for tile_pos in tile_map.get_used_cells_by_id(0, 0,Vector2i(2,0)):
+	for tile_pos in tile_map.get_used_cells(3):
 		astar_grid.set_point_solid(tile_pos)
 
 func set_start_pos(pos:Vector2i=Vector2i.ZERO):
