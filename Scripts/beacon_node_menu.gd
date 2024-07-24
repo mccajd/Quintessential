@@ -97,7 +97,12 @@ func _set_available_items():
 		child.queue_free()
 	box.add_spacer(true)
 	
-	for item_key in selected_node.available_items:
-		var new_item = ItemDraggable.new(item_key)
+	for i in selected_node.available_items.size():
+		var item = selected_node.available_items[i]
+		var new_item = ItemDraggable.new(item.item_key, item.slot_name, i)
 		
 		box.add_child(new_item)
+
+
+func _on_item_dropped(slot_id, item_index):
+	selected_node.set_input_item(slot_id, item_index)

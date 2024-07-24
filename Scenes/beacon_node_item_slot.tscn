@@ -12,6 +12,7 @@ anchors_preset = 0
 script = ExtResource("1_m757t")
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_6lq0p")
@@ -19,6 +20,7 @@ expand_mode = 3
 
 [node name="ItemTextureRect" type="TextureRect" parent="."]
 z_index = 1
+layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
 offset_right = 38.0

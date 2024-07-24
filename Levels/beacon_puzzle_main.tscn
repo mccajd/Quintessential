@@ -55,49 +55,42 @@ z_index = 1
 position = Vector2(103, 484)
 id = 1
 availableNodeIds = Array[int]([2, 3])
-inputs = Array[String](["water_mote", "water_mote", "fire_mote"])
 
 [node name="BeaconNode2" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(-18, 375)
 id = 2
 availableNodeIds = Array[int]([1, 4, 5])
-inputs = Array[String](["water_mote", "water_mote"])
 
 [node name="BeaconNode3" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(216, 383)
 id = 3
 availableNodeIds = Array[int]([1, 4, 6])
-inputs = Array[String](["air"])
 
 [node name="BeaconNode4" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(101, 283)
 id = 4
 availableNodeIds = Array[int]([2, 3, 5, 6, 7])
-inputs = Array[String](["seawater"])
 
 [node name="BeaconNode5" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(-31, 206)
 id = 5
 availableNodeIds = Array[int]([2, 4, 7, 100])
-inputs = Array[String](["earth", "salt"])
 
 [node name="BeaconNode6" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(232, 208)
 id = 6
 availableNodeIds = Array[int]([3, 4, 7, 300])
-inputs = Array[String](["fire_mote", "silver"])
 
 [node name="BeaconNode7" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(100, 132)
 id = 7
 availableNodeIds = Array[int]([4, 5, 6, 100, 200, 300])
-inputs = Array[String](["fire"])
 
 [node name="Connector1-2" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(41, 463)
@@ -317,12 +310,15 @@ layout_mode = 2
 
 [node name="InputSlot2" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
 layout_mode = 2
+slot_id = 1
 
 [node name="InputSlot3" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
 layout_mode = 2
+slot_id = 2
 
 [node name="InputSlot4" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
 layout_mode = 2
+slot_id = 3
 
 [node name="OutputContainer" type="HBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
 offset_left = 122.0
@@ -334,7 +330,7 @@ scale = Vector2(1.613, 1.613)
 [node name="OutputSlot1" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
 layout_mode = 2
 script = ExtResource("8_16phh")
-slot_id = 0
+slot_id = null
 
 [node name="DestinationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1"]
 layout_mode = 0
@@ -491,6 +487,10 @@ label_settings = SubResource("LabelSettings_tft4m")
 [connection signal="selected" from="BeaconTower/BeaconNode6" to="BeaconTower" method="_on_node_selected"]
 [connection signal="selected" from="BeaconTower/BeaconNode7" to="BeaconTower" method="_on_node_selected"]
 [connection signal="pressed" from="BeaconTower/BeaconSubmitButton" to="BeaconTower" method="_on_beacon_submit_button_pressed"]
+[connection signal="item_dropped" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_dropped"]
+[connection signal="item_dropped" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot2" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_dropped"]
+[connection signal="item_dropped" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot3" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_dropped"]
+[connection signal="item_dropped" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot4" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_dropped"]
 [connection signal="destination_updated" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_output_slot_destination_updated"]
 [connection signal="destination_updated" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot2" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_output_slot_destination_updated"]
 [connection signal="destination_updated" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot3" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_output_slot_destination_updated"]

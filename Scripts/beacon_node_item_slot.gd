@@ -2,9 +2,12 @@ extends Control
 
 class_name BeaconNodeItemSlot
 
+@export var slot_id: int
+
 var item_key
 var hovered = false
 
+signal item_dropped
 
 func _ready():
 	$BackgroundTextureRect.texture = load("res://assets/beacon/node-bg-slot.png")
@@ -32,9 +35,10 @@ func _on_mouse_exited():
 
 
 func _can_drop_data(_position, _data):
-	return true
+	return item_key == null
 
 
 func _drop_data(position, data):
-	pass
+	# TODO.jmc - determine if dropped from inventory or nodes
+	item_dropped.emit(slot_id, data.item_position)
 

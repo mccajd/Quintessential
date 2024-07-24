@@ -51,9 +51,9 @@ func _set_connectors():
 	for node_name in node_names + recepticle_names:
 		var beacon_node_or_recepticle = get_node(node_name)
 		if outputs.has(beacon_node_or_recepticle.id):
-			beacon_node_or_recepticle.available_items = outputs[beacon_node_or_recepticle.id]
+			beacon_node_or_recepticle.set_available_items(outputs[beacon_node_or_recepticle.id])
 		else:
-			beacon_node_or_recepticle.available_items = []
+			beacon_node_or_recepticle.set_available_items([])
 	
 	connections_updated.emit(connections)
 

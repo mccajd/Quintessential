@@ -8,10 +8,16 @@ class_name BeaconNode
 # This lets me cheat by using the slot_id as an index pointer
 var selected_destination_nodes = [-1, -1, -1, -1]
 
+const input_array_size = 4
+# idea here is two arrays to represent the slots
+# one for node-sourced items, one for inventory items
+var inputs_from_nodes = [null, null, null, null]
+var inputs_from_inventory = [null, null, null, null]
+
 var hovered = false
 
 # @export here for debugging; this should be set by the player/internal systems
-@export var inputs: Array[String]
+var inputs
 var outputs
 @export var selected_transformation: String = "neutral"
 var available_items
@@ -31,8 +37,13 @@ func _ready():
 
 func _process(_delta):
 	_handle_button_logic()
+	_set_inputs()
 	
-	var new_outputs = transformer.transform(selected_transformation, inputs)
+	var real_inputs = []
+	for input in inputs:
+		if input == null: continue
+		real_inputs += [input]
+	var new_outputs = transformer.transform(selected_transformation, real_inputs)
 	if !Helpers.compare_arrays(outputs, new_outputs):
 		outputs = new_outputs
 		_set_products()
@@ -49,6 +60,24 @@ func set_transformation(type: String):
 
 func set_destination_node(slot_id, destination_node_id):
 	selected_destination_nodes[slot_id] = destination_node_id
+
+
+func set_available_items(items):
+	#debug
+	if id == 1:
+		available_items = [ItemInSlot.new("water", null)]
+		return
+	
+	if (available_items != null && Helpers.compare_arrays(available_items.map(func(x): return x.item_key), items)): return
+	
+	_reset_input_slots()
+	# TODO.jmc - don't wipe out slot mappings for existing items if they aren't removed
+	available_items = items.map(func(x): return ItemInSlot.new(x, null))
+
+
+func set_input_item(slot_id, item_index):
+	if (is_input_slot_empty(slot_id)):
+		inputs_from_nodes[slot_id] = available_items[item_index]
 
 
 func get_active_connections():
@@ -75,6 +104,10 @@ func disable_selection_effects():
 	$SelectionSprite2D.visible = false
 
 
+func is_input_slot_empty(index):
+	return inputs_from_inventory[index] == null && inputs_from_nodes[index] == null
+
+
 func _handle_button_logic():
 	if (!hovered): return
 
@@ -98,3 +131,16 @@ func _set_products():
 			var output_item = OutputItem.new(item)
 			products.push_front(output_item)
 	transformed.emit(id, products)
+
+
+func _set_inputs():
+	var rtn = [null, null, null, null]
+	for i in input_array_size:
+		var entry = inputs_from_inventory[i] if inputs_from_inventory[i] != null else inputs_from_nodes[i]
+		if entry != null:
+			rtn[i] = entry.item_key
+	inputs = rtn
+
+func _reset_input_slots():
+	inputs_from_inventory = [null, null, null, null]
+	inputs_from_nodes = [null, null, null, null]

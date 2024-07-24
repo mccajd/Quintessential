@@ -2,7 +2,6 @@ extends BeaconNodeItemSlot
 
 class_name BeaconNodeOutputSlot
 
-@export var slot_id: int
 var node_destination_options: Array[int]
 var selected_node_destination: int
 
