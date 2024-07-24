@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjse5p8p12uhr"]
+
+[ext_resource type="Script" path="res://Scripts/tooltips.gd" id="1_5y5dr"]
+[ext_resource type="Texture2D" uid="uid://bm1urcddjwmk2" path="res://assets/tooltip/dialoguebox.png" id="2_63tk8"]
+
+[node name="Tooltips" type="Node"]
+script = ExtResource("1_5y5dr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_63tk8")
