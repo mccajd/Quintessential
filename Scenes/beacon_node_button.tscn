@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://geda8gmbwuga"]
+[gd_scene load_steps=8 format=3 uid="uid://geda8gmbwuga"]
 
 [ext_resource type="Script" path="res://Scripts/beacon_node_button.gd" id="1_7k370"]
 [ext_resource type="Texture2D" uid="uid://b62didt4gkchj" path="res://assets/beacon/node-button.png" id="1_bevce"]
 [ext_resource type="Texture2D" uid="uid://crr377n6ee5dl" path="res://assets/beacon/node-button-depressed.png" id="2_ox82v"]
 [ext_resource type="Texture2D" uid="uid://y7osif3lteg5" path="res://assets/beacon/node-button-hovered.png" id="4_v51e2"]
+[ext_resource type="PackedScene" uid="uid://bjse5p8p12uhr" path="res://Scenes/tooltips.tscn" id="5_e4ly2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_luhur"]
 animations = [{
@@ -47,6 +48,8 @@ animation = &"hovered"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(55, 54)
 shape = SubResource("CircleShape2D_lue1h")
+
+[node name="Tooltips" parent="." instance=ExtResource("5_e4ly2")]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

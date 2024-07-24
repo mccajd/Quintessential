@@ -6,11 +6,16 @@
 [node name="Tooltips" type="Node"]
 script = ExtResource("1_5y5dr")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = -1
+offset_right = 121.0
+offset_bottom = 23.0
 texture = ExtResource("2_63tk8")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 121.0
+offset_bottom = 23.0
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
