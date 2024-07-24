@@ -14,7 +14,7 @@ func _ready():
 	playerView = get_parent().get_parent().get_node("PlayerView").get_children()
 
 
-func _process(delta):
+func _process(_delta):
 	get_node("SelectedNodeLabel").text = selected_node.name if selected_node else "none"
 	get_node("SelectedTransformationLabel").text = selected_node.selected_transformation if selected_node else "neutral"
 	
@@ -98,8 +98,6 @@ func _set_available_items():
 	box.add_spacer(true)
 	
 	for item_key in selected_node.available_items:
-		var item = Items.itemDB.get(item_key)
 		var new_item = ItemDraggable.new(item_key)
-		
 		
 		box.add_child(new_item)

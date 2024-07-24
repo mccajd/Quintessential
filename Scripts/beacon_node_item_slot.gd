@@ -10,7 +10,7 @@ func _ready():
 	$BackgroundTextureRect.texture = load("res://assets/beacon/node-bg-slot.png")
 
 
-func _process(delta):
+func _process(_delta):
 	if item_key == null:
 		$ItemTextureRect.texture = load("res://assets/beacon/empty.png")
 		return

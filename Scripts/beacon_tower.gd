@@ -13,7 +13,7 @@ func _ready():
 	pass
 
 
-func _process(delta):
+func _process(_delta):
 	_set_connectors()
 
 
@@ -36,8 +36,8 @@ func _set_connectors():
 	var connections = []
 	var outputs: Dictionary
 	
-	for name in node_names:
-		var beacon_node = get_node(name)
+	for node_name in node_names:
+		var beacon_node = get_node(node_name)
 		for connection in beacon_node.get_active_connections():
 			connections.push_front([beacon_node.id, connection])
 		for entry in beacon_node.output_dictionary.keys():
@@ -48,8 +48,8 @@ func _set_connectors():
 			outputs[entry] = new_items
 	
 	# The code equivalent of realizing you forgot the car keys at the grocery
-	for name in node_names + recepticle_names:
-		var beacon_node_or_recepticle = get_node(name)
+	for node_name in node_names + recepticle_names:
+		var beacon_node_or_recepticle = get_node(node_name)
 		if outputs.has(beacon_node_or_recepticle.id):
 			beacon_node_or_recepticle.available_items = outputs[beacon_node_or_recepticle.id]
 		else:
@@ -59,8 +59,8 @@ func _set_connectors():
 
 
 func _set_selected_node_effects():
-	for name in node_names:
-		var beacon_node = get_node(name)
+	for node_name in node_names:
+		var beacon_node = get_node(node_name)
 		if beacon_node == selected_node: continue
 		beacon_node.disable_selection_effects()
 
@@ -77,7 +77,7 @@ func _on_beacon_submit_button_pressed():
 
 
 func _get_win_status():
-	for name in recepticle_names:
-		if !get_node(name).complete(): return false
+	for recepticle_name in recepticle_names:
+		if !get_node(recepticle_name).complete(): return false
 	return true
 

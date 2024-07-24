@@ -13,7 +13,7 @@ func _ready():
 	input_pickable = true
 
 
-func _process(delta):
+func _process(_delta):
 	if (!hovered): return
 	
 	if (Input.is_action_pressed("select")):

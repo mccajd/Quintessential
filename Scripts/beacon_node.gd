@@ -29,7 +29,7 @@ func _ready():
 	transformer = ItemTransformer.new()
 
 
-func _process(delta):
+func _process(_delta):
 	_handle_button_logic()
 	
 	var new_outputs = transformer.transform(selected_transformation, inputs)
