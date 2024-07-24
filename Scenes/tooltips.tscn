@@ -6,14 +6,21 @@
 [node name="Tooltips" type="Node"]
 script = ExtResource("1_5y5dr")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TooltipControlNode" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 121.0
+offset_bottom = 23.0
+
+[node name="TextureRect" type="TextureRect" parent="TooltipControlNode"]
+layout_mode = 1
 anchors_preset = -1
 offset_right = 121.0
 offset_bottom = 23.0
 texture = ExtResource("2_63tk8")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="TooltipControlNode"]
 offset_right = 121.0
 offset_bottom = 23.0
 fit_content = true
