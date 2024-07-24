@@ -24,6 +24,7 @@ var available_items
 
 var products: Array[OutputItem]
 var output_dictionary: Dictionary
+var active_connections
 
 var transformer: ItemTransformer
 
@@ -97,6 +98,14 @@ func get_active_connections():
 		items[destination] = new_items
 	
 	output_dictionary = items
+	active_connections = rtn
+	return rtn
+
+func get_available_connections():
+	var rtn = []
+	for item in availableNodeIds:
+		if !active_connections.has(item):
+			rtn += [item]
 	return rtn
 
 

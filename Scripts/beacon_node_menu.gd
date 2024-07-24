@@ -3,6 +3,7 @@ extends Area2D
 var playerView = null
 
 var selected_node: BeaconNode
+var existing_connections
 
 # may be a more programatic way to handle this.
 const input_slot_names = ["InputSlot1", "InputSlot2", "InputSlot3", "InputSlot4"]
@@ -62,7 +63,7 @@ func _render_string_label(strings):
 func _set_output_slots():
 	for i in output_slot_names.size():
 		var node = get_node("OutputContainer").get_node(output_slot_names[i])
-		node.set_values(selected_node)
+		node.set_values(selected_node, existing_connections)
 
 func _set_input_slot_items():
 	if !selected_node: return
@@ -106,3 +107,7 @@ func _set_available_items():
 
 func _on_item_dropped(slot_id, item_index):
 	selected_node.set_input_item(slot_id, item_index)
+
+
+func _on_beacon_tower_connections_updated(connections):
+	existing_connections = connections

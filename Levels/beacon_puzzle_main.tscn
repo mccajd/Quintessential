@@ -330,7 +330,6 @@ scale = Vector2(1.613, 1.613)
 [node name="OutputSlot1" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
 layout_mode = 2
 script = ExtResource("8_16phh")
-slot_id = null
 
 [node name="DestinationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1"]
 layout_mode = 0
@@ -477,6 +476,7 @@ sees progress
 of shadows"
 label_settings = SubResource("LabelSettings_tft4m")
 
+[connection signal="connections_updated" from="BeaconTower" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_beacon_tower_connections_updated"]
 [connection signal="node_selected" from="BeaconTower" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_beacon_tower_node_selected"]
 [connection signal="selected" from="BeaconTower/BeaconNode1" to="BeaconTower" method="_on_node_selected"]
 [connection signal="transformed" from="BeaconTower/BeaconNode1" to="BeaconTower" method="_on_transformed"]
