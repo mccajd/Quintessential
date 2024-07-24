@@ -40,12 +40,12 @@ func _set_connectors():
 		var beacon_node = get_node(name)
 		for connection in beacon_node.get_active_connections():
 			connections.push_front([beacon_node.id, connection])
-			for entry in beacon_node.output_dictionary.keys():
-				if !outputs.has(entry):
-					outputs[entry] = beacon_node.output_dictionary[entry]
-					continue
-				var new_items = outputs[entry] + beacon_node.output_dictionary[entry]
-				outputs[entry] = new_items
+		for entry in beacon_node.output_dictionary.keys():
+			if !outputs.has(entry):
+				outputs[entry] = beacon_node.output_dictionary[entry]
+				continue
+			var new_items = outputs[entry] + beacon_node.output_dictionary[entry]
+			outputs[entry] = new_items
 	
 	# The code equivalent of realizing you forgot the car keys at the grocery
 	for name in node_names + recepticle_names:
