@@ -99,8 +99,7 @@ func _set_available_items():
 	
 	for item_key in selected_node.available_items:
 		var item = Items.itemDB.get(item_key)
+		var new_item = ItemDraggable.new(item_key)
 		
-		var new_item_texture = TextureRect.new()
-		new_item_texture.texture = load(item.sprite)
 		
-		box.add_child(new_item_texture)
+		box.add_child(new_item)
