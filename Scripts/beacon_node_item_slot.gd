@@ -1,4 +1,4 @@
-extends Area2D
+extends Control
 
 class_name BeaconNodeItemSlot
 
@@ -29,4 +29,12 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	hovered = false
+
+
+func _can_drop_data(_position, _data):
+	return true
+
+
+func _drop_data(position, data):
+	pass
 

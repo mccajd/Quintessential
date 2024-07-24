@@ -19,5 +19,7 @@ func _process(_delta):
 
 
 func _get_drag_data(position):
-	set_drag_preview(self.duplicate())
+	var drag_preview = self.duplicate()
+	drag_preview.z_index = 10
+	set_drag_preview(drag_preview)
 	return self
