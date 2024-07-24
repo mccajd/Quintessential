@@ -13,6 +13,7 @@ func _ready():
 	input_pickable = false
 	playerView = get_parent().get_parent().get_node("PlayerView").get_children()
 
+
 func _process(delta):
 	get_node("SelectedNodeLabel").text = selected_node.name if selected_node else "none"
 	get_node("SelectedTransformationLabel").text = selected_node.selected_transformation if selected_node else "neutral"
@@ -21,7 +22,7 @@ func _process(delta):
 	
 	#get_node("SelectedInputLabel").text = _render_string_label(selected_node.inputs)
 	#get_node("SelectedOutputLabel").text = _render_string_label(selected_node.outputs) if selected_node.inputs else "no inputs"
-	get_node("AvailableItemsLabel").text = _render_string_label(selected_node.available_items)
+	#get_node("AvailableItemsLabel").text = _render_string_label(selected_node.available_items)
 	
 	_set_input_slot_items()
 	_set_output_slot_items()
@@ -37,6 +38,7 @@ func _on_beacon_tower_node_selected(node: BeaconNode):
 	selected_node = node
 	_set_output_slots()
 	_set_visibility(true)
+	_set_available_items()
 	
 
 func _set_visibility(value: bool):
@@ -59,7 +61,8 @@ func _render_string_label(strings):
 
 func _set_output_slots():
 	for i in output_slot_names.size():
-		get_node("OutputContainer").get_node(output_slot_names[i]).set_values(selected_node)
+		var node = get_node("OutputContainer").get_node(output_slot_names[i])
+		node.set_values(selected_node)
 
 func _set_input_slot_items():
 	if !selected_node: return
@@ -84,3 +87,19 @@ func _set_output_slot_items():
 
 func _on_output_slot_destination_updated(slot_source_id: int, destination_node_id: int):
 	selected_node.set_destination_node(slot_source_id, destination_node_id)
+
+
+func _set_available_items():
+	var box: VBoxContainer = get_node("AvailableItemsContainer")
+
+	# clear existing
+	for child in box.get_children():
+		child.queue_free()
+	box.add_spacer(true)
+	
+	for item_key in selected_node.available_items:
+		var item = Items.itemDB.get(item_key)
+		
+		var new_item_texture = TextureRect.new()
+		new_item_texture.texture = load(item.sprite)
+		box.add_child(new_item_texture)

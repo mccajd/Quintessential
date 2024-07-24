@@ -59,7 +59,8 @@ func get_active_connections():
 		if i >= products.size(): break
 		var destination = selected_destination_nodes[i]
 		if destination == -1: continue
-		rtn.push_front(destination)
+		if !rtn.has(destination):
+			rtn += [destination]
 		if !items.has(destination):
 			items[destination] = [products[i].item_key]
 			continue

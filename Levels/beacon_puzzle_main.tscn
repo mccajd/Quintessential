@@ -448,6 +448,13 @@ position = Vector2(222, 355)
 scale = Vector2(0.8, 0.8)
 transformation_type = "neutral"
 
+[node name="AvailableItemsContainer" type="VBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+offset_left = 20.0
+offset_top = 53.0
+offset_right = 82.0
+offset_bottom = 508.0
+alignment = 1
+
 [node name="TowerExteriorView" type="Node" parent="MockUI"]
 
 [node name="ColorRect" type="ColorRect" parent="MockUI/TowerExteriorView"]
