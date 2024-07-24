@@ -102,4 +102,5 @@ func _set_available_items():
 		
 		var new_item_texture = TextureRect.new()
 		new_item_texture.texture = load(item.sprite)
+		
 		box.add_child(new_item_texture)
