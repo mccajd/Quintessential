@@ -42,8 +42,8 @@ func _input(event):
 		target = get_global_mouse_position()
 		target_tile = tile_map.local_to_map(target)
 		start_tile  = tile_map.local_to_map(position-Vector2(32,32))
-		print(\"tile: \", target_tile)
-		print(\"target: \", target_tile, \" is solid: \",astar_grid.is_point_solid(target_tile))
+		#print(\"tile: \", target_tile)
+		#print(\"target: \", target_tile, \" is solid: \",astar_grid.is_point_solid(target_tile))
 		
 		target_tile = find_valid_dest(target_tile)
 		
@@ -85,6 +85,7 @@ func set_solid_tiles():
 
 func set_start_pos(pos:Vector2i=Vector2i.ZERO):
 	global_position = tile_map.map_to_local(pos)
+	
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dchqe"]
