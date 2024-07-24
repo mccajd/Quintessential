@@ -16,3 +16,8 @@ func _ready():
 
 func _process(_delta):
 	pass
+
+
+func _get_drag_data(position):
+	set_drag_preview(self.duplicate())
+	return self

@@ -18,11 +18,14 @@ func _process(delta):
 	var item = Items.itemDB[item_key]
 	$ItemTextureRect.texture = load(item.sprite)
 
+
 func set_item(key):
 	item_key = key
 
+
 func _on_mouse_entered():
 	hovered = true
+
 
 func _on_mouse_exited():
 	hovered = false

@@ -8,6 +8,11 @@ var selected_node_destination: int
 
 signal destination_updated
 
+
+func _ready():
+	if $DragDestinationControl != null:
+		$DragDestinationControl.can_drop_data = false
+
 func _process(delta):
 	super(delta)
 	
@@ -17,6 +22,11 @@ func _process(delta):
 		_update_selected_node()
 		destination_updated.emit(slot_id, selected_node_destination)
 		get_node("DestinationLabel").text = str(selected_node_destination) if selected_node_destination > -1 else ""
+
+
+func can_drop_data(_position, _data):
+	return false
+
 
 func set_values(selected_node: BeaconNode):
 	node_destination_options = selected_node.availableNodeIds
