@@ -112,3 +112,8 @@ func _on_item_dropped(slot_id, item_index):
 
 func _on_beacon_tower_connections_updated(connections):
 	existing_connections = connections
+
+
+func _on_item_cleared(slot_id):
+	selected_node.clear_input_slot(slot_id)
+	_set_available_items()

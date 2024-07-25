@@ -118,6 +118,14 @@ func is_input_slot_empty(index):
 	return inputs_from_inventory[index] == null && inputs_from_nodes[index] == null
 
 
+func clear_input_slot(slot_id):
+	for item in available_items:
+		if item.slot_id != slot_id: continue
+		item.slot_id = null
+	for array in [inputs_from_inventory, inputs_from_nodes]:
+		array[slot_id] = null
+
+
 func _handle_button_logic():
 	if (!hovered): return
 
@@ -154,3 +162,4 @@ func _set_inputs():
 func _reset_input_slots():
 	inputs_from_inventory = [null, null, null, null]
 	inputs_from_nodes = [null, null, null, null]
+
