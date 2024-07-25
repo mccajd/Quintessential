@@ -5,7 +5,7 @@ extends Control
 # "Hey, if it works"
 
 func _ready():
-	set_tooltip_message("UNKNOWN")
+	_set_tooltip_message("UNKNOWN")
 	
 	_hide_tooltip()
 
@@ -16,12 +16,14 @@ func _process(_delta):
 		if "item_hovered" in child || "control_hovered" in child:
 			# NOTE.jmc - this assumes whatever you add item_hovered to has these signals
 			#	if it doesn't, well, ya got trouble my friend
-			child.mouse_entered.connect(_on_mouse_entered)
-			child.mouse_exited.connect(_on_mouse_exited)
-			if "item_hovered" in child:
+			if !child.is_connected("mouse_entered", _on_mouse_entered):
+				child.mouse_entered.connect(_on_mouse_entered)
+			if !child.is_connected("mouse_exited", _on_mouse_exited):
+				child.mouse_exited.connect(_on_mouse_exited)
+			if "item_hovered" in child && !child.is_connected("item_hovered", _set_item_tooltip):
 				child.item_hovered.connect(_set_item_tooltip)
-			if "control_hovered" in child:
-				child.control_hovered.connect(set_tooltip_message)
+			if "control_hovered" in child && !child.is_connected("control_hovered", _set_tooltip_message):
+				child.control_hovered.connect(_set_tooltip_message)
 	
 	if visible:
 		position = _get_mouse_position()
@@ -55,7 +57,7 @@ func _get_mouse_position():
 	
 	return newPosition
 
-func set_tooltip_message(text):
+func _set_tooltip_message(text):
 	if !text: text = ""
 	# Update the text
 	$RichTextLabel.set_text(text)
@@ -68,7 +70,7 @@ func set_tooltip_message(text):
 
 func _set_item_tooltip(item_key):
 	if item_key == null:
-		set_tooltip_message(null)
+		_set_tooltip_message(null)
 		return
 	var item = Items.itemDB[item_key]
-	set_tooltip_message("[b]" + item.name + "[/b]\n" + item.description)
+	_set_tooltip_message("[b]" + item.name + "[/b]\n" + item.description)
