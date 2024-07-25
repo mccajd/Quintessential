@@ -13,9 +13,12 @@ func _init(key: String, slot, position: int):
 
 
 func _ready():
-	# TODO.jmc - grey this out or maybe hide this if item slot filled
 	var item = Items.itemDB.get(item_key)
 	texture = load(item.sprite)
+	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+	expand_mode = TextureRect.EXPAND_FIT_HEIGHT
+	
+	# reduce sprite opacity if filled
 	if item_slot != null:
 		modulate.a = 0.5
 	else:
@@ -31,6 +34,7 @@ func _get_drag_data(_position):
 	if item_slot != null: return
 	
 	var drag_preview = self.duplicate()
+	drag_preview.expand_mode = TextureRect.EXPAND_KEEP_SIZE 
 	drag_preview.z_index = 10
 	set_drag_preview(drag_preview)
 	return self

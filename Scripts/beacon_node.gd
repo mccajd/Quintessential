@@ -2,6 +2,8 @@ extends Area2D
 
 class_name BeaconNode
 
+@export var debug_items = false
+
 @export var id: int
 @export var availableNodeIds: Array[int]
 # Four output slots = array of size 4.
@@ -16,7 +18,6 @@ var inputs_from_inventory = [null, null, null, null]
 
 var hovered = false
 
-# @export here for debugging; this should be set by the player/internal systems
 var inputs
 var outputs
 @export var selected_transformation: String = "neutral"
@@ -64,9 +65,8 @@ func set_destination_node(slot_id, destination_node_id):
 
 
 func set_available_items(items):
-	#debug
-	if id == 1:
-		available_items = [ItemInSlot.new("water", null)]
+	if debug_items:
+		available_items = [ItemInSlot.new("fire", null), ItemInSlot.new("salt", null), ItemInSlot.new("silver", null)]
 		return
 	
 	if (available_items != null && Helpers.compare_arrays(available_items.map(func(x): return x.item_key), items)): return

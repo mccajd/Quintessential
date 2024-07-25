@@ -53,6 +53,7 @@ script = ExtResource("2_mlleh")
 [node name="BeaconNode1" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(103, 484)
+debug_items = true
 id = 1
 availableNodeIds = Array[int]([2, 3])
 
