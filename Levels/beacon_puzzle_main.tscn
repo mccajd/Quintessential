@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=20 format=3 uid="uid://b16x2m82ri0xj"]
 
 [ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://Scenes/beacon_node_menu.tscn" id="1_fh8ox"]
 [ext_resource type="Script" path="res://Scripts/beacon_tower.gd" id="2_mlleh"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://8nfw6dhdpgp6" path="res://assets/beacon/beacon-win-button-depressed.png" id="7_n5v4e"]
 [ext_resource type="PackedScene" uid="uid://chme11eyldqed" path="res://Scenes/beacon_node_item_slot.tscn" id="7_t800s"]
 [ext_resource type="Script" path="res://Scripts/beacon_node_output_slot.gd" id="8_16phh"]
+[ext_resource type="Script" path="res://Scripts/inventory_items.gd" id="8_gm0n7"]
 [ext_resource type="PackedScene" uid="uid://dhy78dbhht3ki" path="res://Levels/point_click_proto.tscn" id="9_eceik"]
 [ext_resource type="Script" path="res://Scripts/bgm.gd" id="13_c8aie"]
 [ext_resource type="PackedScene" uid="uid://bjse5p8p12uhr" path="res://Scenes/tooltips.tscn" id="14_02nus"]
@@ -218,46 +219,69 @@ vertical_alignment = 1
 
 [node name="MockUI" type="Node" parent="."]
 
+[node name="InventoryItems" type="Control" parent="MockUI"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("8_gm0n7")
+
 [node name="InventoryContainer" type="HBoxContainer" parent="MockUI"]
+z_index = 1
+custom_minimum_size = Vector2(472, 64)
 offset_left = 180.0
 offset_top = 580.0
 offset_right = 652.0
 offset_bottom = 644.0
 script = SubResource("GDScript_tquvq")
 
-[node name="Slot1" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="InventorySlotsContainer" type="HBoxContainer" parent="MockUI"]
+offset_left = 180.0
+offset_top = 580.0
+offset_right = 652.0
+offset_bottom = 644.0
+mouse_filter = 2
+script = SubResource("GDScript_tquvq")
+
+[node name="Slot1" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot2" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot2" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot3" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot3" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot4" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot4" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot5" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot5" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot6" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot6" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot7" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot7" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
 [node name="ThreePrimesContainer" type="HBoxContainer" parent="MockUI"]
@@ -267,15 +291,15 @@ offset_right = 618.0
 offset_bottom = 769.0
 scale = Vector2(0.977618, 0.902249)
 
-[node name="TextureRect" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+[node name="SaltContainer" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
 layout_mode = 2
 texture = ExtResource("5_o6nu5")
 
-[node name="TextureRect2" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+[node name="QuicksilverContainer" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
 layout_mode = 2
 texture = ExtResource("5_o6nu5")
 
-[node name="TextureRect3" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+[node name="SulfurContainer" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
 layout_mode = 2
 texture = ExtResource("5_o6nu5")
 

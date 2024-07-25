@@ -2,6 +2,8 @@ extends TextureRect
 
 class_name ItemDraggable
 
+@export var from_inventory: bool = false
+
 var item_key: String
 var item_slot
 var item_position: int
@@ -20,7 +22,7 @@ func _ready():
 	var item = Items.itemDB.get(item_key)
 	texture = load(item.sprite)
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
-	expand_mode = TextureRect.EXPAND_FIT_HEIGHT
+	expand_mode = TextureRect.EXPAND_FIT_WIDTH if from_inventory else TextureRect.EXPAND_FIT_HEIGHT
 	
 	# reduce sprite opacity if filled
 	if item_slot != null:
@@ -43,7 +45,6 @@ func _on_mouse_exited():
 
 
 func _get_drag_data(_position):
-	# TODO.jmc make sure this works
 	if item_slot != null: return
 	
 	var drag_preview = self.duplicate()
