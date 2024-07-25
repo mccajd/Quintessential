@@ -27,3 +27,7 @@ offset_bottom = 23.0
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="Timer" type="Timer" parent="TooltipControlNode"]
+
+[connection signal="timeout" from="TooltipControlNode/Timer" to="." method="_show_tooltip"]

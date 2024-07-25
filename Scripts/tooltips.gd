@@ -6,11 +6,12 @@ extends Node
 @onready var parent = get_parent()
 @onready var textureNode = get_node("TooltipControlNode/TextureRect")
 @onready var textNode = get_node("TooltipControlNode/RichTextLabel")
+@onready var timer = get_node("TooltipControlNode/Timer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	textureNode.texture = load("res://assets/tooltip/dialoguebox.png")
-	set_tooltip_message("This is the test of the dynamic box")
+	set_tooltip_message("This is the test of the dynamic box\ntesttestest")
 	parent.mouse_entered.connect(_on_mouse_entered)
 	parent.mouse_exited.connect(_on_mouse_exited)
 	
@@ -28,13 +29,17 @@ func _hide_tooltip():
 	$TooltipControlNode.hide()
 
 func _on_mouse_entered():
-	_show_tooltip()
+	timer.start()
 
 func _on_mouse_exited():
+	timer.stop()
 	_hide_tooltip()
 
 func _get_mouse_position():
-	return get_viewport().get_mouse_position()
+	var newPosition = get_viewport().get_mouse_position()
+	newPosition.x += 10
+	newPosition.y += 18
+	return newPosition
 
 func set_tooltip_message(text):
 	textNode.set_text(text)
