@@ -13,10 +13,15 @@ func _ready():
 func _process(_delta):
 	# HACK.jmc - godot has a pseudo reflection which i can use here.
 	for child in Helpers.get_all_children(get_parent(), []):
-		if "item_hovered" in child:
-			child.item_hovered.connect(set_item_tooltip)
+		if "item_hovered" in child || "control_hovered" in child:
+			# NOTE.jmc - this assumes whatever you add item_hovered to has these signals
+			#	if it doesn't, well, ya got trouble my friend
 			child.mouse_entered.connect(_on_mouse_entered)
 			child.mouse_exited.connect(_on_mouse_exited)
+			if "item_hovered" in child:
+				child.item_hovered.connect(_set_item_tooltip)
+			if "control_hovered" in child:
+				child.control_hovered.connect(set_tooltip_message)
 	
 	if visible:
 		position = _get_mouse_position()
@@ -56,12 +61,12 @@ func set_tooltip_message(text):
 	$RichTextLabel.set_text(text)
 	
 	# Get the new size of the text and set the texture node behind accordingly
-	var stringSize = $TextureRect.get_combined_minimum_size()
-	#$TextureRect.size.x = stringSize.x
-	#$TextureRect.size.y = stringSize.y
+	var stringSize = $RichTextLabel.get_combined_minimum_size()
+	$TextureRect.size.x = stringSize.x
+	$TextureRect.size.y = stringSize.y
 
 
-func set_item_tooltip(item_key):
+func _set_item_tooltip(item_key):
 	if item_key == null:
 		set_tooltip_message(null)
 		return

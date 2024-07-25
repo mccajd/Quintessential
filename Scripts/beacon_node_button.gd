@@ -2,6 +2,7 @@ class_name BeaconButton
 extends Area2D
 
 signal clicked
+signal control_hovered
 var hovered = false
 
 @export var toggled = false
@@ -15,6 +16,8 @@ func _ready():
 
 func _process(_delta):
 	if (!hovered): return
+	
+	control_hovered.emit(transformation_type)
 	
 	if (Input.is_action_pressed("select")):
 		$AnimatedSprite2D.play("depressed")
