@@ -8,6 +8,11 @@ var available_items: Array
 func complete():
 	return available_items.find(expected_input) > -1
 
+
+func set_available_items(items):
+	available_items = items
+
+
 func _process(_delta):
 	if complete():
 		$SelectionSprite2D.visible = true

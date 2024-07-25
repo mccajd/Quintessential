@@ -9,7 +9,7 @@ func _ready():
 	get_parent().connections_updated.connect(_on_beacon_tower_connections_updated)
 	enabled = false
 
-func _process(delta):
+func _process(_delta):
 	if enabled:
 		$AnimatedSprite2D.play("on")
 		return

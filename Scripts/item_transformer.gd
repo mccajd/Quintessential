@@ -2,7 +2,7 @@ extends Node
 
 class_name ItemTransformer
 
-func transform(type: String, item_keys: Array[String]):
+func transform(type: String, item_keys):
 	# TODO.jmc - implement the rest of the transformations (if we need any more)
 	match type:
 		"solution":
@@ -19,7 +19,7 @@ func transform(type: String, item_keys: Array[String]):
 			return item_keys
 
 
-func _transform(recipes, item_keys: Array[String]):
+func _transform(recipes, item_keys):
 	# NOTE.jmc - the more I work in godot the less I like its "support" for typing
 	# 	let's just have a gentlemans agreement to make sure dictionary items
 	#	have "required_ingredients" and "items" arrays
@@ -29,7 +29,7 @@ func _transform(recipes, item_keys: Array[String]):
 	return null
 
 
-func find_match(recipe, item_keys: Array):
+func find_match(recipe, item_keys):
 	# if any ingredients haven't been used, treat as a failure condition
 	# prevents brute forcing puzzles by adding everything as an input at once
 	# NOTE.jmc - if the game proves too obtuse, perhaps introduce this as either

@@ -2,11 +2,11 @@ extends BeaconNodeItemSlot
 
 class_name BeaconNodeOutputSlot
 
-@export var slot_id: int
-var node_destination_options: Array[int]
+var node_destination_options
 var selected_node_destination: int
 
 signal destination_updated
+
 
 func _process(delta):
 	super(delta)
@@ -18,8 +18,32 @@ func _process(delta):
 		destination_updated.emit(slot_id, selected_node_destination)
 		get_node("DestinationLabel").text = str(selected_node_destination) if selected_node_destination > -1 else ""
 
-func set_values(selected_node: BeaconNode):
-	node_destination_options = selected_node.availableNodeIds
+
+func _can_drop_data(_position, _data):
+	return false
+
+
+func set_values(selected_node: BeaconNode, connections):
+	# Basically, if it's an available connection AND not active 
+	#	(UNLESS this node is the reason it's active)
+	# it should be an available option.
+	
+	var options = []
+	# get all connected values
+	var connected_nodes = []
+	for connection in connections: # array of arrays
+		for i in connection.size():
+			# In each two-value array, the first value is the source node
+			# Disallow sending input to a node that has active output
+			if i > 0: continue
+			if connection[i] != selected_node.id: connected_nodes += [connection[i]]
+	
+	for item in selected_node.availableNodeIds:
+		if connected_nodes.has(item) && !selected_node.active_connections.has(item):
+			continue
+		options += [item]
+	
+	node_destination_options = options
 	selected_node_destination = selected_node.selected_destination_nodes[slot_id]
 	get_node("DestinationLabel").text = str(selected_node_destination) if selected_node_destination > -1 else ""
 

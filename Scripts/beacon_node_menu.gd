@@ -3,6 +3,7 @@ extends Area2D
 var playerView = null
 
 var selected_node: BeaconNode
+var existing_connections
 
 # may be a more programatic way to handle this.
 const input_slot_names = ["InputSlot1", "InputSlot2", "InputSlot3", "InputSlot4"]
@@ -13,7 +14,8 @@ func _ready():
 	input_pickable = false
 	playerView = get_parent().get_parent().get_node("PlayerView").get_children()
 
-func _process(delta):
+
+func _process(_delta):
 	get_node("SelectedNodeLabel").text = selected_node.name if selected_node else "none"
 	get_node("SelectedTransformationLabel").text = selected_node.selected_transformation if selected_node else "neutral"
 	
@@ -21,7 +23,7 @@ func _process(delta):
 	
 	#get_node("SelectedInputLabel").text = _render_string_label(selected_node.inputs)
 	#get_node("SelectedOutputLabel").text = _render_string_label(selected_node.outputs) if selected_node.inputs else "no inputs"
-	get_node("AvailableItemsLabel").text = _render_string_label(selected_node.available_items)
+	#get_node("AvailableItemsLabel").text = _render_string_label(selected_node.available_items)
 	
 	_set_input_slot_items()
 	_set_output_slot_items()
@@ -37,7 +39,8 @@ func _on_beacon_tower_node_selected(node: BeaconNode):
 	selected_node = node
 	_set_output_slots()
 	_set_visibility(true)
-	
+	_set_available_items()
+
 
 func _set_visibility(value: bool):
 	visible = value
@@ -59,7 +62,8 @@ func _render_string_label(strings):
 
 func _set_output_slots():
 	for i in output_slot_names.size():
-		get_node("OutputContainer").get_node(output_slot_names[i]).set_values(selected_node)
+		var node = get_node("OutputContainer").get_node(output_slot_names[i])
+		node.set_values(selected_node, existing_connections)
 
 func _set_input_slot_items():
 	if !selected_node: return
@@ -84,3 +88,32 @@ func _set_output_slot_items():
 
 func _on_output_slot_destination_updated(slot_source_id: int, destination_node_id: int):
 	selected_node.set_destination_node(slot_source_id, destination_node_id)
+
+
+func _set_available_items():
+	var box: VBoxContainer = get_node("AvailableItemsContainer")
+
+	# clear existing
+	for child in box.get_children():
+		child.queue_free()
+	box.add_spacer(true)
+	
+	for i in selected_node.available_items.size():
+		var item = selected_node.available_items[i]
+		var new_item = ItemDraggable.new(item.item_key, item.slot_id, i)
+		
+		box.add_child(new_item)
+
+
+func _on_item_dropped(slot_id, item_index):
+	selected_node.set_input_item(slot_id, item_index)
+	_set_available_items()
+
+
+func _on_beacon_tower_connections_updated(connections):
+	existing_connections = connections
+
+
+func _on_item_cleared(slot_id):
+	selected_node.clear_input_slot(slot_id)
+	_set_available_items()
