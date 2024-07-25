@@ -25,6 +25,7 @@ expand_mode = 1
 layout_mode = 0
 offset_right = 121.0
 offset_bottom = 23.0
+bbcode_enabled = true
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
