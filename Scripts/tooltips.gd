@@ -26,6 +26,7 @@ func _process(delta):
 		_hide_tooltip()
 
 func _show_tooltip():
+	$TooltipControlNode.position = _get_mouse_position()
 	$TooltipControlNode.show()
 
 func _hide_tooltip():
