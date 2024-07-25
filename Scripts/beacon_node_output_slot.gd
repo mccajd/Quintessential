@@ -31,10 +31,12 @@ func set_values(selected_node: BeaconNode, connections):
 	var options = []
 	# get all connected values
 	var connected_nodes = []
-	for connection in connections:
-		if connection.has(selected_node.id):
-			for nub in connection:
-				if nub != selected_node.id: connected_nodes += [nub]
+	for connection in connections: # array of arrays
+		for i in connection.size():
+			# In each two-value array, the first value is the source node
+			# Disallow sending input to a node that has active output
+			if i > 0: continue
+			if connection[i] != selected_node.id: connected_nodes += [connection[i]]
 	
 	for item in selected_node.availableNodeIds:
 		if connected_nodes.has(item) && !selected_node.active_connections.has(item):
