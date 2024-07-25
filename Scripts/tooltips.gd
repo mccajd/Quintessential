@@ -8,16 +8,16 @@ extends Node
 @onready var textNode = get_node("TooltipControlNode/RichTextLabel")
 @onready var timer = get_node("TooltipControlNode/Timer")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	textureNode.texture = load("res://assets/tooltip/dialoguebox.png")
-	set_tooltip_message("This is the test of the dynamic box\ntesttestest")
+	
 	parent.mouse_entered.connect(_on_mouse_entered)
 	parent.mouse_exited.connect(_on_mouse_exited)
 	
+	set_tooltip_message("UNKNOWN")
+	
 	_hide_tooltip()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if $TooltipControlNode.visible:
 		$TooltipControlNode.position = _get_mouse_position()
@@ -29,6 +29,7 @@ func _hide_tooltip():
 	$TooltipControlNode.hide()
 
 func _on_mouse_entered():
+	# The end of the timer calls "_show_tooltip()"
 	timer.start()
 
 func _on_mouse_exited():
@@ -36,13 +37,20 @@ func _on_mouse_exited():
 	_hide_tooltip()
 
 func _get_mouse_position():
+	# Grab the mouse position
 	var newPosition = get_viewport().get_mouse_position()
+	
+	# Setting the offest compared to the mouse
 	newPosition.x += 10
 	newPosition.y += 18
+	
 	return newPosition
 
 func set_tooltip_message(text):
+	# Update the text
 	textNode.set_text(text)
+	
+	# Get the new size of the text and set the texture node behind accordingly
 	var stringSize = textNode.get_combined_minimum_size()
 	textureNode.size.x = stringSize.x
 	textureNode.size.y = stringSize.y
