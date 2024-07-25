@@ -3,17 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/tooltips.gd" id="1_5y5dr"]
 [ext_resource type="Texture2D" uid="uid://bm1urcddjwmk2" path="res://assets/tooltip/dialoguebox.png" id="2_63tk8"]
 
-[node name="Tooltips" type="Node"]
-script = ExtResource("1_5y5dr")
-
-[node name="TooltipControlNode" type="Control" parent="."]
-z_index = 3
+[node name="Tooltips" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 121.0
-offset_bottom = 23.0
+script = ExtResource("1_5y5dr")
 
-[node name="TextureRect" type="TextureRect" parent="TooltipControlNode"]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 offset_right = 121.0
@@ -21,8 +16,7 @@ offset_bottom = 23.0
 texture = ExtResource("2_63tk8")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TooltipControlNode"]
-layout_mode = 0
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_right = 121.0
 offset_bottom = 23.0
 bbcode_enabled = true
@@ -30,6 +24,6 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Timer" type="Timer" parent="TooltipControlNode"]
+[node name="Timer" type="Timer" parent="."]
 
-[connection signal="timeout" from="TooltipControlNode/Timer" to="." method="_show_tooltip"]
+[connection signal="timeout" from="Timer" to="." method="_show_tooltip"]

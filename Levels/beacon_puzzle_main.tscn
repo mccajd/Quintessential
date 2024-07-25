@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=18 format=3 uid="uid://b16x2m82ri0xj"]
 
 [ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://Scenes/beacon_node_menu.tscn" id="1_fh8ox"]
 [ext_resource type="Script" path="res://Scripts/beacon_tower.gd" id="2_mlleh"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://chme11eyldqed" path="res://Scenes/beacon_node_item_slot.tscn" id="7_t800s"]
 [ext_resource type="Script" path="res://Scripts/beacon_node_output_slot.gd" id="8_16phh"]
 [ext_resource type="Script" path="res://Scripts/bgm.gd" id="13_c8aie"]
+[ext_resource type="PackedScene" uid="uid://bjse5p8p12uhr" path="res://Scenes/tooltips.tscn" id="14_02nus"]
 
 [sub_resource type="GDScript" id="GDScript_tquvq"]
 
@@ -480,6 +481,8 @@ label_settings = SubResource("LabelSettings_tft4m")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("13_c8aie")
+
+[node name="Tooltips" parent="." instance=ExtResource("14_02nus")]
 
 [connection signal="connections_updated" from="BeaconTower" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_beacon_tower_connections_updated"]
 [connection signal="node_selected" from="BeaconTower" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_beacon_tower_node_selected"]

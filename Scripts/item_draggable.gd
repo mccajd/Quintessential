@@ -6,10 +6,14 @@ var item_key: String
 var item_slot
 var item_position: int
 
+signal item_hovered
+
 func _init(key: String, slot, position: int):
 	item_key = key
 	item_slot = slot
 	item_position = position
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_entered.connect(_on_mouse_exited)
 
 
 func _ready():
@@ -27,6 +31,15 @@ func _ready():
 
 func _process(_delta):
 	pass
+
+
+func _on_mouse_entered():
+	item_hovered.emit(item_key)
+
+
+func _on_mouse_exited():
+	pass
+	#item_hovered.emit(null)
 
 
 func _get_drag_data(_position):
