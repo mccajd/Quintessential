@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://nrsivx657vil"]
 
-[ext_resource type="Texture2D" uid="uid://4hl3iip5ljja" path="res://assets/wood_floors_pattern.png" id="1_i81ex"]
+[ext_resource type="Texture2D" uid="uid://clhq5v0cxpp0q" path="res://assets/wood_floors_pattern.png" id="1_i81ex"]
 [ext_resource type="Texture2D" uid="uid://b36yc670ysnth" path="res://assets/temp-tiles.png" id="2_214aj"]
 [ext_resource type="Script" path="res://Scripts/interactable_mapper.gd" id="3_q1jvy"]
 
