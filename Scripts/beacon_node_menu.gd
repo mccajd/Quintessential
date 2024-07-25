@@ -12,7 +12,7 @@ const output_slot_names = ["OutputSlot1", "OutputSlot2", "OutputSlot3", "OutputS
 func _ready():
 	visible = false
 	input_pickable = false
-	playerView = get_parent().get_parent().get_node("PlayerView").get_children()
+	playerView = Helpers.get_all_children(get_parent().get_parent().get_node("PlayerView"), [])
 
 
 func _process(_delta):
@@ -45,7 +45,7 @@ func _on_beacon_tower_node_selected(node: BeaconNode):
 func _set_visibility(value: bool):
 	visible = value
 	for child in playerView:
-		child.visible = !value
+		child.set_process_input(!value)
 
 func _on_transformation_type_selected(type: String):
 	selected_node.set_transformation(type)

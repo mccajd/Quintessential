@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=19 format=3 uid="uid://b16x2m82ri0xj"]
 
 [ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://Scenes/beacon_node_menu.tscn" id="1_fh8ox"]
 [ext_resource type="Script" path="res://Scripts/beacon_tower.gd" id="2_mlleh"]
@@ -12,14 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://8nfw6dhdpgp6" path="res://assets/beacon/beacon-win-button-depressed.png" id="7_n5v4e"]
 [ext_resource type="PackedScene" uid="uid://chme11eyldqed" path="res://Scenes/beacon_node_item_slot.tscn" id="7_t800s"]
 [ext_resource type="Script" path="res://Scripts/beacon_node_output_slot.gd" id="8_16phh"]
+[ext_resource type="PackedScene" uid="uid://dhy78dbhht3ki" path="res://Levels/point_click_proto.tscn" id="9_eceik"]
 [ext_resource type="Script" path="res://Scripts/bgm.gd" id="13_c8aie"]
 [ext_resource type="PackedScene" uid="uid://bjse5p8p12uhr" path="res://Scenes/tooltips.tscn" id="14_02nus"]
 
 [sub_resource type="GDScript" id="GDScript_tquvq"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_tft4m"]
-font_size = 22
-font_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
 [sub_resource type="GDScript" id="GDScript_vcol3"]
 resource_name = "ShowNodeMenuButton"
@@ -30,7 +27,8 @@ var playerView = null
 
 func _ready():
 	beaconNodeMenu = get_parent()
-	playerView = get_parent().get_parent().get_parent().get_node(\"PlayerView\").get_children()
+	
+	playerView = Helpers.get_all_children(get_parent().get_parent().get_parent().get_node(\"PlayerView\"), [])
 	
 #func _process(delta):
 	
@@ -39,12 +37,16 @@ func _on_clicked(_transformation_type): # note.jmc - probably remove this discar
 	# HACK.jmc - seems the player view as it currently stands eats mouse inputs
 	var currentVisibility = beaconNodeMenu.visible
 	for child in playerView:
-		child.visible = currentVisibility
+		child.set_process_input(true)
 	beaconNodeMenu.visible = !currentVisibility
 	
 	# HACK.jmc - this is unbelievably fragile lmao
 	get_parent().get_parent().get_parent().get_parent().get_node(\"BeaconTower\")._on_node_selected(null)
 "
+
+[sub_resource type="LabelSettings" id="LabelSettings_tft4m"]
+font_size = 22
+font_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
 [node name="BeaconPuzzleMain" type="Node"]
 
@@ -277,28 +279,24 @@ texture = ExtResource("5_o6nu5")
 layout_mode = 2
 texture = ExtResource("5_o6nu5")
 
-[node name="PlayerView" type="Node" parent="MockUI"]
+[node name="PlayerView" type="SubViewportContainer" parent="MockUI"]
+offset_left = 195.0
+offset_top = 51.0
+offset_right = 749.0
+offset_bottom = 567.0
+scale = Vector2(0.799999, 0.84)
 
-[node name="ColorRect" type="ColorRect" parent="MockUI/PlayerView"]
-offset_left = 187.0
-offset_top = 566.0
-offset_right = 227.0
-offset_bottom = 606.0
-scale = Vector2(11.39, -12.8981)
+[node name="SubViewport" type="SubViewport" parent="MockUI/PlayerView"]
+handle_input_locally = false
+size = Vector2i(562, 617)
+render_target_update_mode = 4
 
-[node name="Label" type="Label" parent="MockUI/PlayerView"]
-offset_left = 228.0
-offset_top = 252.0
-offset_right = 615.0
-offset_bottom = 351.0
-text = "Player View: this is where the player 
-explores the environment for 
-more resources"
-label_settings = SubResource("LabelSettings_tft4m")
+[node name="PointClickProto" parent="MockUI/PlayerView/SubViewport" instance=ExtResource("9_eceik")]
 
 [node name="BeaconNodeView" type="Node" parent="MockUI"]
 
 [node name="BeaconNodeMenu" parent="MockUI/BeaconNodeView" instance=ExtResource("1_fh8ox")]
+visible = false
 position = Vector2(184, 16)
 
 [node name="InputContainer" type="HBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
