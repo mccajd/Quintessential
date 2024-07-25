@@ -6,6 +6,7 @@
 resource_name = "player"
 script/source = "extends CharacterBody2D
 
+signal change_room(String, Vector2i)
 
 const speed = 2
 
@@ -31,6 +32,7 @@ func _ready():
 
 	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar_grid.update()
+	
 	set_solid_tiles()
 	
 func _physics_process(delta):
@@ -42,8 +44,8 @@ func _input(event):
 		target = get_global_mouse_position()
 		target_tile = tile_map.local_to_map(target)
 		start_tile  = tile_map.local_to_map(position-Vector2(32,32))
-		print(\"tile: \", target_tile)
-		print(\"target: \", target_tile, \" is solid: \",astar_grid.is_point_solid(target_tile))
+		#print(\"tile: \", target_tile)
+		#print(\"target: \", target_tile, \" is solid: \",astar_grid.is_point_solid(target_tile))
 		
 		target_tile = find_valid_dest(target_tile)
 		
@@ -55,7 +57,8 @@ func find_valid_dest(cur_dest:Vector2i)->Vector2i:
 		var shortest_path = astar_grid.get_point_path(start_tile,cur_dest)
 		# TODO.hmw a more robust algorithm for finding the optimal destination when given a solid
 		# point should be devised, but this is Good 'nuff:TM: for now
-		for cell in range(tile_map.tile_set.CELL_NEIGHBOR_RIGHT_SIDE, tile_map.tile_set.CELL_NEIGHBOR_TOP_RIGHT_CORNER+1):
+		for cell in range(tile_map.tile_set.CELL_NEIGHBOR_RIGHT_SIDE,
+						  tile_map.tile_set.CELL_NEIGHBOR_TOP_RIGHT_CORNER+1):
 			neighbor = tile_map.get_neighbor_cell(cur_dest, cell)
 			
 			if astar_grid.is_point_solid(neighbor):
@@ -75,15 +78,28 @@ func move_to_point():
 			#direction vector of A->B = (B.X-A.X)(B.Y-A.Y)
 			position += sign(path[0]-cur_position)*speed
 		else:
+			# pop the path stack
 			path.remove_at(0)
-			
+	else:
+		# Time to check if the tile we landed on has anything juicy for us
+		var data = tile_map.get_cell_tile_data(tile_map.LAYERS.TRANSITIONS,
+											   target_tile)
+
+		if data:
+			var custom_data = data.get_custom_data(\"Hall\")
+			# Time to blow this popsicle stand
+			if custom_data:
+				print(custom_data)
+				#change_room.emit(data[\"new_room\"], data[\"player_spawn\"])
 
 func set_solid_tiles():
-	for tile_pos in tile_map.get_used_cells_by_id(0, 0,Vector2i(2,0)):
+	#for tile_pos in tile_map.get_used_cells_by_id(0, 0,Vector2i(2,0)):
+	for tile_pos in tile_map.get_used_cells(tile_map.LAYERS.OBSTACLES):
 		astar_grid.set_point_solid(tile_pos)
 
 func set_start_pos(pos:Vector2i=Vector2i.ZERO):
 	global_position = tile_map.map_to_local(pos)
+	
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dchqe"]
@@ -93,6 +109,7 @@ size = Vector2(54, 127)
 position = Vector2(0, -5)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
+collision_mask = 4
 script = SubResource("GDScript_1c1ks")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
