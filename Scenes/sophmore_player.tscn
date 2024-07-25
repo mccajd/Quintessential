@@ -84,13 +84,17 @@ func move_to_point():
 		# Time to check if the tile we landed on has anything juicy for us
 		var data = tile_map.get_cell_tile_data(tile_map.LAYERS.TRANSITIONS,
 											   target_tile)
+
 		if data:
+			var custom_data = data.get_custom_data(\"Hall\")
 			# Time to blow this popsicle stand
-			change_room.emit(data[\"new_room\"], data[\"player_spawn\"])
+			if custom_data:
+				print(custom_data)
+				#change_room.emit(data[\"new_room\"], data[\"player_spawn\"])
 
 func set_solid_tiles():
 	#for tile_pos in tile_map.get_used_cells_by_id(0, 0,Vector2i(2,0)):
-	for tile_pos in tile_map.get_used_cells(3):
+	for tile_pos in tile_map.get_used_cells(tile_map.LAYERS.OBSTACLES):
 		astar_grid.set_point_solid(tile_pos)
 
 func set_start_pos(pos:Vector2i=Vector2i.ZERO):
