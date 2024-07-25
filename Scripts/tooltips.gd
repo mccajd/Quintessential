@@ -1,8 +1,8 @@
 class_name Tooltips
 extends Node
 
-# NOTE I created a parent Control node for the tool toop, the superparent "Tooltips"
-# May not be necessary, might have to just switch this script and tack it onto "TooltipControlNode"
+# NOTE.Kei I tried to make TooltipControlNode it's own Node and it broke everything
+# "Hey, if it works"
 @onready var parent = get_parent()
 @onready var textureNode = get_node("TooltipControlNode/TextureRect")
 @onready var textNode = get_node("TooltipControlNode/RichTextLabel")
@@ -21,6 +21,9 @@ func _ready():
 func _process(delta):
 	if $TooltipControlNode.visible:
 		$TooltipControlNode.position = _get_mouse_position()
+	
+	if !textNode.text:
+		_hide_tooltip()
 
 func _show_tooltip():
 	$TooltipControlNode.show()
