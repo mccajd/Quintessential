@@ -2,7 +2,7 @@ extends TileMap
 class_name InteractableMapper
 
 enum LAYERS {
-	BACKGROUND, FOREGROUND, INTERACTABLES, OBSTACLES, TRANSITIONS,
+	MISC, BACKGROUND, FOREGROUND, INTERACTABLES, OBSTACLES, TRANSITIONS,
 }
 var interactable_scene = preload("res://Scenes/interactable.tscn")
 var half_tile := self.tile_set.tile_size*0.5

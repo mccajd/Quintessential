@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctv52lrnnhskv"]
-
-[ext_resource type="PackedScene" uid="uid://nrsivx657vil" path="res://Scenes/custom_tile_map.tscn" id="2_8pfq1"]
-[ext_resource type="Script" path="res://Scripts/player_view.gd" id="4_qmcgh"]
-
-[node name="PointClickProto" type="Node"]
-script = ExtResource("4_qmcgh")
-
-[node name="TileMap" parent="." instance=ExtResource("2_8pfq1")]
