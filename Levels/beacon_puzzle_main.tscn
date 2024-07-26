@@ -1,519 +1,40 @@
-[gd_scene load_steps=20 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=7 format=3 uid="uid://b16x2m82ri0xj"]
 
-[ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://Scenes/beacon_node_menu.tscn" id="1_fh8ox"]
-[ext_resource type="Script" path="res://Scripts/beacon_tower.gd" id="2_mlleh"]
-[ext_resource type="PackedScene" uid="uid://geda8gmbwuga" path="res://Scenes/beacon_node_button.tscn" id="2_svd78"]
-[ext_resource type="PackedScene" uid="uid://j1dft6uobs3e" path="res://Scenes/beacon_tower.tscn" id="3_aiidj"]
-[ext_resource type="PackedScene" uid="uid://dt8namvmtn1ty" path="res://Scenes/beacon_node.tscn" id="4_b3dfw"]
-[ext_resource type="PackedScene" uid="uid://k06cwvfdpar" path="res://Scenes/beacon_node_connector.tscn" id="4_oglsy"]
-[ext_resource type="Texture2D" uid="uid://r65av6xkmun3" path="res://assets/beacon/beacon-node-empty.png" id="5_o6nu5"]
-[ext_resource type="Texture2D" uid="uid://sbbi7456qa7m" path="res://assets/beacon/beacon-win-button.png" id="6_10oew"]
-[ext_resource type="Script" path="res://Scripts/beacon_recepticle.gd" id="6_imhgj"]
-[ext_resource type="Texture2D" uid="uid://8nfw6dhdpgp6" path="res://assets/beacon/beacon-win-button-depressed.png" id="7_n5v4e"]
-[ext_resource type="PackedScene" uid="uid://chme11eyldqed" path="res://Scenes/beacon_node_item_slot.tscn" id="7_t800s"]
-[ext_resource type="Script" path="res://Scripts/beacon_node_output_slot.gd" id="8_16phh"]
-[ext_resource type="Script" path="res://Scripts/inventory_items.gd" id="8_gm0n7"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_nu8b2"]
+[ext_resource type="PackedScene" uid="uid://xlfxdxlhlrkm" path="res://Scenes/beacon_puzzle.tscn" id="2_6o530"]
 [ext_resource type="PackedScene" uid="uid://dhy78dbhht3ki" path="res://Levels/point_click_proto.tscn" id="9_eceik"]
 [ext_resource type="Script" path="res://Scripts/bgm.gd" id="13_c8aie"]
 [ext_resource type="PackedScene" uid="uid://bjse5p8p12uhr" path="res://Scenes/tooltips.tscn" id="14_02nus"]
-
-[sub_resource type="GDScript" id="GDScript_tquvq"]
-
-[sub_resource type="GDScript" id="GDScript_vcol3"]
-resource_name = "ShowNodeMenuButton"
-script/source = "extends BeaconButton
-
-var beaconNodeMenu = null
-var playerView = null
-
-func _ready():
-	beaconNodeMenu = get_parent()
-	
-	playerView = Helpers.get_all_children(get_parent().get_parent().get_parent().get_node(\"PlayerView\"), [])
-	
-#func _process(delta):
-	
-
-func _on_clicked(_transformation_type): # note.jmc - probably remove this discarded param later
-	# HACK.jmc - seems the player view as it currently stands eats mouse inputs
-	var currentVisibility = beaconNodeMenu.visible
-	for child in playerView:
-		child.set_process_input(true)
-	beaconNodeMenu.visible = !currentVisibility
-	
-	# HACK.jmc - this is unbelievably fragile lmao
-	get_parent().get_parent().get_parent().get_parent().get_node(\"BeaconTower\")._on_node_selected(null)
-"
 
 [sub_resource type="LabelSettings" id="LabelSettings_tft4m"]
 font_size = 22
 font_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
-[node name="BeaconPuzzleMain" type="Node"]
+[node name="Main" type="Node"]
+script = ExtResource("1_nu8b2")
 
-[node name="BeaconTower" parent="." instance=ExtResource("3_aiidj")]
-position = Vector2(664, 0)
-script = ExtResource("2_mlleh")
-
-[node name="BeaconNode1" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
-z_index = 1
-position = Vector2(103, 484)
-id = 1
-availableNodeIds = Array[int]([2, 3])
-
-[node name="BeaconNode2" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
-z_index = 1
-position = Vector2(-18, 375)
-id = 2
-availableNodeIds = Array[int]([5, 4, 1])
-
-[node name="BeaconNode3" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
-z_index = 1
-position = Vector2(216, 383)
-id = 3
-availableNodeIds = Array[int]([6, 1, 4])
-
-[node name="BeaconNode4" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
-z_index = 1
-position = Vector2(101, 283)
-id = 4
-availableNodeIds = Array[int]([7, 6, 3, 2, 5])
-
-[node name="BeaconNode5" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
-z_index = 1
-position = Vector2(-31, 206)
-id = 5
-availableNodeIds = Array[int]([100, 7, 4, 2])
-
-[node name="BeaconNode6" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
-z_index = 1
-position = Vector2(232, 208)
-id = 6
-availableNodeIds = Array[int]([300, 3, 4, 7])
-
-[node name="BeaconNode7" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
-z_index = 1
-position = Vector2(100, 132)
-id = 7
-availableNodeIds = Array[int]([200, 300, 6, 4, 5, 100])
-
-[node name="Connector1-2" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(41, 463)
-rotation = -0.785398
-connection = Array[int]([1, 2])
-
-[node name="Connector1-3" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(266, 423)
-rotation = 0.785398
-connection = Array[int]([1, 3])
-
-[node name="Connector2-4" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(173, 312)
-rotation = 0.883137
-connection = Array[int]([2, 4])
-
-[node name="Connector2-5" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(8, 271)
-rotation = -0.0977384
-connection = Array[int]([2, 5])
-
-[node name="Connector3-4" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(157, 361)
-rotation = -0.884882
-connection = Array[int]([3, 4])
-
-[node name="Connector3-6" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(285, 255)
-rotation = 0.0977384
-connection = Array[int]([3, 6])
-
-[node name="Connector4-5" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(182, 333)
-rotation = 2.06123
-connection = Array[int]([4, 5])
-
-[node name="Connector4-6" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(194, 355)
-rotation = -2.16072
-connection = Array[int]([4, 6])
-
-[node name="Connector4-7" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(147, 183)
-connection = Array[int]([4, 7])
-
-[node name="Connector5-7" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(153, 169)
-rotation = 0.98262
-connection = Array[int]([5, 7])
-
-[node name="Connector6-7" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(147, 188)
-rotation = -0.980875
-connection = Array[int]([6, 7])
-
-[node name="Connector5-A" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(28, 89)
-rotation = 0.0977384
-connection = Array[int]([5, 100])
-
-[node name="Connector6-C" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(266, 87)
-rotation = -0.0994838
-connection = Array[int]([6, 300])
-
-[node name="Connector7-A" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(24, 101)
-rotation = -0.883137
-connection = Array[int]([7, 100])
-
-[node name="Connector7-B" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(147, 40)
-connection = Array[int]([7, 200])
-
-[node name="Connector7-C" parent="BeaconTower" instance=ExtResource("4_oglsy")]
-position = Vector2(276, 76)
-rotation = 0.883137
-connection = Array[int]([7, 300])
-
-[node name="BeaconRecepticle1" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
-position = Vector2(16, 68)
-scale = Vector2(0.42, 0.42)
-script = ExtResource("6_imhgj")
-id = 100
-expected_input = "salt"
-
-[node name="BeaconRecepticle2" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
-position = Vector2(138, 19)
-scale = Vector2(0.42, 0.42)
-script = ExtResource("6_imhgj")
-id = 200
-expected_input = "fire"
-
-[node name="BeaconRecepticle3" parent="BeaconTower" instance=ExtResource("4_b3dfw")]
-position = Vector2(259, 66)
-scale = Vector2(0.42, 0.42)
-script = ExtResource("6_imhgj")
-id = 300
-expected_input = "silver"
-
-[node name="BeaconSubmitButton" type="TextureButton" parent="BeaconTower"]
-offset_left = 13.0
-offset_top = 651.0
-offset_right = 515.0
-offset_bottom = 744.0
-scale = Vector2(0.62359, 0.72)
-texture_normal = ExtResource("6_10oew")
-texture_pressed = ExtResource("7_n5v4e")
-stretch_mode = 0
-
-[node name="BeaconWinConditionText" type="Label" parent="BeaconTower"]
+[node name="BeaconPuzzle1" parent="." instance=ExtResource("2_6o530")]
 visible = false
-offset_left = 94.0
-offset_top = 726.0
-offset_right = 252.0
-offset_bottom = 749.0
-text = "u lost bitch ahahaha"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="InventoryItems" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 1
-script = ExtResource("8_gm0n7")
-debug_items = Array[String](["fire", "sulfur", "earth", "salt", "quicksilver", "silver"])
-
-[node name="MockUI" type="Node" parent="."]
-
-[node name="InventoryContainer" type="HBoxContainer" parent="MockUI"]
-z_index = 1
-custom_minimum_size = Vector2(472, 64)
-offset_left = 180.0
-offset_top = 580.0
-offset_right = 652.0
-offset_bottom = 644.0
-script = SubResource("GDScript_tquvq")
-
-[node name="InventorySlotsContainer" type="HBoxContainer" parent="MockUI"]
-offset_left = 180.0
-offset_top = 580.0
-offset_right = 652.0
-offset_bottom = 644.0
-mouse_filter = 2
-script = SubResource("GDScript_tquvq")
-
-[node name="Slot1" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.478462, 0.233416, 0.0780104, 1)
-
-[node name="Slot2" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.478462, 0.233416, 0.0780104, 1)
-
-[node name="Slot3" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.478462, 0.233416, 0.0780104, 1)
-
-[node name="Slot4" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.478462, 0.233416, 0.0780104, 1)
-
-[node name="Slot5" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.478462, 0.233416, 0.0780104, 1)
-
-[node name="Slot6" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.478462, 0.233416, 0.0780104, 1)
-
-[node name="Slot7" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.478462, 0.233416, 0.0780104, 1)
-
-[node name="ThreePrimesContainer" type="HBoxContainer" parent="MockUI"]
-offset_left = 223.0
-offset_top = 647.0
-offset_right = 622.0
-offset_bottom = 769.0
-scale = Vector2(0.977618, 0.902249)
-
-[node name="SaltContainer" type="CenterContainer" parent="MockUI/ThreePrimesContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="QuicksilverContainer" type="CenterContainer" parent="MockUI/ThreePrimesContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SulfurContainer" type="CenterContainer" parent="MockUI/ThreePrimesContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ThreePrimesContainerBackdrop" type="HBoxContainer" parent="MockUI"]
-offset_left = 223.0
-offset_top = 647.0
-offset_right = 618.0
-offset_bottom = 769.0
-scale = Vector2(0.977618, 0.902249)
-mouse_filter = 2
-
-[node name="Slot1" type="TextureRect" parent="MockUI/ThreePrimesContainerBackdrop"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("5_o6nu5")
-
-[node name="Slot2" type="TextureRect" parent="MockUI/ThreePrimesContainerBackdrop"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("5_o6nu5")
-
-[node name="Slot3" type="TextureRect" parent="MockUI/ThreePrimesContainerBackdrop"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("5_o6nu5")
-
-[node name="PlayerView" type="SubViewportContainer" parent="MockUI"]
-offset_left = 195.0
-offset_top = 51.0
-offset_right = 749.0
-offset_bottom = 567.0
-scale = Vector2(0.799999, 0.84)
-
-[node name="SubViewport" type="SubViewport" parent="MockUI/PlayerView"]
-handle_input_locally = false
-size = Vector2i(562, 617)
-render_target_update_mode = 4
-
-[node name="PointClickProto" parent="MockUI/PlayerView/SubViewport" instance=ExtResource("9_eceik")]
-
-[node name="BeaconNodeView" type="Node" parent="MockUI"]
-
-[node name="BeaconNodeMenu" parent="MockUI/BeaconNodeView" instance=ExtResource("1_fh8ox")]
+[node name="BeaconPuzzle2" parent="." instance=ExtResource("2_6o530")]
 visible = false
-position = Vector2(184, 16)
 
-[node name="InputContainer" type="HBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
-offset_left = 126.0
-offset_top = 82.0
-offset_right = 301.0
-offset_bottom = 122.0
-scale = Vector2(1.613, 1.613)
-
-[node name="InputSlot1" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
-layout_mode = 2
-
-[node name="InputSlot2" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
-layout_mode = 2
-slot_id = 1
-
-[node name="InputSlot3" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
-layout_mode = 2
-slot_id = 2
-
-[node name="InputSlot4" parent="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer" instance=ExtResource("7_t800s")]
-layout_mode = 2
-slot_id = 3
-
-[node name="OutputContainer" type="HBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
-offset_left = 122.0
-offset_top = 468.0
-offset_right = 297.0
-offset_bottom = 508.0
-scale = Vector2(1.613, 1.613)
-
-[node name="OutputSlot1" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
-layout_mode = 2
-script = ExtResource("8_16phh")
-
-[node name="DestinationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1"]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 38.0
-offset_right = 66.0
-offset_bottom = 61.0
-scale = Vector2(0.397905, 0.603794)
-
-[node name="OutputSlot2" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
-layout_mode = 2
-script = ExtResource("8_16phh")
-slot_id = 1
-
-[node name="DestinationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot2"]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 38.0
-offset_right = 84.0
-offset_bottom = 61.0
-scale = Vector2(0.265203, 0.567695)
-
-[node name="OutputSlot3" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
-layout_mode = 2
-script = ExtResource("8_16phh")
-slot_id = 2
-
-[node name="DestinationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot3"]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 38.0
-offset_right = 84.0
-offset_bottom = 61.0
-scale = Vector2(0.339598, 0.567696)
-
-[node name="OutputSlot4" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("7_t800s")]
-layout_mode = 2
-script = ExtResource("8_16phh")
-slot_id = 3
-
-[node name="DestinationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot4"]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 38.0
-offset_right = 84.0
-offset_bottom = 61.0
-scale = Vector2(0.265203, 0.567695)
-
-[node name="SelectedNodeLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
-offset_left = 130.0
-offset_top = 21.0
-offset_right = 238.0
-offset_bottom = 48.0
-text = "none selected"
-
-[node name="SelectedTransformationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
-offset_left = 224.0
-offset_top = 309.0
-offset_right = 307.0
-offset_bottom = 332.0
-text = "neutral
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SelectedInputLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+[node name="BeaconPuzzle3" parent="." instance=ExtResource("2_6o530")]
 visible = false
-offset_left = 37.0
-offset_top = 71.0
-offset_right = 297.0
-offset_bottom = 172.0
-text = "none"
-autowrap_mode = 2
 
-[node name="SelectedOutputLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+[node name="BeaconPuzzle4" parent="." instance=ExtResource("2_6o530")]
 visible = false
-offset_left = 37.0
-offset_top = 236.0
-offset_right = 297.0
-offset_bottom = 266.0
-text = "none"
-autowrap_mode = 2
 
-[node name="AvailableItemsLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
-offset_left = 14.0
-offset_top = 53.0
-offset_right = 120.0
-offset_bottom = 108.0
+[node name="TowerExteriorView" type="Node" parent="."]
 
-[node name="ShowNodeMenuButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(400, -3)
-scale = Vector2(0.54, 0.54)
-script = SubResource("GDScript_vcol3")
-
-[node name="SolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(104, 214)
-transformation_type = "solution"
-
-[node name="DissolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(112, 317)
-transformation_type = "dissolution"
-
-[node name="AscensionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(209, 188)
-transformation_type = "ascension"
-
-[node name="SublimationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(308, 317)
-transformation_type = "sublimation"
-
-[node name="DistillationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(313, 213)
-transformation_type = "distillation"
-
-[node name="ClearButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("2_svd78")]
-position = Vector2(222, 355)
-scale = Vector2(0.8, 0.8)
-transformation_type = "neutral"
-
-[node name="AvailableItemsContainer" type="VBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
-offset_left = 20.0
-offset_top = 53.0
-offset_right = 82.0
-offset_bottom = 508.0
-alignment = 1
-
-[node name="TowerExteriorView" type="Node" parent="MockUI"]
-
-[node name="ColorRect" type="ColorRect" parent="MockUI/TowerExteriorView"]
+[node name="ColorRect" type="ColorRect" parent="TowerExteriorView"]
 offset_left = 14.0
 offset_top = 48.0
 offset_right = 54.0
 offset_bottom = 88.0
 scale = Vector2(3.91332, 12.962)
 
-[node name="Label2" type="Label" parent="MockUI/TowerExteriorView"]
+[node name="Label2" type="Label" parent="TowerExteriorView"]
 offset_left = 20.0
 offset_top = 247.0
 offset_right = 166.0
@@ -529,33 +50,21 @@ script = ExtResource("13_c8aie")
 
 [node name="Tooltips" parent="." instance=ExtResource("14_02nus")]
 
-[connection signal="connections_updated" from="BeaconTower" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_beacon_tower_connections_updated"]
-[connection signal="node_selected" from="BeaconTower" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_beacon_tower_node_selected"]
-[connection signal="selected" from="BeaconTower/BeaconNode1" to="BeaconTower" method="_on_node_selected"]
-[connection signal="transformed" from="BeaconTower/BeaconNode1" to="BeaconTower" method="_on_transformed"]
-[connection signal="selected" from="BeaconTower/BeaconNode2" to="BeaconTower" method="_on_node_selected"]
-[connection signal="selected" from="BeaconTower/BeaconNode3" to="BeaconTower" method="_on_node_selected"]
-[connection signal="selected" from="BeaconTower/BeaconNode4" to="BeaconTower" method="_on_node_selected"]
-[connection signal="selected" from="BeaconTower/BeaconNode5" to="BeaconTower" method="_on_node_selected"]
-[connection signal="selected" from="BeaconTower/BeaconNode6" to="BeaconTower" method="_on_node_selected"]
-[connection signal="selected" from="BeaconTower/BeaconNode7" to="BeaconTower" method="_on_node_selected"]
-[connection signal="pressed" from="BeaconTower/BeaconSubmitButton" to="BeaconTower" method="_on_beacon_submit_button_pressed"]
-[connection signal="item_cleared" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_cleared"]
-[connection signal="item_dropped" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_dropped"]
-[connection signal="item_cleared" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot2" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_cleared"]
-[connection signal="item_dropped" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot2" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_dropped"]
-[connection signal="item_cleared" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot3" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_cleared"]
-[connection signal="item_dropped" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot3" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_dropped"]
-[connection signal="item_cleared" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot4" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_cleared"]
-[connection signal="item_dropped" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot4" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_dropped"]
-[connection signal="destination_updated" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_output_slot_destination_updated"]
-[connection signal="destination_updated" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot2" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_output_slot_destination_updated"]
-[connection signal="destination_updated" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot3" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_output_slot_destination_updated"]
-[connection signal="destination_updated" from="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot4" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_output_slot_destination_updated"]
-[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/ShowNodeMenuButton" to="MockUI/BeaconNodeView/BeaconNodeMenu/ShowNodeMenuButton" method="_on_clicked"]
-[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/SolutionButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
-[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/DissolutionButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
-[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/AscensionButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
-[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/SublimationButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
-[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/DistillationButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
-[connection signal="clicked" from="MockUI/BeaconNodeView/BeaconNodeMenu/ClearButton" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_transformation_type_selected"]
+[node name="PlayerView" type="SubViewportContainer" parent="."]
+offset_left = 195.0
+offset_top = 51.0
+offset_right = 757.0
+offset_bottom = 668.0
+scale = Vector2(0.799999, 0.84)
+
+[node name="SubViewport" type="SubViewport" parent="PlayerView"]
+handle_input_locally = false
+size = Vector2i(562, 617)
+render_target_update_mode = 4
+
+[node name="PointClickProto" parent="PlayerView/SubViewport" instance=ExtResource("9_eceik")]
+
+[connection signal="menu_toggled" from="BeaconPuzzle1" to="." method="_on_beacon_menu_toggled"]
+[connection signal="menu_toggled" from="BeaconPuzzle2" to="." method="_on_beacon_menu_toggled"]
+[connection signal="menu_toggled" from="BeaconPuzzle3" to="." method="_on_beacon_menu_toggled"]
+[connection signal="menu_toggled" from="BeaconPuzzle4" to="." method="_on_beacon_menu_toggled"]
