@@ -65,37 +65,37 @@ availableNodeIds = Array[int]([2, 3])
 z_index = 1
 position = Vector2(-18, 375)
 id = 2
-availableNodeIds = Array[int]([1, 4, 5])
+availableNodeIds = Array[int]([5, 4, 1])
 
 [node name="BeaconNode3" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(216, 383)
 id = 3
-availableNodeIds = Array[int]([1, 4, 6])
+availableNodeIds = Array[int]([6, 1, 4])
 
 [node name="BeaconNode4" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(101, 283)
 id = 4
-availableNodeIds = Array[int]([2, 3, 5, 6, 7])
+availableNodeIds = Array[int]([7, 6, 3, 2, 5])
 
 [node name="BeaconNode5" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(-31, 206)
 id = 5
-availableNodeIds = Array[int]([2, 4, 7, 100])
+availableNodeIds = Array[int]([100, 7, 4, 2])
 
 [node name="BeaconNode6" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(232, 208)
 id = 6
-availableNodeIds = Array[int]([3, 4, 7, 300])
+availableNodeIds = Array[int]([300, 3, 4, 7])
 
 [node name="BeaconNode7" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(100, 132)
 id = 7
-availableNodeIds = Array[int]([4, 5, 6, 100, 200, 300])
+availableNodeIds = Array[int]([200, 300, 6, 4, 5, 100])
 
 [node name="Connector1-2" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(41, 463)
