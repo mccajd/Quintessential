@@ -11,7 +11,7 @@ var inventory_items: Array
 
 func _ready():
 	if debug_items:
-		inventory_items = [ItemInSlot.new("fire", null), ItemInSlot.new("water", null), ItemInSlot.new("earth", null), ItemInSlot.new("salt", null), ItemInSlot.new("silver", null)]
+		inventory_items = [ItemInSlot.new("fire", null), ItemInSlot.new("sulfur", null), ItemInSlot.new("earth", null), ItemInSlot.new("salt", null), ItemInSlot.new("quicksilver", null),  ItemInSlot.new("silver", null)]
 	_set_available_items()
 
 

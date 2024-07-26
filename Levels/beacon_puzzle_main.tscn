@@ -223,13 +223,6 @@ mouse_filter = 1
 script = ExtResource("8_gm0n7")
 debug_items = true
 
-[node name="InventoryItems2" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 1
-script = ExtResource("8_gm0n7")
-debug_items = true
-
 [node name="MockUI" type="Node" parent="."]
 
 [node name="InventoryContainer" type="HBoxContainer" parent="MockUI"]

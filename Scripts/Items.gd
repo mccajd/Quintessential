@@ -3,9 +3,9 @@ class_name Items
 const itemDB = {
 	'gold' : { 'name' : 'Gold', 'description': 'An item.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/gold.png', 'id' : 0 },
 	'silver' : { 'name' : 'Silver', 'description': 'An item.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
-	'salt' : { 'name' : 'Salt', 'description': 'An item.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/unknown.png', 'id' : 2 },
-	'sulfur' : { 'name' : 'Sulfur', 'description': 'An item.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/unknown.png', 'id' : 3 },
-	'quicksilver' : { 'name' : 'Quicksilver', 'description': 'An item.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'salt' : { 'name' : 'Salt', 'description': 'An item.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/salt.png', 'id' : 2 },
+	'sulfur' : { 'name' : 'Sulfur', 'description': 'An item.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/sulfur.png', 'id' : 3 },
+	'quicksilver' : { 'name' : 'Quicksilver', 'description': 'An item.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/quicksilver.png', 'id' : 4 },
 	'water' : { 'name' : 'Water', 'description': 'An item.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/water.png', 'id' : 5 },
 	'fire' : { 'name' : 'Fire', 'description': 'An item.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/fire.png', 'id' : 6 },
 	'air' : { 'name' : 'Air', 'description': 'An item.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/air.png', 'id' : 7 },
