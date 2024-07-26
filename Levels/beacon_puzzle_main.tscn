@@ -221,7 +221,7 @@ layout_mode = 3
 anchors_preset = 0
 mouse_filter = 1
 script = ExtResource("8_gm0n7")
-debug_items = true
+debug_items = Array[String](["fire", "sulfur", "earth", "salt", "quicksilver", "silver"])
 
 [node name="MockUI" type="Node" parent="."]
 

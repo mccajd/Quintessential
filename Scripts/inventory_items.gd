@@ -2,8 +2,7 @@ extends Control
 
 class_name InventoryItems
 
-@export var debug_items = false
-
+@export var debug_items: Array[String]
 
 # needs to contain the item, a slot_id reference, and a node_id reference
 var inventory_items: Array
@@ -11,12 +10,17 @@ var inventory_items: Array
 
 func _ready():
 	if debug_items:
-		inventory_items = [ItemInSlot.new("fire", null), ItemInSlot.new("sulfur", null), ItemInSlot.new("earth", null), ItemInSlot.new("salt", null), ItemInSlot.new("quicksilver", null),  ItemInSlot.new("silver", null)]
+		for item_key in debug_items:
+			set_item(item_key)
 	_set_available_items()
 
 
 func _process(delta):
 	pass
+
+
+func set_item(item_key):
+	inventory_items += [ItemInSlot.new(item_key, null)]
 
 
 func set_item_slot(item_index, slot_id, node_id):
