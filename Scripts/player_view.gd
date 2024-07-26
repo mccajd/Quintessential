@@ -1,14 +1,14 @@
 extends Node
 
 @onready var tile_map = $TileMap
-var player = preload("res://Scenes/sophmore_player.tscn")
+var player = preload("res://Scenes/wanderer.tscn")
 
 func _ready():
 	
 	var new_player = player.instantiate()
 	new_player.change_room.connect(changing_room)
 	add_child(new_player)
-	new_player.set_start_pos(tile_map.get_used_cells_by_id(tile_map.LAYERS.MISC,3,Vector2i(3,0))[0])
+	new_player.global_position = tile_map.map_to_local(tile_map.get_used_cells_by_id(tile_map.LAYERS.MISC,3,Vector2i(3,0))[0])
 
 func _process(delta):
 	pass

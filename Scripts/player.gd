@@ -15,3 +15,6 @@ var path        : PackedVector2Array
 
 func _ready():
 	pass
+
+func set_start_pos(pos:Vector2i=Vector2i.ZERO):
+	global_position = tile_map.map_to_local(pos)

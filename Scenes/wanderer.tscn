@@ -15,7 +15,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_panu3"]
-size = Vector2(64, 128)
+size = Vector2(64, 64)
 
 [node name="Wanderer" type="CharacterBody2D"]
 script = ExtResource("1_u8hjw")
@@ -25,4 +25,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_7lci7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 32)
 shape = SubResource("RectangleShape2D_panu3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
