@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://y3sjqg41jnlr"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_u8hjw"]
+[ext_resource type="Texture2D" uid="uid://bdx2diagow0r8" path="res://assets/wanderer_flat.png" id="2_4f2am"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7lci7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4f2am")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_panu3"]
+size = Vector2(64, 128)
+
+[node name="Wanderer" type="CharacterBody2D"]
+script = ExtResource("1_u8hjw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_7lci7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_panu3")
