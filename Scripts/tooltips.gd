@@ -32,6 +32,7 @@ func _process(_delta):
 		_hide_tooltip()
 
 func _show_tooltip():
+	if Input.is_action_pressed("select"): return
 	position = _get_mouse_position()
 	z_index = 10
 	show()

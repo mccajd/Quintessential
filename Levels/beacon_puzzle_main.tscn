@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=20 format=3 uid="uid://b16x2m82ri0xj"]
 
 [ext_resource type="PackedScene" uid="uid://bwxw7y4e4hphw" path="res://Scenes/beacon_node_menu.tscn" id="1_fh8ox"]
 [ext_resource type="Script" path="res://Scripts/beacon_tower.gd" id="2_mlleh"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://8nfw6dhdpgp6" path="res://assets/beacon/beacon-win-button-depressed.png" id="7_n5v4e"]
 [ext_resource type="PackedScene" uid="uid://chme11eyldqed" path="res://Scenes/beacon_node_item_slot.tscn" id="7_t800s"]
 [ext_resource type="Script" path="res://Scripts/beacon_node_output_slot.gd" id="8_16phh"]
+[ext_resource type="Script" path="res://Scripts/inventory_items.gd" id="8_gm0n7"]
 [ext_resource type="PackedScene" uid="uid://dhy78dbhht3ki" path="res://Levels/point_click_proto.tscn" id="9_eceik"]
 [ext_resource type="Script" path="res://Scripts/bgm.gd" id="13_c8aie"]
 [ext_resource type="PackedScene" uid="uid://bjse5p8p12uhr" path="res://Scenes/tooltips.tscn" id="14_02nus"]
@@ -57,7 +58,6 @@ script = ExtResource("2_mlleh")
 [node name="BeaconNode1" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(103, 484)
-debug_items = true
 id = 1
 availableNodeIds = Array[int]([2, 3])
 
@@ -65,37 +65,37 @@ availableNodeIds = Array[int]([2, 3])
 z_index = 1
 position = Vector2(-18, 375)
 id = 2
-availableNodeIds = Array[int]([1, 4, 5])
+availableNodeIds = Array[int]([5, 4, 1])
 
 [node name="BeaconNode3" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(216, 383)
 id = 3
-availableNodeIds = Array[int]([1, 4, 6])
+availableNodeIds = Array[int]([6, 1, 4])
 
 [node name="BeaconNode4" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(101, 283)
 id = 4
-availableNodeIds = Array[int]([2, 3, 5, 6, 7])
+availableNodeIds = Array[int]([7, 6, 3, 2, 5])
 
 [node name="BeaconNode5" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(-31, 206)
 id = 5
-availableNodeIds = Array[int]([2, 4, 7, 100])
+availableNodeIds = Array[int]([100, 7, 4, 2])
 
 [node name="BeaconNode6" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(232, 208)
 id = 6
-availableNodeIds = Array[int]([3, 4, 7, 300])
+availableNodeIds = Array[int]([300, 3, 4, 7])
 
 [node name="BeaconNode7" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("4_b3dfw")]
 z_index = 1
 position = Vector2(100, 132)
 id = 7
-availableNodeIds = Array[int]([4, 5, 6, 100, 200, 300])
+availableNodeIds = Array[int]([200, 300, 6, 4, 5, 100])
 
 [node name="Connector1-2" parent="BeaconTower" instance=ExtResource("4_oglsy")]
 position = Vector2(41, 463)
@@ -216,67 +216,114 @@ text = "u lost bitch ahahaha"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="InventoryItems" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("8_gm0n7")
+debug_items = Array[String](["fire", "sulfur", "earth", "salt", "quicksilver", "silver"])
+
 [node name="MockUI" type="Node" parent="."]
 
 [node name="InventoryContainer" type="HBoxContainer" parent="MockUI"]
+z_index = 1
+custom_minimum_size = Vector2(472, 64)
 offset_left = 180.0
 offset_top = 580.0
 offset_right = 652.0
 offset_bottom = 644.0
 script = SubResource("GDScript_tquvq")
 
-[node name="Slot1" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="InventorySlotsContainer" type="HBoxContainer" parent="MockUI"]
+offset_left = 180.0
+offset_top = 580.0
+offset_right = 652.0
+offset_bottom = 644.0
+mouse_filter = 2
+script = SubResource("GDScript_tquvq")
+
+[node name="Slot1" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot2" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot2" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot3" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot3" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot4" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot4" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot5" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot5" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot6" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot6" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
-[node name="Slot7" type="ColorRect" parent="MockUI/InventoryContainer"]
+[node name="Slot7" type="ColorRect" parent="MockUI/InventorySlotsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.478462, 0.233416, 0.0780104, 1)
 
 [node name="ThreePrimesContainer" type="HBoxContainer" parent="MockUI"]
 offset_left = 223.0
 offset_top = 647.0
-offset_right = 618.0
+offset_right = 622.0
 offset_bottom = 769.0
 scale = Vector2(0.977618, 0.902249)
 
-[node name="TextureRect" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+[node name="SaltContainer" type="CenterContainer" parent="MockUI/ThreePrimesContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuicksilverContainer" type="CenterContainer" parent="MockUI/ThreePrimesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SulfurContainer" type="CenterContainer" parent="MockUI/ThreePrimesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ThreePrimesContainerBackdrop" type="HBoxContainer" parent="MockUI"]
+offset_left = 223.0
+offset_top = 647.0
+offset_right = 618.0
+offset_bottom = 769.0
+scale = Vector2(0.977618, 0.902249)
+mouse_filter = 2
+
+[node name="Slot1" type="TextureRect" parent="MockUI/ThreePrimesContainerBackdrop"]
+layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("5_o6nu5")
 
-[node name="TextureRect2" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+[node name="Slot2" type="TextureRect" parent="MockUI/ThreePrimesContainerBackdrop"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("5_o6nu5")
 
-[node name="TextureRect3" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+[node name="Slot3" type="TextureRect" parent="MockUI/ThreePrimesContainerBackdrop"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("5_o6nu5")
 
 [node name="PlayerView" type="SubViewportContainer" parent="MockUI"]

@@ -5,11 +5,14 @@ var playerView = null
 var selected_node: BeaconNode
 var existing_connections
 
+var inventory_node: InventoryItems
+
 # may be a more programatic way to handle this.
 const input_slot_names = ["InputSlot1", "InputSlot2", "InputSlot3", "InputSlot4"]
 const output_slot_names = ["OutputSlot1", "OutputSlot2", "OutputSlot3", "OutputSlot4"]
 
 func _ready():
+	inventory_node = get_node("/root/BeaconPuzzleMain/InventoryItems")
 	visible = false
 	input_pickable = false
 	playerView = Helpers.get_all_children(get_parent().get_parent().get_node("PlayerView"), [])
@@ -105,9 +108,13 @@ func _set_available_items():
 		box.add_child(new_item)
 
 
-func _on_item_dropped(slot_id, item_index):
-	selected_node.set_input_item(slot_id, item_index)
-	_set_available_items()
+func _on_item_dropped(slot_id, item_index, from_inventory):
+	if from_inventory:
+		selected_node.set_inventory_item(slot_id, inventory_node.inventory_items[item_index])
+		inventory_node.set_item_slot(item_index, slot_id, selected_node.id)
+	else:
+		selected_node.set_input_item(slot_id, item_index)
+		_set_available_items()
 
 
 func _on_beacon_tower_connections_updated(connections):
@@ -116,4 +123,5 @@ func _on_beacon_tower_connections_updated(connections):
 
 func _on_item_cleared(slot_id):
 	selected_node.clear_input_slot(slot_id)
+	inventory_node.clear_item_slot(slot_id, selected_node.id)
 	_set_available_items()
