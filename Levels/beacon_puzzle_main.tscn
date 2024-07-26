@@ -287,20 +287,43 @@ color = Color(0.478462, 0.233416, 0.0780104, 1)
 [node name="ThreePrimesContainer" type="HBoxContainer" parent="MockUI"]
 offset_left = 223.0
 offset_top = 647.0
-offset_right = 618.0
+offset_right = 622.0
 offset_bottom = 769.0
 scale = Vector2(0.977618, 0.902249)
 
-[node name="SaltContainer" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+[node name="SaltContainer" type="CenterContainer" parent="MockUI/ThreePrimesContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuicksilverContainer" type="CenterContainer" parent="MockUI/ThreePrimesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SulfurContainer" type="CenterContainer" parent="MockUI/ThreePrimesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ThreePrimesContainerBackdrop" type="HBoxContainer" parent="MockUI"]
+offset_left = 223.0
+offset_top = 647.0
+offset_right = 618.0
+offset_bottom = 769.0
+scale = Vector2(0.977618, 0.902249)
+mouse_filter = 2
+
+[node name="Slot1" type="TextureRect" parent="MockUI/ThreePrimesContainerBackdrop"]
+layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("5_o6nu5")
 
-[node name="QuicksilverContainer" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+[node name="Slot2" type="TextureRect" parent="MockUI/ThreePrimesContainerBackdrop"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("5_o6nu5")
 
-[node name="SulfurContainer" type="TextureRect" parent="MockUI/ThreePrimesContainer"]
+[node name="Slot3" type="TextureRect" parent="MockUI/ThreePrimesContainerBackdrop"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("5_o6nu5")
 
 [node name="PlayerView" type="SubViewportContainer" parent="MockUI"]
