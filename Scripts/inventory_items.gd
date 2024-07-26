@@ -19,7 +19,7 @@ func _process(delta):
 	pass
 
 
-func set_item(item_index, slot_id, node_id):
+func set_item_slot(item_index, slot_id, node_id):
 	var item = inventory_items[item_index]
 	item.slot_id = slot_id
 	item.node_id = node_id
@@ -27,7 +27,7 @@ func set_item(item_index, slot_id, node_id):
 	_set_available_items()
 
 
-func clear_item(slot_id, node_id):
+func clear_item_slot(slot_id, node_id):
 	for item in inventory_items:
 		if item.slot_id == slot_id && item.node_id == node_id:
 			item.slot_id = null
