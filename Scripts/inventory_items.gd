@@ -17,12 +17,20 @@ func _process(delta):
 	pass
 
 
+func set_item(item_index, slot_id, node_id):
+	var item = inventory_items[item_index]
+	item.slot_id = slot_id
+	item.node_id = node_id
+	
+	_set_available_items()
+
+
 func _set_available_items():
-	var box: HBoxContainer = get_parent().get_node("InventoryContainer")
+	var box: HBoxContainer = get_parent().get_node("MockUI/InventoryContainer")
 	
 	# clear existing
-	#for child in box.get_children():
-		#child.queue_free()
+	for child in box.get_children():
+		child.queue_free()
 	
 	for i in inventory_items.size():
 		var item = inventory_items[i]

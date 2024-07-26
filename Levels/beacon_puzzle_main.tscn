@@ -217,13 +217,13 @@ text = "u lost bitch ahahaha"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MockUI" type="Node" parent="."]
-
-[node name="InventoryItems" type="Control" parent="MockUI"]
+[node name="InventoryItems" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 1
 script = ExtResource("8_gm0n7")
+
+[node name="MockUI" type="Node" parent="."]
 
 [node name="InventoryContainer" type="HBoxContainer" parent="MockUI"]
 z_index = 1

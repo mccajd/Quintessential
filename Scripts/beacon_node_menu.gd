@@ -105,9 +105,14 @@ func _set_available_items():
 		box.add_child(new_item)
 
 
-func _on_item_dropped(slot_id, item_index):
-	selected_node.set_input_item(slot_id, item_index)
-	_set_available_items()
+func _on_item_dropped(slot_id, item_index, from_inventory):
+	if from_inventory:
+		var inventory_node = get_node("/root/BeaconPuzzleMain/InventoryItems")
+		selected_node.set_inventory_item(slot_id, inventory_node.inventory_items[item_index])
+		inventory_node.set_item(item_index, slot_id, selected_node.id)
+	else:
+		selected_node.set_input_item(slot_id, item_index)
+		_set_available_items()	
 
 
 func _on_beacon_tower_connections_updated(connections):

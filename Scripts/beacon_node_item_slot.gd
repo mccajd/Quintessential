@@ -48,5 +48,5 @@ func _can_drop_data(_position, _data):
 
 func _drop_data(position, data):
 	# TODO.jmc - determine if dropped from inventory or nodes
-	item_dropped.emit(slot_id, data.item_position)
+	item_dropped.emit(slot_id, data.item_position, data.from_inventory)
 

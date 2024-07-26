@@ -22,6 +22,7 @@ var inputs
 var outputs
 @export var selected_transformation: String = "neutral"
 var available_items
+var inventory_items
 
 var products: Array[OutputItem]
 var output_dictionary: Dictionary
@@ -80,6 +81,11 @@ func set_input_item(slot_id, item_index):
 	if (is_input_slot_empty(slot_id)):
 		inputs_from_nodes[slot_id] = available_items[item_index]
 		available_items[item_index].slot_id = slot_id
+
+
+func set_inventory_item(slot_id, item):
+	if (is_input_slot_empty(slot_id)):
+		inputs_from_inventory[slot_id] = item
 
 
 func get_active_connections():
