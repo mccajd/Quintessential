@@ -31,14 +31,14 @@ func _ready():
 	astar_grid.cell_size = tile_size
 	astar_grid.offset = Vector2i.ZERO
 
-	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_AT_LEAST_ONE_WALKABLE
 	astar_grid.update()
 	
 	set_solid_tiles()
 
 func _physics_process(delta):
 	if !path.is_empty():
-		velocity = speed*direction_to_point(position-Vector2(32,32), path[0])
+		velocity = speed*direction_to_point(position-Vector2(8,8), path[0])
 	else:
 		velocity = Vector2.ZERO
 		
@@ -60,7 +60,7 @@ func direction_to_point(src:Vector2i, dest:Vector2i)->Vector2:
 func _input(event):
 	if event.is_action_pressed("select"):
 		target_tile = get_global_mouse_position()
-		start_tile  = position-Vector2(32,32)
+		start_tile  = position-Vector2(8,8)
 
 		path = pathfinder(start_tile, target_tile)
 
