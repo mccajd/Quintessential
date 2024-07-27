@@ -44,4 +44,3 @@ shape = SubResource("RectangleShape2D_panu3")
 debug_color = Color(0.990805, 0.0913518, 0, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
