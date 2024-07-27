@@ -1,7 +1,24 @@
 class_name BeaconPuzzle
 extends Control
 
+@export var required_prime: String
+@export var required_element: String
+@export var required_metal: String
+
 signal menu_toggled(opened: bool)
+
+
+func _ready():
+	if required_prime:
+		get_node("BeaconTower/BeaconRecepticle1").expected_input = required_prime
+	if required_element:
+		get_node("BeaconTower/BeaconRecepticle2").expected_input = required_element
+	if required_metal:
+		get_node("BeaconTower/BeaconRecepticle3").expected_input = required_metal
+	
+	if required_element == "earth":
+		var node: InventoryItems = get_node("InventoryItems")
+		node.set_items(["quicksilver", "salt", "sulfur", "cloud_bud", "cloud_bud", "cloud_tree", "crystal_fountain"])
 
 
 func _on_menu_toggled(opened: bool):

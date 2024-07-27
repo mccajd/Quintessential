@@ -52,9 +52,19 @@ func _get_mouse_position():
 	# Grab the mouse position
 	var newPosition = get_viewport().get_mouse_position()
 	
-	# Setting the offest compared to the mouse
-	newPosition.x += 10
-	newPosition.y += 18
+	# Detect if the mouse is in either the right third or bottom third of the screen
+	var is_below_third = get_viewport_rect().size.y / 3 * 2 > newPosition.y
+	var is_right_third = get_viewport_rect().size.x / 3 * 2 > newPosition.x
+	
+	# Setting the offest compared to the mouse and screen position
+	if is_right_third:
+		newPosition.x += 10
+	else:
+		newPosition.x -= $TextureRect.size.x
+	if is_below_third:
+		newPosition.y += 18
+	else:
+		newPosition.y -= $TextureRect.size.y
 	
 	return newPosition
 

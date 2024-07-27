@@ -43,6 +43,9 @@ func _on_beacon_tower_node_selected(node: BeaconNode):
 	_set_output_slots()
 	_set_visibility(true)
 	_set_available_items()
+	
+	if !selected_node.slots_cleared.is_connected(_on_all_items_cleared):
+		selected_node.slots_cleared.connect(_on_all_items_cleared)
 
 
 func _set_visibility(value: bool):
@@ -124,3 +127,8 @@ func _on_item_cleared(slot_id):
 	selected_node.clear_input_slot(slot_id)
 	inventory_node.clear_item_slot(slot_id, selected_node.id)
 	_set_available_items()
+
+
+func _on_all_items_cleared(node_id):
+	for i in selected_node.input_array_size:
+		inventory_node.clear_item_slot(i, node_id)

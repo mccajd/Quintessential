@@ -1,7 +1,7 @@
 extends AudioStreamPlayer
 
 @export var track_name: String
-var flip = true
+var flip = false
 
 var tracks = {
 	"title": BgmTrack.new(

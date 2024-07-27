@@ -3,7 +3,7 @@ extends Area2D
 var node_outputs: Dictionary
 var selected_node: BeaconNode
 
-const node_names = ["BeaconNode1", "BeaconNode2", "BeaconNode3", "BeaconNode4", "BeaconNode5", "BeaconNode6", "BeaconNode7"]
+const node_names = ["BeaconNode1", "BeaconNode2", "BeaconNode3", "BeaconNode4", "BeaconNode5", "BeaconNode6", "BeaconNode7", "BeaconNode8", "BeaconNode9", "BeaconNode10"]
 const recepticle_names = ["BeaconRecepticle1", "BeaconRecepticle2", "BeaconRecepticle3"]
 
 signal node_selected

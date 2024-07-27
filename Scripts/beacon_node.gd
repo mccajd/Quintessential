@@ -32,6 +32,7 @@ var transformer: ItemTransformer
 
 signal selected
 signal transformed
+signal slots_cleared
 
 func _ready():
 	input_pickable = true
@@ -42,6 +43,7 @@ func _process(_delta):
 	_handle_button_logic()
 	_set_inputs()
 	
+	# purge all "null" values
 	var real_inputs = []
 	for input in inputs:
 		if input == null: continue
@@ -72,9 +74,19 @@ func set_available_items(items):
 	
 	if (available_items != null && Helpers.compare_arrays(available_items.map(func(x): return x.item_key), items)): return
 	
-	_reset_input_slots()
-	# TODO.jmc - don't wipe out slot mappings for existing items if they aren't removed
-	available_items = items.map(func(x): return ItemInSlot.new(x, null))
+	var preserved_available = []
+	if available_items:
+		for item in available_items:
+			if items.has(item.item_key):
+				preserved_available += [item]
+				items.erase(item.item_key)
+	available_items = preserved_available
+	available_items += items.map(func(x): return ItemInSlot.new(x, null))
+	
+	# selectively clear input slots if available items have been purged
+	for i in inputs_from_nodes.size():
+		if available_items.map(func(i): return i.slot_id).find(i) == -1:
+			inputs_from_nodes[i] = null
 
 
 func set_input_item(slot_id, item_index):
@@ -153,7 +165,7 @@ func _set_products():
 	if outputs != null:
 		for item in outputs:
 			var output_item = OutputItem.new(item)
-			products.push_front(output_item)
+			products.push_back(output_item)
 	transformed.emit(id, products)
 
 
@@ -166,6 +178,7 @@ func _set_inputs():
 	inputs = rtn
 
 func _reset_input_slots():
+	slots_cleared.emit(id)
 	inputs_from_inventory = [null, null, null, null]
 	inputs_from_nodes = [null, null, null, null]
 
