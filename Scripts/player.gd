@@ -5,10 +5,11 @@ signal change_room(String, Vector2i)
 
 const speed = 2
 
-var astar_grid  : AStarGrid2D
 @onready var tile_map : TileMap  = get_parent().find_child("TileMap")
-var tile_size   : Vector2i = Vector2i.ZERO
-var start_tile  : Vector2i = Vector2i.ZERO:
+@onready var tile_size : Vector2i = tile_map.tile_set.tile_size
+
+var astar_grid : AStarGrid2D
+var start_tile : Vector2i = Vector2i.ZERO:
 	get:
 		return start_tile
 	set(vector):
@@ -20,10 +21,11 @@ var target_tile : Vector2i = Vector2i.ZERO:
 	set(vector):
 		target_tile = tile_map.local_to_map(vector)
 
-var path        : PackedVector2Array 
+var path : PackedVector2Array 
 
 func _ready():
 	#configure A*
+
 	astar_grid = AStarGrid2D.new()
 	astar_grid.region = tile_map.get_used_rect()
 	astar_grid.cell_size = tile_size
@@ -35,24 +37,47 @@ func _ready():
 	set_solid_tiles()
 
 func _physics_process(delta):
+	
 	move_and_collide(velocity)
+
+func direction_to_point():
+	if !path.is_empty():
+		pass
 
 func _input(event):
 	if event.is_action_pressed("select"):
 		target_tile = get_global_mouse_position()
 		start_tile  = position-Vector2(32,32)
+		print(target_tile)
+		print(start_tile)
 
 		path = pathfinder(start_tile, target_tile)
-		print(path)
 
 func pathfinder(start:Vector2i, end:Vector2i)->PackedVector2Array:
+	var base_path = Vector2i.ZERO
+
+	if astar_grid.is_point_solid(target_tile):
+		end = find_valid_dest(end)
+
 	return astar_grid.get_point_path(start, end)
 
-func direction_to_point():
-	pass
-
 func find_valid_dest(cur_dest:Vector2i)->Vector2i:
-	return cur_dest
+	if !astar_grid.is_point_solid(target_tile):
+		return cur_dest
+	
+	var neighbor = cur_dest
+
+	# TODO.hmw a more robust algorithm for finding the optimal destination when given a solid
+	# point should be devised, but this is Good 'nuff:TM: for now
+	for cell in range(tile_map.tile_set.CELL_NEIGHBOR_RIGHT_SIDE,
+						tile_map.tile_set.CELL_NEIGHBOR_TOP_RIGHT_CORNER+1):
+		neighbor = tile_map.get_neighbor_cell(cur_dest, cell)
+		
+		if astar_grid.is_point_solid(neighbor):
+			continue
+	
+	return neighbor
 
 func set_solid_tiles():
-	pass
+	for tile_pos in tile_map.get_used_cells(tile_map.LAYERS.OBSTACLES):
+		astar_grid.set_point_solid(tile_pos)
