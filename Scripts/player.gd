@@ -37,19 +37,24 @@ func _ready():
 	set_solid_tiles()
 
 func _physics_process(delta):
-	
+	if !path.is_empty():
+		velocity = speed*direction_to_point(position-Vector2(32,32), path[0])
+	else:
+		velocity = Vector2.ZERO
 	move_and_collide(velocity)
 
-func direction_to_point():
-	if !path.is_empty():
-		pass
+func direction_to_point(src:Vector2i, dest:Vector2i)->Vector2:
+	if dest != src:
+		#direction vector of A->B = (B.X-A.X)(B.Y-A.Y)
+		return sign(dest-src)
+	
+	path.remove_at(0)
+	return Vector2.ZERO
 
 func _input(event):
 	if event.is_action_pressed("select"):
 		target_tile = get_global_mouse_position()
 		start_tile  = position-Vector2(32,32)
-		print(target_tile)
-		print(start_tile)
 
 		path = pathfinder(start_tile, target_tile)
 
