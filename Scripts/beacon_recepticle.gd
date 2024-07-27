@@ -5,6 +5,13 @@ var available_items: Array
 
 @export var expected_input: String
 
+signal item_hovered
+
+
+func _ready():
+	self.mouse_entered.connect(_on_mouse_entered)
+
+
 func complete():
 	return available_items.find(expected_input) > -1
 
@@ -18,3 +25,7 @@ func _process(_delta):
 		$SelectionSprite2D.visible = true
 	else:
 		$SelectionSprite2D.visible = false
+
+
+func _on_mouse_entered():
+	item_hovered.emit(expected_input)

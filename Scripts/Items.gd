@@ -1,11 +1,11 @@
 class_name Items
 
 const itemDB = {
-	'gold' : { 'name' : 'Gold', 'description': 'Pure gold, the highest tier of metal. Once coveted, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/gold.png', 'id' : 0 },
-	'silver' : { 'name' : 'Silver', 'description': 'Pure silver, the second tier of metal. Once revered, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
-	'salt' : { 'name' : 'Salt', 'description': 'One of the three primes. Used as a balancing agent for volatile processes, such as that of sublimation.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/salt.png', 'id' : 2 },
-	'sulfur' : { 'name' : 'Sulfur', 'description': 'One of the three primes. Used as a combusting agent in the separation process of distillation when time is not enough.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/sulfur.png', 'id' : 3 },
-	'quicksilver' : { 'name' : 'Quicksilver', 'description': 'One of the three primes. Used as a catalyzing agent for the ascension of lesser elements.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/quicksilver.png', 'id' : 4 },
+	'gold' : { 'name' : 'Gold', 'description': 'Pure gold, the highest tier of metal.\nOnce coveted, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/gold.png', 'id' : 0 },
+	'silver' : { 'name' : 'Silver', 'description': 'Pure silver, the second tier of metal.\nOnce revered, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
+	'salt' : { 'name' : 'Salt', 'description': 'One of the three primes.\nUsed as a balancing agent for volatile processes, such as that of sublimation.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/salt.png', 'id' : 2 },
+	'sulfur' : { 'name' : 'Sulfur', 'description': 'One of the three primes.\nUsed as a combusting agent in the separation process of distillation when time is not enough.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/sulfur.png', 'id' : 3 },
+	'quicksilver' : { 'name' : 'Quicksilver', 'description': 'One of the three primes.\nUsed as a catalyzing agent for the ascension of lesser elements.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/quicksilver.png', 'id' : 4 },
 	'water' : { 'name' : 'Water', 'description': 'An item.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/water.png', 'id' : 5 },
 	'fire' : { 'name' : 'Fire', 'description': 'An item.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/fire.png', 'id' : 6 },
 	'air' : { 'name' : 'Air', 'description': 'An item.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/air.png', 'id' : 7 },
@@ -20,16 +20,16 @@ const itemDB = {
 	'cloud_tree' : { 'name' : 'Cloud Tree', 'description': 'A tree sprouted from the surface of a cloud.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
 	'fruit' : { 'name' : 'Fruit', 'description': 'Fruit from a flowering tree.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
 	'wood' : { 'name' : 'Wood', 'description': 'A wooden slat.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'crystal_fountain' : { 'name' : 'Crystal Fountain', 'description': 'A brilliant crystal fountain. Its water shines with an otherworldly hue.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'crystal' : { 'name' : 'Crystal', 'description': 'A flawed crystal. Perhaps an alchemical art can make it whole.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'pure_crystal' : { 'name' : 'Pure Crystal', 'description': 'A flawless crystal. It is said that all metals may crystallize with time.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'coinage' : { 'name' : 'Coinage', 'description': 'Coinage from a long-dead civilization. In this realm, currency has no value beyond its physical properties.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'alcohol' : { 'name' : 'Alcohol', 'description': 'Distilled alcohol, cherished by alchemists and vagabonds alike. The relationship between alcohol and quicksilver has oft been supposed.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'ash' : { 'name' : 'Ash', 'description': 'The charred remains of a burning. Alchemically inert. You don\'t think anything more can be done...', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'cloud_bud' : { 'name' : 'Cloud Bud', 'description': 'A budding cloud, picked from its ephemeral ground. Concentrated and cool to the touch.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'iron' : { 'name' : 'Iron', 'description': 'Iron, the third tier of metal. Once essential, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
-	'lead' : { 'name' : 'Lead', 'description': 'Lead, the fourth tier of metal. Once reviled, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
-	'quicksilver_mote' : { 'name' : 'Quicksilver Mote', 'description': 'A fragment of quicksilver. Used to catalyze the ascension process, albeit with less intensity.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/quicksilver.png', 'id' : 4 },
+	'crystal_fountain' : { 'name' : 'Crystal Fountain', 'description': 'A brilliant crystal fountain.\nIts water shines with an otherworldly hue.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'crystal' : { 'name' : 'Crystal', 'description': 'A flawed crystal.\nPerhaps an alchemical art can make it whole.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'pure_crystal' : { 'name' : 'Pure Crystal', 'description': 'A flawless crystal.\nIt is said that all metals may crystallize with time.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'coinage' : { 'name' : 'Coinage', 'description': 'Coinage from a long-dead civilization.\nIn this realm, currency has no value beyond its physical properties.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'alcohol' : { 'name' : 'Alcohol', 'description': 'Distilled alcohol.\nCherished by alchemists and vagabonds alike.\nThe relationship between alcohol and quicksilver has oft been supposed.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'ash' : { 'name' : 'Ash', 'description': 'The charred remains of a burning.\nAlchemically inert. You don\'t think anything more can be done...', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'cloud_bud' : { 'name' : 'Cloud Bud', 'description': 'A budding cloud, picked from its ephemeral ground.\nConcentrated and cool to the touch.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'iron' : { 'name' : 'Iron', 'description': 'Iron, the third tier of metal.\nOnce essential, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
+	'lead' : { 'name' : 'Lead', 'description': 'Lead, the fourth tier of metal.\nOnce reviled, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
+	'quicksilver_mote' : { 'name' : 'Quicksilver Mote', 'description': 'A fragment of quicksilver.\nUsed to catalyze the ascension process, albeit with less intensity.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/quicksilver.png', 'id' : 4 },
 	
 }
 

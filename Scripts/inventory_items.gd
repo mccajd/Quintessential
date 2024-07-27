@@ -20,6 +20,12 @@ func _process(delta):
 	pass
 
 
+func set_items(items):
+	inventory_items = []
+	for item_key in items:
+		set_item(item_key)
+	_set_available_items()
+
 func set_item(item_key):
 	inventory_items += [ItemInSlot.new(item_key, null)]
 
