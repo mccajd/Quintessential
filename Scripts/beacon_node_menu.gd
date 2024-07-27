@@ -1,7 +1,5 @@
 extends Area2D
 
-#var playerView = null
-
 var selected_node: BeaconNode
 var existing_connections
 
@@ -18,7 +16,6 @@ func _ready():
 	inventory_node = get_parent().get_parent().get_parent().get_node("InventoryItems")
 	visible = false
 	input_pickable = false
-	#playerView = Helpers.get_all_children(get_parent().get_parent().get_parent().get_parent().get_node("PlayerView"), [])
 
 
 func _process(_delta):
