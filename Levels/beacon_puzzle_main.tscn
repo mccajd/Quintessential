@@ -47,6 +47,7 @@ label_settings = SubResource("LabelSettings_tft4m")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("13_c8aie")
+track_name = "waltz"
 
 [node name="Tooltips" parent="." instance=ExtResource("14_02nus")]
 
