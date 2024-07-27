@@ -53,11 +53,5 @@ animation = &"selected"
 position = Vector2(66, 61)
 shape = SubResource("CircleShape2D_3wxxm")
 
-[node name="SlottedItemPreview" type="TextureRect" parent="."]
-offset_left = 32.0
-offset_top = 28.0
-offset_right = 99.0
-offset_bottom = 97.0
-
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
