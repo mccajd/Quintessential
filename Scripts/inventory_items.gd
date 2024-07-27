@@ -2,6 +2,7 @@ extends Control
 
 class_name InventoryItems
 
+@export var enable_debug_items = false
 @export var debug_items: Array[String]
 
 # needs to contain the item, a slot_id reference, and a node_id reference
@@ -9,7 +10,7 @@ var inventory_items: Array
 
 
 func _ready():
-	if debug_items:
+	if enable_debug_items:
 		for item_key in debug_items:
 			set_item(item_key)
 	_set_available_items()

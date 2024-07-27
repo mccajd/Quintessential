@@ -1,7 +1,5 @@
 extends Area2D
 
-var playerView = null
-
 var selected_node: BeaconNode
 var existing_connections
 
@@ -11,11 +9,13 @@ var inventory_node: InventoryItems
 const input_slot_names = ["InputSlot1", "InputSlot2", "InputSlot3", "InputSlot4"]
 const output_slot_names = ["OutputSlot1", "OutputSlot2", "OutputSlot3", "OutputSlot4"]
 
+signal menu_toggled(opened: bool)
+
 func _ready():
-	inventory_node = get_node("/root/BeaconPuzzleMain/InventoryItems")
+	# HACK.jmc - lmao
+	inventory_node = get_parent().get_parent().get_parent().get_node("InventoryItems")
 	visible = false
 	input_pickable = false
-	playerView = Helpers.get_all_children(get_parent().get_parent().get_node("PlayerView"), [])
 
 
 func _process(_delta):
@@ -47,8 +47,7 @@ func _on_beacon_tower_node_selected(node: BeaconNode):
 
 func _set_visibility(value: bool):
 	visible = value
-	for child in playerView:
-		child.set_process_input(!value)
+	menu_toggled.emit(visible)
 
 func _on_transformation_type_selected(type: String):
 	selected_node.set_transformation(type)
