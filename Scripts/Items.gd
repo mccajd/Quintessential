@@ -60,6 +60,10 @@ const sublimation_recipes = [
 	{ "required_ingredients": ["fire"], "items": ["earth"] },
 	{ "required_ingredients": ["pure_crystal"], "items": ["gold"] },
 	{ "required_ingredients": ["wood"], "items": ["earth_mote", "air_mote"] },
+	{ "required_ingredients": ["earth_mote"], "items": ["air_mote"] },
+	{ "required_ingredients": ["air_mote"], "items": ["water_mote"] },
+	{ "required_ingredients": ["water_mote"], "items": ["fire_mote"] },
+	{ "required_ingredients": ["fire_mote"], "items": ["earth_mote"] },
 ]
 
 const distillation_recipes = [
@@ -83,4 +87,14 @@ const ascension_recipes = [
 	{ "required_ingredients": ["quicksilver", "water"], "items": ["air"] },
 	{ "required_ingredients": ["quicksilver", "air"], "items": ["earth"] },
 	{ "required_ingredients": ["quicksilver", "earth"], "items": ["fire"] },
+	
+	{ "required_ingredients": ["quicksilver_mote", "fire_mote"], "items": ["water_mote"] },
+	{ "required_ingredients": ["quicksilver_mote", "water_mote"], "items": ["air_mote"] },
+	{ "required_ingredients": ["quicksilver_mote", "air_mote"], "items": ["earth_mote"] },
+	{ "required_ingredients": ["quicksilver_mote", "earth_mote"], "items": ["fire_mote"] },
+	
+	{ "required_ingredients": ["quicksilver", "fire_mote"], "items": ["water_mote"] },
+	{ "required_ingredients": ["quicksilver", "water_mote"], "items": ["air_mote"] },
+	{ "required_ingredients": ["quicksilver", "air_mote"], "items": ["earth_mote"] },
+	{ "required_ingredients": ["quicksilver", "earth_mote"], "items": ["fire_mote"] },
 ]
