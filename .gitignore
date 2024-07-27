@@ -3,3 +3,5 @@
 *.tmp
 *.aseprite
 *.orig
+export_presets.cfg
+bin/*
