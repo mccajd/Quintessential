@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://y3sjqg41jnlr"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_u8hjw"]
+[ext_resource type="Texture2D" uid="uid://bdx2diagow0r8" path="res://assets/wanderer_flat.png" id="2_4f2am"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hiur"]
+size = Vector2(64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7lci7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4f2am")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_panu3"]
+size = Vector2(64, 64)
+
+[node name="Wanderer" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_u8hjw")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_4hiur")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_7lci7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_panu3")
+debug_color = Color(0.990805, 0.0913518, 0, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
