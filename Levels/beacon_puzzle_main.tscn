@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_nu8b2"]
 [ext_resource type="PackedScene" uid="uid://xlfxdxlhlrkm" path="res://Scenes/beacon_puzzle.tscn" id="2_6o530"]
-[ext_resource type="PackedScene" uid="uid://dhy78dbhht3ki" path="res://Levels/point_click_proto.tscn" id="9_eceik"]
+[ext_resource type="PackedScene" path="res://Levels/point_click_proto.tscn" id="9_eceik"]
 [ext_resource type="Script" path="res://Scripts/bgm.gd" id="13_c8aie"]
 [ext_resource type="PackedScene" uid="uid://bjse5p8p12uhr" path="res://Scenes/tooltips.tscn" id="14_02nus"]
 
@@ -59,7 +59,6 @@ label_settings = SubResource("LabelSettings_tft4m")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("13_c8aie")
-track_name = "waltz"
 
 [node name="Tooltips" parent="." instance=ExtResource("14_02nus")]
 
