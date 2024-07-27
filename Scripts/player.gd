@@ -8,6 +8,8 @@ const speed = 2
 @onready var tile_map : TileMap  = get_parent().find_child("TileMap")
 @onready var tile_size : Vector2i = tile_map.tile_set.tile_size
 
+var path : PackedVector2Array 
+var prev_tile : Vector2i
 var astar_grid : AStarGrid2D
 var start_tile : Vector2i = Vector2i.ZERO:
 	get:
@@ -20,8 +22,6 @@ var target_tile : Vector2i = Vector2i.ZERO:
 		return target_tile
 	set(vector):
 		target_tile = tile_map.local_to_map(vector)
-
-var path : PackedVector2Array 
 
 func _ready():
 	#configure A*
@@ -41,13 +41,19 @@ func _physics_process(delta):
 		velocity = speed*direction_to_point(position-Vector2(32,32), path[0])
 	else:
 		velocity = Vector2.ZERO
-	move_and_collide(velocity)
+		
+	var collision = move_and_collide(velocity)
+	
+	if collision:
+		print("collision ", collision.get_collider().name)
+		path.clear()
+		position = tile_map.map_to_local(start_tile)
 
 func direction_to_point(src:Vector2i, dest:Vector2i)->Vector2:
 	if dest != src:
 		#direction vector of A->B = (B.X-A.X)(B.Y-A.Y)
 		return sign(dest-src)
-	
+	prev_tile = path[0]
 	path.remove_at(0)
 	return Vector2.ZERO
 
