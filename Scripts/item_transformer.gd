@@ -10,9 +10,9 @@ func transform(type: String, item_keys):
 		"dissolution":
 			return _transform(Items.dissolution_recipes, item_keys)
 		"sublimation":
-			return _transform(Items.sublimation_recipes, item_keys)
+			return _transform(Items.sublimation_recipes + ["salt"], item_keys)
 		"distillation":
-			return _transform(Items.distillation_recipes, item_keys)
+			return _transform(Items.distillation_recipes + ["sulfur"], item_keys)
 		"ascension":
 			return _transform(Items.ascension_recipes, item_keys)
 		_:
