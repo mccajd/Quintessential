@@ -4,7 +4,6 @@ class_name ItemTransformer
 
 
 func transform(type: String, item_keys):
-	# TODO.jmc - implement the rest of the transformations (if we need any more)
 	match type:
 		"solution":
 			return _transform(Items.solution_recipes, item_keys, [])
