@@ -1,55 +1,40 @@
 extends AudioStreamPlayer
 
-var intro: AudioStream
-var beat: AudioStream
-var part: AudioStream
-var full: AudioStream
+@export var track_name: String
+var flip = true
 
-var now_playing: AudioStream
-var full_once: bool = false
-var beat_once: bool = false
-var part_once: bool = false
+var tracks = {
+	"title": BgmTrack.new(
+		load("res://assets/bgm/titleintro.wav"),
+		load("res://assets/bgm/titlebeat.wav"),
+		load("res://assets/bgm/titlepart.wav"),
+		load("res://assets/bgm/titlefull.wav")
+	),
+	"waltz": BgmTrack.new(
+		load("res://assets/bgm/waltzintro.wav"),
+		load("res://assets/bgm/waltzbeat.wav"),
+		load("res://assets/bgm/waltzpart.wav"),
+		load("res://assets/bgm/waltzfull.wav")
+	)
+}
+var current_track: BgmTrack
 
 func _ready():
 	finished.connect(_on_finished)
 	
-	intro = load("res://assets/bgm/waltzintro.wav")
-	beat = load("res://assets/bgm/waltzbeat.wav")
-	part = load("res://assets/bgm/waltzpart.wav")
-	full = load("res://assets/bgm/waltzfull.wav")
+	current_track = tracks[track_name] if tracks.has(track_name) else tracks["title"]
 	
-	_set_now_playing(intro)
+	stream = current_track.next()
+	play()
+
+
+func _process(_delta):
+	if Input.is_action_just_pressed("debug"):
+		current_track = tracks["title"] if flip else tracks["waltz"]
+		flip = !flip
 
 
 func _on_finished():
-	_set_now_playing(_get_next_track())
-
-
-func _set_now_playing(track):
-	now_playing = track
-	stream = now_playing
+	stream = current_track.next()
 	play()
 
-func _get_next_track():
-	match now_playing:
-		intro:
-			return part
-		part:
-			if part_once:
-				part_once = false
-				return beat
-			part_once = true
-			return part
-		beat:
-			if beat_once:
-				beat_once = false
-				return part
-			beat_once = true
-			return full
-		full:
-			if full_once:
-				full_once = false
-				return beat
-			full_once = true
-			return full
-		
