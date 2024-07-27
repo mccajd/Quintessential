@@ -81,6 +81,7 @@ func set_available_items(items):
 
 
 func set_input_item(slot_id, item_index):
+	# NOTE.jmc temporarily removing this check
 	if (is_input_slot_empty(slot_id)):
 		inputs_from_nodes[slot_id] = available_items[item_index]
 		available_items[item_index].slot_id = slot_id

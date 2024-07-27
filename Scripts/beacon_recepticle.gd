@@ -9,7 +9,8 @@ signal item_hovered
 
 
 func _ready():
-	self.mouse_entered.connect(_on_mouse_entered)
+	if !mouse_entered.is_connected(_on_mouse_entered):
+		mouse_entered.connect(_on_mouse_entered)
 
 
 func complete():

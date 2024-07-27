@@ -56,123 +56,179 @@ script = ExtResource("2_mvinj")
 
 [node name="BeaconNode1" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
-position = Vector2(103, 484)
+position = Vector2(100, 566)
 id = 1
-availableNodeIds = Array[int]([2, 3])
+availableNodeIds = Array[int]([2, 4, 3])
 
 [node name="BeaconNode2" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
-position = Vector2(-18, 375)
+position = Vector2(-17, 473)
 id = 2
 availableNodeIds = Array[int]([5, 4, 1])
 
 [node name="BeaconNode3" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
-position = Vector2(216, 383)
+position = Vector2(217, 481)
 id = 3
 availableNodeIds = Array[int]([6, 1, 4])
 
 [node name="BeaconNode4" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
-position = Vector2(101, 283)
+position = Vector2(102, 381)
 id = 4
 availableNodeIds = Array[int]([7, 6, 3, 2, 5])
 
 [node name="BeaconNode5" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
-position = Vector2(-31, 206)
+position = Vector2(-30, 304)
 id = 5
-availableNodeIds = Array[int]([100, 7, 4, 2])
+availableNodeIds = Array[int]([8, 7, 4, 2])
 
 [node name="BeaconNode6" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
-position = Vector2(232, 208)
+position = Vector2(233, 306)
 id = 6
-availableNodeIds = Array[int]([300, 3, 4, 7])
+availableNodeIds = Array[int]([9, 3, 4, 7])
 
 [node name="BeaconNode7" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
-position = Vector2(100, 132)
+position = Vector2(101, 230)
 id = 7
-availableNodeIds = Array[int]([200, 300, 6, 4, 5, 100])
+availableNodeIds = Array[int]([10, 9, 6, 4, 5, 7])
+
+[node name="BeaconNode8" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
+z_index = 1
+position = Vector2(-35, 147)
+id = 8
+availableNodeIds = Array[int]([100, 10, 7, 5])
+
+[node name="BeaconNode9" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
+z_index = 1
+position = Vector2(238, 147)
+id = 9
+availableNodeIds = Array[int]([300, 6, 7, 10])
+
+[node name="BeaconNode10" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
+z_index = 1
+position = Vector2(101, 89)
+id = 10
+availableNodeIds = Array[int]([200, 300, 9, 7, 8, 100])
 
 [node name="Connector1-2" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(41, 463)
+position = Vector2(42, 561)
 rotation = -0.785398
 connection = Array[int]([1, 2])
 
 [node name="Connector1-3" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(266, 423)
+position = Vector2(267, 521)
 rotation = 0.785398
 connection = Array[int]([1, 3])
 
+[node name="Connector1-4" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(149, 456)
+connection = Array[int]([1, 4])
+
 [node name="Connector2-4" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(173, 312)
+position = Vector2(174, 410)
 rotation = 0.883137
 connection = Array[int]([2, 4])
 
 [node name="Connector2-5" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(8, 271)
+position = Vector2(9, 369)
 rotation = -0.0977384
 connection = Array[int]([2, 5])
 
 [node name="Connector3-4" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(157, 361)
+position = Vector2(158, 459)
 rotation = -0.884882
 connection = Array[int]([3, 4])
 
 [node name="Connector3-6" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(285, 255)
+position = Vector2(286, 353)
 rotation = 0.0977384
 connection = Array[int]([3, 6])
 
 [node name="Connector4-5" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(182, 333)
+position = Vector2(183, 431)
 rotation = 2.06123
 connection = Array[int]([4, 5])
 
 [node name="Connector4-6" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(194, 355)
+position = Vector2(195, 453)
 rotation = -2.16072
 connection = Array[int]([4, 6])
 
 [node name="Connector4-7" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(147, 183)
+position = Vector2(148, 281)
 connection = Array[int]([4, 7])
 
 [node name="Connector5-7" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(153, 169)
+position = Vector2(154, 267)
 rotation = 0.98262
 connection = Array[int]([5, 7])
 
+[node name="Connector5-8" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(8, 186)
+rotation = -0.0271211
+connection = Array[int]([5, 8])
+
 [node name="Connector6-7" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(147, 188)
+position = Vector2(148, 286)
 rotation = -0.980875
 connection = Array[int]([6, 7])
 
-[node name="Connector5-A" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(28, 89)
-rotation = 0.0977384
-connection = Array[int]([5, 100])
+[node name="Connector6-9" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(283, 185)
+rotation = 0.00876406
+connection = Array[int]([6, 9])
 
-[node name="Connector6-C" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(266, 87)
-rotation = -0.0994838
-connection = Array[int]([6, 300])
+[node name="Connector7-8" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(8, 221)
+rotation = -1.00466
+connection = Array[int]([7, 8])
 
-[node name="Connector7-A" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(24, 101)
-rotation = -0.883137
-connection = Array[int]([7, 100])
+[node name="Connector7-9" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(287, 195)
+rotation = 0.949386
+connection = Array[int]([7, 9])
 
-[node name="Connector7-B" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(147, 40)
-connection = Array[int]([7, 200])
+[node name="Connector7-10" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(148, 138)
+connection = Array[int]([7, 10])
 
-[node name="Connector7-C" parent="BeaconTower" instance=ExtResource("4_642lw")]
-position = Vector2(276, 76)
-rotation = 0.883137
-connection = Array[int]([7, 300])
+[node name="Connector8-10" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(31, 229)
+rotation = -1.98112
+connection = Array[int]([8, 10])
+
+[node name="Connector8-A" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(27, 73)
+rotation = 0.166606
+connection = Array[int]([8, 100])
+
+[node name="Connector9-10" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(158, 160)
+rotation = -1.12586
+connection = Array[int]([9, 10])
+
+[node name="Connector9-C" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(266, 82)
+rotation = -0.1199
+connection = Array[int]([9, 300])
+
+[node name="Connector10-A" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(20, 101)
+rotation = -1.06991
+connection = Array[int]([10, 100])
+
+[node name="Connector10-B" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(147, 22)
+connection = Array[int]([10, 200])
+
+[node name="Connector10-C" parent="BeaconTower" instance=ExtResource("4_642lw")]
+position = Vector2(287, 64)
+rotation = 1.02746
+connection = Array[int]([10, 300])
 
 [node name="BeaconRecepticle1" parent="BeaconTower" instance=ExtResource("3_o3mqj")]
 position = Vector2(16, 68)
@@ -196,10 +252,10 @@ id = 300
 expected_input = "silver"
 
 [node name="BeaconSubmitButton" type="TextureButton" parent="BeaconTower"]
-offset_left = 13.0
-offset_top = 651.0
-offset_right = 515.0
-offset_bottom = 744.0
+offset_left = 11.0
+offset_top = 684.0
+offset_right = 513.0
+offset_bottom = 777.0
 scale = Vector2(0.62359, 0.72)
 texture_normal = ExtResource("6_fh508")
 texture_pressed = ExtResource("7_bnvyy")
@@ -207,10 +263,10 @@ stretch_mode = 0
 
 [node name="BeaconWinConditionText" type="Label" parent="BeaconTower"]
 visible = false
-offset_left = 94.0
-offset_top = 726.0
-offset_right = 252.0
-offset_bottom = 749.0
+offset_left = 197.0
+offset_top = 5.0
+offset_right = 355.0
+offset_bottom = 28.0
 text = "u lost bitch ahahaha"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -500,6 +556,9 @@ alignment = 1
 [connection signal="selected" from="BeaconTower/BeaconNode5" to="BeaconTower" method="_on_node_selected"]
 [connection signal="selected" from="BeaconTower/BeaconNode6" to="BeaconTower" method="_on_node_selected"]
 [connection signal="selected" from="BeaconTower/BeaconNode7" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode8" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode9" to="BeaconTower" method="_on_node_selected"]
+[connection signal="selected" from="BeaconTower/BeaconNode10" to="BeaconTower" method="_on_node_selected"]
 [connection signal="pressed" from="BeaconTower/BeaconSubmitButton" to="BeaconTower" method="_on_beacon_submit_button_pressed"]
 [connection signal="menu_toggled" from="MockUI/BeaconNodeView/BeaconNodeMenu" to="." method="_on_menu_toggled"]
 [connection signal="item_cleared" from="MockUI/BeaconNodeView/BeaconNodeMenu/InputContainer/InputSlot1" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_item_cleared"]
