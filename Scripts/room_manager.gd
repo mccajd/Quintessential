@@ -58,6 +58,8 @@ func _change_room(room: String):
 
 func _get_room_scene():
 	match current_room:
+		"cave":
+			return "res://Levels/cave_room.tscn"
 		"cloud":
 			return "res://Levels/cloud_room.tscn"
 		_:
