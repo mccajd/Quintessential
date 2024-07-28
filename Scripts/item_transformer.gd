@@ -10,8 +10,8 @@ func transform(type: String, item_keys):
 		"dissolution":
 			return _transform(Items.dissolution_recipes, item_keys)
 		"sublimation":
-			var round = _transform(Items.get_double_sublimation_recipes(), item_keys, ["salt", "salt"])
-			return round if round != null else _transform(Items.sublimation_recipes, item_keys, ["salt"])
+			var round = _transform(Items.sublimation_recipes, item_keys, ["salt"])
+			return round if round != null else _transform(Items.get_double_sublimation_recipes(), item_keys, ["salt", "salt"])
 		"distillation":
 			return _transform(Items.distillation_recipes, item_keys, ["sulfur"])
 		"ascension":

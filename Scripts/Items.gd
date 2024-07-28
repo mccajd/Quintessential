@@ -10,13 +10,13 @@ const itemDB = {
 	'fire' : { 'name' : 'Fire', 'description': 'One of the four elements.\nCan be ascended into Air or sublimated into Water.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/fire.png', 'id' : 6 },
 	'air' : { 'name' : 'Air', 'description': 'One of the four elements.\nCan be ascended into Earth or sublimated into Fire.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/air.png', 'id' : 7 },
 	'earth' : { 'name' : 'Earth', 'description': 'One of the four elements.\nCan be ascended into Fire or sublimated into Air.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/earth.png', 'id' : 8 },
-	'base_metal' : { 'name' : 'Base Metal', 'description': 'An item.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/base_metal.png', 'id' : 9 },
+	'base_metal' : { 'name' : 'Base Metal', 'description': 'Reclaimed metal of unknown consistency.\nCan be ascended with the right catalyst.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/base_metal.png', 'id' : 9 },
 	'seawater' : { 'name' : 'Seawater', 'description': 'Turgid seawater from the murky depths.\nIt may yield useful product under the right conditions.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/sea_water.png', 'id' : 10 },
 	'water_mote' : { 'name' : 'Water Mote', 'description': 'A modicum of Water.\nOffers little of value on its own, but may yield greater when mixed with like kind.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/water_mote.png', 'id' : 11 },
 	'fire_mote' : { 'name' : 'Fire Mote', 'description': 'A modicum of Fire.\nOffers little of value on its own, but may yield greater when mixed with like kind.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/fire_mote.png', 'id' : 12 },
 	'air_mote' : { 'name' : 'Air Mote', 'description': 'A modicum of Air.\nOffers little of value on its own, but may yield greater when mixed with like kind.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/air_mote.png', 'id' : 13 },
 	'earth_mote' : { 'name' : 'Earth Mote', 'description': 'A modicum of Earth.\nOffers little of value on its own, but may yield greater when mixed with like kind.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/earth_mote.png', 'id' : 14 },
-	'ship_metal' : { 'name' : 'Ship Metal', 'description': 'Metal from a sunken ship.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/ship_metal.png', 'id' : 15 },
+	'scrap_metal' : { 'name' : 'Scrap Metal', 'description': 'Metal scrap.\nImperfect, but can be ascended with the right catalyst.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/ship_metal.png', 'id' : 15 },
 	'cloud_tree' : { 'name' : 'Cloud Tree', 'description': 'A tree sprouted from the surface of a cloud.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud_tree.png', 'id' : 0 },
 	'fruit' : { 'name' : 'Fruit', 'description': 'Fruit from a flowering tree.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/fruit.png', 'id' : 0 },
 	'wood' : { 'name' : 'Wood', 'description': 'A wooden slat.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/wood.png', 'id' : 0 },
@@ -31,7 +31,12 @@ const itemDB = {
 	'lead' : { 'name' : 'Lead', 'description': 'The fourth tier of metal.\nOnce reviled, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/lead_metal.png', 'id' : 1 },
 	'quicksilver_mote' : { 'name' : 'Quicksilver Mote', 'description': 'A fragment of quicksilver.\nUsed to catalyze the ascension process, albeit with less intensity.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/quicksilver_mote.png', 'id' : 4 },
 	'cloud' : { 'name' : 'Cloud', 'description': 'A full-sized cloud.\nTeeming with elemental energy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud.png', 'id' : 4 },
-	
+	'barrel' : { 'name' : 'Barrel', 'description': 'An old wooden barrel.\nIts metal rivets and hoops have very little value,\nbut perhaps its wooden body could be useful?', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'wine' : { 'name' : 'Wine', 'description': 'An antique bottle of wine.\nAlways celebrated for its excellence, it now serves a different purpose.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'sea_creature' : { 'name' : 'Sea Creature', 'description': 'A gargantuan creature from depths untold.\nIts size makes it far too unwieldy to use alchemically.\nPerhaps it can be broken down further?', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'coral' : { 'name' : 'Coral', 'description': 'A large decaying coral.\nThis pitiful sight appears to be the only sign of life in this place.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'anchor' : { 'name' : 'Anchor', 'description': 'A metal ship anchor found embedded in the bowels of a sea creature.\nWhether its placement there were incidental or deliberate may never be known.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'raw_meat' : { 'name' : 'Raw Meat', 'description': 'Meat from a sea creature.\nLikely inedible unless one is wrought with desperation.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
 }
 
 const solution_recipes = [
@@ -42,6 +47,7 @@ const solution_recipes = [
 	{ "required_ingredients": ["quicksilver_mote", "quicksilver_mote"], "items": ["quicksilver"] },
 	{ "required_ingredients": ["quicksilver_mote", "alcohol"], "items": ["quicksilver"] },
 	{ "required_ingredients": ["cloud_bud", "cloud_bud"], "items": ["cloud"] },
+	{ "required_ingredients": ["seawater", "water"], "items": ["seawater", "seawater"] },
 ]
 
 const dissolution_recipes = [
@@ -54,6 +60,11 @@ const dissolution_recipes = [
 	{ "required_ingredients": ["cloud_bud"], "items": ["air_mote"] },
 	{ "required_ingredients": ["cloud"], "items": ["air"] },
 	{ "required_ingredients": ["quicksilver"], "items": ["quicksilver_mote", "quicksilver_mote"] },
+	{ "required_ingredients": ["barrel"], "items": ["wood"] },
+	{ "required_ingredients": ["coral"], "items": ["air_mote", "water_mote"] },
+	{ "required_ingredients": ["sea_creature"], "items": ["earth_mote", "fire_mote", "water", "raw_meat"] },
+	# manually added dupes (may do this programmatically later
+	{ "required_ingredients": ["barrel", "barrel" ], "items": ["wood", "wood"] },
 ]
 
 # NOTE.jmc - each of these will also implicitly be checked for salt as an ingredient
@@ -71,7 +82,11 @@ const sublimation_recipes = [
 	{ "required_ingredients": ["air_mote"], "items": ["water_mote"] },
 	{ "required_ingredients": ["water_mote"], "items": ["fire_mote"] },
 	{ "required_ingredients": ["fire_mote"], "items": ["earth_mote"] },
-	{ "required_ingredients": ["cloud_tree"], "items": ["sulfur"] }
+	{ "required_ingredients": ["cloud_tree"], "items": ["sulfur"] },
+	{ "required_ingredients": ["barrel"], "items": ["earth_mote", "air_mote"] },
+	{ "required_ingredients": ["barrel", "barrel", "salt"], "items": ["earth", "air"] },
+	{ "required_ingredients": ["coral"], "items": ["sulfur"] },
+	{ "required_ingredients": ["raw_meat"], "items": ["sulfur"] },
 ]
 
 # NOTE.jmc - hidden feature. sublimation should allow doubling up for double the results.
@@ -94,11 +109,18 @@ const distillation_recipes = [
 	{ "required_ingredients": ["cloud_bud", "cloud_bud"], "items": ["water", "air", "salt"] },
 	{ "required_ingredients": ["cloud"], "items": ["water", "air", "salt"] },
 	{ "required_ingredients": ["coinage"], "items": ["base_metal", "salt"] },
+	{ "required_ingredients": ["barrel"], "items": ["ash", "salt"] },
+	{ "required_ingredients": ["barrel", "barrel"], "items": ["ash", "salt"] },
+	{ "required_ingredients": ["wine"], "items": ["alcohol", "alcohol", "water_mote", "salt"] },
+	{ "required_ingredients": ["coral"], "items": ["salt"] },
+	{ "required_ingredients": ["anchor"], "items": ["scrap_metal", "quicksilver"] },
 ]
 
 const ascension_recipes = [
 	{ "required_ingredients": ["quicksilver", "base_metal"], "items": ["gold"] },
 	{ "required_ingredients": ["quicksilver_mote", "base_metal"], "items": ["lead"] },
+	{ "required_ingredients": ["quicksilver", "scrap_metal"], "items": ["lead"] },
+	{ "required_ingredients": ["quicksilver_mote", "scrap_metal"], "items": ["lead"] },
 	{ "required_ingredients": ["quicksilver_mote", "lead"], "items": ["iron"] },
 	{ "required_ingredients": ["quicksilver_mote", "iron"], "items": ["silver"] },
 	{ "required_ingredients": ["quicksilver_mote", "silver"], "items": ["gold"] },
@@ -125,6 +147,7 @@ const ascension_recipes = [
 	{ "required_ingredients": ["alcohol", "air_mote"], "items": ["earth_mote"] },
 	{ "required_ingredients": ["alcohol", "earth_mote"], "items": ["fire_mote"] },
 	{ "required_ingredients": ["alcohol", "base_metal"], "items": ["lead"] },
+	{ "required_ingredients": ["alcohol", "scrap_metal"], "items": ["lead"] },
 	{ "required_ingredients": ["alcohol", "lead"], "items": ["iron"] },
 	{ "required_ingredients": ["alcohol", "iron"], "items": ["silver"] },
 	{ "required_ingredients": ["alcohol", "silver"], "items": ["gold"] },
