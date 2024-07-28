@@ -31,6 +31,8 @@ static func _get_for_cloud_level():
 		LevelConfigTransitionRect.new("hub", Rect2(Vector2(0, 0), Vector2(1000, 1000)))
 	]
 	
+	rtn.bgm = "waltz"
+	
 	return rtn
 
 static func _get_for_hub_level():
@@ -47,5 +49,7 @@ static func _get_for_hub_level():
 		# delete this once we add another room
 		LevelConfigTransitionRect.new("cloud", Rect2(Vector2(42, 3), Vector2(5, 10))),
 	]
+	
+	rtn.bgm = "title"
 
 	return rtn

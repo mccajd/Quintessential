@@ -38,3 +38,12 @@ func _on_finished():
 	stream = current_track.next()
 	play()
 
+
+func set_bgm(track):
+	stop()
+	current_track.restart()
+	if tracks.has(track):
+		current_track = tracks[track]
+	stream = current_track.next()	
+	play()
+

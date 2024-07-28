@@ -52,6 +52,8 @@ func _change_room(room: String):
 		viewport.size.x = 1000
 	else:
 		viewport.size.x = 562
+	
+	get_node("/root/Main/AudioStreamPlayer").set_bgm(LevelConfig.get_for(current_room).bgm)
 
 
 func _get_room_scene():
