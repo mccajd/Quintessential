@@ -68,6 +68,7 @@ func _set_selected_node_effects():
 func _on_beacon_submit_button_pressed():
 	if _get_win_status():
 		get_node("BeaconWinConditionText").text = "u won!"
+		get_tree().get_root().find_child("TowerExtView", true, false).regress_shadows()
 	else:
 		get_node("BeaconWinConditionText").text = "u lost bitch ahahaha!"
 	
