@@ -1,0 +1,125 @@
+[gd_scene load_steps=14 format=3 uid="uid://bikq8h6hctftq"]
+
+[ext_resource type="Texture2D" uid="uid://s7dknx710ecx" path="res://assets/tower/tower_1.png" id="1_2it5o"]
+[ext_resource type="Script" path="res://Scripts/tower_ext_view.gd" id="1_hq1mf"]
+[ext_resource type="Texture2D" uid="uid://cvabjs6r1hmv4" path="res://assets/tower/tower_10.png" id="2_vjqhk"]
+[ext_resource type="Texture2D" uid="uid://bxuqeo1w7s53n" path="res://assets/tower/tower_2.png" id="3_77jq5"]
+[ext_resource type="Texture2D" uid="uid://duy47ontplm1h" path="res://assets/tower/tower_3.png" id="4_kemtk"]
+[ext_resource type="Texture2D" uid="uid://bbuatlgtb82k2" path="res://assets/tower/tower_4.png" id="5_saypq"]
+[ext_resource type="Texture2D" uid="uid://bjnfvsl6siqy7" path="res://assets/tower/tower_5.png" id="6_md1mf"]
+[ext_resource type="Texture2D" uid="uid://cpi3877ernkvh" path="res://assets/tower/tower_6.png" id="7_atxxa"]
+[ext_resource type="Texture2D" uid="uid://b0iuwy4nhh6gj" path="res://assets/tower/tower_7.png" id="8_p2um1"]
+[ext_resource type="Texture2D" uid="uid://86xin65hyng1" path="res://assets/tower/tower_8.png" id="9_j7gtp"]
+[ext_resource type="Texture2D" uid="uid://b3krsggfv2266" path="res://assets/tower/tower_9.png" id="10_aabbb"]
+[ext_resource type="Texture2D" uid="uid://bhebnt28d7kpn" path="res://assets/tower/new_tower_light_beams.png" id="11_a0wyk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kbq4d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2it5o")
+}],
+"loop": true,
+"name": &"tower_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2it5o")
+}],
+"loop": true,
+"name": &"tower_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vjqhk")
+}],
+"loop": true,
+"name": &"tower_10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_77jq5")
+}],
+"loop": true,
+"name": &"tower_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_kemtk")
+}],
+"loop": true,
+"name": &"tower_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_saypq")
+}],
+"loop": true,
+"name": &"tower_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_md1mf")
+}],
+"loop": true,
+"name": &"tower_5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_atxxa")
+}],
+"loop": true,
+"name": &"tower_6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_p2um1")
+}],
+"loop": true,
+"name": &"tower_7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_j7gtp")
+}],
+"loop": true,
+"name": &"tower_8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_aabbb")
+}],
+"loop": true,
+"name": &"tower_9",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_a0wyk")
+}],
+"loop": true,
+"name": &"tower_light_beam",
+"speed": 5.0
+}]
+
+[node name="TowerView" type="Node"]
+script = ExtResource("1_hq1mf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kbq4d")
+animation = &"tower_0"
+
+[node name="GameTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
