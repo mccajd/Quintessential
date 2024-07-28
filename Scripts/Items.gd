@@ -112,7 +112,7 @@ const distillation_recipes = [
 	{ "required_ingredients": ["barrel"], "items": ["ash", "salt"] },
 	{ "required_ingredients": ["barrel", "barrel"], "items": ["ash", "salt"] },
 	{ "required_ingredients": ["wine"], "items": ["alcohol", "alcohol", "water_mote", "salt"] },
-	{ "required_ingredients": ["coral"], "items": ["salt"] },
+	{ "required_ingredients": ["coral"], "items": ["salt", "salt"] },
 	{ "required_ingredients": ["anchor"], "items": ["scrap_metal", "quicksilver"] },
 	{ "required_ingredients": ["sea_creature"], "items": ["salt", "salt", "sulfur", "sulfur"] },
 ]
