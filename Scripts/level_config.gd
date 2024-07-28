@@ -27,6 +27,10 @@ static func _get_for_cloud_level():
 		"fruit": { "item": "fruit", "rect": Rect2(Vector2(79, 17), Vector2(2, 2)) },
 	}
 	
+	rtn.transition_rects = [
+		LevelConfigTransitionRect.new("hub", Rect2(Vector2(0, 0), Vector2(1000, 1000)))
+	]
+	
 	return rtn
 
 static func _get_for_hub_level():
@@ -36,5 +40,12 @@ static func _get_for_hub_level():
 	rtn.camera_limit_right = null
 	rtn.camera_limit_top = null
 	rtn.camera_limit_bottom = null
+	
+	rtn.transition_rects = [
+		LevelConfigTransitionRect.new("cloud", Rect2(Vector2(42, 3), Vector2(5, 10))),
+		# duped here to make sure this works even without the "one dest" rule
+		# delete this once we add another room
+		LevelConfigTransitionRect.new("cloud", Rect2(Vector2(42, 3), Vector2(5, 10))),
+	]
 
 	return rtn

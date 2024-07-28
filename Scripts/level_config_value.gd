@@ -9,3 +9,5 @@ var default_items
 var world_items
 
 var item_mappings: Dictionary
+
+var transition_rects

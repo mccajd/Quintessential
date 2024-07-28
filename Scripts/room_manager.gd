@@ -16,6 +16,7 @@ func _ready():
 
 
 func _change_room(room: String):
+	var source_room = current_room
 	current_room = room
 	beacon_puzzle_changed.emit(_get_beacon_puzzle())
 	

@@ -37,15 +37,26 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("debug"):
 		if level_name == "cloud":
-			changing_room("hub")
+			changing_room(null, "hub")
 			return
-		changing_room("cloud")
+		changing_room(null, "cloud")
 
 
-func changing_room(room : String):
+func changing_room(target_tile, name = null):
 	# heh
 	print("Welcome to the Changing Room")
-	room_changed.emit(room)
+	if name:
+		room_changed.emit(name)
+		return
+	
+	# may as well skip this if there's only one destination
+	if config.transition_rects.size() == 1:
+		room_changed.emit(config.transition_rects.front().destination)
+		return
+	
+	for transition_rect in config.transition_rects:
+		if !transition_rect.rect.has_point(target_tile): continue
+		room_changed.emit(transition_rect.destination)
 
 
 func _on_item_discovered(item_name):
@@ -54,11 +65,11 @@ func _on_item_discovered(item_name):
 	item_found.emit(item_name)
 
 
-func _on_front_detector_entered(body):
+func _on_back_detector_entered(body):
 	if body is player:
-		ref.z_index = 2
+		ref.z_index = -1
 
 
-func _on_front_detector_exited(body):
+func _on_back_detector_exited(body):
 	if body is player:
-		ref.z_index = 0
+		ref.z_index = 1
