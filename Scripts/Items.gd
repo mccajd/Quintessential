@@ -1,7 +1,7 @@
 class_name Items
 
 const itemDB = {
-	'gold' : { 'name' : 'Gold', 'description': 'The highest tier of metal.\nOnce coveted, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/gold.png', 'id' : 0 },
+	'gold' : { 'name' : 'Gold', 'description': 'The highest tier of metal.\nOnce coveted, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/gold_metal.png', 'id' : 0 },
 	'silver' : { 'name' : 'Silver', 'description': 'The second tier of metal.\nOnce revered, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
 	'salt' : { 'name' : 'Salt', 'description': 'One of the three primes.\nUsed as a balancing agent for volatile processes, such as that of sublimation.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/salt.png', 'id' : 2 },
 	'sulfur' : { 'name' : 'Sulfur', 'description': 'One of the three primes.\nUsed as a combusting agent in the separation process of distillation when time is of the essence.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/sulfur.png', 'id' : 3 },
@@ -10,13 +10,13 @@ const itemDB = {
 	'fire' : { 'name' : 'Fire', 'description': 'One of the four elements.\nCan be ascended into Air or sublimated into Water.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/fire.png', 'id' : 6 },
 	'air' : { 'name' : 'Air', 'description': 'One of the four elements.\nCan be ascended into Earth or sublimated into Fire.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/air.png', 'id' : 7 },
 	'earth' : { 'name' : 'Earth', 'description': 'One of the four elements.\nCan be ascended into Fire or sublimated into Air.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/earth.png', 'id' : 8 },
-	'base_metal' : { 'name' : 'Base Metal', 'description': 'An item.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/unknown.png', 'id' : 9 },
-	'seawater' : { 'name' : 'Seawater', 'description': 'Turgid seawater from the murky depths.\nIt may yield useful product under the right conditions.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 10 },
+	'base_metal' : { 'name' : 'Base Metal', 'description': 'An item.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/base_metal.png', 'id' : 9 },
+	'seawater' : { 'name' : 'Seawater', 'description': 'Turgid seawater from the murky depths.\nIt may yield useful product under the right conditions.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/sea_water.png', 'id' : 10 },
 	'water_mote' : { 'name' : 'Water Mote', 'description': 'A modicum of Water.\nOffers little of value on its own, but may yield greater when mixed with like kind.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/water_mote.png', 'id' : 11 },
 	'fire_mote' : { 'name' : 'Fire Mote', 'description': 'A modicum of Fire.\nOffers little of value on its own, but may yield greater when mixed with like kind.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/fire_mote.png', 'id' : 12 },
 	'air_mote' : { 'name' : 'Air Mote', 'description': 'A modicum of Air.\nOffers little of value on its own, but may yield greater when mixed with like kind.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/air_mote.png', 'id' : 13 },
 	'earth_mote' : { 'name' : 'Earth Mote', 'description': 'A modicum of Earth.\nOffers little of value on its own, but may yield greater when mixed with like kind.', 'type': Item.ItemType.Element, 'sprite' : 'res://assets/items/earth_mote.png', 'id' : 14 },
-	'ship_metal' : { 'name' : 'Ship Metal', 'description': 'Metal from a sunken ship.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 15 },
+	'ship_metal' : { 'name' : 'Ship Metal', 'description': 'Metal from a sunken ship.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/ship_metal.png', 'id' : 15 },
 	'cloud_tree' : { 'name' : 'Cloud Tree', 'description': 'A tree sprouted from the surface of a cloud.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud_tree.png', 'id' : 0 },
 	'fruit' : { 'name' : 'Fruit', 'description': 'Fruit from a flowering tree.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/fruit.png', 'id' : 0 },
 	'wood' : { 'name' : 'Wood', 'description': 'A wooden slat.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/wood.png', 'id' : 0 },
@@ -27,8 +27,8 @@ const itemDB = {
 	'alcohol' : { 'name' : 'Alcohol', 'description': 'Distilled alcohol.\nCherished by alchemists and vagabonds alike.\nAlcohol can oft be used as a substitute for quicksilver, albeit at reduced efficacy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/alcohol.png', 'id' : 0 },
 	'ash' : { 'name' : 'Ash', 'description': 'The charred remains of a burning.\nAlchemically inert. You don\'t think anything more can be done...', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/ash.png', 'id' : 0 },
 	'cloud_bud' : { 'name' : 'Cloud Bud', 'description': 'A budding cloud, pulled up by its ephemeral roots.\nConcentrated and cool to the touch.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud_bud.png', 'id' : 0 },
-	'iron' : { 'name' : 'Iron', 'description': 'The third tier of metal.\nOnce essential, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
-	'lead' : { 'name' : 'Lead', 'description': 'The fourth tier of metal.\nOnce reviled, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
+	'iron' : { 'name' : 'Iron', 'description': 'The third tier of metal.\nOnce essential, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/tin_metal.png', 'id' : 1 },
+	'lead' : { 'name' : 'Lead', 'description': 'The fourth tier of metal.\nOnce reviled, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/lead_metal.png', 'id' : 1 },
 	'quicksilver_mote' : { 'name' : 'Quicksilver Mote', 'description': 'A fragment of quicksilver.\nUsed to catalyze the ascension process, albeit with less intensity.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/quicksilver_mote.png', 'id' : 4 },
 	'cloud' : { 'name' : 'Cloud', 'description': 'A full-sized cloud.\nTeeming with elemental energy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud.png', 'id' : 4 },
 	

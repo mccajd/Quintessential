@@ -93,8 +93,10 @@ static func _get_for_ocean_level():
 	rtn.camera_limit_bottom = -200
 
 	rtn.default_items = ["quicksilver", "salt", "sulfur"]
-	rtn.world_items = []
-	rtn.item_mappings = {}
+	rtn.world_items = ["seawater"]
+	rtn.item_mappings = {
+		"seawater": { "item": "seawater", "rect": Rect2(Vector2(7, 13), Vector2(4, 3)) },
+	}
 	
 	rtn.transition_rects = [
 		LevelConfigTransitionRect.new("hub", Rect2(Vector2(0, 0), Vector2(1000, 1000)))
