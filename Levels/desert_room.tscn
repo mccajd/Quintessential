@@ -1,17 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhwf2e51q2ran"]
+[gd_scene load_steps=6 format=3 uid="uid://b7eg2p8v2dw4h"]
 
-[ext_resource type="Script" path="res://Scripts/player_view.gd" id="1_n05sp"]
-[ext_resource type="PackedScene" uid="uid://nrsivx657vil" path="res://Scenes/custom_tile_map.tscn" id="2_abkc4"]
-[ext_resource type="Texture2D" uid="uid://csqgdifalte26" path="res://assets/levelbackgrounds/cave level back.png" id="3_6qgxm"]
-[ext_resource type="Texture2D" uid="uid://c54oeudwo86og" path="res://assets/symbols/air-symbol.png" id="4_3ig0p"]
+[ext_resource type="Script" path="res://Scripts/player_view.gd" id="1_ge4cy"]
+[ext_resource type="PackedScene" uid="uid://nrsivx657vil" path="res://Scenes/custom_tile_map.tscn" id="2_enr1i"]
+[ext_resource type="Texture2D" uid="uid://dc3qym1wo4h55" path="res://assets/levelbackgrounds/desert level.png" id="3_ao7st"]
+[ext_resource type="Texture2D" uid="uid://bpo77pt2dahgy" path="res://assets/symbols/water-symbol.png" id="4_t1562"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acovp"]
 size = Vector2(83.5, 162)
 
-[node name="CaveRoom" type="Node"]
-script = ExtResource("1_n05sp")
+[node name="DesertRoom" type="Node"]
+script = ExtResource("1_ge4cy")
 
-[node name="TileMap" parent="." instance=ExtResource("2_abkc4")]
+[node name="TileMap" parent="." instance=ExtResource("2_enr1i")]
 z_index = 10
 position = Vector2(-1, 0)
 layer_0/tile_data = PackedInt32Array(917513, 196611, 0, 917512, 196611, 0)
@@ -24,7 +24,7 @@ offset_top = -274.0
 offset_right = 904.0
 offset_bottom = 238.0
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_6qgxm")
+texture = ExtResource("3_ao7st")
 
 [node name="ElementBanner" type="TextureRect" parent="."]
 offset_left = 552.0
@@ -32,7 +32,7 @@ offset_top = -274.0
 offset_right = 776.0
 offset_bottom = -43.0
 scale = Vector2(1.18598, 1.18598)
-texture = ExtResource("4_3ig0p")
+texture = ExtResource("4_t1562")
 
 [node name="Transition" type="ColorRect" parent="."]
 visible = false

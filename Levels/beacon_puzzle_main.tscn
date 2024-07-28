@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=12 format=3 uid="uid://b16x2m82ri0xj"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_nu8b2"]
 [ext_resource type="PackedScene" uid="uid://xlfxdxlhlrkm" path="res://Scenes/beacon_puzzle.tscn" id="2_6o530"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dq80qt38o8nvg" path="res://Levels/hub_room.tscn" id="5_sgrcl"]
 [ext_resource type="PackedScene" uid="uid://bikq8h6hctftq" path="res://Scenes/tower_ext_view.tscn" id="6_xqt5k"]
 [ext_resource type="PackedScene" uid="uid://dhwf2e51q2ran" path="res://Levels/cave_room.tscn" id="8_4s0k3"]
+[ext_resource type="PackedScene" uid="uid://b7eg2p8v2dw4h" path="res://Levels/desert_room.tscn" id="8_p7kn3"]
 [ext_resource type="Script" path="res://Scripts/bgm.gd" id="13_c8aie"]
 [ext_resource type="PackedScene" uid="uid://bjse5p8p12uhr" path="res://Scenes/tooltips.tscn" id="14_02nus"]
 
@@ -91,6 +92,10 @@ render_target_update_mode = 4
 
 [node name="HubRoom" parent="PlayerView/SubViewport" instance=ExtResource("5_sgrcl")]
 level_name = "hub"
+
+[node name="DesertRoom" parent="PlayerView/SubViewport" instance=ExtResource("8_p7kn3")]
+level_name = "desert"
+should_be_instanced = true
 
 [node name="CaveRoom" parent="PlayerView/SubViewport" instance=ExtResource("8_4s0k3")]
 level_name = "cave"
