@@ -18,11 +18,11 @@ static func _get_for_cloud_level():
 	rtn.default_items = ["quicksilver", "salt", "sulfur"]
 	rtn.world_items = ["cloud_bud1", "cloud_bud2", "cloud_tree", "crystal_fountain", "fruit"]
 	rtn.item_mappings = {
-		"cloud_bud1": { "item": "cloud_bud", "rect": Rect2(Vector2(38, 14), Vector2(42, 12)) },
-		"cloud_bud2": { "item": "cloud_bud", "rect": Rect2(Vector2(0, 0), Vector2(0, 0)) },
-		"cloud_tree": { "item": "cloud_tree", "rect": Rect2(Vector2(0, 0), Vector2(0, 0)) },
-		"crystal_fountain": { "item": "crystal_fountain", "rect": Rect2(Vector2(15, 20), Vector2(20, 17)) },
-		"fruit": { "item": "fruit", "rect": Rect2(Vector2(0, 0), Vector2(0, 0)) },
+		"cloud_bud1": { "item": "cloud_bud", "rect": Rect2(Vector2(38, 12), Vector2(4, 3)) },
+		"cloud_bud2": { "item": "cloud_bud", "rect": Rect2(Vector2(50, 18), Vector2(3, 2)) },
+		"cloud_tree": { "item": "cloud_tree", "rect": Rect2(Vector2(64, 11), Vector2(8, 3)) },
+		"crystal_fountain": { "item": "crystal_fountain", "rect": Rect2(Vector2(15, 17), Vector2(5, 3)) },
+		"fruit": { "item": "fruit", "rect": Rect2(Vector2(79, 17), Vector2(2, 2)) },
 	}
 	
 	return rtn
