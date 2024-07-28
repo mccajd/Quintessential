@@ -60,7 +60,7 @@ label_settings = SubResource("LabelSettings_tft4m")
 
 [node name="TowerExtView" parent="TowerExteriorView" instance=ExtResource("6_xqt5k")]
 position = Vector2(92, 314)
-scale = Vector2(-0.3, 0.37)
+scale = Vector2(0.3, 0.37)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("13_c8aie")
