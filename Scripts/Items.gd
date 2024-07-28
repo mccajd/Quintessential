@@ -33,7 +33,7 @@ const itemDB = {
 	'cloud' : { 'name' : 'Cloud', 'description': 'A full-sized cloud.\nTeeming with elemental energy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud.png', 'id' : 4 },
 	'barrel' : { 'name' : 'Barrel', 'description': 'An old wooden barrel.\nIts metal rivets and hoops have very little value,\nbut perhaps its wooden body could be useful?', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
 	'wine' : { 'name' : 'Wine', 'description': 'An antique bottle of wine.\nAlways celebrated for its excellence, it now serves a different purpose.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'sea_creature' : { 'name' : 'Sea Creature', 'description': 'A gargantuan creature from depths untold.\nIts size makes it far too unwieldy to use alchemically.\nPerhaps it can be broken down further?', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'sea_creature' : { 'name' : 'Sea Creature', 'description': 'A gargantuan creature from depths untold.\nIts massive carcass must have once teemed with body and soul.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
 	'coral' : { 'name' : 'Coral', 'description': 'A large decaying coral.\nThis pitiful sight appears to be the only sign of life in this place.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
 	'anchor' : { 'name' : 'Anchor', 'description': 'A metal ship anchor found embedded in the bowels of a sea creature.\nWhether its placement there were incidental or deliberate may never be known.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
 	'raw_meat' : { 'name' : 'Raw Meat', 'description': 'Meat from a sea creature.\nLikely inedible unless one is wrought with desperation.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
@@ -62,7 +62,7 @@ const dissolution_recipes = [
 	{ "required_ingredients": ["quicksilver"], "items": ["quicksilver_mote", "quicksilver_mote"] },
 	{ "required_ingredients": ["barrel"], "items": ["wood"] },
 	{ "required_ingredients": ["coral"], "items": ["air_mote", "water_mote"] },
-	{ "required_ingredients": ["sea_creature"], "items": ["earth_mote", "fire_mote", "water", "raw_meat"] },
+	{ "required_ingredients": ["sea_creature"], "items": ["earth", "fire_mote", "water", "raw_meat"] },
 	# manually added dupes (may do this programmatically later
 	{ "required_ingredients": ["barrel", "barrel" ], "items": ["wood", "wood"] },
 ]
@@ -114,6 +114,7 @@ const distillation_recipes = [
 	{ "required_ingredients": ["wine"], "items": ["alcohol", "alcohol", "water_mote", "salt"] },
 	{ "required_ingredients": ["coral"], "items": ["salt"] },
 	{ "required_ingredients": ["anchor"], "items": ["scrap_metal", "quicksilver"] },
+	{ "required_ingredients": ["sea_creature"], "items": ["salt", "salt", "sulfur", "sulfur"] },
 ]
 
 const ascension_recipes = [
