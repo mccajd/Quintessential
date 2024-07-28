@@ -4,6 +4,8 @@ class_name RoomManager
 var current_room: String
 var viewport: SubViewport
 
+var instance_ref
+
 var room_items: Dictionary
 signal world_item_found
 signal beacon_puzzle_changed(puzzle_name)
@@ -16,6 +18,14 @@ func _ready():
 
 
 func _change_room(room: String):
+	if instance_ref:
+		# kill this room so silly things don't happen
+		instance_ref.set_process_input(false)
+		instance_ref.set_process(false)
+		instance_ref.set_physics_process(false)
+	# wait for transition anim		
+	await get_tree().create_timer(0.75).timeout
+	
 	var source_room = current_room
 	current_room = room
 	beacon_puzzle_changed.emit(_get_beacon_puzzle())
@@ -24,6 +34,8 @@ func _change_room(room: String):
 	var instance = scene.instantiate()
 	instance.level_name = room
 	instance.item_found.connect(_on_item_found)
+	instance.set_spawn_point(source_room)
+
 	if room_items.has(current_room):
 		instance.found_items = room_items[current_room]
 	
@@ -33,6 +45,7 @@ func _change_room(room: String):
 	for child in viewport.get_children():
 		child.queue_free()
 	viewport.add_child(instance)
+	instance_ref = instance
 
 
 func _get_room_scene():

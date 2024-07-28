@@ -9,6 +9,7 @@ const speed = 2
 @onready var tile_size : Vector2i = tile_map.tile_set.tile_size
 
 var change_rooms_on_stop = false
+var rooms_changing = false
 
 var path : PackedVector2Array 
 var prev_tile : Vector2i
@@ -38,7 +39,9 @@ func _ready():
 	
 	set_solid_tiles()
 
-func _physics_process(delta):
+func _physics_process(_delta):
+	if rooms_changing: return
+	
 	if !path.is_empty():
 		velocity = speed*direction_to_point(position-Vector2(8,8), path[0])
 	else:
@@ -47,7 +50,10 @@ func _physics_process(delta):
 	if change_rooms_on_stop && path.is_empty():
 		# "Time to blow this popsicle stand" - hmw
 		change_room.emit(target_tile)
-		change_rooms_on_stop = false
+		# NOTE.jmc this essentially kills the player pathing engine,
+		#	since we expect the next room to re-instance it.
+		#	May lead to some weird behavior if there is no actual room to send the player to
+		rooms_changing = true
 		return
 		
 	var collision = move_and_collide(velocity)
