@@ -1,40 +1,27 @@
 extends Node
 
-var puzzle_rooms = ["BeaconPuzzle1", "BeaconPuzzle2", "BeaconPuzzle3", "BeaconPuzzle4"]
-var selected_room = "BeaconPuzzle1"
+var room_names = ["cloud", "cave", "ocean", "desert"]
+var selected_room
 
 func _ready():
-	for room_name in puzzle_rooms:
-		_disable_node(room_name)
-	_enable_node(selected_room)
+	for name in room_names:
+		_disable_puzzle(name)
 
 
-func _process(delta):
-	if Input.is_action_just_pressed("debug"):
-		_disable_node(selected_room)
-		get_next_room()
-		_enable_node(selected_room)
+func _process(_delta):
+	pass
 
 
-func get_next_room():
-	if selected_room == puzzle_rooms.back():
-		selected_room = puzzle_rooms.front()
-		return
-	var ix = puzzle_rooms.find(selected_room)
-	ix += 1
-	selected_room = puzzle_rooms[ix]
+func _enable_puzzle(room_name = selected_room):
+	_toggle_puzzle(room_name, true)
 
 
-func _enable_node(node_name):
-	_toggle_node(node_name, true)
+func _disable_puzzle(room_name = selected_room):
+	_toggle_puzzle(room_name, false)
 
 
-func _disable_node(node_name):
-	_toggle_node(node_name, false)
-
-
-func _toggle_node(node_name, value):
-	var node = get_node(node_name)
+func _toggle_puzzle(room_name, value):
+	var node = _get_by_room(room_name)
 	node.set_process_input(value)
 	node.set_process(value)
 	node.set_physics_process(value)
@@ -46,7 +33,28 @@ func _on_beacon_menu_toggled(opened):
 
 
 func _on_world_item_found(item_name):
-	get_node(selected_room).set_item(item_name)
+	_get_by_room(selected_room).set_item(item_name)
+
+
+func _on_beacon_puzzle_changed(room_name):
+	for name in room_names:
+		_disable_puzzle(name)
+	
+	if room_names.find(room_name) == -1:
+		room_name = null
+	selected_room = room_name
+	
+	if !selected_room: return
+	
+	_enable_puzzle()
+
 
 func _on_game_over():
 	print("Th-th-that's all folks..!")
+
+
+func _get_by_room(room_name):
+	for child in get_children():
+		if "for_room" in child && child.for_room == room_name:
+			return child
+	print("NONE FOUND")

@@ -3,6 +3,8 @@ class_name LevelConfig
 
 static func get_for(level_name: String):
 	match level_name:
+		"hub":
+			return _get_for_hub_level()
 		"cloud":
 			return _get_for_cloud_level()
 
@@ -25,4 +27,29 @@ static func _get_for_cloud_level():
 		"fruit": { "item": "fruit", "rect": Rect2(Vector2(79, 17), Vector2(2, 2)) },
 	}
 	
+	rtn.transition_rects = [
+		LevelConfigTransitionRect.new("hub", Rect2(Vector2(0, 0), Vector2(1000, 1000)))
+	]
+	
+	rtn.bgm = "waltz"
+	
+	return rtn
+
+static func _get_for_hub_level():
+	var rtn = LevelConfigValue.new()
+	
+	rtn.camera_limit_left = 60
+	rtn.camera_limit_right = 1060
+	rtn.camera_limit_top = -240
+	rtn.camera_limit_bottom = -240
+	
+	rtn.transition_rects = [
+		LevelConfigTransitionRect.new("cloud", Rect2(Vector2(42, 3), Vector2(5, 10))),
+		# duped here to make sure this works even without the "one dest" rule
+		# delete this once we add another room
+		LevelConfigTransitionRect.new("cloud", Rect2(Vector2(42, 3), Vector2(5, 10))),
+	]
+	
+	rtn.bgm = "title"
+
 	return rtn

@@ -1,12 +1,15 @@
 extends CharacterBody2D
 class_name player
 
-signal change_room(String, Vector2i)
+signal change_room(Vector2i)
 
 const speed = 2
 
 @onready var tile_map : TileMap  = get_parent().find_child("TileMap")
 @onready var tile_size : Vector2i = tile_map.tile_set.tile_size
+
+var change_rooms_on_stop = false
+var rooms_changing = false
 
 var path : PackedVector2Array 
 var prev_tile : Vector2i
@@ -36,11 +39,22 @@ func _ready():
 	
 	set_solid_tiles()
 
-func _physics_process(delta):
+func _physics_process(_delta):
+	if rooms_changing: return
+	
 	if !path.is_empty():
 		velocity = speed*direction_to_point(position-Vector2(8,8), path[0])
 	else:
 		velocity = Vector2.ZERO
+	
+	if change_rooms_on_stop && path.is_empty():
+		# "Time to blow this popsicle stand" - hmw
+		change_room.emit(target_tile)
+		# NOTE.jmc this essentially kills the player pathing engine,
+		#	since we expect the next room to re-instance it.
+		#	May lead to some weird behavior if there is no actual room to send the player to
+		rooms_changing = true
+		return
 		
 	var collision = move_and_collide(velocity)
 	
@@ -48,6 +62,10 @@ func _physics_process(delta):
 		print("collision ", collision.get_collider().name)
 		path.clear()
 		position = tile_map.map_to_local(start_tile)
+	
+	var data = tile_map.get_cell_tile_data(tile_map.LAYERS.TRANSITIONS, target_tile)
+
+	if data: change_rooms_on_stop = true
 
 func direction_to_point(src:Vector2i, dest:Vector2i)->Vector2:
 	if dest != src:
@@ -58,6 +76,9 @@ func direction_to_point(src:Vector2i, dest:Vector2i)->Vector2:
 	return Vector2.ZERO
 
 func _input(event):
+	# ignore input if the player is changing rooms
+	if change_rooms_on_stop: return
+	
 	if event.is_action_pressed("select"):
 		target_tile = get_global_mouse_position()
 		start_tile  = position-Vector2(8,8)

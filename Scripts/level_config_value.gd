@@ -1,11 +1,15 @@
 class_name LevelConfigValue
 
-var camera_limit_left: int
-var camera_limit_right: int
-var camera_limit_top: int
-var camera_limit_bottom: int
+var camera_limit_left
+var camera_limit_right
+var camera_limit_top
+var camera_limit_bottom
 
 var default_items
 var world_items
 
 var item_mappings: Dictionary
+
+var transition_rects
+
+var bgm
