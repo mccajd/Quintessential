@@ -38,6 +38,14 @@ offset_bottom = 238.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_8imwt")
 
+[node name="Background2" type="TextureRect" parent="."]
+offset_left = 8.0
+offset_top = -274.0
+offset_right = 904.0
+offset_bottom = 238.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_8imwt")
+
 [node name="FountainTextureTop" type="TextureRect" parent="."]
 z_index = 1
 offset_left = 241.0
@@ -70,5 +78,33 @@ offset_top = 318.0
 offset_right = 373.0
 offset_bottom = 360.0
 texture = ExtResource("5_88hdr")
+
+[node name="CloudForeground3" type="TextureRect" parent="."]
+offset_left = 388.0
+offset_top = 112.0
+offset_right = 511.0
+offset_bottom = 154.0
+rotation = 0.0895819
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("5_88hdr")
+
+[node name="CloudForeground4" type="TextureRect" parent="."]
+offset_left = 583.0
+offset_top = 231.0
+offset_right = 706.0
+offset_bottom = 273.0
+rotation = -0.140352
+texture = ExtResource("5_88hdr")
+flip_h = true
+
+[node name="CloudForeground5" type="TextureRect" parent="."]
+offset_left = 762.0
+offset_top = 301.0
+offset_right = 885.0
+offset_bottom = 343.0
+rotation = -0.0281022
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("5_88hdr")
+flip_h = true
 
 [connection signal="item_discovered" from="TileMap" to="." method="_on_item_discovered"]
