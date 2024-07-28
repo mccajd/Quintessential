@@ -16,7 +16,7 @@ frame_0/duration = 0.3
 frame_1/texture = ExtResource("5_0b5of")
 frame_1/duration = 0.3
 frame_2/texture = ExtResource("6_tp5tn")
-frame_2/duration = 0.3
+frame_2/duration = 0.1
 
 [node name="CloudRoom" type="Node"]
 script = ExtResource("1_ag08v")

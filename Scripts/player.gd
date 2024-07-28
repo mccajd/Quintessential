@@ -84,8 +84,8 @@ func find_valid_dest(cur_dest:Vector2i)->Vector2i:
 						tile_map.tile_set.CELL_NEIGHBOR_TOP_RIGHT_CORNER+1):
 		neighbor = tile_map.get_neighbor_cell(cur_dest, cell)
 		
-		if astar_grid.is_point_solid(neighbor):
-			continue
+		if !astar_grid.is_point_solid(neighbor):
+			return neighbor
 	
 	return neighbor
 
