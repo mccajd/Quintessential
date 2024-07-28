@@ -18,3 +18,5 @@ shape = SubResource("RectangleShape2D_opb2f")
 [node name="TileMap" type="Sprite2D" parent="."]
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("1_w86ws")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

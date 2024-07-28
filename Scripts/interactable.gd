@@ -1,6 +1,9 @@
 extends Area2D
 class_name Interactable
 
+var item_name
+signal item_discovered(item_name)
+
 func _process(delta):
 	pass
 
@@ -9,4 +12,5 @@ func update_position(coords:Vector2i):
 
 
 func _on_body_entered(body):
-	pass # Replace with function body.
+	if body is player && item_name != null:
+		item_discovered.emit(item_name)
