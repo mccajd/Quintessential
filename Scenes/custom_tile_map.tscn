@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://nrsivx657vil"]
+[gd_scene load_steps=9 format=3 uid="uid://nrsivx657vil"]
 
 [ext_resource type="Texture2D" uid="uid://clhq5v0cxpp0q" path="res://assets/wood_floors_pattern.png" id="1_i81ex"]
+[ext_resource type="Texture2D" uid="uid://drt7qy4wm2x80" path="res://assets/temp-tiles-sm.png" id="1_yvf2t"]
 [ext_resource type="Texture2D" uid="uid://b36yc670ysnth" path="res://assets/temp-tiles.png" id="2_214aj"]
 [ext_resource type="Script" path="res://Scripts/interactable_mapper.gd" id="3_q1jvy"]
 
@@ -133,6 +134,29 @@ texture_region_size = Vector2i(64, 64)
 4:4/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 4:4/0/physics_layer_1/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ebrui"]
+texture = ExtResource("1_yvf2t")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_1/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_1/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_1/angular_velocity = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_65kgq"]
 texture = ExtResource("2_214aj")
 texture_region_size = Vector2i(64, 64)
@@ -160,7 +184,6 @@ texture_region_size = Vector2i(64, 64)
 3:0/0/physics_layer_1/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_t61as"]
-tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 physics_layer_1/collision_layer = 4
@@ -168,7 +191,8 @@ physics_layer_1/collision_mask = 0
 custom_data_layer_0/name = "Hall"
 custom_data_layer_0/type = 4
 sources/2 = SubResource("TileSetAtlasSource_m6fqj")
-sources/3 = SubResource("TileSetAtlasSource_65kgq")
+sources/4 = SubResource("TileSetAtlasSource_65kgq")
+sources/3 = SubResource("TileSetAtlasSource_ebrui")
 
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource("TileSet_t61as")

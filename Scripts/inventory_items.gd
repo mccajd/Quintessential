@@ -26,8 +26,10 @@ func set_items(items):
 		set_item(item_key)
 	_set_available_items()
 
-func set_item(item_key):
+func set_item(item_key, rerender = false):
 	inventory_items += [ItemInSlot.new(item_key, null)]
+	if rerender:
+		_set_available_items()
 
 
 func set_item_slot(item_index, slot_id, node_id):

@@ -43,3 +43,7 @@ func _toggle_node(node_name, value):
 
 func _on_beacon_menu_toggled(opened):
 	get_node("PlayerView").visible = !opened
+
+
+func _on_world_item_found(item_name):
+	get_node(selected_room).set_item(item_name)
