@@ -3,15 +3,20 @@ extends Node
 @onready var tile_map = $TileMap
 var player = preload("res://Scenes/wanderer.tscn")
 
-@export var level_name: String = "hub"
+@export var level_name: String
+@export var should_be_instanced = false
 
 var config: LevelConfigValue
 var ref
 
 var found_items: Array
 signal item_found(item_name)
+signal room_changed(room_name)
 
 func _ready():
+	if should_be_instanced:
+		self.queue_free()
+		return
 	$TileMap.visible = false
 	config = LevelConfig.get_for(level_name)
 	
@@ -25,26 +30,28 @@ func _ready():
 	$TileMap.set_from_config(config)
 	if config.default_items:
 		for item in config.default_items:
-			item_found.emit(item)
+			# Check this on init in case scene re-instanced
+			if !found_items || found_items.find(item) == -1:
+				item_found.emit(item)
 
 func _process(delta):
-	pass
-	
-# TODO.hmw have the player view handle the room swapping, perhaps have 
-# a neat, little fade in/fade out of black to hide the transition.
-# You could even have a canned walking animation down a hall that
-# pops up and player
-func changing_room(room : String, start_pos : Vector2i):
+	if Input.is_action_just_pressed("debug"):
+		if level_name == "cloud":
+			changing_room("hub")
+			return
+		changing_room("cloud")
+
+
+func changing_room(room : String):
+	# heh
 	print("Welcome to the Changing Room")
-	print(room)
-	print(start_pos)
+	room_changed.emit(room)
 
 
 func _on_item_discovered(item_name):
 	if found_items.find(item_name) > -1: return
 	found_items += [item_name]
-	var entry = config.item_mappings[item_name]
-	item_found.emit(entry.item)
+	item_found.emit(item_name)
 
 
 func _on_front_detector_entered(body):

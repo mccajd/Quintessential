@@ -16,9 +16,9 @@ func _ready():
 	if required_metal:
 		get_node("BeaconTower/BeaconRecepticle3").expected_input = required_metal
 	
-	if required_element == "earth":
-		var node: InventoryItems = get_node("InventoryItems")
-		node.set_items(["quicksilver", "salt", "sulfur", "cloud_bud", "cloud_bud", "cloud_tree", "crystal_fountain"])
+	#if required_element == "earth":
+		#var node: InventoryItems = get_node("InventoryItems")
+		#node.set_items(["quicksilver", "salt", "sulfur", "cloud_bud", "cloud_bud", "cloud_tree", "crystal_fountain"])
 
 
 func _on_menu_toggled(opened: bool):
