@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=8 format=3 uid="uid://b16x2m82ri0xj"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_nu8b2"]
 [ext_resource type="PackedScene" uid="uid://xlfxdxlhlrkm" path="res://Scenes/beacon_puzzle.tscn" id="2_6o530"]
 [ext_resource type="PackedScene" uid="uid://cqwfracn5qwr4" path="res://Levels/cloud_room.tscn" id="5_quxlp"]
+[ext_resource type="PackedScene" uid="uid://bikq8h6hctftq" path="res://Scenes/tower_ext_view.tscn" id="6_xqt5k"]
 [ext_resource type="Script" path="res://Scripts/bgm.gd" id="13_c8aie"]
 [ext_resource type="PackedScene" uid="uid://bjse5p8p12uhr" path="res://Scenes/tooltips.tscn" id="14_02nus"]
 
@@ -57,6 +58,10 @@ sees progress
 of shadows"
 label_settings = SubResource("LabelSettings_tft4m")
 
+[node name="TowerExtView" parent="TowerExteriorView" instance=ExtResource("6_xqt5k")]
+position = Vector2(92, 314)
+scale = Vector2(0.3, 0.37)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("13_c8aie")
 
@@ -81,4 +86,5 @@ level_name = "cloud"
 [connection signal="menu_toggled" from="BeaconPuzzle2" to="." method="_on_beacon_menu_toggled"]
 [connection signal="menu_toggled" from="BeaconPuzzle3" to="." method="_on_beacon_menu_toggled"]
 [connection signal="menu_toggled" from="BeaconPuzzle4" to="." method="_on_beacon_menu_toggled"]
+[connection signal="game_over" from="TowerExteriorView/TowerExtView" to="." method="_on_game_over"]
 [connection signal="item_found" from="PlayerView/SubViewport/CloudRoom" to="." method="_on_world_item_found"]

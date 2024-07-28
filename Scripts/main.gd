@@ -47,3 +47,6 @@ func _on_beacon_menu_toggled(opened):
 
 func _on_world_item_found(item_name):
 	get_node(selected_room).set_item(item_name)
+
+func _on_game_over():
+	print("Th-th-that's all folks..!")
