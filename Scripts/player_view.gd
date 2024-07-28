@@ -3,7 +3,7 @@ extends Node
 @onready var tile_map = $TileMap
 var player = preload("res://Scenes/wanderer.tscn")
 
-@export var level_name: String
+@export var level_name: String = "hub"
 
 var config: LevelConfigValue
 var ref
@@ -23,8 +23,9 @@ func _ready():
 	new_player.global_position = tile_map.map_to_local(tile_map.get_used_cells_by_id(tile_map.LAYERS.MISC,3,Vector2i(3,0))[0])
 	
 	$TileMap.set_from_config(config)
-	for item in config.default_items:
-		item_found.emit(item)
+	if config.default_items:
+		for item in config.default_items:
+			item_found.emit(item)
 
 func _process(delta):
 	pass

@@ -3,6 +3,8 @@ class_name LevelConfig
 
 static func get_for(level_name: String):
 	match level_name:
+		"hub":
+			return _get_for_hub_level()
 		"cloud":
 			return _get_for_cloud_level()
 
@@ -25,4 +27,14 @@ static func _get_for_cloud_level():
 		"fruit": { "item": "fruit", "rect": Rect2(Vector2(79, 17), Vector2(2, 2)) },
 	}
 	
+	return rtn
+
+static func _get_for_hub_level():
+	var rtn = LevelConfigValue.new()
+	
+	rtn.camera_limit_left = null
+	rtn.camera_limit_right = null
+	rtn.camera_limit_top = null
+	rtn.camera_limit_bottom = null
+
 	return rtn
