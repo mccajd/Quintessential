@@ -90,4 +90,5 @@ should_be_instanced = true
 [connection signal="menu_toggled" from="BeaconPuzzle2" to="." method="_on_beacon_menu_toggled"]
 [connection signal="menu_toggled" from="BeaconPuzzle3" to="." method="_on_beacon_menu_toggled"]
 [connection signal="menu_toggled" from="BeaconPuzzle4" to="." method="_on_beacon_menu_toggled"]
+[connection signal="beacon_puzzle_changed" from="RoomManager" to="." method="_on_beacon_puzzle_changed"]
 [connection signal="world_item_found" from="RoomManager" to="." method="_on_world_item_found"]

@@ -34,6 +34,7 @@ func set_visibility(value):
 	get_node("MockUI/InventoryContainer").visible = value
 	get_node("MockUI/InventorySlotsContainer").visible = value
 	get_node("MockUI/ThreePrimesContainer").visible = value
+	get_node("MockUI/ThreePrimesContainerBackdrop").visible = value
 	
 	self.visible = value
 

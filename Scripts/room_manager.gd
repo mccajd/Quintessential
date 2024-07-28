@@ -6,6 +6,7 @@ var viewport: SubViewport
 
 var room_items: Dictionary
 signal world_item_found
+signal beacon_puzzle_changed(puzzle_name)
 
 func _ready():
 	viewport = get_node("/root/Main/PlayerView/SubViewport")
@@ -16,6 +17,7 @@ func _ready():
 
 func _change_room(room: String):
 	current_room = room
+	beacon_puzzle_changed.emit(_get_beacon_puzzle())
 	
 	var scene = load(_get_room_scene())
 	var instance = scene.instantiate()
@@ -38,6 +40,7 @@ func _get_room_scene():
 			return "res://Levels/cloud_room.tscn"
 		_:
 			return "res://Levels/hub_room.tscn"
+
 
 func _get_beacon_puzzle():
 	match current_room:

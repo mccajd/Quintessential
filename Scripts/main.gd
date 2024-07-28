@@ -1,40 +1,40 @@
 extends Node
 
-var puzzle_rooms = ["BeaconPuzzle1", "BeaconPuzzle2", "BeaconPuzzle3", "BeaconPuzzle4"]
-var selected_room = "BeaconPuzzle1"
+var puzzles = ["BeaconPuzzle1", "BeaconPuzzle2", "BeaconPuzzle3", "BeaconPuzzle4"]
+var selected_puzzle
 
 func _ready():
-	for room_name in puzzle_rooms:
-		_disable_node(room_name)
-	_enable_node(selected_room)
+	for puzzle in puzzles:
+		_disable(puzzle)
 
 
 func _process(delta):
 	if Input.is_action_just_pressed("debug"):
-		_disable_node(selected_room)
-		get_next_room()
-		_enable_node(selected_room)
+		pass
+		#_disable_node(selected_room)
+		#get_next_room()
+		#_enable_node(selected_room)
 
 
 func get_next_room():
-	if selected_room == puzzle_rooms.back():
-		selected_room = puzzle_rooms.front()
+	if selected_puzzle == puzzles.back():
+		selected_puzzle = puzzles.front()
 		return
-	var ix = puzzle_rooms.find(selected_room)
+	var ix = puzzles.find(selected_puzzle)
 	ix += 1
-	selected_room = puzzle_rooms[ix]
+	selected_puzzle = puzzles[ix]
 
 
-func _enable_node(node_name):
-	_toggle_node(node_name, true)
+func _enable(name):
+	_toggle(name, true)
 
 
-func _disable_node(node_name):
-	_toggle_node(node_name, false)
+func _disable(name):
+	_toggle(name, false)
 
 
-func _toggle_node(node_name, value):
-	var node = get_node(node_name)
+func _toggle(name, value):
+	var node = get_node(name)
 	node.set_process_input(value)
 	node.set_process(value)
 	node.set_physics_process(value)
@@ -46,4 +46,16 @@ func _on_beacon_menu_toggled(opened):
 
 
 func _on_world_item_found(item_name):
-	get_node(selected_room).set_item(item_name)
+	get_node(selected_puzzle).set_item(item_name)
+
+
+func _on_beacon_puzzle_changed(puzzle_name):
+	for puzzle in puzzles:
+		_disable(puzzle)
+	
+	selected_puzzle = puzzle_name
+	
+	if !puzzle_name: return
+	
+	_enable(puzzle_name)
+	
