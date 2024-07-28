@@ -32,6 +32,14 @@ const itemDB = {
 	'quicksilver_mote' : { 'name' : 'Quicksilver Mote', 'description': 'A fragment of quicksilver.\nUsed to catalyze the ascension process, albeit with less intensity.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/quicksilver_mote.png', 'id' : 4 },
 	'cloud' : { 'name' : 'Cloud', 'description': 'A full-sized cloud.\nTeeming with elemental energy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud.png', 'id' : 4 },
 	
+	# Note.Kei - For sanity
+	'meat_pouch' : { 'name' : 'Pouch of Cured Meats', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'cacti' : { 'name' : 'Cacti', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'bones' : { 'name' : 'Bones', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'frankincense' : { 'name' : 'Frankincense', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'mhyr' : { 'name' : 'mhyr', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'cacti_husk' : { 'name' : 'Cacti Husk', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'cured_meat' : { 'name' : 'Cured Meat', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 }
 
 const solution_recipes = [
@@ -54,6 +62,9 @@ const dissolution_recipes = [
 	{ "required_ingredients": ["cloud_bud"], "items": ["air_mote"] },
 	{ "required_ingredients": ["cloud"], "items": ["air"] },
 	{ "required_ingredients": ["quicksilver"], "items": ["quicksilver_mote", "quicksilver_mote"] },
+	
+	# Note.Kei - For sanity
+	{ "required_ingredients": ["meat_pouch"], "items": ["cured_meat", "salt", "salt"] },
 ]
 
 const sublimation_recipes = [
@@ -81,6 +92,11 @@ const distillation_recipes = [
 	{ "required_ingredients": ["cloud_bud"], "items": ["water_mote", "air_mote", "salt"] },
 	{ "required_ingredients": ["cloud"], "items": ["water", "air", "salt"] },
 	{ "required_ingredients": ["coinage"], "items": ["base_metal", "salt"] },
+
+	# Note.Kei - For sanity
+	{ "required_ingredients": ["cacti"], "items": ["water_mote", "salt", "cacti_husk"] },
+	{ "required_ingredients": ["bones"], "items": ["sulfur", "salt"] },
+
 ]
 
 const ascension_recipes = [
@@ -116,4 +132,12 @@ const ascension_recipes = [
 	{ "required_ingredients": ["alcohol", "iron"], "items": ["silver"] },
 	{ "required_ingredients": ["alcohol", "silver"], "items": ["gold"] },
 	{ "required_ingredients": ["alcohol", "crystal"], "items": ["pure_crystal"] },
+
+	
+	# Note.Kei - For sanity
+	{ "required_ingredients": ["alcohol", "frankincense"], "items": ["wood"] },
+	{ "required_ingredients": ["quicksilver_mote", "frankincense"], "items": ["wood"] },
+	{ "required_ingredients": ["alcohol", "mhyr"], "items": ["wood"] },
+	{ "required_ingredients": ["quicksilver_mote", "mhyr"], "items": ["wood"] },
+
 ]
