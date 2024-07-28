@@ -112,7 +112,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TowerView" type="Node"]
+[node name="TowerExtView" type="Node2D"]
 script = ExtResource("1_hq1mf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -120,6 +120,7 @@ sprite_frames = SubResource("SpriteFrames_kbq4d")
 animation = &"tower_0"
 
 [node name="GameTimer" type="Timer" parent="."]
+wait_time = 120.0
 autostart = true
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
