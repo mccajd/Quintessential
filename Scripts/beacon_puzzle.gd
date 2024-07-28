@@ -1,6 +1,8 @@
 class_name BeaconPuzzle
 extends Control
 
+@export var for_room: String
+
 @export var required_prime: String
 @export var required_element: String
 @export var required_metal: String

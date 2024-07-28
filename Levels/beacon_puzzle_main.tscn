@@ -18,24 +18,28 @@ script = ExtResource("1_nu8b2")
 
 [node name="BeaconPuzzle1" parent="." instance=ExtResource("2_6o530")]
 visible = false
+for_room = "cave"
 required_prime = "salt"
 required_element = "air"
 required_metal = "lead"
 
 [node name="BeaconPuzzle2" parent="." instance=ExtResource("2_6o530")]
 visible = false
+for_room = "desert"
 required_prime = "salt"
 required_element = "water"
 required_metal = "iron"
 
 [node name="BeaconPuzzle3" parent="." instance=ExtResource("2_6o530")]
 visible = false
+for_room = "ocean"
 required_prime = "salt"
 required_element = "fire"
 required_metal = "silver"
 
 [node name="BeaconPuzzle4" parent="." instance=ExtResource("2_6o530")]
 visible = false
+for_room = "cloud"
 required_prime = "salt"
 required_element = "earth"
 required_metal = "gold"

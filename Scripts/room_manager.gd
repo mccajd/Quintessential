@@ -29,7 +29,7 @@ func _change_room(room: String):
 	
 	var source_room = current_room
 	current_room = room
-	beacon_puzzle_changed.emit(_get_beacon_puzzle())
+	beacon_puzzle_changed.emit(current_room)
 	
 	var scene = load(_get_room_scene())
 	var instance = scene.instantiate()
@@ -62,14 +62,6 @@ func _get_room_scene():
 			return "res://Levels/cloud_room.tscn"
 		_:
 			return "res://Levels/hub_room.tscn"
-
-
-func _get_beacon_puzzle():
-	match current_room:
-		"cloud":
-			return "BeaconPuzzle4"
-		_:
-			return null
 
 
 func _on_item_found(local_item_key):
