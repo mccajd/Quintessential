@@ -16,9 +16,9 @@ func _ready():
 #replace tile with packaged scene that the player can interact with
 func replace_tiles():
 	for tile_pos in get_used_cells(LAYERS.INTERACTABLES):
-		# To know specifically what interactible was hit:
+		# To know specifically what interactable was hit/what item to give:
 		# Create a const with coordinate ranges mapped to items
-		# Then get that specific item and set it on interactable.
+		# Then get that specific item and set it on interactable itself.
 		var new_scene : Interactable = interactable_scene.instantiate()
 		new_scene.update_position(map_to_local(tile_pos))
 		new_scene.body_entered.connect(_on_body_entered)
