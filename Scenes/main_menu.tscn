@@ -1,3 +1,53 @@
-[gd_scene format=3 uid="uid://cfsct0w6nqocu"]
+[gd_scene load_steps=5 format=3 uid="uid://cfsct0w6nqocu"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_27n7y"]
+[ext_resource type="Texture2D" uid="uid://bt87gyidd5k87" path="res://assets/titlescreen.png" id="1_rqamj"]
+
+[sub_resource type="SystemFont" id="SystemFont_psww3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wcomc"]
+font = SubResource("SystemFont_psww3")
+font_size = 28
 
 [node name="MainMenu" type="Node"]
+script = ExtResource("1_27n7y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.533165, 0.711323)
+texture = ExtResource("1_rqamj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 701.0
+offset_top = 309.0
+offset_right = 818.0
+offset_bottom = 410.0
+scale = Vector2(1.69796, 1.99621)
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "START"
+alignment = 2
+
+[node name="HowToButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "HOW TO PLAY"
+alignment = 2
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "CREDITS"
+alignment = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 665.0
+offset_top = 78.0
+offset_right = 898.0
+offset_bottom = 117.0
+text = "QUINTESSENTIAL"
+label_settings = SubResource("LabelSettings_wcomc")
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HowToButton" to="." method="_on_how_to_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
