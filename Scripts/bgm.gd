@@ -29,9 +29,7 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("debug"):
-		current_track = tracks["title"] if flip else tracks["waltz"]
-		flip = !flip
+	pass
 
 
 func _on_finished():
