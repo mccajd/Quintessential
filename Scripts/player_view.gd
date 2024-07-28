@@ -46,12 +46,8 @@ func _ready():
 	# this has awaits so lets make sure it's last
 	_play_transition_in()
 
-func _process(delta):
-	if Input.is_action_just_pressed("debug"):
-		if level_name == "cloud":
-			changing_room(null, "hub")
-			return
-		changing_room(null, "cloud")
+func _process(_delta):
+	pass
 
 
 func changing_room(target_tile, name = null):
