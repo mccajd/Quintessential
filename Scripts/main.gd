@@ -58,4 +58,7 @@ func _on_beacon_puzzle_changed(puzzle_name):
 	if !puzzle_name: return
 	
 	_enable(puzzle_name)
-	
+
+
+func _on_game_over():
+	print("Th-th-that's all folks..!")
