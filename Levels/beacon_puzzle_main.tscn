@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_nu8b2"]
 [ext_resource type="PackedScene" uid="uid://xlfxdxlhlrkm" path="res://Scenes/beacon_puzzle.tscn" id="2_6o530"]
-[ext_resource type="PackedScene" uid="uid://dhy78dbhht3ki" path="res://Levels/point_click_proto.tscn" id="9_eceik"]
+[ext_resource type="PackedScene" uid="uid://cqwfracn5qwr4" path="res://Levels/cloud_room.tscn" id="5_quxlp"]
 [ext_resource type="Script" path="res://Scripts/bgm.gd" id="13_c8aie"]
 [ext_resource type="PackedScene" uid="uid://bjse5p8p12uhr" path="res://Scenes/tooltips.tscn" id="14_02nus"]
 
@@ -74,7 +74,11 @@ handle_input_locally = false
 size = Vector2i(562, 617)
 render_target_update_mode = 4
 
-[node name="PointClickProto" parent="PlayerView/SubViewport" instance=ExtResource("9_eceik")]
+[node name="CloudRoom" parent="PlayerView/SubViewport" instance=ExtResource("5_quxlp")]
+camera_limit_left = 100
+camera_limit_right = 1344
+camera_limit_top = -200
+camera_limit_bottom = -200
 
 [connection signal="menu_toggled" from="BeaconPuzzle1" to="." method="_on_beacon_menu_toggled"]
 [connection signal="menu_toggled" from="BeaconPuzzle2" to="." method="_on_beacon_menu_toggled"]

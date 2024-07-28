@@ -92,3 +92,14 @@ func find_valid_dest(cur_dest:Vector2i)->Vector2i:
 func set_solid_tiles():
 	for tile_pos in tile_map.get_used_cells(tile_map.LAYERS.OBSTACLES):
 		astar_grid.set_point_solid(tile_pos)
+
+
+func set_camera_limit(left, right, top, bottom):
+	if left != null:
+		$Camera2D.limit_left = left
+	if right != null:
+		$Camera2D.limit_right = right
+	if top != null:
+		$Camera2D.limit_top = top
+	if bottom != null:
+		$Camera2D.limit_bottom = bottom

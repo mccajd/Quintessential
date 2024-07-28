@@ -3,10 +3,16 @@ extends Node
 @onready var tile_map = $TileMap
 var player = preload("res://Scenes/wanderer.tscn")
 
+@export var camera_limit_left: int
+@export var camera_limit_right: int
+@export var camera_limit_top: int
+@export var camera_limit_bottom: int
+
 func _ready():
 	
 	var new_player = player.instantiate()
 	new_player.change_room.connect(changing_room)
+	new_player.set_camera_limit(camera_limit_left, camera_limit_right, camera_limit_top, camera_limit_bottom)
 	add_child(new_player)
 	new_player.global_position = tile_map.map_to_local(tile_map.get_used_cells_by_id(tile_map.LAYERS.MISC,3,Vector2i(3,0))[0])
 
