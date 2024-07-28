@@ -15,6 +15,7 @@ func _ready():
 	for child in viewport.get_children():
 		if "room_changed" in child && typeof(child.room_changed) == TYPE_SIGNAL:
 			child.room_changed.connect(_change_room)
+	viewport.size.x = 1024
 
 
 func _change_room(room: String):
@@ -46,6 +47,11 @@ func _change_room(room: String):
 		child.queue_free()
 	viewport.add_child(instance)
 	instance_ref = instance
+	
+	if room == "hub":
+		viewport.size.x = 1000
+	else:
+		viewport.size.x = 562
 
 
 func _get_room_scene():

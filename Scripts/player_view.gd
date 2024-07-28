@@ -92,6 +92,16 @@ func _on_item_discovered(item_name):
 	item_found.emit(item_name)
 
 
+func _on_front_detector_entered(body):
+	if body is player:
+		ref.z_index = 2
+
+
+func _on_front_detector_exited(body):
+	if body is player:
+		ref.z_index = 0
+
+
 func _on_back_detector_entered(body):
 	if body is player:
 		ref.z_index = -1
@@ -99,7 +109,7 @@ func _on_back_detector_entered(body):
 
 func _on_back_detector_exited(body):
 	if body is player:
-		ref.z_index = 1
+		ref.z_index = 0
 
 
 func _change_room(room_name):
@@ -134,5 +144,4 @@ func _play_transition_in():
 		await get_tree().create_timer(0.1).timeout
 		
 	screen.visible = false
-	
-	
+

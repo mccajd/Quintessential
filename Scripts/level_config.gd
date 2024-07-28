@@ -37,9 +37,9 @@ static func _get_for_hub_level():
 	var rtn = LevelConfigValue.new()
 	
 	rtn.camera_limit_left = 60
-	rtn.camera_limit_right = 800
-	rtn.camera_limit_top = -200
-	rtn.camera_limit_bottom = -200
+	rtn.camera_limit_right = 1060
+	rtn.camera_limit_top = -240
+	rtn.camera_limit_bottom = -240
 	
 	rtn.transition_rects = [
 		LevelConfigTransitionRect.new("cloud", Rect2(Vector2(42, 3), Vector2(5, 10))),

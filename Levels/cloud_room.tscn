@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cqwfracn5qwr4"]
+[gd_scene load_steps=16 format=3 uid="uid://cqwfracn5qwr4"]
 
 [ext_resource type="Texture2D" uid="uid://pfksc6iw64pv" path="res://assets/levelbackgrounds/cloud level.png" id="1_8imwt"]
 [ext_resource type="Script" path="res://Scripts/player_view.gd" id="1_ag08v"]
@@ -25,10 +25,14 @@ frame_2/duration = 0.1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cp3w2"]
 size = Vector2(229, 59)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsql4"]
+size = Vector2(83.5, 162)
+
 [node name="CloudRoom" type="Node"]
 script = ExtResource("1_ag08v")
 
 [node name="TileMap" parent="." instance=ExtResource("3_n6c04")]
+visible = false
 z_index = 10
 position = Vector2(-1, 0)
 layer_0/tile_data = PackedInt32Array(917513, 196611, 0, 917512, 196611, 0)
@@ -175,6 +179,15 @@ collision_mask = 7
 position = Vector2(702.5, 293.5)
 shape = SubResource("RectangleShape2D_cp3w2")
 
+[node name="BackDetector" type="Area2D" parent="."]
+position = Vector2(-332, -90)
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackDetector"]
+position = Vector2(486.25, 162)
+shape = SubResource("RectangleShape2D_xsql4")
+
 [node name="Tree" type="TextureRect" parent="."]
 z_index = 1
 offset_left = 903.0
@@ -224,8 +237,18 @@ offset_right = 840.0
 offset_bottom = 504.0
 color = Color(0, 0, 0, 1)
 
+[node name="BlackVoid" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 22.0
+offset_top = -251.0
+offset_right = 1333.0
+offset_bottom = 472.0
+color = Color(0, 0, 0, 1)
+
 [connection signal="item_discovered" from="TileMap" to="." method="_on_item_discovered"]
 [connection signal="body_entered" from="FrontDetector" to="." method="_on_front_detector_entered"]
 [connection signal="body_exited" from="FrontDetector" to="." method="_on_front_detector_exited"]
 [connection signal="body_entered" from="FrontDetector2" to="." method="_on_front_detector_entered"]
 [connection signal="body_exited" from="FrontDetector2" to="." method="_on_front_detector_exited"]
+[connection signal="body_entered" from="BackDetector" to="." method="_on_back_detector_entered"]
+[connection signal="body_exited" from="BackDetector" to="." method="_on_back_detector_exited"]
