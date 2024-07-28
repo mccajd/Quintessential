@@ -25,4 +25,4 @@ func progress_shadows():
 	
 func regress_shadows():
 	tower_progress -= 7 if tower_progress-7 > 0 else 0
-	tower.player("tower_"+str(tower_progress))
+	tower.play("tower_"+str(tower_progress))
