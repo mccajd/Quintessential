@@ -56,6 +56,7 @@ const dissolution_recipes = [
 	{ "required_ingredients": ["quicksilver"], "items": ["quicksilver_mote", "quicksilver_mote"] },
 ]
 
+# NOTE.jmc - each of these will also implicitly be checked for salt as an ingredient
 const sublimation_recipes = [
 	{ "required_ingredients": ["gold"], "items": ["silver"] },
 	{ "required_ingredients": ["silver"], "items": ["iron"] },
@@ -73,12 +74,24 @@ const sublimation_recipes = [
 	{ "required_ingredients": ["cloud_tree"], "items": ["sulfur"] }
 ]
 
+# NOTE.jmc - hidden feature. sublimation should allow doubling up for double the results.
+static func get_double_sublimation_recipes():
+	var rtn = []
+	for recipe in sublimation_recipes:
+		rtn += [{ "required_ingredients": recipe.required_ingredients + recipe.required_ingredients, "items": recipe.items + recipe.items }]
+	return rtn
+
+# NOTE.jmc - each of these will also implicitly be checked for sulfur as an ingredient
 const distillation_recipes = [
 	{ "required_ingredients": ["seawater"], "items": ["water", "salt"] },
+	{ "required_ingredients": ["seawater", "seawater"], "items": ["water", "water", "salt"] },
 	{ "required_ingredients": ["fruit"], "items": ["water_mote", "salt", "alcohol"] },
+	{ "required_ingredients": ["fruit", "fruit"], "items": ["water", "salt", "alcohol"] },
 	{ "required_ingredients": ["wood"], "items": ["ash", "salt"] },
+	{ "required_ingredients": ["wood", "wood"], "items": ["ash", "salt"] },
 	{ "required_ingredients": ["alcohol"], "items": ["quicksilver"] },
 	{ "required_ingredients": ["cloud_bud"], "items": ["water_mote", "air_mote", "salt"] },
+	{ "required_ingredients": ["cloud_bud", "cloud_bud"], "items": ["water", "air", "salt"] },
 	{ "required_ingredients": ["cloud"], "items": ["water", "air", "salt"] },
 	{ "required_ingredients": ["coinage"], "items": ["base_metal", "salt"] },
 ]
