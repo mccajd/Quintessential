@@ -5,6 +5,8 @@ static func get_for(level_name: String):
 	match level_name:
 		"hub":
 			return _get_for_hub_level()
+		"ocean":
+			return _get_for_ocean_level()
 		"desert":
 			return _get_for_desert_level()
 		"cave":
@@ -82,6 +84,27 @@ static func _get_for_desert_level():
 	return rtn
 
 
+static func _get_for_ocean_level():
+	var rtn = LevelConfigValue.new()
+	
+	rtn.camera_limit_left = 100
+	rtn.camera_limit_right = 1344
+	rtn.camera_limit_top = -200
+	rtn.camera_limit_bottom = -200
+
+	rtn.default_items = ["quicksilver", "salt", "sulfur"]
+	rtn.world_items = []
+	rtn.item_mappings = {}
+	
+	rtn.transition_rects = [
+		LevelConfigTransitionRect.new("hub", Rect2(Vector2(0, 0), Vector2(1000, 1000)))
+	]
+	
+	rtn.bgm = "waltz"
+	
+	return rtn
+
+
 static func _get_for_hub_level():
 	var rtn = LevelConfigValue.new()
 	
@@ -91,7 +114,8 @@ static func _get_for_hub_level():
 	rtn.camera_limit_bottom = -240
 	
 	rtn.transition_rects = [
-		LevelConfigTransitionRect.new("desert", Rect2(Vector2(15, 0), Vector2(5, 13))),
+		LevelConfigTransitionRect.new("ocean", Rect2(Vector2(7, 0), Vector2(5, 13))),
+		LevelConfigTransitionRect.new("desert", Rect2(Vector2(15, -2), Vector2(5, 13))),
 		LevelConfigTransitionRect.new("cave", Rect2(Vector2(35, -2), Vector2(5, 13))),
 		LevelConfigTransitionRect.new("cloud", Rect2(Vector2(42, 0), Vector2(5, 13))),
 	]
