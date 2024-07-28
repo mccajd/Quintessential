@@ -68,7 +68,6 @@ func changing_room(target_tile, name = null):
 
 
 func set_spawn_point(source_room):
-	# TODO.jmc - validate these once these levels are added
 	match source_room:
 		"ocean":
 			player_spawn_point_index = 1
