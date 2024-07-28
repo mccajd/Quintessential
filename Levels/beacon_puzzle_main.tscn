@@ -86,4 +86,5 @@ level_name = "cloud"
 [connection signal="menu_toggled" from="BeaconPuzzle2" to="." method="_on_beacon_menu_toggled"]
 [connection signal="menu_toggled" from="BeaconPuzzle3" to="." method="_on_beacon_menu_toggled"]
 [connection signal="menu_toggled" from="BeaconPuzzle4" to="." method="_on_beacon_menu_toggled"]
+[connection signal="game_over" from="TowerExteriorView/TowerExtView" to="." method="_on_game_over"]
 [connection signal="item_found" from="PlayerView/SubViewport/CloudRoom" to="." method="_on_world_item_found"]
