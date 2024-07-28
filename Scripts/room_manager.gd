@@ -24,7 +24,7 @@ func _change_room(room: String):
 		instance_ref.set_process(false)
 		instance_ref.set_physics_process(false)
 	# wait for transition anim		
-	await get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(0.8).timeout
 	
 	var source_room = current_room
 	current_room = room

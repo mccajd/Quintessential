@@ -207,13 +207,22 @@ offset_bottom = 311.0
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("11_uiuyw")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ElementBanner" type="TextureRect" parent="."]
 offset_left = 552.0
 offset_top = -274.0
 offset_right = 776.0
 offset_bottom = -43.0
 scale = Vector2(1.18598, 1.18598)
 texture = ExtResource("12_4rnvx")
+
+[node name="Transition" type="ColorRect" parent="."]
+visible = false
+z_index = 5
+offset_left = 2.0
+offset_top = -271.0
+offset_right = 840.0
+offset_bottom = 504.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="item_discovered" from="TileMap" to="." method="_on_item_discovered"]
 [connection signal="body_entered" from="FrontDetector" to="." method="_on_front_detector_entered"]

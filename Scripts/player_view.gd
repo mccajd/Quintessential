@@ -110,28 +110,28 @@ func _play_transition_out():
 	var screen: ColorRect = get_node("Transition")
 	if !screen: return
 	
-	var stages = 3
+	var stages = 8
 	screen.modulate.a = 0
 	screen.visible = true
 	
 	# fade out
 	for i in stages:
-		screen.modulate.a += 0.3
-		await get_tree().create_timer(0.2).timeout
+		screen.modulate.a += 0.125
+		await get_tree().create_timer(0.1).timeout
 
 
 func _play_transition_in():
 	var screen: ColorRect = get_node("Transition")
 	if !screen: return
 	
-	var stages = 3
+	var stages = 8
 	screen.modulate.a = 1
 	screen.visible = true
 	
 	# fade in
 	for i in stages:
-		screen.modulate.a -= 0.3
-		await get_tree().create_timer(0.2).timeout
+		screen.modulate.a -= 0.125
+		await get_tree().create_timer(0.1).timeout
 		
 	screen.visible = false
 	
