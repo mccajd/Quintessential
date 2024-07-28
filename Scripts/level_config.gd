@@ -92,10 +92,18 @@ static func _get_for_ocean_level():
 	rtn.camera_limit_top = -200
 	rtn.camera_limit_bottom = -200
 
-	rtn.default_items = ["quicksilver", "salt", "sulfur"]
-	rtn.world_items = ["seawater"]
+	# TODO.jmc - debug items. Remove them.
+	rtn.default_items = ["quicksilver", "salt", "sulfur"] + ["wine", "barrel1", "barrel2", "sea_creature", "anchor", "coral"]
+	rtn.world_items = ["seawater", "wine", "barrel1", "barrel2", "sea_creature", "anchor", "coral"]
 	rtn.item_mappings = {
 		"seawater": { "item": "seawater", "rect": Rect2(Vector2(7, 13), Vector2(4, 3)) },
+		# TODO.jmc - actually add these.
+		"wine": { "item": "wine", "rect": Rect2(Vector2(7, 13), Vector2(4, 3)) },
+		"barrel1": { "item": "barrel", "rect": Rect2(Vector2(7, 13), Vector2(4, 3)) },
+		"barrel2": { "item": "barrel", "rect": Rect2(Vector2(7, 13), Vector2(4, 3)) },
+		"sea_creature": { "item": "sea_creature", "rect": Rect2(Vector2(7, 13), Vector2(4, 3)) },
+		"anchor": { "item": "anchor", "rect": Rect2(Vector2(7, 13), Vector2(4, 3)) },
+		"coral": { "item": "coral", "rect": Rect2(Vector2(7, 13), Vector2(4, 3)) },
 	}
 	
 	rtn.transition_rects = [
