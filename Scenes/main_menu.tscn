@@ -1,13 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfsct0w6nqocu"]
+[gd_scene load_steps=4 format=3 uid="uid://cfsct0w6nqocu"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_27n7y"]
-[ext_resource type="Texture2D" uid="uid://bt87gyidd5k87" path="res://assets/titlescreen.png" id="1_rqamj"]
-
-[sub_resource type="SystemFont" id="SystemFont_psww3"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_wcomc"]
-font = SubResource("SystemFont_psww3")
-font_size = 28
+[ext_resource type="Texture2D" uid="uid://brc4tamuto1vc" path="res://assets/main_menu_background.png" id="2_vg5ty"]
+[ext_resource type="Theme" uid="uid://c3h5a64d47h0b" path="res://assets/menu_theme.tres" id="3_u208o"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_27n7y")
@@ -16,38 +11,37 @@ script = ExtResource("1_27n7y")
 offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(0.533165, 0.711323)
-texture = ExtResource("1_rqamj")
+texture = ExtResource("2_vg5ty")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 701.0
-offset_top = 309.0
-offset_right = 818.0
-offset_bottom = 410.0
-scale = Vector2(1.69796, 1.99621)
-
-[node name="StartButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "START"
+[node name="StartButton" type="Button" parent="."]
+offset_left = 885.0
+offset_top = 321.0
+offset_right = 1002.0
+offset_bottom = 352.0
+scale = Vector2(0.816282, 1.04744)
+theme = ExtResource("3_u208o")
+text = "
+"
 alignment = 2
 
-[node name="HowToButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "HOW TO PLAY"
+[node name="HowToButton" type="Button" parent="."]
+offset_left = 756.0
+offset_top = 368.0
+offset_right = 876.0
+offset_bottom = 399.0
+scale = Vector2(1.87195, 1.04001)
+theme = ExtResource("3_u208o")
 alignment = 2
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "CREDITS"
+[node name="CreditsButton" type="Button" parent="."]
+offset_left = 849.0
+offset_top = 416.0
+offset_right = 966.0
+offset_bottom = 447.0
+scale = Vector2(1.11999, 1.05666)
+theme = ExtResource("3_u208o")
 alignment = 2
 
-[node name="Label" type="Label" parent="."]
-offset_left = 665.0
-offset_top = 78.0
-offset_right = 898.0
-offset_bottom = 117.0
-text = "QUINTESSENTIAL"
-label_settings = SubResource("LabelSettings_wcomc")
-
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HowToButton" to="." method="_on_how_to_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="HowToButton" to="." method="_on_how_to_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
