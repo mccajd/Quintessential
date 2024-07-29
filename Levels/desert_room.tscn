@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7eg2p8v2dw4h"]
+[gd_scene load_steps=11 format=3 uid="uid://c5uc3afqw2l6x"]
 
 [ext_resource type="Script" path="res://Scripts/player_view.gd" id="1_ge4cy"]
 [ext_resource type="PackedScene" uid="uid://nrsivx657vil" path="res://Scenes/custom_tile_map.tscn" id="2_enr1i"]
 [ext_resource type="Texture2D" uid="uid://dc3qym1wo4h55" path="res://assets/levelbackgrounds/desert level.png" id="3_ao7st"]
 [ext_resource type="Texture2D" uid="uid://bpo77pt2dahgy" path="res://assets/symbols/water-symbol.png" id="4_t1562"]
+[ext_resource type="Texture2D" uid="uid://3j01rnfpl7id" path="res://assets/desert/sack_of_meat.png" id="5_5yjt0"]
+[ext_resource type="Texture2D" uid="uid://c1k40swo76yhb" path="res://assets/desert/bones.png" id="6_vijs5"]
+[ext_resource type="Texture2D" uid="uid://c4ggnmfjbn77i" path="res://assets/desert/cacti.png" id="7_ko2rl"]
+[ext_resource type="Texture2D" uid="uid://dqwkh7m4kg4rq" path="res://assets/desert/frankincense.png" id="8_spd1v"]
+[ext_resource type="Texture2D" uid="uid://dklquo6or2imq" path="res://assets/desert/myrrh.png" id="9_gndj0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acovp"]
 size = Vector2(83.5, 162)
@@ -59,6 +64,62 @@ collision_mask = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackDetector"]
 position = Vector2(486.25, 162)
 shape = SubResource("RectangleShape2D_acovp")
+
+[node name="Bag-o-meat" type="TextureRect" parent="."]
+offset_left = 448.0
+offset_top = 200.0
+offset_right = 512.0
+offset_bottom = 264.0
+texture = ExtResource("5_5yjt0")
+expand_mode = 1
+
+[node name="Bones" type="TextureRect" parent="."]
+offset_left = 512.0
+offset_top = 200.0
+offset_right = 576.0
+offset_bottom = 264.0
+texture = ExtResource("6_vijs5")
+expand_mode = 1
+
+[node name="Cacti" type="TextureRect" parent="."]
+offset_left = 576.0
+offset_top = 160.0
+offset_right = 704.0
+offset_bottom = 279.0
+texture = ExtResource("7_ko2rl")
+expand_mode = 1
+
+[node name="Frankincense" type="TextureRect" parent="."]
+offset_left = 640.0
+offset_top = 272.0
+offset_right = 704.0
+offset_bottom = 336.0
+texture = ExtResource("8_spd1v")
+expand_mode = 1
+
+[node name="Bones2" type="TextureRect" parent="."]
+offset_left = 576.0
+offset_top = 272.0
+offset_right = 640.0
+offset_bottom = 336.0
+texture = ExtResource("6_vijs5")
+expand_mode = 1
+
+[node name="Bones3" type="TextureRect" parent="."]
+offset_left = 704.0
+offset_top = 192.0
+offset_right = 768.0
+offset_bottom = 256.0
+texture = ExtResource("6_vijs5")
+expand_mode = 1
+
+[node name="Myrrh" type="TextureRect" parent="."]
+offset_left = 768.0
+offset_top = 192.0
+offset_right = 832.0
+offset_bottom = 256.0
+texture = ExtResource("9_gndj0")
+expand_mode = 1
 
 [connection signal="item_discovered" from="TileMap" to="." method="_on_item_discovered"]
 [connection signal="body_entered" from="BackDetector" to="." method="_on_back_detector_entered"]
