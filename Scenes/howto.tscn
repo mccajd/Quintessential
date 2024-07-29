@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dexubab3w6aet"]
+
+[ext_resource type="Texture2D" uid="uid://ds7yiqjnfs15s" path="res://assets/howto_graphic.png" id="1_iqjvo"]
+[ext_resource type="Theme" uid="uid://c3h5a64d47h0b" path="res://assets/menu_theme.tres" id="2_1r0bb"]
+
+[sub_resource type="GDScript" id="GDScript_hum64"]
+script/source = "extends Node
+
+
+var menu = \"res://Scenes/main_menu.tscn\"
+
+func _on_menu_button_pressed():
+	Controller.goto_scene(menu)
+"
+
+[node name="Node" type="Node"]
+script = SubResource("GDScript_hum64")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_iqjvo")
+
+[node name="MenuButton" type="Button" parent="."]
+offset_left = 414.0
+offset_top = 659.0
+offset_right = 531.0
+offset_bottom = 690.0
+scale = Vector2(1.21628, 1.04744)
+theme = ExtResource("2_1r0bb")
+text = "
+"
+alignment = 2
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
