@@ -31,8 +31,6 @@ const itemDB = {
 	'lead' : { 'name' : 'Lead', 'description': 'The fourth tier of metal.\nOnce reviled, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
 	'quicksilver_mote' : { 'name' : 'Quicksilver Mote', 'description': 'A fragment of quicksilver.\nUsed to catalyze the ascension process, albeit with less intensity.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/quicksilver_mote.png', 'id' : 4 },
 	'cloud' : { 'name' : 'Cloud', 'description': 'A full-sized cloud.\nTeeming with elemental energy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud.png', 'id' : 4 },
-	
-	# Note.Kei - For sanity
 	'meat_sack' : { 'name' : 'Sack of Cured Meats', 'description': 'A sack of meats cured in salt.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/sack_of_meat_token.png', 'id' : 4 },
 	'cacti' : { 'name' : 'Cacti', 'description': 'A prickly plant found in the desert.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cacti_token.png', 'id' : 4 },
 	'bones' : { 'name' : 'Bones', 'description': 'Sun bleached pile of bones.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/bones_token.png', 'id' : 4 },
@@ -62,8 +60,6 @@ const dissolution_recipes = [
 	{ "required_ingredients": ["cloud_bud"], "items": ["air_mote"] },
 	{ "required_ingredients": ["cloud"], "items": ["air"] },
 	{ "required_ingredients": ["quicksilver"], "items": ["quicksilver_mote", "quicksilver_mote"] },
-	
-	# Note.Kei - For sanity
 	{ "required_ingredients": ["meat_sack"], "items": ["cured_meat", "salt", "salt"] },
 ]
 
@@ -82,8 +78,6 @@ const sublimation_recipes = [
 	{ "required_ingredients": ["water_mote"], "items": ["fire_mote"] },
 	{ "required_ingredients": ["fire_mote"], "items": ["earth_mote"] },
 	{ "required_ingredients": ["cloud_tree"], "items": ["sulfur"] },
-
-	# Note.Kei - For sanity
 	{ "required_ingredients": ["cacti_husk"], "items": ["sulfur"] },
 ]
 
@@ -95,8 +89,6 @@ const distillation_recipes = [
 	{ "required_ingredients": ["cloud_bud"], "items": ["water_mote", "air_mote", "salt"] },
 	{ "required_ingredients": ["cloud"], "items": ["water", "air", "salt"] },
 	{ "required_ingredients": ["coinage"], "items": ["base_metal", "salt"] },
-
-	# Note.Kei - For sanity
 	{ "required_ingredients": ["cacti"], "items": ["water_mote", "salt", "cacti_husk"] },
 	{ "required_ingredients": ["bones"], "items": ["sulfur", "salt"] },
 	{ "required_ingredients": ["frankincense"], "items": ["earth_mote", "water_mote", 'sulfur'] },
@@ -138,8 +130,6 @@ const ascension_recipes = [
 	{ "required_ingredients": ["alcohol", "silver"], "items": ["gold"] },
 	{ "required_ingredients": ["alcohol", "crystal"], "items": ["pure_crystal"] },
 
-	
-	# Note.Kei - For sanity
 	{ "required_ingredients": ["alcohol", "frankincense"], "items": ["wood"] },
 	{ "required_ingredients": ["quicksilver_mote", "frankincense"], "items": ["wood"] },
 	{ "required_ingredients": ["alcohol", "myrrh"], "items": ["wood"] },
