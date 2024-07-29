@@ -31,6 +31,10 @@ func _change_room(room: String):
 	# wait for transition anim		
 	await get_tree().create_timer(0.8).timeout
 	
+	if room == "endgame":
+		Controller.goto_scene(MainMenu.win_screen)
+		return
+	
 	var source_room = current_room
 	current_room = room
 	beacon_puzzle_changed.emit(current_room)
