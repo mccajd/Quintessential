@@ -33,11 +33,11 @@ const itemDB = {
 	'cloud' : { 'name' : 'Cloud', 'description': 'A full-sized cloud.\nTeeming with elemental energy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud.png', 'id' : 4 },
 	
 	# Note.Kei - For sanity
-	'meat_pouch' : { 'name' : 'Pouch of Cured Meats', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'meat_sack' : { 'name' : 'Sack of Cured Meats', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'cacti' : { 'name' : 'Cacti', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'bones' : { 'name' : 'Bones', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'frankincense' : { 'name' : 'Frankincense', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
-	'mhyr' : { 'name' : 'mhyr', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'myrrh' : { 'name' : 'Myrrh', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'cacti_husk' : { 'name' : 'Cacti Husk', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'cured_meat' : { 'name' : 'Cured Meat', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 }
@@ -64,7 +64,7 @@ const dissolution_recipes = [
 	{ "required_ingredients": ["quicksilver"], "items": ["quicksilver_mote", "quicksilver_mote"] },
 	
 	# Note.Kei - For sanity
-	{ "required_ingredients": ["meat_pouch"], "items": ["cured_meat", "salt", "salt"] },
+	{ "required_ingredients": ["meat_sack"], "items": ["cured_meat", "salt", "salt"] },
 ]
 
 const sublimation_recipes = [
@@ -137,7 +137,7 @@ const ascension_recipes = [
 	# Note.Kei - For sanity
 	{ "required_ingredients": ["alcohol", "frankincense"], "items": ["wood"] },
 	{ "required_ingredients": ["quicksilver_mote", "frankincense"], "items": ["wood"] },
-	{ "required_ingredients": ["alcohol", "mhyr"], "items": ["wood"] },
-	{ "required_ingredients": ["quicksilver_mote", "mhyr"], "items": ["wood"] },
+	{ "required_ingredients": ["alcohol", "myrrh"], "items": ["wood"] },
+	{ "required_ingredients": ["quicksilver_mote", "myrrh"], "items": ["wood"] },
 
 ]

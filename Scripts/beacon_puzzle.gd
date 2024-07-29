@@ -20,7 +20,7 @@ func _ready():
 		
 	if required_element == "water":
 		var node: InventoryItems = get_node("InventoryItems")
-		node.set_items(["quicksilver", "salt", "sulfur", "meat_pouch", "cacti", "bones", "frankincense", "mhyr", "gold"])
+		node.set_items(["quicksilver", "salt", "sulfur", "meat_sack", "cacti", "bones", "frankincense", "myrrh", "gold"])
 
 
 
