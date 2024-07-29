@@ -72,8 +72,15 @@ static func _get_for_desert_level():
 	rtn.camera_limit_bottom = -200
 
 	rtn.default_items = ["quicksilver", "salt", "sulfur"]
-	rtn.world_items = []
-	rtn.item_mappings = {}
+	rtn.world_items = ["meat_sack", "cacti", "bones", "frankincense", "myrrh", "gold"]
+	rtn.item_mappings = {
+		"meat_sack": { "item": "meat_sack", "rect": Rect2(Vector2(29, 13), Vector2(2, 3)) },
+		"cacti": { "item": "cacti", "rect": Rect2(Vector2(38, 12), Vector2(3, 5)) },
+		"bones": { "item": "bones", "rect": Rect2(Vector2(33, 14), Vector2(2, 2)) },
+		"frankincense": { "item": "frankincense", "rect": Rect2(Vector2(41, 18), Vector2(2, 2)) },
+		"myrrh": { "item": "myrrh", "rect": Rect2(Vector2(43, 13), Vector2(2, 2)) },
+		"gold": { "item": "gold", "rect": Rect2(Vector2(34, 18), Vector2(1, 1)) },
+	}
 	
 	rtn.transition_rects = [
 		LevelConfigTransitionRect.new("hub", Rect2(Vector2(0, 0), Vector2(1000, 1000)))
