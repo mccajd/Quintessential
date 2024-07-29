@@ -33,13 +33,13 @@ const itemDB = {
 	'cloud' : { 'name' : 'Cloud', 'description': 'A full-sized cloud.\nTeeming with elemental energy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud.png', 'id' : 4 },
 	
 	# Note.Kei - For sanity
-	'meat_sack' : { 'name' : 'Sack of Cured Meats', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/sack_of_meat_token.png', 'id' : 4 },
-	'cacti' : { 'name' : 'Cacti', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cacti_token.png', 'id' : 4 },
-	'bones' : { 'name' : 'Bones', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/bones_token.png', 'id' : 4 },
-	'frankincense' : { 'name' : 'Frankincense', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/frankincense_token.png', 'id' : 4 },
-	'myrrh' : { 'name' : 'Myrrh', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/myrrh_token.png', 'id' : 4 },
-	'cacti_husk' : { 'name' : 'Cacti Husk', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
-	'cured_meat' : { 'name' : 'Cured Meat', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'meat_sack' : { 'name' : 'Sack of Cured Meats', 'description': 'A sack of meats cured in salt.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/sack_of_meat_token.png', 'id' : 4 },
+	'cacti' : { 'name' : 'Cacti', 'description': 'A prickly plant found in the desert.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cacti_token.png', 'id' : 4 },
+	'bones' : { 'name' : 'Bones', 'description': 'Sun bleached pile of bones.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/bones_token.png', 'id' : 4 },
+	'frankincense' : { 'name' : 'Frankincense', 'description': 'An aromatic resin.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/frankincense_token.png', 'id' : 4 },
+	'myrrh' : { 'name' : 'Myrrh', 'description': 'A sap-like resin.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/myrrh_token.png', 'id' : 4 },
+	'cacti_husk' : { 'name' : 'Cacti Husk', 'description': 'Freshly harvested cacti husk.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cacti_husk_token.png', 'id' : 4 },
+	'cured_meat' : { 'name' : 'Cured Meat', 'description': 'Salted and preserved meats, necessary for crossing the harsh desert climate.\nAlchemically inert but a tasty snack.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cured_meat_token.png', 'id' : 4 },
 }
 
 const solution_recipes = [
@@ -81,7 +81,10 @@ const sublimation_recipes = [
 	{ "required_ingredients": ["air_mote"], "items": ["water_mote"] },
 	{ "required_ingredients": ["water_mote"], "items": ["fire_mote"] },
 	{ "required_ingredients": ["fire_mote"], "items": ["earth_mote"] },
-	{ "required_ingredients": ["cloud_tree"], "items": ["sulfur"] }
+	{ "required_ingredients": ["cloud_tree"], "items": ["sulfur"] },
+
+	# Note.Kei - For sanity
+	{ "required_ingredients": ["cacti_husk"], "items": ["sulfur"] },
 ]
 
 const distillation_recipes = [
@@ -96,7 +99,9 @@ const distillation_recipes = [
 	# Note.Kei - For sanity
 	{ "required_ingredients": ["cacti"], "items": ["water_mote", "salt", "cacti_husk"] },
 	{ "required_ingredients": ["bones"], "items": ["sulfur", "salt"] },
-
+	{ "required_ingredients": ["frankincense"], "items": ["earth_mote", "water_mote", 'sulfur'] },
+	{ "required_ingredients": ["myrrh"], "items": ["earth_mote", "water_mote", 'sulfur'] },
+	{ "required_ingredients": ["sand"], "items": ["earth_mote", "crystal", 'salt'] },
 ]
 
 const ascension_recipes = [
@@ -139,5 +144,7 @@ const ascension_recipes = [
 	{ "required_ingredients": ["quicksilver_mote", "frankincense"], "items": ["wood"] },
 	{ "required_ingredients": ["alcohol", "myrrh"], "items": ["wood"] },
 	{ "required_ingredients": ["quicksilver_mote", "myrrh"], "items": ["wood"] },
+	{ "required_ingredients": ["alcohol", "cacti_husk"], "items": ["cacti"] },
+	{ "required_ingredients": ["quicksilver_mote", "cacti_husk"], "items": ["cacti"] },
 
 ]
