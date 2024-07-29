@@ -46,6 +46,8 @@ func _ready():
 			if !found_items || found_items.find(item) == -1:
 				item_found.emit(item)
 	
+	if level_name == "hub":
+		_set_doors()
 	# this has awaits so lets make sure it's last
 	_play_transition_in()
 
@@ -142,3 +144,14 @@ func _play_transition_in():
 		await get_tree().create_timer(0.1).timeout
 		
 	screen.visible = false
+
+
+func _set_doors():
+	get_node("Quintessence").visible = available_areas.has("endgame")
+	
+	get_node("EndgameDoor").visible = !available_areas.has("endgame")
+	get_node("OceanDoor").visible = !available_areas.has("ocean")
+	get_node("DesertDoor").visible = !available_areas.has("desert")
+	get_node("CaveDoor").visible = !available_areas.has("cave")
+	get_node("CloudDoor").visible = !available_areas.has("cloud")
+		
