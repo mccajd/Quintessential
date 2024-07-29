@@ -33,11 +33,11 @@ const itemDB = {
 	'cloud' : { 'name' : 'Cloud', 'description': 'A full-sized cloud.\nTeeming with elemental energy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud.png', 'id' : 4 },
 	
 	# Note.Kei - For sanity
-	'meat_sack' : { 'name' : 'Sack of Cured Meats', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
-	'cacti' : { 'name' : 'Cacti', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
-	'bones' : { 'name' : 'Bones', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
-	'frankincense' : { 'name' : 'Frankincense', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
-	'myrrh' : { 'name' : 'Myrrh', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'meat_sack' : { 'name' : 'Sack of Cured Meats', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/sack_of_meat_token.png', 'id' : 4 },
+	'cacti' : { 'name' : 'Cacti', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cacti_token.png', 'id' : 4 },
+	'bones' : { 'name' : 'Bones', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/bones_token.png', 'id' : 4 },
+	'frankincense' : { 'name' : 'Frankincense', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/frankincense_token.png', 'id' : 4 },
+	'myrrh' : { 'name' : 'Myrrh', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/myrrh_token.png', 'id' : 4 },
 	'cacti_husk' : { 'name' : 'Cacti Husk', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'cured_meat' : { 'name' : 'Cured Meat', 'description': 'An item', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 }
