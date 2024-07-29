@@ -39,6 +39,7 @@ func _ready():
 	if player_spawn_point_index > spawn_points.size():
 		player_spawn_point_index = 0
 	new_player.global_position = tile_map.map_to_local(spawn_points[player_spawn_point_index])
+	new_player.default_spawn = tile_map.map_to_local(spawn_points[0])
 	
 	if config.default_items:
 		for item in config.default_items:
@@ -85,6 +86,11 @@ func set_spawn_point(source_room):
 		_:
 			player_spawn_point_index = 0
 			return
+
+
+func send_to_hub():
+	ref.force_room_change()
+
 
 func _on_item_discovered(item_name):
 	if found_items.find(item_name) > -1: return
@@ -154,4 +160,4 @@ func _set_doors():
 	get_node("DesertDoor").visible = !available_areas.has("desert")
 	get_node("CaveDoor").visible = !available_areas.has("cave")
 	get_node("CloudDoor").visible = !available_areas.has("cloud")
-		
+

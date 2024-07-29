@@ -53,6 +53,7 @@ script = ExtResource("1_at053")
 [node name="BeaconTower" parent="." instance=ExtResource("1_7mmc7")]
 position = Vector2(664, 0)
 script = ExtResource("2_mvinj")
+debug_instant_win = true
 
 [node name="BeaconNode1" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
@@ -548,6 +549,7 @@ alignment = 1
 
 [connection signal="connections_updated" from="BeaconTower" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_beacon_tower_connections_updated"]
 [connection signal="node_selected" from="BeaconTower" to="MockUI/BeaconNodeView/BeaconNodeMenu" method="_on_beacon_tower_node_selected"]
+[connection signal="puzzle_won" from="BeaconTower" to="." method="_on_puzzle_won"]
 [connection signal="selected" from="BeaconTower/BeaconNode1" to="BeaconTower" method="_on_node_selected"]
 [connection signal="transformed" from="BeaconTower/BeaconNode1" to="BeaconTower" method="_on_transformed"]
 [connection signal="selected" from="BeaconTower/BeaconNode2" to="BeaconTower" method="_on_node_selected"]

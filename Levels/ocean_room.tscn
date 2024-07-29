@@ -50,7 +50,7 @@ texture = ExtResource("4_r5dqd")
 
 [node name="Transition" type="ColorRect" parent="."]
 visible = false
-z_index = 5
+z_index = 10
 offset_left = 2.0
 offset_top = -271.0
 offset_right = 840.0

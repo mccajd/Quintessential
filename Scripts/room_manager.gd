@@ -83,3 +83,8 @@ func _on_item_found(local_item_key):
 	
 	var mappings = LevelConfig.get_for(current_room).item_mappings
 	world_item_found.emit(mappings[local_item_key].item if mappings.has(local_item_key) else local_item_key)
+
+
+func _set_hub_areas(areas):
+	hub_available_areas = areas
+	instance_ref.send_to_hub()

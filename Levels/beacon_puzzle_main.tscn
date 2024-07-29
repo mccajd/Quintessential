@@ -111,10 +111,15 @@ should_be_instanced = true
 level_name = "cloud"
 should_be_instanced = true
 
+[connection signal="hub_rooms_set" from="." to="RoomManager" method="_set_hub_areas"]
 [connection signal="menu_toggled" from="BeaconPuzzle1" to="." method="_on_beacon_menu_toggled"]
+[connection signal="room_complete" from="BeaconPuzzle1" to="." method="_set_game_status"]
 [connection signal="menu_toggled" from="BeaconPuzzle2" to="." method="_on_beacon_menu_toggled"]
+[connection signal="room_complete" from="BeaconPuzzle2" to="." method="_set_game_status"]
 [connection signal="menu_toggled" from="BeaconPuzzle3" to="." method="_on_beacon_menu_toggled"]
+[connection signal="room_complete" from="BeaconPuzzle3" to="." method="_set_game_status"]
 [connection signal="menu_toggled" from="BeaconPuzzle4" to="." method="_on_beacon_menu_toggled"]
+[connection signal="room_complete" from="BeaconPuzzle4" to="." method="_set_game_status"]
 [connection signal="game_over" from="TowerExteriorView/TowerExtView" to="." method="_on_game_over"]
 [connection signal="beacon_puzzle_changed" from="RoomManager" to="." method="_on_beacon_puzzle_changed"]
 [connection signal="world_item_found" from="RoomManager" to="." method="_on_world_item_found"]

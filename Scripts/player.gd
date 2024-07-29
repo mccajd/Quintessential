@@ -14,6 +14,7 @@ var rooms_changing = false
 var path : PackedVector2Array 
 var prev_tile : Vector2i
 var astar_grid : AStarGrid2D
+var default_spawn: Vector2i
 var start_tile : Vector2i = Vector2i.ZERO:
 	get:
 		return start_tile
@@ -59,6 +60,8 @@ func _physics_process(_delta):
 	var collision = move_and_collide(velocity)
 	
 	if collision:
+		if start_tile == Vector2i.ZERO:
+			start_tile = position
 		print("collision ", collision.get_collider().name)
 		path.clear()
 		position = tile_map.map_to_local(start_tile)
@@ -66,6 +69,13 @@ func _physics_process(_delta):
 	var data = tile_map.get_cell_tile_data(tile_map.LAYERS.TRANSITIONS, target_tile)
 
 	if data: change_rooms_on_stop = true
+
+
+func force_room_change():
+	# HACK.jmc - issue when first starting. Only a problem when debugging
+
+	path = astar_grid.get_point_path(global_position, global_position)
+	change_rooms_on_stop = true
 
 func direction_to_point(src:Vector2i, dest:Vector2i)->Vector2:
 	if dest != src:
