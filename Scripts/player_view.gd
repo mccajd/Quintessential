@@ -15,12 +15,16 @@ var found_items: Array
 signal item_found(item_name)
 signal room_changed(room_name)
 
+var available_areas
+
 func _ready():
 	if should_be_instanced:
 		self.queue_free()
 		return
-	$TileMap.visible = false
+
 	config = LevelConfig.get_for(level_name)
+	$TileMap.visible = false
+	$TileMap.set_from_config(config, available_areas)
 	
 	var new_player = player.instantiate()
 	new_player.change_room.connect(changing_room)
@@ -36,7 +40,6 @@ func _ready():
 		player_spawn_point_index = 0
 	new_player.global_position = tile_map.map_to_local(spawn_points[player_spawn_point_index])
 	
-	$TileMap.set_from_config(config)
 	if config.default_items:
 		for item in config.default_items:
 			# Check this on init in case scene re-instanced

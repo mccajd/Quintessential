@@ -78,6 +78,7 @@ script = ExtResource("13_c8aie")
 
 [node name="RoomManager" type="Node" parent="."]
 script = ExtResource("5_0hynf")
+hub_available_areas = ["ocean", "desert", "cave", "cloud"]
 
 [node name="PlayerView" type="SubViewportContainer" parent="."]
 offset_left = 195.0

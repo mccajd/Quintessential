@@ -127,6 +127,7 @@ static func _get_for_hub_level():
 		LevelConfigTransitionRect.new("desert", Rect2(Vector2(15, -2), Vector2(5, 13))),
 		LevelConfigTransitionRect.new("cave", Rect2(Vector2(35, -2), Vector2(5, 13))),
 		LevelConfigTransitionRect.new("cloud", Rect2(Vector2(42, 0), Vector2(5, 13))),
+		LevelConfigTransitionRect.new("endgame", Rect2(Vector2(22, -8), Vector2(10, 17))),
 	]
 	
 	rtn.bgm = "title"

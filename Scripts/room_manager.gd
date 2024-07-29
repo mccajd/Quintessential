@@ -7,6 +7,8 @@ var viewport: SubViewport
 var instance_ref
 
 var room_items: Dictionary
+@export var hub_available_areas: Array
+
 signal world_item_found
 signal beacon_puzzle_changed(puzzle_name)
 
@@ -15,6 +17,8 @@ func _ready():
 	for child in viewport.get_children():
 		if "room_changed" in child && typeof(child.room_changed) == TYPE_SIGNAL:
 			child.room_changed.connect(_change_room)
+		if child.level_name == "hub":
+			child.available_areas = hub_available_areas
 	viewport.size.x = 1024
 
 
@@ -43,15 +47,16 @@ func _change_room(room: String):
 	if "room_changed" in instance && typeof(instance.room_changed) == TYPE_SIGNAL:
 			instance.room_changed.connect(_change_room)
 	
+	if room == "hub":
+		instance.available_areas = hub_available_areas
+		viewport.size.x = 1000
+	else:
+		viewport.size.x = 562
+	
 	for child in viewport.get_children():
 		child.queue_free()
 	viewport.add_child(instance)
 	instance_ref = instance
-	
-	if room == "hub":
-		viewport.size.x = 1000
-	else:
-		viewport.size.x = 562
 	
 	get_node("/root/Main/AudioStreamPlayer").set_bgm(LevelConfig.get_for(current_room).bgm)
 
