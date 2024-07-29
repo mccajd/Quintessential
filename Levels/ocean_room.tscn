@@ -24,6 +24,7 @@ size = Vector2(69, 66)
 script = ExtResource("1_05x0g")
 
 [node name="TileMap" parent="." instance=ExtResource("2_7hj67")]
+visible = false
 z_index = 10
 position = Vector2(-1, 0)
 layer_0/tile_data = PackedInt32Array(917513, 196611, 0, 917512, 196611, 0)
@@ -114,14 +115,6 @@ collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDetector"]
 position = Vector2(579, 288)
-shape = SubResource("RectangleShape2D_wvvtm")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="FrontDetector"]
-position = Vector2(583.5, 288)
-shape = SubResource("RectangleShape2D_wvvtm")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="FrontDetector"]
-position = Vector2(583.5, 288)
 shape = SubResource("RectangleShape2D_wvvtm")
 
 [node name="Coral" type="TextureRect" parent="."]

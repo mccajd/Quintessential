@@ -2,7 +2,7 @@ class_name Items
 
 const itemDB = {
 	'gold' : { 'name' : 'Gold', 'description': 'The highest tier of metal.\nOnce coveted, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/gold_metal.png', 'id' : 0 },
-	'silver' : { 'name' : 'Silver', 'description': 'The second tier of metal.\nOnce revered, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver.png', 'id' : 1 },
+	'silver' : { 'name' : 'Silver', 'description': 'The second tier of metal.\nOnce revered, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/silver_metal.png', 'id' : 1 },
 	'salt' : { 'name' : 'Salt', 'description': 'One of the three primes.\nUsed as a balancing agent for volatile processes, such as that of sublimation.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/salt.png', 'id' : 2 },
 	'sulfur' : { 'name' : 'Sulfur', 'description': 'One of the three primes.\nUsed as a combusting agent in the separation process of distillation when time is of the essence.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/sulfur.png', 'id' : 3 },
 	'quicksilver' : { 'name' : 'Quicksilver', 'description': 'One of the three primes.\nUsed as a catalyzing agent for the ascension of lesser elements.', 'type': Item.ItemType.Prime, 'sprite' : 'res://assets/items/quicksilver.png', 'id' : 4 },
@@ -31,12 +31,12 @@ const itemDB = {
 	'lead' : { 'name' : 'Lead', 'description': 'The fourth tier of metal.\nOnce reviled, it now serves a more esoteric purpose.', 'type': Item.ItemType.Metal, 'sprite' : 'res://assets/items/lead_metal.png', 'id' : 1 },
 	'quicksilver_mote' : { 'name' : 'Quicksilver Mote', 'description': 'A fragment of quicksilver.\nUsed to catalyze the ascension process, albeit with less intensity.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/quicksilver_mote.png', 'id' : 4 },
 	'cloud' : { 'name' : 'Cloud', 'description': 'A full-sized cloud.\nTeeming with elemental energy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud.png', 'id' : 4 },
-	'barrel' : { 'name' : 'Barrel', 'description': 'An old wooden barrel.\nIts metal rivets and hoops have very little value,\nbut perhaps its wooden body could be useful?', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'wine' : { 'name' : 'Wine', 'description': 'An antique bottle of wine.\nAlways celebrated for its excellence, it now serves a different purpose.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'sea_creature' : { 'name' : 'Sea Creature', 'description': 'A gargantuan creature from depths untold.\nIts massive carcass must have once teemed with body and soul.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'coral' : { 'name' : 'Coral', 'description': 'A large decaying coral.\nThis pitiful sight appears to be the only sign of life in this place.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'anchor' : { 'name' : 'Anchor', 'description': 'A metal ship anchor found embedded in the bowels of a sea creature.\nWhether its placement there were incidental or deliberate may never be known.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
-	'raw_meat' : { 'name' : 'Raw Meat', 'description': 'Meat from a sea creature.\nLikely inedible unless one is wrought with desperation.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 0 },
+	'barrel' : { 'name' : 'Barrel', 'description': 'An old wooden barrel.\nIts metal rivets and hoops have very little value,\nbut perhaps its wooden body could be useful?', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/barrel.png', 'id' : 0 },
+	'wine' : { 'name' : 'Wine', 'description': 'An antique bottle of wine.\nAlways celebrated for its excellence, it now serves a different purpose.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/wine.png', 'id' : 0 },
+	'sea_creature' : { 'name' : 'Sea Creature', 'description': 'A gargantuan creature from depths untold.\nIts massive carcass must have once teemed with body and soul.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/creature.png', 'id' : 0 },
+	'coral' : { 'name' : 'Coral', 'description': 'A large decaying coral.\nThis pitiful sight appears to be the only sign of life in this place.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/coral.png', 'id' : 0 },
+	'anchor' : { 'name' : 'Anchor', 'description': 'A metal ship anchor found embedded in the bowels of a sea creature.\nWhether its placement there were incidental or deliberate may never be known.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/anchor.png', 'id' : 0 },
+	'raw_meat' : { 'name' : 'Raw Meat', 'description': 'Meat from a sea creature.\nLikely inedible unless one is wrought with desperation.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/raw_meat.png', 'id' : 0 },
 }
 
 const solution_recipes = [
