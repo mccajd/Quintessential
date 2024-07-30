@@ -41,12 +41,17 @@ func _ready():
 	set_solid_tiles()
 
 func _physics_process(_delta):
-	if rooms_changing: return
+	if rooms_changing:
+		$AnimatedSprite2D.play("limp")
+		position.y -= 1
+		return
 	
 	if !path.is_empty():
 		velocity = speed*direction_to_point(position-Vector2(8,8), path[0])
+		$AnimatedSprite2D.play("limp")
 	else:
 		velocity = Vector2.ZERO
+		$AnimatedSprite2D.play("default")
 	
 	if change_rooms_on_stop && path.is_empty():
 		# "Time to blow this popsicle stand" - hmw
@@ -92,6 +97,8 @@ func _input(event):
 	if event.is_action_pressed("select"):
 		target_tile = get_global_mouse_position()
 		start_tile  = position-Vector2(8,8)
+		
+		$AnimatedSprite2D.flip_h = target_tile.x < start_tile.x
 
 		path = pathfinder(start_tile, target_tile)
 

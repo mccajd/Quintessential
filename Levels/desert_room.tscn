@@ -45,9 +45,9 @@ texture = ExtResource("4_t1562")
 visible = false
 z_index = 5
 offset_left = 2.0
-offset_top = -271.0
-offset_right = 840.0
-offset_bottom = 504.0
+offset_top = -275.0
+offset_right = 1400.0
+offset_bottom = 778.0
 color = Color(0, 0, 0, 1)
 
 [node name="BlackVoid" type="ColorRect" parent="."]
