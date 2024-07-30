@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://y3sjqg41jnlr"]
+[gd_scene load_steps=9 format=3 uid="uid://y3sjqg41jnlr"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_u8hjw"]
 [ext_resource type="Texture2D" uid="uid://bdx2diagow0r8" path="res://assets/wanderer_flat.png" id="2_4f2am"]
+[ext_resource type="Texture2D" uid="uid://5p3hs0uv085c" path="res://assets/wanderer/f1.png" id="3_fmqel"]
+[ext_resource type="Texture2D" uid="uid://bcp0w7hgusvsp" path="res://assets/wanderer/f2.png" id="4_hjw3m"]
+[ext_resource type="Texture2D" uid="uid://bcrwpque48rm5" path="res://assets/wanderer/f0.png" id="5_81lba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hiur"]
 size = Vector2(32, 32)
@@ -15,6 +18,20 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fmqel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hjw3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_81lba")
+}],
+"loop": true,
+"name": &"limp",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_panu3"]
@@ -37,6 +54,7 @@ shape = SubResource("RectangleShape2D_4hiur")
 texture_filter = 1
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_7lci7")
+frame_progress = 0.265298
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 16)

@@ -12,6 +12,9 @@ var max_frames = 10
 func _ready():
 	timer.autostart = true
 	timer.one_shot = false
+	
+	if tower_progress > -1:
+		tower.play("tower_"+str(tower_progress))
 
 func _on_game_timer_timeout():
 	progress_shadows()
@@ -24,5 +27,8 @@ func progress_shadows():
 		game_over.emit()
 	
 func regress_shadows():
-	tower_progress -= 7 if tower_progress-7 > 0 && tower_progress != -1 else 0
+	if tower_progress-7 > 0:
+		tower_progress -= 7
+	else:
+		tower_progress = 0
 	tower.play("tower_"+str(tower_progress))

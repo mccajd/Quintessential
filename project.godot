@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="beaconator"
+config/name="Quintessential"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
