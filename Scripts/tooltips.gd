@@ -22,8 +22,8 @@ func _process(_delta):
 				child.mouse_exited.connect(_on_mouse_exited)
 			if "item_hovered" in child && !child.is_connected("item_hovered", _set_item_tooltip):
 				child.item_hovered.connect(_set_item_tooltip)
-			if "control_hovered" in child && !child.is_connected("control_hovered", _set_tooltip_message):
-				child.control_hovered.connect(_set_tooltip_message)
+			if "control_hovered" in child && !child.is_connected("control_hovered", _set_control_tooltip):
+				child.control_hovered.connect(_set_control_tooltip)
 	
 	if visible:
 		position = _get_mouse_position()
@@ -85,3 +85,23 @@ func _set_item_tooltip(item_key):
 		return
 	var item = Items.itemDB[item_key]
 	_set_tooltip_message("[b]" + item.name + "[/b]\n" + item.description)
+
+func _set_control_tooltip(tooltip_name):
+	var message = ""
+	
+	match tooltip_name:
+		"neutral":
+			message = "[b]Neutral[/b]\n\nDo nothing to the provided reagents."
+		"solution":
+			message = "[b]Solution[/b]\n\nPhysically combine the provided reagents.\n\nSmaller materials can often be combined to increase their potency."
+		"dissolution":
+			message = "[b]Dissolution[/b]\n\nPhysically separate the provided reagents.\n\nOften useful when reagents are unwieldy and would benefit from being broken down.\n\nCertain elements and even primes can often be dissoluted into less potent components."
+		"sublimation":
+			message = "[b]Sublimation[/b]\n\nCombine a reagent with a neutralizing element, such as salt.\n\nBase elements, metals, and specimens which retain life energy\ncan often be sublimated into their base components.\n"
+		"distillation":
+			message = "[b]Distillation[/b]\n\nCombine a reagent with a combusting element, such as sulfur.\n\nMaterials can often be distilled into more alchemically useful\nproducts."
+		"ascension":
+			message = "[b]Ascension[/b]\n\nCombine a reagent with a volatile element, such as quicksilver or alcohol.\n\nBase elements and metals can usually be ascended into higher tiers."
+			
+	message += "\n\nAdjacent beacons can be selected as outputs for any products."
+	_set_tooltip_message(message)
