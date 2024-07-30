@@ -592,7 +592,7 @@ texture = ExtResource("14_7im5j")
 
 [node name="SelectedTransformation" type="AnimatedSprite2D" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
 modulate = Color(1, 1, 1, 0.431373)
-position = Vector2(270, 310)
+position = Vector2(272, 311)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_ofjle")
 animation = &"sublimation"
@@ -648,7 +648,7 @@ scale = Vector2(1.28566, 1.14622)
 texture = ExtResource("15_ra4ik")
 
 [node name="DissolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("13_6vynv")]
-position = Vector2(124, 311)
+position = Vector2(128, 311)
 transformation_type = "dissolution"
 
 [node name="Sprite2D" type="Sprite2D" parent="MockUI/BeaconNodeView/BeaconNodeMenu/DissolutionButton"]
@@ -668,7 +668,7 @@ scale = Vector2(1.27012, 1.14307)
 texture = ExtResource("16_ik168")
 
 [node name="SublimationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("13_6vynv")]
-position = Vector2(309, 308)
+position = Vector2(309, 311)
 transformation_type = "sublimation"
 
 [node name="Sprite2D" type="Sprite2D" parent="MockUI/BeaconNodeView/BeaconNodeMenu/SublimationButton"]
@@ -678,7 +678,7 @@ scale = Vector2(1.25248, 1.19042)
 texture = ExtResource("18_ig4bd")
 
 [node name="DistillationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("13_6vynv")]
-position = Vector2(309, 205)
+position = Vector2(309, 209)
 transformation_type = "distillation"
 
 [node name="Sprite2D" type="Sprite2D" parent="MockUI/BeaconNodeView/BeaconNodeMenu/DistillationButton"]
@@ -688,7 +688,7 @@ scale = Vector2(1.28229, 1.21835)
 texture = ExtResource("19_jb85l")
 
 [node name="ClearButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("13_6vynv")]
-position = Vector2(223, 363)
+position = Vector2(226, 363)
 scale = Vector2(0.85, 0.85)
 transformation_type = "neutral"
 
