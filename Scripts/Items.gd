@@ -51,7 +51,6 @@ const itemDB = {
 	'lamp' : { 'name' : 'Lamp', 'description': 'A surprisingly well preserved lamp, smells faintly of oil and ash.\n[i]Got a light?[/i]', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'dagger' : { 'name' : 'Dagger', 'description': 'A worn and dull dagger.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'iron_vein' : { 'name' : 'Iron Vein', 'description': 'An untapped vein of raw Iron.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
-	'raw_iron' : { 'name' : 'Raw Iron', 'description': 'Iron in it\'s raw material form.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'iron_scrap' : { 'name' : 'Iron Scraps', 'description': 'Small pieces of Iron.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'note' : { 'name' : 'Note', 'description': 'Dude, lore...', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'rock' : { 'name' : 'Rock', 'description': 'Frequently kicked by adversaries.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
@@ -66,9 +65,6 @@ const solution_recipes = [
 	{ "required_ingredients": ["quicksilver_mote", "alcohol"], "items": ["quicksilver"] },
 	{ "required_ingredients": ["cloud_bud", "cloud_bud"], "items": ["cloud"] },
 	{ "required_ingredients": ["seawater", "water"], "items": ["seawater", "seawater"] },
-
-	# NOTE.Kei for sanity
-	{ "required_ingredients": ["iron_scrap", "iron_scrap"], "items": ["raw_iron"] },
 ]
 
 const dissolution_recipes = [
@@ -91,7 +87,7 @@ const dissolution_recipes = [
 	# NOTE.Kei for sanity
 	{ "required_ingredients": ["fallen_alchemist"], "items": ["bones", "bones", "dagger", "alcohol", "note"] },
 	{ "required_ingredients": ["dagger"], "items": ["iron_scrap"] },
-	{ "required_ingredients": ["iron_vein"], "items": ["raw_iron", "rock", "rock"] },
+	{ "required_ingredients": ["iron_vein"], "items": ["iron_scrap", "rock", "rock"] },
 ]
 
 # NOTE.jmc - each of these will also implicitly be checked for salt as an ingredient
@@ -211,6 +207,6 @@ const ascension_recipes = [
 	{ "required_ingredients": ["quicksilver_mote", "cacti_husk"], "items": ["cacti"] },
 
 	# NOTE.Kei for sanity
-	{ "required_ingredients": ["alcohol", "raw_iron"], "items": ["iron"] },
-	{ "required_ingredients": ["quicksilver_mote", "raw_iron"], "items": ["iron"] },
+	{ "required_ingredients": ["alcohol", "scrap_iron"], "items": ["iron"] },
+	{ "required_ingredients": ["quicksilver_mote", "scrap_iron"], "items": ["iron"] },
 ]
