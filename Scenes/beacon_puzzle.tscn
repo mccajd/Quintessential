@@ -53,7 +53,6 @@ script = ExtResource("1_at053")
 [node name="BeaconTower" parent="." instance=ExtResource("1_7mmc7")]
 position = Vector2(664, 0)
 script = ExtResource("2_mvinj")
-debug_instant_win = true
 
 [node name="BeaconNode1" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
