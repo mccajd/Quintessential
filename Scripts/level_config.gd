@@ -51,8 +51,15 @@ static func _get_for_cave_level():
 	rtn.camera_limit_bottom = -200
 
 	rtn.default_items = ["quicksilver", "salt", "sulfur"]
-	rtn.world_items = []
-	rtn.item_mappings = {}
+	rtn.world_items = ["iron_vein", "limestone", "lamp", "fallen_alchemist", "rock", "ancient_monolith"]
+	rtn.item_mappings = {
+		"iron_vein": { "item": "iron_vein", "rect": Rect2(Vector2(17, 10), Vector2(14, 2)) },
+		"limestone": { "item": "limestone", "rect": Rect2(Vector2(48, 8), Vector2(4, 4)) },
+		"lamp": { "item": "lamp", "rect": Rect2(Vector2(61, 15), Vector2(3, 2)) },
+		"fallen_alchemist": { "item": "fallen_alchemist", "rect": Rect2(Vector2(64, 13), Vector2(3, 3)) },
+		"rock": { "item": "rock", "rect": Rect2(Vector2(69, 14), Vector2(2, 2)) },
+		"ancient_monolith": { "item": "ancient_monolith", "rect": Rect2(Vector2(72, 5), Vector2(9, 11)) },
+	}
 	
 	rtn.transition_rects = [
 		LevelConfigTransitionRect.new("hub", Rect2(Vector2(0, 0), Vector2(1000, 1000)))
