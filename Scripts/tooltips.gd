@@ -102,6 +102,9 @@ func _set_control_tooltip(tooltip_name):
 			message = "[b]Distillation[/b]\n\nCombine a reagent with a combusting element, such as sulfur.\n\nMaterials can often be distilled into more alchemically useful\nproducts."
 		"ascension":
 			message = "[b]Ascension[/b]\n\nCombine a reagent with a volatile element, such as quicksilver or alcohol.\n\nBase elements and metals can usually be ascended into higher tiers."
-			
+		_:
+			# HACK.jmc - the beacon node button as close button has lasted this long huh?
+			return _set_tooltip_message("Return to Overworld")
+	
 	message += "\n\nAdjacent beacons can be selected as outputs for any products."
 	_set_tooltip_message(message)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://k06cwvfdpar"]
+[gd_scene load_steps=6 format=3 uid="uid://k06cwvfdpar"]
 
 [ext_resource type="Texture2D" uid="uid://c8gcb8qkjsn5f" path="res://assets/beacon/beacon-node-connector-off.png" id="1_alja2"]
 [ext_resource type="Script" path="res://Scripts/beacon_node_connector.gd" id="1_mrnm5"]
 [ext_resource type="Texture2D" uid="uid://dvsomxv2whtjr" path="res://assets/beacon/beacon-node-connector.png" id="2_ec2co"]
+[ext_resource type="Texture2D" uid="uid://p4i01rpfojlw" path="res://assets/beacon/beacon-node-connector-selected.png" id="4_637mm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2kp1"]
 animations = [{
@@ -30,3 +31,12 @@ script = ExtResource("1_mrnm5")
 position = Vector2(19, 91)
 sprite_frames = SubResource("SpriteFrames_g2kp1")
 animation = &"off"
+
+[node name="JustAddedTexture" type="TextureRect" parent="."]
+visible = false
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 37.0
+offset_bottom = 178.0
+mouse_filter = 2
+texture = ExtResource("4_637mm")
