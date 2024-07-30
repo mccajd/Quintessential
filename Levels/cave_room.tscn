@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhwf2e51q2ran"]
+[gd_scene load_steps=12 format=3 uid="uid://dhwf2e51q2ran"]
 
 [ext_resource type="Script" path="res://Scripts/player_view.gd" id="1_n05sp"]
 [ext_resource type="PackedScene" uid="uid://nrsivx657vil" path="res://Scenes/custom_tile_map.tscn" id="2_abkc4"]
 [ext_resource type="Texture2D" uid="uid://csqgdifalte26" path="res://assets/levelbackgrounds/cave level back.png" id="3_6qgxm"]
 [ext_resource type="Texture2D" uid="uid://c54oeudwo86og" path="res://assets/symbols/air-symbol.png" id="4_3ig0p"]
 [ext_resource type="Texture2D" uid="uid://b11v70jh5tj12" path="res://assets/levelbackgrounds/cave level front.png" id="4_r23hd"]
+[ext_resource type="Texture2D" uid="uid://bthkkvdfgam7q" path="res://assets/cave/ancient_monolith.png" id="6_ljin4"]
+[ext_resource type="Texture2D" uid="uid://ny7q82gd4jes" path="res://assets/cave/fallen_alchemist.png" id="7_c3xlw"]
+[ext_resource type="Texture2D" uid="uid://xvloepc4jf2q" path="res://assets/cave/iron_vein.png" id="8_lc2k8"]
+[ext_resource type="Texture2D" uid="uid://cj225qvhmdme1" path="res://assets/cave/limestone_new.png" id="9_vegxm"]
+[ext_resource type="Texture2D" uid="uid://c6hx62i102es1" path="res://assets/cave/rock.png" id="10_axvuh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acovp"]
 size = Vector2(83.5, 162)
@@ -84,6 +89,44 @@ offset_right = 1586.2
 offset_bottom = 46.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_r23hd")
+
+[node name="Ancient Monolith" type="TextureRect" parent="."]
+offset_left = 1096.0
+offset_top = 56.0
+offset_right = 1352.0
+offset_bottom = 312.0
+texture = ExtResource("6_ljin4")
+flip_h = true
+
+[node name="Fallen Alchemist" type="TextureRect" parent="."]
+offset_left = 1024.0
+offset_top = 192.0
+offset_right = 1088.0
+offset_bottom = 256.0
+texture = ExtResource("7_c3xlw")
+expand_mode = 1
+
+[node name="Iron Vein" type="TextureRect" parent="."]
+offset_left = 264.0
+offset_top = -64.0
+offset_right = 520.0
+offset_bottom = 192.0
+texture = ExtResource("8_lc2k8")
+
+[node name="Limestone" type="TextureRect" parent="."]
+offset_left = 736.0
+offset_top = 96.0
+offset_right = 864.0
+offset_bottom = 224.0
+texture = ExtResource("9_vegxm")
+
+[node name="Rock" type="TextureRect" parent="."]
+offset_left = 1104.0
+offset_top = 240.0
+offset_right = 1128.0
+offset_bottom = 264.0
+texture = ExtResource("10_axvuh")
+expand_mode = 1
 
 [connection signal="item_discovered" from="TileMap" to="." method="_on_item_discovered"]
 [connection signal="body_entered" from="BackDetector" to="." method="_on_back_detector_entered"]
