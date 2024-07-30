@@ -33,7 +33,6 @@ sprite_frames = SubResource("SpriteFrames_g2kp1")
 animation = &"off"
 
 [node name="JustAddedTexture" type="TextureRect" parent="."]
-visible = false
 offset_left = 1.0
 offset_top = 3.0
 offset_right = 37.0
