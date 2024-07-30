@@ -37,7 +37,11 @@ signal slots_cleared
 func _ready():
 	input_pickable = true
 	transformer = ItemTransformer.new()
-	$BeaconNumber.texture = load(get_symbol_texture(id))
+	if id < 100:
+		$RecepticleSymbol.visible = false
+		$BeaconNumber.texture = load(get_symbol_texture(id))
+		return
+	$BeaconNumber.visible = false
 
 
 func _process(_delta):

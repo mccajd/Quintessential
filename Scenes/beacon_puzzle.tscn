@@ -436,6 +436,7 @@ offset_bottom = 61.0
 scale = Vector2(0.397905, 0.603794)
 
 [node name="Destination" type="TextureRect" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1"]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_left = 32.858
@@ -459,6 +460,7 @@ offset_bottom = 61.0
 scale = Vector2(0.265203, 0.567695)
 
 [node name="Destination" type="TextureRect" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot2"]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_left = 33.3552
@@ -482,6 +484,7 @@ offset_bottom = 61.0
 scale = Vector2(0.339598, 0.567696)
 
 [node name="Destination" type="TextureRect" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot3"]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_left = 33.2325
@@ -505,6 +508,7 @@ offset_bottom = 61.0
 scale = Vector2(0.265203, 0.567695)
 
 [node name="Destination" type="TextureRect" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot4"]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_left = 32.4898
@@ -515,11 +519,19 @@ texture = ExtResource("14_7im5j")
 expand_mode = 1
 
 [node name="SelectedNodeLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+visible = false
 offset_left = 130.0
 offset_top = 21.0
 offset_right = 238.0
 offset_bottom = 48.0
 text = "none selected"
+
+[node name="SelectedNode" type="TextureRect" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
+offset_left = 101.0
+offset_top = 25.0
+offset_right = 133.0
+offset_bottom = 73.0
+texture = ExtResource("14_7im5j")
 
 [node name="SelectedTransformationLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
 offset_left = 224.0

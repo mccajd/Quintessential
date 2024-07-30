@@ -21,19 +21,7 @@ func _process(delta):
 		_update_selected_node()
 		destination_updated.emit(slot_id, selected_node_destination)
 		
-		var destination_texture = get_node("Destination")
-		if selected_node_destination == -1:
-			destination_texture.visible = false
-			return
-		destination_texture.texture = load(BeaconNode.get_symbol_texture(selected_node_destination))
-		if selected_node_destination > 10:
-			# HACK.jmc - cheeky way to detect if this is a recepticle without getting a ref
-			destination_texture.size.x = 20
-			destination_texture.position.x = 29.635
-		else:
-			destination_texture.size.x = 17
-			destination_texture.position.x = 33.335
-		destination_texture.visible = true
+		_set_destination_label()
 
 
 func _can_drop_data(_position, _data):
@@ -43,7 +31,7 @@ func _can_drop_data(_position, _data):
 func set_values(selected_node: BeaconNode, connections):
 	node_destination_options = selected_node.availableNodeIds
 	selected_node_destination = selected_node.selected_destination_nodes[slot_id]
-	get_node("DestinationLabel").text = str(selected_node_destination) if selected_node_destination > -1 else ""
+	_set_destination_label()
 
 func _update_selected_node():
 	if selected_node_destination == -1:
@@ -55,3 +43,20 @@ func _update_selected_node():
 	var ix = node_destination_options.find(selected_node_destination)
 	ix += 1
 	selected_node_destination = node_destination_options[ix]
+
+
+func _set_destination_label():
+	var destination_texture = get_node("Destination")
+	if selected_node_destination == -1:
+		destination_texture.visible = false
+		return
+	destination_texture.texture = load(BeaconNode.get_symbol_texture(selected_node_destination))
+	if selected_node_destination == 200:
+		# HACK.jmc - cheeky way to detect if this is the wider sun recepticle without getting a ref
+		destination_texture.size.x = 20
+		destination_texture.position.x = 29.635
+	else:
+		destination_texture.size.x = 17
+		destination_texture.position.x = 33.335
+			
+	destination_texture.visible = true

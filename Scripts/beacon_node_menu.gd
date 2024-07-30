@@ -19,7 +19,7 @@ func _ready():
 
 
 func _process(_delta):
-	get_node("SelectedNodeLabel").text = selected_node.name if selected_node else "none"
+	get_node("SelectedNode").texture = load(BeaconNode.get_symbol_texture(selected_node.id)) if selected_node else load("res://assets/beacon/empty.png")
 	get_node("SelectedTransformationLabel").text = selected_node.selected_transformation if selected_node else "neutral"
 	
 	if !selected_node: return
