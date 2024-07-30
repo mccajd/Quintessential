@@ -33,7 +33,7 @@ const itemDB = {
 	'cloud' : { 'name' : 'Cloud', 'description': 'A full-sized cloud.\nTeeming with elemental energy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud.png', 'id' : 4 },
 	'meat_sack' : { 'name' : 'Sack of Cured Meats', 'description': 'A sack of meats cured in salt.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/sack_of_meat_token.png', 'id' : 4 },
 	'cacti' : { 'name' : 'Cacti', 'description': 'A prickly plant found in the desert.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cacti_token.png', 'id' : 4 },
-	'bones' : { 'name' : 'Bones', 'description': 'Sun bleached pile of bones.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/bones_token.png', 'id' : 4 },
+	'bones' : { 'name' : 'Bones', 'description': 'A dry pile of bones.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/bones_token.png', 'id' : 4 },
 	'frankincense' : { 'name' : 'Frankincense', 'description': 'An aromatic resin.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/frankincense_token.png', 'id' : 4 },
 	'myrrh' : { 'name' : 'Myrrh', 'description': 'A sap-like resin.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/myrrh_token.png', 'id' : 4 },
 	'cacti_husk' : { 'name' : 'Cacti Husk', 'description': 'Freshly harvested cacti husk.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cacti_husk_token.png', 'id' : 4 },
@@ -50,10 +50,10 @@ const itemDB = {
 	'dagger' : { 'name' : 'Dagger', 'description': 'A worn and dull dagger.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/dagger_token.png', 'id' : 4 },
 	'iron_vein' : { 'name' : 'Iron Vein', 'description': 'An untapped vein of raw Iron.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/iron_vein_token.png', 'id' : 4 },
 	'iron_scrap' : { 'name' : 'Iron Scraps', 'description': 'Small pieces of Iron.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/iron_scrap_token.png', 'id' : 4 },
-	'note' : { 'name' : 'Note', 'description': 'Dude, lore...', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/note_token.png', 'id' : 4 },
+	'note' : { 'name' : 'Note', 'description': 'Note from an unknown alchemist who must have died\nalone a long, long time ago.\nMiraculously, time does not seem to have withered it.\n"O, fear not the dark; what encroaches at daybreak\nbrings a peril far greater."', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/note_token.png', 'id' : 4 },
 	'rock' : { 'name' : 'Rock', 'description': 'Frequently kicked by adversaries.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/rock_token.png', 'id' : 4 },
-	'limestone' : { 'name' : 'Limestone', 'description': 'A sedimentary rock found in caves', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/limestone_token.png', 'id' : 4 },
-	'flask' : { 'name' : 'Personal Flask', 'description': 'The contents seem alcoholic in nature, one wiff confirms it.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/flask_token.png', 'id' : 4 },
+	'limestone' : { 'name' : 'Limestone', 'description': 'A porous, sedimentary rock found in caves.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/limestone_token.png', 'id' : 4 },
+	'flask' : { 'name' : 'Personal Flask', 'description': 'The contents seem alcoholic in nature; one whiff confirms it.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/flask_token.png', 'id' : 4 },
 }
 
 const solution_recipes = [
