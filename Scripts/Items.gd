@@ -45,7 +45,7 @@ const itemDB = {
 	'anchor' : { 'name' : 'Anchor', 'description': 'A metal ship anchor found embedded in the bowels of a sea creature.\nWhether its placement there were incidental or deliberate may never be known.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/anchor.png', 'id' : 0 },
 	'raw_meat' : { 'name' : 'Raw Meat', 'description': 'Meat from a sea creature.\nLikely inedible unless one is wrought with desperation.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/raw_meat.png', 'id' : 0 },
 	
-	# Note.Kei for sanity
+	# NOTE.Kei for sanity
 	'fallen_alchemist' : { 'name' : 'Fallen Alchemist', 'description': 'One Alchemist\'s failure is another\'s reagents.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'ancient_monolith' : { 'name' : 'Ancient Monolith', 'description': 'A monolith teeming with raw elemental power.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'lamp' : { 'name' : 'Lamp', 'description': 'A surprisingly well preserved lamp, smells faintly of oil and ash.\n[i]Got a light?[/i]', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
@@ -67,7 +67,7 @@ const solution_recipes = [
 	{ "required_ingredients": ["cloud_bud", "cloud_bud"], "items": ["cloud"] },
 	{ "required_ingredients": ["seawater", "water"], "items": ["seawater", "seawater"] },
 
-	# Note.Kei for sanity
+	# NOTE.Kei for sanity
 	{ "required_ingredients": ["iron_scrap", "iron_scrap"], "items": ["raw_iron"] },
 ]
 
@@ -88,9 +88,10 @@ const dissolution_recipes = [
 	# manually added dupes (may do this programmatically later
 	{ "required_ingredients": ["barrel", "barrel" ], "items": ["wood", "wood"] },
 
-	# Note.Kei for sanity
+	# NOTE.Kei for sanity
 	{ "required_ingredients": ["fallen_alchemist"], "items": ["bones", "bones", "dagger", "alcohol", "note"] },
 	{ "required_ingredients": ["dagger"], "items": ["iron_scrap"] },
+	{ "required_ingredients": ["iron_vein"], "items": ["raw_iron", "rock", "rock"] },
 ]
 
 # NOTE.jmc - each of these will also implicitly be checked for salt as an ingredient
@@ -114,6 +115,8 @@ const sublimation_recipes = [
 	{ "required_ingredients": ["barrel", "barrel", "salt"], "items": ["earth", "air"] },
 	{ "required_ingredients": ["coral"], "items": ["sulfur"] },
 	{ "required_ingredients": ["raw_meat"], "items": ["sulfur"] },
+
+	# NOTE.Kei for sanity
 	{ "required_ingredients": ["rock"], "items": ["earth_mote"] },
 	{ "required_ingredients": ["ancient_monolith"], "items": ["earth_mote", "water_mote", "fire_mote", "air_mote"] },
 ]
@@ -149,6 +152,9 @@ const distillation_recipes = [
 	{ "required_ingredients": ["coral"], "items": ["salt", "salt"] },
 	{ "required_ingredients": ["anchor"], "items": ["scrap_metal", "quicksilver"] },
 	{ "required_ingredients": ["sea_creature"], "items": ["salt", "salt", "sulfur", "sulfur"] },
+
+	# NOTE.Kei for sanity
+	{ "required_ingredients": ["lamp"], "items": ["earth_mote", "fire_mote", "iron_scrap", "ash"] },
 ]
 
 const ascension_recipes = [
@@ -204,7 +210,7 @@ const ascension_recipes = [
 	{ "required_ingredients": ["alcohol", "cacti_husk"], "items": ["cacti"] },
 	{ "required_ingredients": ["quicksilver_mote", "cacti_husk"], "items": ["cacti"] },
 
-	# Note.Kei for sanity
+	# NOTE.Kei for sanity
 	{ "required_ingredients": ["alcohol", "raw_iron"], "items": ["iron"] },
 	{ "required_ingredients": ["quicksilver_mote", "raw_iron"], "items": ["iron"] },
 ]
