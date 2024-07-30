@@ -76,11 +76,8 @@ func _on_beacon_submit_button_pressed():
 		puzzle_won.emit()
 		return
 	
-	get_node("BeaconWinConditionText").text = "u lost bitch ahahaha!"
-	
-	get_node("BeaconWinConditionText").visible = true
-	await get_tree().create_timer(3).timeout
-	get_node("BeaconWinConditionText").visible = false
+	# RIP "u lost bitch ahahaha!" 2024-2024
+
 
 
 func _get_win_status():
