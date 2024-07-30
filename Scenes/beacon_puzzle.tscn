@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://xlfxdxlhlrkm"]
+[gd_scene load_steps=24 format=3 uid="uid://xlfxdxlhlrkm"]
 
 [ext_resource type="PackedScene" uid="uid://j1dft6uobs3e" path="res://Scenes/beacon_tower.tscn" id="1_7mmc7"]
 [ext_resource type="Script" path="res://Scripts/beacon_puzzle.gd" id="1_at053"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://chme11eyldqed" path="res://Scenes/beacon_node_item_slot.tscn" id="11_2xr33"]
 [ext_resource type="Script" path="res://Scripts/beacon_node_output_slot.gd" id="12_gs16d"]
 [ext_resource type="PackedScene" uid="uid://geda8gmbwuga" path="res://Scenes/beacon_node_button.tscn" id="13_6vynv"]
+[ext_resource type="Texture2D" uid="uid://e2ko6iq3875u" path="res://assets/symbols/one_symbol.png" id="14_7im5j"]
 [ext_resource type="Texture2D" uid="uid://chr6piu8nkc23" path="res://assets/items/solution_tile_detailed.png" id="15_ra4ik"]
 [ext_resource type="Texture2D" uid="uid://cmspltfyqvrsu" path="res://assets/items/ascension_tile.png" id="16_ik168"]
 [ext_resource type="Texture2D" uid="uid://deuotr83vxwmd" path="res://assets/items/dissolution_tile_detailed.png" id="16_lquqw"]
@@ -390,7 +391,6 @@ texture = ExtResource("9_j3efo")
 [node name="BeaconNodeView" type="Node" parent="MockUI"]
 
 [node name="BeaconNodeMenu" parent="MockUI/BeaconNodeView" instance=ExtResource("10_p16de")]
-visible = false
 z_index = 1
 position = Vector2(184, 16)
 
@@ -435,6 +435,16 @@ offset_right = 66.0
 offset_bottom = 61.0
 scale = Vector2(0.397905, 0.603794)
 
+[node name="Destination" type="TextureRect" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot1"]
+z_index = 1
+layout_mode = 0
+offset_left = 32.858
+offset_top = 30.3782
+offset_right = 46.858
+offset_bottom = 47.3782
+texture = ExtResource("14_7im5j")
+expand_mode = 1
+
 [node name="OutputSlot2" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("11_2xr33")]
 layout_mode = 2
 script = ExtResource("12_gs16d")
@@ -447,6 +457,16 @@ offset_top = 38.0
 offset_right = 84.0
 offset_bottom = 61.0
 scale = Vector2(0.265203, 0.567695)
+
+[node name="Destination" type="TextureRect" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot2"]
+z_index = 1
+layout_mode = 0
+offset_left = 33.3552
+offset_top = 30.3782
+offset_right = 47.3552
+offset_bottom = 47.3782
+texture = ExtResource("14_7im5j")
+expand_mode = 1
 
 [node name="OutputSlot3" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("11_2xr33")]
 layout_mode = 2
@@ -461,6 +481,16 @@ offset_right = 84.0
 offset_bottom = 61.0
 scale = Vector2(0.339598, 0.567696)
 
+[node name="Destination" type="TextureRect" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot3"]
+z_index = 1
+layout_mode = 0
+offset_left = 33.2325
+offset_top = 30.3782
+offset_right = 47.2325
+offset_bottom = 47.3782
+texture = ExtResource("14_7im5j")
+expand_mode = 1
+
 [node name="OutputSlot4" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer" instance=ExtResource("11_2xr33")]
 layout_mode = 2
 script = ExtResource("12_gs16d")
@@ -473,6 +503,16 @@ offset_top = 38.0
 offset_right = 84.0
 offset_bottom = 61.0
 scale = Vector2(0.265203, 0.567695)
+
+[node name="Destination" type="TextureRect" parent="MockUI/BeaconNodeView/BeaconNodeMenu/OutputContainer/OutputSlot4"]
+z_index = 1
+layout_mode = 0
+offset_left = 32.4898
+offset_top = 30.3782
+offset_right = 46.4898
+offset_bottom = 47.3782
+texture = ExtResource("14_7im5j")
+expand_mode = 1
 
 [node name="SelectedNodeLabel" type="Label" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
 offset_left = 130.0

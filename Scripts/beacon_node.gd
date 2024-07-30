@@ -37,6 +37,7 @@ signal slots_cleared
 func _ready():
 	input_pickable = true
 	transformer = ItemTransformer.new()
+	$BeaconNumber.texture = load(get_symbol_texture(id))
 
 
 func _process(_delta):
@@ -182,3 +183,20 @@ func _reset_input_slots():
 	inputs_from_inventory = [null, null, null, null]
 	inputs_from_nodes = [null, null, null, null]
 
+
+static func get_symbol_texture(id):
+	match id:
+		1: return "res://assets/symbols/one_symbol.png"
+		2: return "res://assets/symbols/two_symbol.png"
+		3: return "res://assets/symbols/three_symbol.png"
+		4: return "res://assets/symbols/four_symbol.png"
+		5: return "res://assets/symbols/five_symbol.png"
+		6: return "res://assets/symbols/six_symbol.png"
+		7: return "res://assets/symbols/seven_symbol.png"
+		8: return "res://assets/symbols/eight_symbol.png"
+		9: return "res://assets/symbols/nine_symbol.png"
+		10:return "res://assets/symbols/zero_symbol.png"
+		# recepticles
+		100: return "res://assets/symbols/moon_symbol.png"
+		200: return "res://assets/symbols/sun_symbol.png"
+		300: return "res://assets/symbols/moon2_symbol.png"

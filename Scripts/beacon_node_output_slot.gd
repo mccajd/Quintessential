@@ -8,6 +8,10 @@ var selected_node_destination: int
 signal destination_updated
 
 
+func _ready():
+	get_node("Destination").visible = false
+
+
 func _process(delta):
 	super(delta)
 	
@@ -16,7 +20,20 @@ func _process(delta):
 	if (Input.is_action_just_pressed("select")):
 		_update_selected_node()
 		destination_updated.emit(slot_id, selected_node_destination)
-		get_node("DestinationLabel").text = str(selected_node_destination) if selected_node_destination > -1 else ""
+		
+		var destination_texture = get_node("Destination")
+		if selected_node_destination == -1:
+			destination_texture.visible = false
+			return
+		destination_texture.texture = load(BeaconNode.get_symbol_texture(selected_node_destination))
+		if selected_node_destination > 10:
+			# HACK.jmc - cheeky way to detect if this is a recepticle without getting a ref
+			destination_texture.size.x = 20
+			destination_texture.position.x = 29.635
+		else:
+			destination_texture.size.x = 17
+			destination_texture.position.x = 33.335
+		destination_texture.visible = true
 
 
 func _can_drop_data(_position, _data):
