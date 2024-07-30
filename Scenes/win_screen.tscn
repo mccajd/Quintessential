@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://thummmiwvn3f"]
+[gd_scene load_steps=4 format=3 uid="uid://thummmiwvn3f"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2xfuv"]
+[ext_resource type="Script" path="res://Scripts/end_screen.gd" id="1_h43en"]
+[ext_resource type="AudioStream" uid="uid://dqbt5fuw8oodo" path="res://assets/bgm/win.wav" id="7_62wg3"]
+[ext_resource type="Texture2D" uid="uid://cdhsilqgnin6y" path="res://assets/gameend/lose quote.png" id="8_2d8xb"]
 
-[node name="WinScreen" type="Node"]
+[node name="Node" type="Node"]
+script = ExtResource("1_h43en")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_2xfuv")
+position = Vector2(532, 387)
+scale = Vector2(0.561501, 0.561501)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_62wg3")
+autoplay = true
+
+[node name="Quote" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_2d8xb")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
