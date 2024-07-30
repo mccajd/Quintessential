@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dhwf2e51q2ran"]
+[gd_scene load_steps=15 format=3 uid="uid://dhwf2e51q2ran"]
 
 [ext_resource type="Script" path="res://Scripts/player_view.gd" id="1_n05sp"]
 [ext_resource type="PackedScene" uid="uid://nrsivx657vil" path="res://Scenes/custom_tile_map.tscn" id="2_abkc4"]
@@ -14,6 +14,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acovp"]
 size = Vector2(83.5, 162)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkfdm"]
+size = Vector2(64, 36.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xdmk"]
+size = Vector2(136, 40)
 
 [node name="CaveRoom" type="Node"]
 script = ExtResource("1_n05sp")
@@ -47,8 +53,8 @@ visible = false
 z_index = 10
 offset_left = 2.0
 offset_top = -271.0
-offset_right = 1373.0
-offset_bottom = 802.0
+offset_right = 840.0
+offset_bottom = 504.0
 color = Color(0, 0, 0, 1)
 
 [node name="BlackVoid" type="ColorRect" parent="."]
@@ -94,6 +100,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_r23hd")
 
 [node name="Ancient Monolith" type="TextureRect" parent="."]
+z_index = 1
 offset_left = 1096.0
 offset_top = 56.0
 offset_right = 1352.0
@@ -102,6 +109,7 @@ texture = ExtResource("6_ljin4")
 flip_h = true
 
 [node name="Fallen Alchemist" type="TextureRect" parent="."]
+z_index = 1
 offset_left = 1024.0
 offset_top = 192.0
 offset_right = 1088.0
@@ -139,6 +147,28 @@ offset_bottom = 272.0
 texture = ExtResource("11_plfjd")
 expand_mode = 1
 
+[node name="FrontDetector" type="Area2D" parent="."]
+position = Vector2(1056, 256)
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDetector"]
+position = Vector2(0, 15.25)
+shape = SubResource("RectangleShape2D_rkfdm")
+
+[node name="FrontDetector2" type="Area2D" parent="."]
+position = Vector2(1216, 272)
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDetector2"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_5xdmk")
+
 [connection signal="item_discovered" from="TileMap" to="." method="_on_item_discovered"]
 [connection signal="body_entered" from="BackDetector" to="." method="_on_back_detector_entered"]
 [connection signal="body_exited" from="BackDetector" to="." method="_on_back_detector_exited"]
+[connection signal="body_entered" from="FrontDetector" to="." method="_on_front_detector_entered"]
+[connection signal="body_exited" from="FrontDetector" to="." method="_on_front_detector_exited"]
+[connection signal="body_entered" from="FrontDetector2" to="." method="_on_front_detector_entered"]
+[connection signal="body_exited" from="FrontDetector2" to="." method="_on_front_detector_exited"]
