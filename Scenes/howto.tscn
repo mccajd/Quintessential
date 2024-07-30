@@ -1,35 +1,199 @@
-[gd_scene load_steps=4 format=3 uid="uid://dexubab3w6aet"]
+[gd_scene load_steps=20 format=3 uid="uid://dexubab3w6aet"]
 
-[ext_resource type="Texture2D" uid="uid://ds7yiqjnfs15s" path="res://assets/howto_graphic.png" id="1_iqjvo"]
 [ext_resource type="Theme" uid="uid://c3h5a64d47h0b" path="res://assets/menu_theme.tres" id="2_1r0bb"]
+[ext_resource type="Texture2D" uid="uid://iciwaenhbps6" path="res://assets/howto/howto0.png" id="2_bwfw1"]
+[ext_resource type="Texture2D" uid="uid://cflpp4ikfooig" path="res://assets/howto/howto1.png" id="2_p1dx8"]
+[ext_resource type="Texture2D" uid="uid://cwm7he6sfifgt" path="res://assets/howto/button-menu.png" id="3_suxfs"]
+[ext_resource type="Texture2D" uid="uid://ne0fqhp8magu" path="res://assets/howto/howto10.png" id="3_u40dv"]
+[ext_resource type="Texture2D" uid="uid://co4mtwm13g8y3" path="res://assets/howto/howto2.png" id="3_y8exw"]
+[ext_resource type="Texture2D" uid="uid://blwd3i5c6t15u" path="res://assets/howto/button-prev.png" id="4_f8kyc"]
+[ext_resource type="Texture2D" uid="uid://d3lkl1qr506ns" path="res://assets/howto/howto11.png" id="4_wmyut"]
+[ext_resource type="Texture2D" uid="uid://1ufpdu0vnrtr" path="res://assets/howto/howto12.png" id="5_a7un6"]
+[ext_resource type="Texture2D" uid="uid://s0s3rht4c8kr" path="res://assets/howto/button-next.png" id="5_unkkc"]
+[ext_resource type="Texture2D" uid="uid://csvh5gkq0pkse" path="res://assets/howto/howto3.png" id="7_gh21l"]
+[ext_resource type="Texture2D" uid="uid://deh85xjq5j5im" path="res://assets/howto/howto4.png" id="8_2cn5q"]
+[ext_resource type="Texture2D" uid="uid://cwh0fwmuy4p4" path="res://assets/howto/howto5.png" id="9_fr2ug"]
+[ext_resource type="Texture2D" uid="uid://tqg7wlwmlba2" path="res://assets/howto/howto6.png" id="10_fjtvl"]
+[ext_resource type="Texture2D" uid="uid://dw53lo604lv3y" path="res://assets/howto/howto7.png" id="11_vndtj"]
+[ext_resource type="Texture2D" uid="uid://btvgdufaow0r3" path="res://assets/howto/howto8.png" id="12_5j65i"]
+[ext_resource type="Texture2D" uid="uid://h7yyul78y0mx" path="res://assets/howto/howto9.png" id="13_tltli"]
 
 [sub_resource type="GDScript" id="GDScript_hum64"]
 script/source = "extends Node
 
+var selected_frame = 0
+const max_length = 12
 
 var menu = \"res://Scenes/main_menu.tscn\"
 
 func _on_menu_button_pressed():
 	Controller.goto_scene(menu)
+
+
+func _process(_delta):
+	$TutorialFrames.play(str(selected_frame))
+	$PreviousButton.visible = selected_frame != 0
+	$NextButton.visible = selected_frame < max_length
+	
+
+
+func _on_previous_button_pressed():
+	selected_frame -= 1
+
+func _on_next_button_pressed():
+	selected_frame += 1
 "
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3lftf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bwfw1")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p1dx8")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u40dv")
+}],
+"loop": true,
+"name": &"10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wmyut")
+}],
+"loop": true,
+"name": &"11",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_a7un6")
+}],
+"loop": true,
+"name": &"12",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y8exw")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_gh21l")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2cn5q")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_fr2ug")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_fjtvl")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_vndtj")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_5j65i")
+}],
+"loop": true,
+"name": &"8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_tltli")
+}],
+"loop": true,
+"name": &"9",
+"speed": 5.0
+}]
 
 [node name="Node" type="Node"]
 script = SubResource("GDScript_hum64")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_iqjvo")
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -42.0
+offset_top = -34.0
+offset_right = 1187.0
+offset_bottom = 830.0
+color = Color(0, 0, 0, 1)
 
-[node name="MenuButton" type="Button" parent="."]
-offset_left = 414.0
-offset_top = 659.0
-offset_right = 531.0
-offset_bottom = 690.0
-scale = Vector2(1.21628, 1.04744)
+[node name="TutorialFrames" type="AnimatedSprite2D" parent="."]
+position = Vector2(514, 357)
+scale = Vector2(0.929688, 0.929688)
+sprite_frames = SubResource("SpriteFrames_3lftf")
+animation = &"12"
+
+[node name="MenuButton" type="TextureButton" parent="."]
+offset_left = 16.0
+offset_top = 716.0
+offset_right = 266.0
+offset_bottom = 766.0
+scale = Vector2(0.776279, 0.668519)
 theme = ExtResource("2_1r0bb")
-text = "
-"
-alignment = 2
+texture_normal = ExtResource("3_suxfs")
+
+[node name="PreviousButton" type="TextureButton" parent="."]
+offset_left = 633.0
+offset_top = 704.0
+offset_right = 883.0
+offset_bottom = 754.0
+scale = Vector2(0.877901, 0.756034)
+theme = ExtResource("2_1r0bb")
+texture_normal = ExtResource("4_f8kyc")
+
+[node name="NextButton" type="TextureButton" parent="."]
+offset_left = 848.0
+offset_top = 704.0
+offset_right = 1098.0
+offset_bottom = 754.0
+scale = Vector2(0.882465, 0.759964)
+theme = ExtResource("2_1r0bb")
+texture_normal = ExtResource("5_unkkc")
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
