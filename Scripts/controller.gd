@@ -6,6 +6,7 @@ extends Node
 var title_scene = "res://Scenes/main_menu.tscn"
 var current_scene = null
 var menu_bgm
+var show_secret = false
 
 const silent_paths = [MainMenu.game, MainMenu.win_screen, MainMenu.lose_screen]
 

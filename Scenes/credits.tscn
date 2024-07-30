@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://35ejtqdpkrrp"]
+[gd_scene load_steps=7 format=3 uid="uid://35ejtqdpkrrp"]
 
 [ext_resource type="Texture2D" uid="uid://chw1mwkxnegbg" path="res://assets/Credits_Graphic.png" id="1_b3gpx"]
 [ext_resource type="Theme" uid="uid://c3h5a64d47h0b" path="res://assets/menu_theme.tres" id="2_v4p1k"]
+[ext_resource type="Texture2D" uid="uid://bcrwpque48rm5" path="res://assets/wanderer/f0.png" id="3_fpu3a"]
+[ext_resource type="Texture2D" uid="uid://5p3hs0uv085c" path="res://assets/wanderer/f1.png" id="4_fim58"]
 
 [sub_resource type="GDScript" id="GDScript_d32my"]
 script/source = "extends Node
@@ -10,7 +12,28 @@ var menu = \"res://Scenes/main_menu.tscn\"
 
 func _on_menu_button_pressed():
 	Controller.goto_scene(menu)
+
+
+func _ready():
+	if !Controller.show_secret: return
+	for child in $Winners.get_children():
+		child.visible = true
+		child.play(\"default_dance\")
 "
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f4not"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fpu3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fim58")
+}],
+"loop": true,
+"name": &"default_dance",
+"speed": 15.0
+}]
 
 [node name="Node" type="Node"]
 script = SubResource("GDScript_d32my")
@@ -30,5 +53,21 @@ theme = ExtResource("2_v4p1k")
 text = "
 "
 alignment = 2
+
+[node name="Winners" type="Node" parent="."]
+
+[node name="DancingQueen" type="AnimatedSprite2D" parent="Winners"]
+visible = false
+position = Vector2(113, 639)
+sprite_frames = SubResource("SpriteFrames_f4not")
+animation = &"default_dance"
+frame_progress = 0.241804
+
+[node name="DancingKing" type="AnimatedSprite2D" parent="Winners"]
+visible = false
+position = Vector2(903, 635)
+sprite_frames = SubResource("SpriteFrames_f4not")
+animation = &"default_dance"
+flip_h = true
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

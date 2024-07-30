@@ -32,6 +32,7 @@ func _change_room(room: String):
 	await get_tree().create_timer(0.8).timeout
 	
 	if room == "endgame":
+		Controller.show_secret = true
 		Controller.goto_scene(MainMenu.win_screen)
 		return
 	
