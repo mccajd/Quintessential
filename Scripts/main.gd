@@ -72,7 +72,6 @@ func _set_game_status(completed_room: String):
 	
 	if available_room_names.size() == 0:
 		available_room_names = ["endgame"]
-		return
 	hub_rooms_set.emit(available_room_names)
 	await get_tree().create_timer(0.8).timeout
 	_get_by_room(completed_room).queue_free()
