@@ -15,12 +15,16 @@ var found_items: Array
 signal item_found(item_name)
 signal room_changed(room_name)
 
+var available_areas
+
 func _ready():
 	if should_be_instanced:
 		self.queue_free()
 		return
-	$TileMap.visible = false
+
 	config = LevelConfig.get_for(level_name)
+	$TileMap.visible = false
+	$TileMap.set_from_config(config, available_areas)
 	
 	var new_player = player.instantiate()
 	new_player.change_room.connect(changing_room)
@@ -35,14 +39,16 @@ func _ready():
 	if player_spawn_point_index > spawn_points.size():
 		player_spawn_point_index = 0
 	new_player.global_position = tile_map.map_to_local(spawn_points[player_spawn_point_index])
+	new_player.default_spawn = tile_map.map_to_local(spawn_points[0])
 	
-	$TileMap.set_from_config(config)
 	if config.default_items:
 		for item in config.default_items:
 			# Check this on init in case scene re-instanced
 			if !found_items || found_items.find(item) == -1:
 				item_found.emit(item)
 	
+	if level_name == "hub":
+		_set_doors()
 	# this has awaits so lets make sure it's last
 	_play_transition_in()
 
@@ -80,6 +86,11 @@ func set_spawn_point(source_room):
 		_:
 			player_spawn_point_index = 0
 			return
+
+
+func send_to_hub():
+	ref.force_room_change()
+
 
 func _on_item_discovered(item_name):
 	if found_items.find(item_name) > -1: return
@@ -139,3 +150,14 @@ func _play_transition_in():
 		await get_tree().create_timer(0.1).timeout
 		
 	screen.visible = false
+
+
+func _set_doors():
+	get_node("Quintessence").visible = available_areas.has("endgame")
+	
+	get_node("EndgameDoor").visible = !available_areas.has("endgame")
+	get_node("OceanDoor").visible = !available_areas.has("ocean")
+	get_node("DesertDoor").visible = !available_areas.has("desert")
+	get_node("CaveDoor").visible = !available_areas.has("cave")
+	get_node("CloudDoor").visible = !available_areas.has("cloud")
+

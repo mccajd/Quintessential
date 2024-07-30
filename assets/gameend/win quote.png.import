@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwaqudydlnb3x"
-path="res://.godot/imported/creature-piece.png-b0c21ab1992414e7e6e75c615360d1c7.ctex"
+uid="uid://bdg0fax13gl0p"
+path="res://.godot/imported/win quote.png-551c846af08692a01a8f227d782e89fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ocean/creature-piece.png"
-dest_files=["res://.godot/imported/creature-piece.png-b0c21ab1992414e7e6e75c615360d1c7.ctex"]
+source_file="res://assets/gameend/win quote.png"
+dest_files=["res://.godot/imported/win quote.png-551c846af08692a01a8f227d782e89fb.ctex"]
 
 [params]
 

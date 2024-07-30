@@ -8,6 +8,7 @@ extends Control
 @export var required_metal: String
 
 signal menu_toggled(opened: bool)
+signal room_complete(room: String)
 
 
 func _ready():
@@ -44,3 +45,8 @@ func set_visibility(value):
 
 func set_item(item_name):
 	get_node("InventoryItems").set_item(item_name, true)
+
+
+func _on_puzzle_won():
+	room_complete.emit(for_room)
+

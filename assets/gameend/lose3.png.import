@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwaqudydlnb3x"
-path="res://.godot/imported/creature-piece.png-b0c21ab1992414e7e6e75c615360d1c7.ctex"
+uid="uid://cvwyhvjyw3rf8"
+path="res://.godot/imported/lose3.png-6c039737e2fa3fa7a39175c2f944d1b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ocean/creature-piece.png"
-dest_files=["res://.godot/imported/creature-piece.png-b0c21ab1992414e7e6e75c615360d1c7.ctex"]
+source_file="res://assets/gameend/lose3.png"
+dest_files=["res://.godot/imported/lose3.png-6c039737e2fa3fa7a39175c2f944d1b2.ctex"]
 
 [params]
 

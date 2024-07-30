@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://5lwymvkj5bsk" path="res://assets/symbols/fire-symbol.png" id="4_r5dqd"]
 [ext_resource type="Texture2D" uid="uid://bjcwge00ycvj0" path="res://assets/ocean/sadwetcreature.png" id="5_6mlvd"]
 [ext_resource type="Texture2D" uid="uid://sgkgyckmrkex" path="res://assets/ocean/background-chain.png" id="6_ngslx"]
-[ext_resource type="Texture2D" uid="uid://ctajcu1ghitgh" path="res://assets/ocean/creature-tooth.png" id="7_cqxh6"]
-[ext_resource type="Texture2D" uid="uid://chus4jpvjtuub" path="res://assets/ocean/creature-piece.png" id="8_2fswj"]
+[ext_resource type="Texture2D" uid="uid://dj5ep4pcj4blh" path="res://assets/ocean/creature-tooth.png" id="7_cqxh6"]
+[ext_resource type="Texture2D" uid="uid://cwaqudydlnb3x" path="res://assets/ocean/creature-piece.png" id="8_2fswj"]
 [ext_resource type="Texture2D" uid="uid://ctrmrie0l8flw" path="res://assets/ocean/coral.png" id="9_q7hmi"]
 [ext_resource type="Texture2D" uid="uid://cfrnfpivmiu7i" path="res://assets/ocean/sand-foreground.png" id="10_60oko"]
 [ext_resource type="Texture2D" uid="uid://dh6ba267c85sp" path="res://assets/ocean/barrel1.png" id="11_epago"]
@@ -50,7 +50,7 @@ texture = ExtResource("4_r5dqd")
 
 [node name="Transition" type="ColorRect" parent="."]
 visible = false
-z_index = 5
+z_index = 10
 offset_left = 2.0
 offset_top = -271.0
 offset_right = 840.0

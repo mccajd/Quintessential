@@ -6,8 +6,12 @@ var selected_node: BeaconNode
 const node_names = ["BeaconNode1", "BeaconNode2", "BeaconNode3", "BeaconNode4", "BeaconNode5", "BeaconNode6", "BeaconNode7", "BeaconNode8", "BeaconNode9", "BeaconNode10"]
 const recepticle_names = ["BeaconRecepticle1", "BeaconRecepticle2", "BeaconRecepticle3"]
 
+@export var debug_instant_win: bool
+
 signal node_selected
 signal connections_updated
+
+signal puzzle_won
 
 func _ready():
 	pass
@@ -67,17 +71,18 @@ func _set_selected_node_effects():
 
 func _on_beacon_submit_button_pressed():
 	if _get_win_status():
-		get_node("BeaconWinConditionText").text = "u won!"
-		get_tree().get_root().find_child("TowerExtView", true, false).regress_shadows()
-	else:
-		get_node("BeaconWinConditionText").text = "u lost bitch ahahaha!"
+		# shocking this has survived this long
+		get_parent().get_node("MockUI/BeaconNodeView/BeaconNodeMenu/ShowNodeMenuButton")._on_clicked(null)
+		puzzle_won.emit()
+		return
 	
-	get_node("BeaconWinConditionText").visible = true
-	await get_tree().create_timer(3).timeout
-	get_node("BeaconWinConditionText").visible = false
+	# RIP "u lost bitch ahahaha!" 2024-2024
+
 
 
 func _get_win_status():
+	if debug_instant_win: return true
+	
 	for recepticle_name in recepticle_names:
 		if !get_node(recepticle_name).complete(): return false
 	return true

@@ -7,6 +7,8 @@ var title_scene = "res://Scenes/main_menu.tscn"
 var current_scene = null
 var menu_bgm
 
+const silent_paths = [MainMenu.game, MainMenu.win_screen, MainMenu.lose_screen]
+
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count()-1)
@@ -18,9 +20,9 @@ func goto_scene(path):
 	if path != null:
 		call_deferred("_deferred_goto_scene", path)
 	
-	if path == MainMenu.game:
+	if silent_paths.has(path):
 		menu_bgm.stop()
-	elif !menu_bgm.is_playing:
+	else:
 		menu_bgm.play()
 		
 func _deferred_goto_scene(path:String):

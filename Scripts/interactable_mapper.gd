@@ -13,8 +13,9 @@ func _ready():
 	pass #replace_tiles()
 
 
-func set_from_config(config: LevelConfigValue):
+func set_from_config(config: LevelConfigValue, available_areas = ["hub"]):
 	replace_tiles(config.world_items, config.item_mappings)
+	set_accessible_areas(config.transition_rects, available_areas)
 
 
 #replace tile with packaged scene that the player can interact with
@@ -37,6 +38,18 @@ func replace_tiles(items, mappings: Dictionary):
 		add_child(new_scene)
 		erase_cell(LAYERS.INTERACTABLES, tile_pos)
 
+
+func set_accessible_areas(transition_rects, accessible_area_list):
+	# only one way out
+	if !transition_rects || transition_rects.size() < 2: return
+	
+	var inaccessible_areas = transition_rects.filter(func(x): return accessible_area_list.find(x.destination) == -1)
+	
+	for tile_pos in get_used_cells(LAYERS.TRANSITIONS):
+		for area in inaccessible_areas:
+			if !area.rect.has_point(tile_pos): continue
+			erase_cell(LAYERS.TRANSITIONS, tile_pos)
+			set_cell(LAYERS.OBSTACLES, tile_pos, 3, Vector2i(2, 0))
 
 func _on_item_discovered(item):
 	item_discovered.emit(item)

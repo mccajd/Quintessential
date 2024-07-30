@@ -7,6 +7,8 @@ var viewport: SubViewport
 var instance_ref
 
 var room_items: Dictionary
+@export var hub_available_areas: Array
+
 signal world_item_found
 signal beacon_puzzle_changed(puzzle_name)
 
@@ -15,6 +17,8 @@ func _ready():
 	for child in viewport.get_children():
 		if "room_changed" in child && typeof(child.room_changed) == TYPE_SIGNAL:
 			child.room_changed.connect(_change_room)
+		if child.level_name == "hub":
+			child.available_areas = hub_available_areas
 	viewport.size.x = 1024
 
 
@@ -26,6 +30,10 @@ func _change_room(room: String):
 		instance_ref.set_physics_process(false)
 	# wait for transition anim		
 	await get_tree().create_timer(0.8).timeout
+	
+	if room == "endgame":
+		Controller.goto_scene(MainMenu.win_screen)
+		return
 	
 	var source_room = current_room
 	current_room = room
@@ -43,15 +51,16 @@ func _change_room(room: String):
 	if "room_changed" in instance && typeof(instance.room_changed) == TYPE_SIGNAL:
 			instance.room_changed.connect(_change_room)
 	
+	if room == "hub":
+		instance.available_areas = hub_available_areas
+		viewport.size.x = 1000
+	else:
+		viewport.size.x = 562
+	
 	for child in viewport.get_children():
 		child.queue_free()
 	viewport.add_child(instance)
 	instance_ref = instance
-	
-	if room == "hub":
-		viewport.size.x = 1000
-	else:
-		viewport.size.x = 562
 	
 	get_node("/root/Main/AudioStreamPlayer").set_bgm(LevelConfig.get_for(current_room).bgm)
 
@@ -78,3 +87,8 @@ func _on_item_found(local_item_key):
 	
 	var mappings = LevelConfig.get_for(current_room).item_mappings
 	world_item_found.emit(mappings[local_item_key].item if mappings.has(local_item_key) else local_item_key)
+
+
+func _set_hub_areas(areas):
+	hub_available_areas = areas
+	instance_ref.send_to_hub()

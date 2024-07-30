@@ -1,7 +1,10 @@
 extends Node
 
 var room_names = ["cloud", "cave", "ocean", "desert"]
+var available_room_names = room_names
 var selected_room
+
+signal hub_rooms_set
 
 func _ready():
 	for name in room_names:
@@ -22,6 +25,8 @@ func _disable_puzzle(room_name = selected_room):
 
 func _toggle_puzzle(room_name, value):
 	var node = _get_by_room(room_name)
+	if !node: return
+	
 	node.set_process_input(value)
 	node.set_process(value)
 	node.set_physics_process(value)
@@ -50,7 +55,7 @@ func _on_beacon_puzzle_changed(room_name):
 
 
 func _on_game_over():
-	print("Th-th-that's all folks..!")
+	Controller.goto_scene(MainMenu.lose_screen)
 
 
 func _get_by_room(room_name):
@@ -58,3 +63,17 @@ func _get_by_room(room_name):
 		if "for_room" in child && child.for_room == room_name:
 			return child
 	print("NONE FOUND")
+
+
+func _set_game_status(completed_room: String):
+	get_node("TowerExteriorView/TowerExtView").regress_shadows()
+	
+	available_room_names.erase(completed_room)
+	
+	if available_room_names.size() == 0:
+		available_room_names = ["endgame"]
+		return
+	hub_rooms_set.emit(available_room_names)
+	await get_tree().create_timer(0.8).timeout
+	_get_by_room(completed_room).queue_free()
+
