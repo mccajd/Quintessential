@@ -52,7 +52,7 @@ const itemDB = {
 	'iron_scrap' : { 'name' : 'Iron Scraps', 'description': 'Small pieces of Iron.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'note' : { 'name' : 'Note', 'description': 'Dude, lore...', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'rock' : { 'name' : 'Rock', 'description': 'Frequently kicked by adversaries.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
-	'limestone' : { 'name' : 'Water Rock', 'description': 'an item.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'limestone' : { 'name' : 'Limestone', 'description': 'A sedimentary rock found in caves', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'flask' : { 'name' : 'Personal Flask', 'description': 'The contents seem alcoholic in nature, one wiff confirms it.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 }
 
@@ -86,6 +86,7 @@ const dissolution_recipes = [
 	{ "required_ingredients": ["fallen_alchemist"], "items": ["bones", "dagger", "flask", "note"] },
 	{ "required_ingredients": ["dagger"], "items": ["iron_scrap"] },
 	{ "required_ingredients": ["iron_vein"], "items": ["iron_scrap", "rock", "rock"] },
+	{ "required_ingredients": ["lamp"], "items": ["iron_scrap", "ash"] },
 ]
 
 # NOTE.jmc - each of these will also implicitly be checked for salt as an ingredient
