@@ -55,7 +55,7 @@ func _on_beacon_puzzle_changed(room_name):
 
 
 func _on_game_over():
-	print("Th-th-that's all folks..!")
+	Controller.goto_scene(MainMenu.lose_screen)
 
 
 func _get_by_room(room_name):
