@@ -44,8 +44,6 @@ const itemDB = {
 	'coral' : { 'name' : 'Coral', 'description': 'A large decaying coral.\nThis pitiful sight appears to be the only sign of life in this place.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/coral.png', 'id' : 0 },
 	'anchor' : { 'name' : 'Anchor', 'description': 'A metal ship anchor found embedded in the bowels of a sea creature.\nWhether its placement there were incidental or deliberate may never be known.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/anchor.png', 'id' : 0 },
 	'raw_meat' : { 'name' : 'Raw Meat', 'description': 'Meat from a sea creature.\nLikely inedible unless one is wrought with desperation.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/raw_meat.png', 'id' : 0 },
-	
-	# NOTE.Kei for sanity
 	'fallen_alchemist' : { 'name' : 'Fallen Alchemist', 'description': 'One Alchemist\'s failure is another\'s reagents.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'ancient_monolith' : { 'name' : 'Ancient Monolith', 'description': 'A monolith teeming with raw elemental power.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'lamp' : { 'name' : 'Lamp', 'description': 'A surprisingly well preserved lamp, smells faintly of oil and ash.\n[i]Got a light?[/i]', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
@@ -54,6 +52,8 @@ const itemDB = {
 	'iron_scrap' : { 'name' : 'Iron Scraps', 'description': 'Small pieces of Iron.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'note' : { 'name' : 'Note', 'description': 'Dude, lore...', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 	'rock' : { 'name' : 'Rock', 'description': 'Frequently kicked by adversaries.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'limestone' : { 'name' : 'Water Rock', 'description': 'an item.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
+	'flask' : { 'name' : 'Personal Flask', 'description': 'The contents seem alcoholic in nature, one wiff confirms it.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/unknown.png', 'id' : 4 },
 }
 
 const solution_recipes = [
@@ -83,9 +83,7 @@ const dissolution_recipes = [
 	{ "required_ingredients": ["sea_creature"], "items": ["earth", "fire_mote", "water", "raw_meat"] },
 	# manually added dupes (may do this programmatically later
 	{ "required_ingredients": ["barrel", "barrel" ], "items": ["wood", "wood"] },
-
-	# NOTE.Kei for sanity
-	{ "required_ingredients": ["fallen_alchemist"], "items": ["bones", "bones", "dagger", "alcohol", "note"] },
+	{ "required_ingredients": ["fallen_alchemist"], "items": ["bones", "dagger", "flask", "note"] },
 	{ "required_ingredients": ["dagger"], "items": ["iron_scrap"] },
 	{ "required_ingredients": ["iron_vein"], "items": ["iron_scrap", "rock", "rock"] },
 ]
@@ -111,10 +109,8 @@ const sublimation_recipes = [
 	{ "required_ingredients": ["barrel", "barrel", "salt"], "items": ["earth", "air"] },
 	{ "required_ingredients": ["coral"], "items": ["sulfur"] },
 	{ "required_ingredients": ["raw_meat"], "items": ["sulfur"] },
-
-	# NOTE.Kei for sanity
-	{ "required_ingredients": ["rock"], "items": ["earth_mote"] },
-	{ "required_ingredients": ["ancient_monolith"], "items": ["earth_mote", "water_mote", "fire_mote", "air_mote"] },
+	{ "required_ingredients": ["rock"], "items": ["earth_mote", "salt"] },
+	{ "required_ingredients": ["limestone"], "items": ["earth_mote", "water_mote","salt"] },
 ]
 
 # NOTE.jmc - hidden feature. sublimation should allow doubling up for double the results.
@@ -148,9 +144,8 @@ const distillation_recipes = [
 	{ "required_ingredients": ["coral"], "items": ["salt", "salt"] },
 	{ "required_ingredients": ["anchor"], "items": ["scrap_metal", "quicksilver"] },
 	{ "required_ingredients": ["sea_creature"], "items": ["salt", "salt", "sulfur", "sulfur"] },
-
-	# NOTE.Kei for sanity
-	{ "required_ingredients": ["lamp"], "items": ["earth_mote", "fire_mote", "iron_scrap", "ash"] },
+	{ "required_ingredients": ["ancient_monolith"], "items": ["earth_mote", "water_mote", "fire_mote", "air_mote"] },
+	{ "required_ingredients": ["flask"], "items": ["alcohol", "water_mote", "salt"] },
 ]
 
 const ascension_recipes = [
@@ -205,8 +200,6 @@ const ascension_recipes = [
 	{ "required_ingredients": ["quicksilver_mote", "myrrh"], "items": ["wood"] },
 	{ "required_ingredients": ["alcohol", "cacti_husk"], "items": ["cacti"] },
 	{ "required_ingredients": ["quicksilver_mote", "cacti_husk"], "items": ["cacti"] },
-
-	# NOTE.Kei for sanity
-	{ "required_ingredients": ["alcohol", "scrap_iron"], "items": ["iron"] },
-	{ "required_ingredients": ["quicksilver_mote", "scrap_iron"], "items": ["iron"] },
+	{ "required_ingredients": ["alcohol", "iron_scrap"], "items": ["iron"] },
+	{ "required_ingredients": ["quicksilver_mote", "iron_scrap"], "items": ["iron"] },
 ]

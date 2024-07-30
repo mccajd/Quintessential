@@ -18,10 +18,6 @@ func _ready():
 		get_node("BeaconTower/BeaconRecepticle2").expected_input = required_element
 	if required_metal:
 		get_node("BeaconTower/BeaconRecepticle3").expected_input = required_metal
-		
-	# if required_element == "water":
-	# 	var node: InventoryItems = get_node("InventoryItems")
-	# 	node.set_items(["quicksilver", "salt", "sulfur", "meat_sack", "cacti", "bones", "frankincense", "myrrh", "gold"])
 
 
 
