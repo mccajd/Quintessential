@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5uc3afqw2l6x"]
+[gd_scene load_steps=14 format=3 uid="uid://c5uc3afqw2l6x"]
 
 [ext_resource type="Script" path="res://Scripts/player_view.gd" id="1_ge4cy"]
 [ext_resource type="PackedScene" uid="uid://nrsivx657vil" path="res://Scenes/custom_tile_map.tscn" id="2_enr1i"]
@@ -13,6 +13,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acovp"]
 size = Vector2(83.5, 162)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw1wm"]
+size = Vector2(50, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yutlf"]
+size = Vector2(34, 42)
 
 [node name="DesertRoom" type="Node"]
 script = ExtResource("1_ge4cy")
@@ -45,9 +51,9 @@ texture = ExtResource("4_t1562")
 visible = false
 z_index = 5
 offset_left = 2.0
-offset_top = -275.0
-offset_right = 1400.0
-offset_bottom = 778.0
+offset_top = -271.0
+offset_right = 840.0
+offset_bottom = 504.0
 color = Color(0, 0, 0, 1)
 
 [node name="BlackVoid" type="ColorRect" parent="."]
@@ -68,6 +74,7 @@ position = Vector2(486.25, 162)
 shape = SubResource("RectangleShape2D_acovp")
 
 [node name="Bag-o-meat" type="TextureRect" parent="."]
+z_index = 1
 offset_left = 448.0
 offset_top = 200.0
 offset_right = 512.0
@@ -84,6 +91,7 @@ texture = ExtResource("6_vijs5")
 expand_mode = 1
 
 [node name="Cacti" type="TextureRect" parent="."]
+z_index = 1
 offset_left = 576.0
 offset_top = 160.0
 offset_right = 704.0
@@ -114,6 +122,28 @@ offset_right = 584.0
 offset_bottom = 328.0
 texture = ExtResource("10_44g6q")
 
+[node name="FrontDetector" type="Area2D" parent="."]
+position = Vector2(616, 280)
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDetector"]
+position = Vector2(15, 7)
+shape = SubResource("RectangleShape2D_mw1wm")
+
+[node name="FrontDetector2" type="Area2D" parent="."]
+position = Vector2(472, 264)
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDetector2"]
+position = Vector2(7, 11)
+shape = SubResource("RectangleShape2D_yutlf")
+
 [connection signal="item_discovered" from="TileMap" to="." method="_on_item_discovered"]
 [connection signal="body_entered" from="BackDetector" to="." method="_on_back_detector_entered"]
 [connection signal="body_exited" from="BackDetector" to="." method="_on_back_detector_exited"]
+[connection signal="body_entered" from="FrontDetector" to="." method="_on_front_detector_entered"]
+[connection signal="body_exited" from="FrontDetector" to="." method="_on_front_detector_exited"]
+[connection signal="body_entered" from="FrontDetector2" to="." method="_on_front_detector_entered"]
+[connection signal="body_exited" from="FrontDetector2" to="." method="_on_front_detector_exited"]
