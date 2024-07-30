@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfsct0w6nqocu"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_27n7y"]
+[ext_resource type="Texture2D" uid="uid://brc4tamuto1vc" path="res://assets/main_menu_background.png" id="2_vg5ty"]
+[ext_resource type="Theme" uid="uid://c3h5a64d47h0b" path="res://assets/menu_theme.tres" id="3_u208o"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_27n7y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.533165, 0.711323)
+texture = ExtResource("2_vg5ty")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 885.0
+offset_top = 321.0
+offset_right = 1002.0
+offset_bottom = 352.0
+scale = Vector2(0.816282, 1.04744)
+theme = ExtResource("3_u208o")
+text = "
+"
+alignment = 2
+
+[node name="HowToButton" type="Button" parent="."]
+offset_left = 756.0
+offset_top = 368.0
+offset_right = 876.0
+offset_bottom = 399.0
+scale = Vector2(1.87195, 1.04001)
+theme = ExtResource("3_u208o")
+alignment = 2
+
+[node name="CreditsButton" type="Button" parent="."]
+offset_left = 849.0
+offset_top = 416.0
+offset_right = 966.0
+offset_bottom = 447.0
+scale = Vector2(1.11999, 1.05666)
+theme = ExtResource("3_u208o")
+alignment = 2
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="HowToButton" to="." method="_on_how_to_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]

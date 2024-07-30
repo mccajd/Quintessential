@@ -6,20 +6,21 @@ class_name ItemTransformer
 func transform(type: String, item_keys):
 	match type:
 		"solution":
-			return _transform(Items.solution_recipes, item_keys, [])
+			return _transform(Items.solution_recipes, item_keys)
 		"dissolution":
-			return _transform(Items.dissolution_recipes, item_keys, [])
+			return _transform(Items.dissolution_recipes, item_keys)
 		"sublimation":
-			return _transform(Items.sublimation_recipes, item_keys, ["salt"])
+			var round = _transform(Items.sublimation_recipes, item_keys, ["salt"])
+			return round if round != null else _transform(Items.get_double_sublimation_recipes(), item_keys, ["salt", "salt"])
 		"distillation":
 			return _transform(Items.distillation_recipes, item_keys, ["sulfur"])
 		"ascension":
-			return _transform(Items.ascension_recipes, item_keys, [])
+			return _transform(Items.ascension_recipes, item_keys)
 		_:
 			return item_keys
 
 
-func _transform(recipes, item_keys, additional_items):
+func _transform(recipes, item_keys, additional_items = []):
 	# NOTE.jmc - the more I work in godot the less I like its "support" for typing
 	# 	let's just have a gentlemans agreement to make sure dictionary items
 	#	have "required_ingredients" and "items" arrays
