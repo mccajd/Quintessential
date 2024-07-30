@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://xlfxdxlhlrkm"]
+[gd_scene load_steps=23 format=3 uid="uid://xlfxdxlhlrkm"]
 
 [ext_resource type="PackedScene" uid="uid://j1dft6uobs3e" path="res://Scenes/beacon_tower.tscn" id="1_7mmc7"]
 [ext_resource type="Script" path="res://Scripts/beacon_puzzle.gd" id="1_at053"]
@@ -14,6 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://chme11eyldqed" path="res://Scenes/beacon_node_item_slot.tscn" id="11_2xr33"]
 [ext_resource type="Script" path="res://Scripts/beacon_node_output_slot.gd" id="12_gs16d"]
 [ext_resource type="PackedScene" uid="uid://geda8gmbwuga" path="res://Scenes/beacon_node_button.tscn" id="13_6vynv"]
+[ext_resource type="Texture2D" uid="uid://chr6piu8nkc23" path="res://assets/items/solution_tile_detailed.png" id="15_ra4ik"]
+[ext_resource type="Texture2D" uid="uid://cmspltfyqvrsu" path="res://assets/items/ascension_tile.png" id="16_ik168"]
+[ext_resource type="Texture2D" uid="uid://deuotr83vxwmd" path="res://assets/items/dissolution_tile_detailed.png" id="16_lquqw"]
+[ext_resource type="Texture2D" uid="uid://boqyv10myk12i" path="res://assets/items/neutral_tile_detailed.png" id="16_wvnmb"]
+[ext_resource type="Texture2D" uid="uid://csopl5fyet58l" path="res://assets/items/sublimation_tile_detailed.png" id="18_ig4bd"]
+[ext_resource type="Texture2D" uid="uid://dgc0h6dags0gi" path="res://assets/items/distillation_tile_detailed.png" id="19_jb85l"]
 
 [sub_resource type="GDScript" id="GDScript_tquvq"]
 
@@ -518,26 +524,62 @@ script = SubResource("GDScript_vcol3")
 position = Vector2(104, 214)
 transformation_type = "solution"
 
+[node name="Sprite2D" type="Sprite2D" parent="MockUI/BeaconNodeView/BeaconNodeMenu/SolutionButton"]
+texture_filter = 1
+position = Vector2(55, 55)
+scale = Vector2(1.28566, 1.14622)
+texture = ExtResource("15_ra4ik")
+
 [node name="DissolutionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("13_6vynv")]
 position = Vector2(112, 317)
 transformation_type = "dissolution"
+
+[node name="Sprite2D" type="Sprite2D" parent="MockUI/BeaconNodeView/BeaconNodeMenu/DissolutionButton"]
+texture_filter = 1
+position = Vector2(55, 55)
+scale = Vector2(1.2214, 1.15308)
+texture = ExtResource("16_lquqw")
 
 [node name="AscensionButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("13_6vynv")]
 position = Vector2(209, 188)
 transformation_type = "ascension"
 
+[node name="Sprite2D" type="Sprite2D" parent="MockUI/BeaconNodeView/BeaconNodeMenu/AscensionButton"]
+texture_filter = 1
+position = Vector2(56, 56)
+scale = Vector2(1.27012, 1.14307)
+texture = ExtResource("16_ik168")
+
 [node name="SublimationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("13_6vynv")]
 position = Vector2(308, 317)
 transformation_type = "sublimation"
+
+[node name="Sprite2D" type="Sprite2D" parent="MockUI/BeaconNodeView/BeaconNodeMenu/SublimationButton"]
+texture_filter = 1
+position = Vector2(56, 55)
+scale = Vector2(1.25248, 1.19042)
+texture = ExtResource("18_ig4bd")
 
 [node name="DistillationButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("13_6vynv")]
 position = Vector2(313, 213)
 transformation_type = "distillation"
 
+[node name="Sprite2D" type="Sprite2D" parent="MockUI/BeaconNodeView/BeaconNodeMenu/DistillationButton"]
+texture_filter = 1
+position = Vector2(56, 55)
+scale = Vector2(1.28229, 1.21835)
+texture = ExtResource("19_jb85l")
+
 [node name="ClearButton" parent="MockUI/BeaconNodeView/BeaconNodeMenu" instance=ExtResource("13_6vynv")]
 position = Vector2(222, 355)
 scale = Vector2(0.8, 0.8)
 transformation_type = "neutral"
+
+[node name="Sprite2D" type="Sprite2D" parent="MockUI/BeaconNodeView/BeaconNodeMenu/ClearButton"]
+texture_filter = 1
+position = Vector2(56.25, 55)
+scale = Vector2(1.25291, 1.08894)
+texture = ExtResource("16_wvnmb")
 
 [node name="AvailableItemsContainer" type="VBoxContainer" parent="MockUI/BeaconNodeView/BeaconNodeMenu"]
 offset_left = 20.0
