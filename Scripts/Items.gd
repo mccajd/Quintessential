@@ -33,7 +33,7 @@ const itemDB = {
 	'cloud' : { 'name' : 'Cloud', 'description': 'A full-sized cloud.\nTeeming with elemental energy.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cloud.png', 'id' : 4 },
 	'meat_sack' : { 'name' : 'Sack of Cured Meats', 'description': 'A sack of meats cured in salt.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/sack_of_meat_token.png', 'id' : 4 },
 	'cacti' : { 'name' : 'Cacti', 'description': 'A prickly plant found in the desert.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cacti_token.png', 'id' : 4 },
-	'bones' : { 'name' : 'Bones', 'description': 'Sun bleached pile of bones.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/bones_token.png', 'id' : 4 },
+	'bones' : { 'name' : 'Bones', 'description': 'A dry pile of bones.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/bones_token.png', 'id' : 4 },
 	'frankincense' : { 'name' : 'Frankincense', 'description': 'An aromatic resin.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/frankincense_token.png', 'id' : 4 },
 	'myrrh' : { 'name' : 'Myrrh', 'description': 'A sap-like resin.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/myrrh_token.png', 'id' : 4 },
 	'cacti_husk' : { 'name' : 'Cacti Husk', 'description': 'Freshly harvested cacti husk.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/cacti_husk_token.png', 'id' : 4 },
@@ -44,6 +44,16 @@ const itemDB = {
 	'coral' : { 'name' : 'Coral', 'description': 'A large decaying coral.\nThis pitiful sight appears to be the only sign of life in this place.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/coral.png', 'id' : 0 },
 	'anchor' : { 'name' : 'Anchor', 'description': 'A metal ship anchor found embedded in the bowels of a sea creature.\nWhether its placement there were incidental or deliberate may never be known.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/anchor.png', 'id' : 0 },
 	'raw_meat' : { 'name' : 'Raw Meat', 'description': 'Meat from a sea creature.\nLikely inedible unless one is wrought with desperation.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/raw_meat.png', 'id' : 0 },
+	'fallen_alchemist' : { 'name' : 'Fallen Alchemist', 'description': 'One Alchemist\'s failure is another\'s reagents.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/fallen_alchemist_token.png', 'id' : 4 },
+	'ancient_monolith' : { 'name' : 'Ancient Monolith', 'description': 'A monolith teeming with raw elemental power.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/ancient_monolith_token.png', 'id' : 4 },
+	'lamp' : { 'name' : 'Lamp', 'description': 'A surprisingly well preserved lamp, smells faintly of oil and ash.\n[i]Got a light?[/i]', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/lamp_token.png', 'id' : 4 },
+	'dagger' : { 'name' : 'Dagger', 'description': 'A worn and dull dagger.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/dagger_token.png', 'id' : 4 },
+	'iron_vein' : { 'name' : 'Iron Vein', 'description': 'An untapped vein of raw Iron.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/iron_vein_token.png', 'id' : 4 },
+	'iron_scrap' : { 'name' : 'Iron Scraps', 'description': 'Small pieces of Iron.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/iron_scrap_token.png', 'id' : 4 },
+	'note' : { 'name' : 'Note', 'description': 'Note from an unknown alchemist who must have died\nalone a long, long time ago.\nMiraculously, time does not seem to have withered it.\n"O, fear not the dark; what encroaches at daybreak\nbrings a peril far greater."', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/note_token.png', 'id' : 4 },
+	'rock' : { 'name' : 'Rock', 'description': 'Frequently kicked by adversaries.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/rock_token.png', 'id' : 4 },
+	'limestone' : { 'name' : 'Limestone', 'description': 'A porous, sedimentary rock found in caves.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/limestone_token.png', 'id' : 4 },
+	'flask' : { 'name' : 'Personal Flask', 'description': 'The contents seem alcoholic in nature; one whiff confirms it.', 'type': Item.ItemType.World, 'sprite' : 'res://assets/items/flask_token.png', 'id' : 4 },
 }
 
 const solution_recipes = [
@@ -73,6 +83,10 @@ const dissolution_recipes = [
 	{ "required_ingredients": ["sea_creature"], "items": ["earth", "fire_mote", "water", "raw_meat"] },
 	# manually added dupes (may do this programmatically later
 	{ "required_ingredients": ["barrel", "barrel" ], "items": ["wood", "wood"] },
+	{ "required_ingredients": ["fallen_alchemist"], "items": ["bones", "dagger", "flask", "note"] },
+	{ "required_ingredients": ["dagger"], "items": ["iron_scrap"] },
+	{ "required_ingredients": ["iron_vein"], "items": ["iron_scrap", "rock", "rock"] },
+	{ "required_ingredients": ["lamp"], "items": ["iron_scrap", "ash"] },
 ]
 
 # NOTE.jmc - each of these will also implicitly be checked for salt as an ingredient
@@ -96,6 +110,8 @@ const sublimation_recipes = [
 	{ "required_ingredients": ["barrel", "barrel", "salt"], "items": ["earth", "air"] },
 	{ "required_ingredients": ["coral"], "items": ["sulfur"] },
 	{ "required_ingredients": ["raw_meat"], "items": ["sulfur"] },
+	{ "required_ingredients": ["rock"], "items": ["earth_mote", "salt"] },
+	{ "required_ingredients": ["limestone"], "items": ["earth_mote", "water_mote","salt"] },
 ]
 
 # NOTE.jmc - hidden feature. sublimation should allow doubling up for double the results.
@@ -129,6 +145,8 @@ const distillation_recipes = [
 	{ "required_ingredients": ["coral"], "items": ["salt", "salt"] },
 	{ "required_ingredients": ["anchor"], "items": ["scrap_metal", "quicksilver"] },
 	{ "required_ingredients": ["sea_creature"], "items": ["salt", "salt", "sulfur", "sulfur"] },
+	{ "required_ingredients": ["ancient_monolith"], "items": ["earth_mote", "water_mote", "fire_mote", "air_mote"] },
+	{ "required_ingredients": ["flask"], "items": ["alcohol", "water_mote", "salt"] },
 ]
 
 const ascension_recipes = [
@@ -183,5 +201,6 @@ const ascension_recipes = [
 	{ "required_ingredients": ["quicksilver_mote", "myrrh"], "items": ["wood"] },
 	{ "required_ingredients": ["alcohol", "cacti_husk"], "items": ["cacti"] },
 	{ "required_ingredients": ["quicksilver_mote", "cacti_husk"], "items": ["cacti"] },
-
+	{ "required_ingredients": ["alcohol", "iron_scrap"], "items": ["iron"] },
+	{ "required_ingredients": ["quicksilver_mote", "iron_scrap"], "items": ["iron"] },
 ]
