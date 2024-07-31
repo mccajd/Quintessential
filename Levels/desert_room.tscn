@@ -52,7 +52,7 @@ visible = false
 z_index = 5
 offset_left = 2.0
 offset_top = -271.0
-offset_right = 840.0
+offset_right = 1362.0
 offset_bottom = 504.0
 color = Color(0, 0, 0, 1)
 

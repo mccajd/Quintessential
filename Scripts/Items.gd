@@ -197,10 +197,14 @@ const ascension_recipes = [
 
 	{ "required_ingredients": ["alcohol", "frankincense"], "items": ["wood"] },
 	{ "required_ingredients": ["quicksilver_mote", "frankincense"], "items": ["wood"] },
+	{ "required_ingredients": ["quicksilver", "frankincense"], "items": ["wood"] },
 	{ "required_ingredients": ["alcohol", "myrrh"], "items": ["wood"] },
 	{ "required_ingredients": ["quicksilver_mote", "myrrh"], "items": ["wood"] },
+	{ "required_ingredients": ["quicksilver", "myrrh"], "items": ["wood"] },
 	{ "required_ingredients": ["alcohol", "cacti_husk"], "items": ["cacti"] },
 	{ "required_ingredients": ["quicksilver_mote", "cacti_husk"], "items": ["cacti"] },
+	{ "required_ingredients": ["quicksilver", "cacti_husk"], "items": ["cacti"] },
 	{ "required_ingredients": ["alcohol", "iron_scrap"], "items": ["iron"] },
 	{ "required_ingredients": ["quicksilver_mote", "iron_scrap"], "items": ["iron"] },
+	{ "required_ingredients": ["quicksilver", "iron_scrap"], "items": ["iron"] },
 ]
