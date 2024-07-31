@@ -19,7 +19,6 @@ func _ready():
 			child.room_changed.connect(_change_room)
 		if child.level_name == "hub":
 			child.available_areas = hub_available_areas
-	viewport.size.x = 1024
 
 
 func _change_room(room: String):
@@ -53,9 +52,6 @@ func _change_room(room: String):
 	
 	if room == "hub":
 		instance.available_areas = hub_available_areas
-		viewport.size.x = 1000
-	else:
-		viewport.size.x = 562
 	
 	for child in viewport.get_children():
 		child.queue_free()
