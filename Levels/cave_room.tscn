@@ -76,25 +76,24 @@ shape = SubResource("RectangleShape2D_acovp")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = 1
-visible = false
 follow_viewport_enabled = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Foreground" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
 z_index = 5
-offset_left = -121.0
+offset_left = -183.0
 offset_top = -465.6
-offset_right = 775.0
+offset_right = 713.0
 offset_bottom = 46.4
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_r23hd")
 
 [node name="Foreground2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
 z_index = 5
-offset_left = 690.2
+offset_left = 628.2
 offset_top = -466.0
-offset_right = 1586.2
+offset_right = 1524.2
 offset_bottom = 46.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_r23hd")
