@@ -1,4 +1,4 @@
-﻿# QUINTESSENTIAL
+﻿# Q U I N T E S S E N T I A L .
 
 A puzzle adventure game created for the Pirate Software Game Jam 15, with **Shadows and Alchemy** as the theme of the jam.
 
@@ -14,8 +14,8 @@ Left Mouse Button (Mouse1) - Interact with objects, change rooms, drag and drop 
 
 ## Credits
 We are Team Ricewine!
-- Harrison "harrisonof"
-- Jacob "tubnubbin"
-- Kei "yukiidood"
+- Harrison W.
+- Jacob Mc.
+- Kei Y.
 
 Thank you for checking our our game!
