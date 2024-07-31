@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://b16x2m82ri0xj"]
+[gd_scene load_steps=14 format=3 uid="uid://b16x2m82ri0xj"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_nu8b2"]
 [ext_resource type="PackedScene" uid="uid://xlfxdxlhlrkm" path="res://Scenes/beacon_puzzle.tscn" id="2_6o530"]
+[ext_resource type="Texture2D" uid="uid://b4asm0ytnhjet" path="res://assets/GUI_background.png" id="2_vr2vj"]
 [ext_resource type="Script" path="res://Scripts/room_manager.gd" id="5_0hynf"]
 [ext_resource type="PackedScene" uid="uid://cqwfracn5qwr4" path="res://Levels/cloud_room.tscn" id="5_quxlp"]
 [ext_resource type="PackedScene" uid="uid://dq80qt38o8nvg" path="res://Levels/hub_room.tscn" id="5_sgrcl"]
@@ -18,6 +19,11 @@ font_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_nu8b2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(513, 384)
+texture = ExtResource("2_vr2vj")
 
 [node name="BeaconPuzzle1" parent="." instance=ExtResource("2_6o530")]
 visible = false
