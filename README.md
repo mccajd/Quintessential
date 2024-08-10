@@ -1,4 +1,6 @@
-﻿# Q U I N T E S S E N T I A L .
+﻿Note: this branch contains the source for the GAME JAM version of the game.
+
+# Q U I N T E S S E N T I A L .
 
 A puzzle adventure game created for the Pirate Software Game Jam 15, with **Shadows and Alchemy** as the theme of the jam.
 
