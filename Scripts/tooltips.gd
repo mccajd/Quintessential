@@ -4,6 +4,9 @@ extends Control
 # NOTE.Kei I tried to make TooltipControlNode it's own Node and it broke everything
 # "Hey, if it works"
 
+var hover_count = 0
+
+
 func _ready():
 	_set_tooltip_message("UNKNOWN")
 	
@@ -42,11 +45,14 @@ func _hide_tooltip():
 
 func _on_mouse_entered():
 	# The end of the timer calls "_show_tooltip()"
+	hover_count += 1
 	$Timer.start()
 
 func _on_mouse_exited():
-	$Timer.stop()
-	_hide_tooltip()
+	hover_count -= 1
+	if hover_count == 0:
+		$Timer.stop()
+		_hide_tooltip()
 
 func _get_mouse_position():
 	# Grab the mouse position
