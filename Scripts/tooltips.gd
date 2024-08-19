@@ -49,6 +49,11 @@ func _on_mouse_entered():
 	$Timer.start()
 
 func _on_mouse_exited():
+	# NOTE.jmc - fixes the infamous tooltip issue
+	#	if a frame perfect tooltip hover change occurs (from one hovered item to another),
+	#	the mouse_exited event of the old item processes after the mouse_entered event of the new one,
+	#	dismissing the tooltip.
+	#	Use a simple counter to detect whether to actually dismiss.
 	hover_count -= 1
 	if hover_count == 0:
 		$Timer.stop()
