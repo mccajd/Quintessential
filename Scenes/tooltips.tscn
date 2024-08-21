@@ -29,5 +29,6 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
 
 [connection signal="timeout" from="Timer" to="." method="_show_tooltip"]
