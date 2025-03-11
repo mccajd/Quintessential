@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dq80qt38o8nvg"]
 
-[ext_resource type="Script" path="res://Scripts/player_view.gd" id="1_4cri5"]
+[ext_resource type="Script" uid="uid://br0o7nux181is" path="res://Scripts/player_view.gd" id="1_4cri5"]
 [ext_resource type="PackedScene" uid="uid://nrsivx657vil" path="res://Scenes/custom_tile_map.tscn" id="2_bedln"]
 [ext_resource type="Texture2D" uid="uid://b3820qi7lvgmi" path="res://assets/levelbackgrounds/endgame-door.png" id="3_mly04"]
 [ext_resource type="Texture2D" uid="uid://d4c3v337mqu75" path="res://assets/levelbackgrounds/hub-main-opened.png" id="4_0mqtd"]

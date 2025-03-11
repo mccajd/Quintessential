@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://chme11eyldqed"]
 
-[ext_resource type="Script" path="res://Scripts/beacon_node_item_slot.gd" id="1_m757t"]
+[ext_resource type="Script" uid="uid://dk1ng83o6n5of" path="res://Scripts/beacon_node_item_slot.gd" id="1_m757t"]
 [ext_resource type="Texture2D" uid="uid://c677ek62vngtq" path="res://assets/beacon/node-bg-slot.png" id="2_6lq0p"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_4injw"]

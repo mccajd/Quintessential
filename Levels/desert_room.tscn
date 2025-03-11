@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c5uc3afqw2l6x"]
 
-[ext_resource type="Script" path="res://Scripts/player_view.gd" id="1_ge4cy"]
+[ext_resource type="Script" uid="uid://br0o7nux181is" path="res://Scripts/player_view.gd" id="1_ge4cy"]
 [ext_resource type="PackedScene" uid="uid://nrsivx657vil" path="res://Scenes/custom_tile_map.tscn" id="2_enr1i"]
 [ext_resource type="Texture2D" uid="uid://dc3qym1wo4h55" path="res://assets/levelbackgrounds/desert level.png" id="3_ao7st"]
 [ext_resource type="Texture2D" uid="uid://bpo77pt2dahgy" path="res://assets/symbols/water-symbol.png" id="4_t1562"]

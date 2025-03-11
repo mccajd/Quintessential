@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dt8namvmtn1ty"]
 
-[ext_resource type="Script" path="res://Scripts/beacon_node.gd" id="1_hn6iq"]
+[ext_resource type="Script" uid="uid://clijmfhnl6y1w" path="res://Scripts/beacon_node.gd" id="1_hn6iq"]
 [ext_resource type="Texture2D" uid="uid://r65av6xkmun3" path="res://assets/beacon/beacon-node-empty.png" id="2_jmdrg"]
 [ext_resource type="Texture2D" uid="uid://cofbj22tbg5oi" path="res://assets/beacon/beacon-node-filled.png" id="3_nm6o8"]
 [ext_resource type="Texture2D" uid="uid://d38d3pg5qofs3" path="res://assets/beacon/beacon-node-selected.png" id="4_d8wnx"]

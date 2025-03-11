@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dhwf2e51q2ran"]
 
-[ext_resource type="Script" path="res://Scripts/player_view.gd" id="1_n05sp"]
+[ext_resource type="Script" uid="uid://br0o7nux181is" path="res://Scripts/player_view.gd" id="1_n05sp"]
 [ext_resource type="PackedScene" uid="uid://nrsivx657vil" path="res://Scenes/custom_tile_map.tscn" id="2_abkc4"]
 [ext_resource type="Texture2D" uid="uid://csqgdifalte26" path="res://assets/levelbackgrounds/cave level back.png" id="3_6qgxm"]
 [ext_resource type="Texture2D" uid="uid://c54oeudwo86og" path="res://assets/symbols/air-symbol.png" id="4_3ig0p"]
