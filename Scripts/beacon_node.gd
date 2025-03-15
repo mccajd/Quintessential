@@ -89,7 +89,9 @@ func set_available_items(items):
 	available_items += items.map(func(x): return ItemInSlot.new(x, null))
 	
 	# selectively clear input slots if available items have been purged
+	
 	for i in inputs_from_nodes.size():
+		@warning_ignore("confusable_local_declaration")
 		if available_items.map(func(i): return i.slot_id).find(i) == -1:
 			inputs_from_nodes[i] = null
 
@@ -187,7 +189,7 @@ func _reset_input_slots():
 	inputs_from_inventory = [null, null, null, null]
 	inputs_from_nodes = [null, null, null, null]
 
-
+@warning_ignore("shadowed_variable")
 static func get_symbol_texture(id):
 	match id:
 		1: return "res://assets/symbols/one_symbol.png"

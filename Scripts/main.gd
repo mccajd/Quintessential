@@ -7,8 +7,8 @@ var selected_room
 signal hub_rooms_set
 
 func _ready():
-	for name in room_names:
-		_disable_puzzle(name)
+	for room in room_names:
+		_disable_puzzle(room)
 
 
 func _process(_delta):
@@ -42,8 +42,8 @@ func _on_world_item_found(item_name):
 
 
 func _on_beacon_puzzle_changed(room_name):
-	for name in room_names:
-		_disable_puzzle(name)
+	for room in room_names:
+		_disable_puzzle(room)
 	
 	if room_names.find(room_name) == -1:
 		room_name = null
@@ -75,4 +75,3 @@ func _set_game_status(completed_room: String):
 	hub_rooms_set.emit(available_room_names)
 	await get_tree().create_timer(0.8).timeout
 	_get_by_room(completed_room).queue_free()
-

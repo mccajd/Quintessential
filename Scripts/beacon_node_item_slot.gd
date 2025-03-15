@@ -46,6 +46,5 @@ func _can_drop_data(_position, _data):
 	return item_key == null
 
 
-func _drop_data(position, data):
+func _drop_data(_position, data):
 	item_dropped.emit(slot_id, data.item_position, data.from_inventory)
-

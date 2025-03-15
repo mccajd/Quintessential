@@ -16,7 +16,7 @@ func _ready():
 	_set_available_items()
 
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 
@@ -96,4 +96,3 @@ func _set_prime(item, i):
 	new_item.z_index = 1
 
 	prime_container.add_child(new_item)
-

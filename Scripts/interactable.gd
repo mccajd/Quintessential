@@ -4,7 +4,7 @@ class_name Interactable
 var item_name
 signal item_discovered(item_name)
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 func update_position(coords:Vector2i):
