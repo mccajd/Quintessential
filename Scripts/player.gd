@@ -41,7 +41,6 @@ func _ready():
 	set_solid_tiles()
 
 func _physics_process(_delta):
-	print(position, " | ", position - Vector2(8,8))
 	if rooms_changing:
 		$AnimatedSprite2D.play("limp")
 		position.y -= 1
@@ -102,9 +101,11 @@ func _input(event):
 		$AnimatedSprite2D.flip_h = target_tile.x < start_tile.x
 		
 		path = pathfinder(start_tile, target_tile)
-		path.remove_at(0) #remove the first point since this is the point we are already standing at
+		if !path.is_empty(): path.remove_at(0) #remove the first point since this is the point we are already standing at
 
 func pathfinder(start:Vector2i, end:Vector2i)->PackedVector2Array:
+	if !astar_grid.is_in_boundsv(target_tile):
+		return PackedVector2Array()
 	if astar_grid.is_point_solid(target_tile):
 		end = find_valid_dest(end)
 
@@ -113,19 +114,15 @@ func pathfinder(start:Vector2i, end:Vector2i)->PackedVector2Array:
 func find_valid_dest(cur_dest:Vector2i)->Vector2i:
 	if !astar_grid.is_point_solid(target_tile):
 		return cur_dest
-	
-	var neighbor = cur_dest
-
+		
 	# TODO.hmw a more robust algorithm for finding the optimal destination when given a solid
 	# point should be devised, but this is Good 'nuff:TM: for now
-	for cell in range(tile_map.tile_set.CELL_NEIGHBOR_RIGHT_SIDE,
-						tile_map.tile_set.CELL_NEIGHBOR_TOP_RIGHT_CORNER+1):
-		neighbor = tile_map.get_neighbor_cell(cur_dest, cell)
-		
-		if !astar_grid.is_point_solid(neighbor):
-			return neighbor
+	for cell in tile_map.get_surrounding_cells(cur_dest):
+		if tile_map.get_used_rect().has_point(cell) and astar_grid.is_in_boundsv(cell):
+			if !astar_grid.is_point_solid(cell):
+				return cell
 	
-	return neighbor
+	return cur_dest
 
 func set_solid_tiles():
 	for tile_pos in tile_map.get_used_cells(tile_map.LAYERS.OBSTACLES):
