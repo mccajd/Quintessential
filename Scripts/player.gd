@@ -41,13 +41,14 @@ func _ready():
 	set_solid_tiles()
 
 func _physics_process(_delta):
+	print(position, " | ", position - Vector2(8,8))
 	if rooms_changing:
 		$AnimatedSprite2D.play("limp")
 		position.y -= 1
 		return
 	
 	if !path.is_empty():
-		velocity = speed*direction_to_point(position-Vector2(8,8), path[0])
+		velocity = speed*direction_to_point(position, path[0])#-Vector2(8,8)
 		$AnimatedSprite2D.play("limp")
 	else:
 		velocity = Vector2.ZERO
@@ -93,18 +94,17 @@ func direction_to_point(src:Vector2i, dest:Vector2i)->Vector2:
 func _input(event):
 	# ignore input if the player is changing rooms
 	if change_rooms_on_stop: return
-	
+
 	if event.is_action_pressed("select"):
 		target_tile = get_global_mouse_position()
-		start_tile  = position-Vector2(8,8)
+		start_tile  = position#-Vector2(8,8)
 		
 		$AnimatedSprite2D.flip_h = target_tile.x < start_tile.x
-
+		
 		path = pathfinder(start_tile, target_tile)
+		path.remove_at(0) #remove the first point since this is the point we are already standing at
 
 func pathfinder(start:Vector2i, end:Vector2i)->PackedVector2Array:
-	var base_path = Vector2i.ZERO
-
 	if astar_grid.is_point_solid(target_tile):
 		end = find_valid_dest(end)
 
