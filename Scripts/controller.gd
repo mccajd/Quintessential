@@ -11,6 +11,7 @@ var show_secret = false
 const silent_paths = [MainMenu.game, MainMenu.win_screen, MainMenu.lose_screen]
 
 func _ready():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(0.5))
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count()-1)
 	menu_bgm = load("res://Scripts/menu_bgm.gd").new()

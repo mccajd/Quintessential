@@ -1,0 +1,164 @@
+[gd_scene load_steps=14 format=3 uid="uid://b2cpxwg3d3l2j"]
+
+[ext_resource type="Script" uid="uid://cby4g6fcj23gb" path="res://Scenes/audio_slider.gd" id="1_1rerr"]
+[ext_resource type="Texture2D" uid="uid://dp0kqhoa7sht4" path="res://assets/GUI/menu_icon.png" id="1_cayip"]
+[ext_resource type="Theme" uid="uid://cqqnseiuphthi" path="res://assets/GUI/ingame_menu.tres" id="1_wwsa2"]
+[ext_resource type="Texture2D" uid="uid://i25xgh1ixxby" path="res://assets/GUI/menu_graphic.png" id="4_158mb"]
+[ext_resource type="Texture2D" uid="uid://b5pqneb48hba2" path="res://assets/GUI/exit_icon.png" id="4_wwsa2"]
+[ext_resource type="Texture2D" uid="uid://mitgmqyrv721" path="res://assets/GUI/slider_body_end.png" id="5_jsrd8"]
+
+[sub_resource type="GDScript" id="GDScript_xhh6f"]
+script/source = "extends Control
+
+const main_screen = \"res://Scenes/main_menu.tscn\"
+const howto = \"res://Scenes/howto.tscn\"
+
+@onready var popup_menu: Control = $PopupMenu
+@onready var show_menu_button: Button = $ShowMenuButton
+@onready var menu_icon = preload(\"res://assets/GUI/menu_icon.png\")
+@onready var menu_hovered_icon = preload(\"res://assets/GUI/menu_hovered_icon.png\")
+
+var hovered := false
+
+func _on_how_to_button_pressed() -> void:
+	Controller.goto_scene(howto)
+
+
+func _on_close_menu_button_pressed() -> void:
+	show_menu_button.show()
+	popup_menu.hide()
+
+pass # Replace with function body.
+func _on_return_to_title_button_pressed() -> void:
+	Controller.goto_scene(main_screen)
+
+
+func _on_show_menu_button_pressed() -> void:
+	popup_menu.show()
+	show_menu_button.hide()
+
+func _toggle_menu_icon() -> void:
+	hovered = !hovered
+	show_menu_button.icon = menu_hovered_icon if hovered else menu_icon
+	
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jsrd8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbdvm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q3rjx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwsa2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7qvly"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwsa2"]
+
+[node name="Menu" type="Control"]
+top_level = true
+z_index = 100
+z_as_relative = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 103.0
+offset_bottom = 40.0
+script = SubResource("GDScript_xhh6f")
+
+[node name="ShowMenuButton" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("1_wwsa2")
+icon = ExtResource("1_cayip")
+
+[node name="PopupMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = -42.0
+offset_top = -49.0
+offset_right = -2.0
+offset_bottom = -9.0
+
+[node name="TextureRect" type="TextureRect" parent="PopupMenu"]
+layout_mode = 0
+offset_left = -31.0
+offset_top = -936.0
+offset_right = 417.0
+offset_bottom = -600.0
+scale = Vector2(3.75, 3.75)
+texture = ExtResource("4_158mb")
+
+[node name="CloseMenuButton" type="Button" parent="PopupMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 28.0
+offset_top = -889.0
+offset_right = 84.0
+offset_bottom = -833.0
+scale = Vector2(3, 3)
+theme_override_constants/outline_size = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jsrd8")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wbdvm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_q3rjx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwsa2")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7qvly")
+icon = ExtResource("4_wwsa2")
+
+[node name="PanelContainer" type="PanelContainer" parent="PopupMenu"]
+layout_mode = 2
+offset_left = 162.0
+offset_top = -700.0
+offset_right = 645.0
+offset_bottom = -444.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wwsa2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupMenu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PopupMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_wwsa2")
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PopupMenu/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_jsrd8")
+stretch_mode = 3
+
+[node name="MasterAudioSlider" type="HSlider" parent="PopupMenu/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_wwsa2")
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("1_1rerr")
+
+[node name="HowToButton" type="Button" parent="PopupMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_wwsa2")
+text = "How to Play"
+
+[node name="ReturnToTitleButton" type="Button" parent="PopupMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_wwsa2")
+text = "Return to Title"
+
+[connection signal="mouse_entered" from="ShowMenuButton" to="." method="_toggle_menu_icon"]
+[connection signal="mouse_exited" from="ShowMenuButton" to="." method="_toggle_menu_icon"]
+[connection signal="pressed" from="ShowMenuButton" to="." method="_on_show_menu_button_pressed"]
+[connection signal="pressed" from="PopupMenu/CloseMenuButton" to="." method="_on_close_menu_button_pressed"]
+[connection signal="pressed" from="PopupMenu/PanelContainer/VBoxContainer/HowToButton" to="." method="_on_how_to_button_pressed"]
+[connection signal="pressed" from="PopupMenu/PanelContainer/VBoxContainer/ReturnToTitleButton" to="." method="_on_return_to_title_button_pressed"]
