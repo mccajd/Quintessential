@@ -1,7 +1,7 @@
 extends Node
 
 @onready var tile_map = $TileMap
-var player = preload("res://Scenes/wanderer.tscn")
+var wanderer = preload("res://Scenes/wanderer.tscn")
 
 @export var level_name: String
 @export var should_be_instanced = false
@@ -9,7 +9,7 @@ var player = preload("res://Scenes/wanderer.tscn")
 var config: LevelConfigValue
 var ref
 
-var player_spawn_point_index = 0
+var wanderer_spawn_point_index = 0
 
 var found_items: Array
 signal item_found(item_name)
@@ -26,20 +26,20 @@ func _ready():
 	$TileMap.visible = false
 	$TileMap.set_from_config(config, available_areas)
 	
-	var new_player = player.instantiate()
-	new_player.change_room.connect(changing_room)
-	new_player.set_camera_limit(config.camera_limit_left, config.camera_limit_right, config.camera_limit_top, config.camera_limit_bottom)
-	ref = new_player
-	add_child(new_player)
+	var new_wanderer = wanderer.instantiate()
+	new_wanderer.change_room.connect(changing_room)
+	new_wanderer.set_camera_limit(config.camera_limit_left, config.camera_limit_right, config.camera_limit_top, config.camera_limit_bottom)
+	ref = new_wanderer
+	add_child(new_wanderer)
 	
 	# HACK.jmc - this is a bit fragile/hacky but i'm lazy and somewhat pressed for time
 	#		when this class is instanced, we can set the spawn point index
-	#		and subsequently use that to set the spawn point of the player.
+	#		and subsequently use that to set the spawn point of the wanderer.
 	var spawn_points = tile_map.get_used_cells_by_id(tile_map.LAYERS.MISC,3,Vector2i(3,0))
-	if player_spawn_point_index > spawn_points.size():
-		player_spawn_point_index = 0
-	new_player.global_position = tile_map.map_to_local(spawn_points[player_spawn_point_index])
-	new_player.default_spawn = tile_map.map_to_local(spawn_points[0])
+	if wanderer_spawn_point_index > spawn_points.size():
+		wanderer_spawn_point_index = 0
+	new_wanderer.global_position = tile_map.map_to_local(spawn_points[wanderer_spawn_point_index])
+	new_wanderer.default_spawn = tile_map.map_to_local(spawn_points[0])
 	
 	if config.default_items:
 		for item in config.default_items:
@@ -56,11 +56,11 @@ func _process(_delta):
 	pass
 
 
-func changing_room(target_tile, name = null):
+func changing_room(target_tile, room = null):
 	# heh
 	print("Welcome to the Changing Room")
-	if name:
-		_change_room(name)
+	if room:
+		_change_room(room)
 		return
 	
 	# may as well skip this if there's only one destination
@@ -76,15 +76,15 @@ func changing_room(target_tile, name = null):
 func set_spawn_point(source_room):
 	match source_room:
 		"ocean":
-			player_spawn_point_index = 1
+			wanderer_spawn_point_index = 1
 		"desert":
-			player_spawn_point_index = 2
+			wanderer_spawn_point_index = 2
 		"cave":
-			player_spawn_point_index = 3
+			wanderer_spawn_point_index = 3
 		"cloud":
-			player_spawn_point_index = 4
+			wanderer_spawn_point_index = 4
 		_:
-			player_spawn_point_index = 0
+			wanderer_spawn_point_index = 0
 			return
 
 
@@ -160,4 +160,3 @@ func _set_doors():
 	get_node("DesertDoor").visible = !available_areas.has("desert")
 	get_node("CaveDoor").visible = !available_areas.has("cave")
 	get_node("CloudDoor").visible = !available_areas.has("cloud")
-

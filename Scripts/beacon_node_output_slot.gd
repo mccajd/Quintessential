@@ -28,7 +28,7 @@ func _can_drop_data(_position, _data):
 	return false
 
 
-func set_values(selected_node: BeaconNode, connections):
+func set_values(selected_node: BeaconNode, _connections):
 	node_destination_options = selected_node.availableNodeIds
 	selected_node_destination = selected_node.selected_destination_nodes[slot_id]
 	_set_destination_label()

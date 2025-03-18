@@ -11,10 +11,10 @@ var item_position: int
 
 signal item_hovered
 
-func _init(key: String, slot, position: int):
+func _init(key: String, slot, pos: int):
 	item_key = key
 	item_slot = slot
-	item_position = position
+	item_position = pos
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_entered.connect(_on_mouse_exited)
 
