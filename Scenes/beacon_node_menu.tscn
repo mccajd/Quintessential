@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwxw7y4e4hphw"]
 
 [ext_resource type="Texture2D" uid="uid://4067yok60e86" path="res://assets/beacon/node-bg.png" id="1_6dbkv"]
-[ext_resource type="Script" path="res://Scripts/beacon_node_menu.gd" id="1_kgg52"]
+[ext_resource type="Script" uid="uid://l5gp2rdun4dx" path="res://Scripts/beacon_node_menu.gd" id="1_kgg52"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58adn"]
 animations = [{
