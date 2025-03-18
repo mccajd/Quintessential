@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dpgprmkntv4a1"]
+
+[ext_resource type="FontFile" uid="uid://df1bc7wpylpqy" path="res://assets/URWGothic-Book.otf" id="1_ogrbi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_icy0w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6282s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_51bm5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogrbi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q43c6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ogrbi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7o826"]
+
+[resource]
+Button/colors/font_color = Color(0.133333, 0.12549, 0.203922, 1)
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_ogrbi")
+Button/styles/disabled = SubResource("StyleBoxEmpty_icy0w")
+Button/styles/focus = SubResource("StyleBoxEmpty_6282s")
+Button/styles/hover = SubResource("StyleBoxEmpty_51bm5")
+Button/styles/normal = SubResource("StyleBoxFlat_ogrbi")
+Button/styles/pressed = SubResource("StyleBoxFlat_q43c6")
+Label/colors/font_color = Color(0.133333, 0.12549, 0.203922, 1)
+Label/colors/font_outline_color = Color(0.133333, 0.12549, 0.203922, 1)
+Label/font_sizes/font_size = 26
+Label/fonts/font = ExtResource("1_ogrbi")
+Panel/styles/panel = SubResource("StyleBoxEmpty_ogrbi")
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_7o826")
