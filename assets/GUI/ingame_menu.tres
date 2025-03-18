@@ -1,0 +1,58 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cqqnseiuphthi"]
+
+[ext_resource type="FontFile" uid="uid://df1bc7wpylpqy" path="res://assets/URWGothic-Book.otf" id="1_axxmt"]
+[ext_resource type="Texture2D" uid="uid://cv4tqmt4hnjbk" path="res://assets/GUI/slider_head.png" id="2_5x5b2"]
+[ext_resource type="Texture2D" uid="uid://ceiufurq61gdx" path="res://assets/GUI/slider_body.png" id="3_addgl"]
+[ext_resource type="Texture2D" uid="uid://fkav7pce6lyh" path="res://assets/GUI/slider_body_outline.png" id="4_addgl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_icy0w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6282s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_51bm5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogrbi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q43c6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5x5b2"]
+texture = ExtResource("3_addgl")
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mxuud"]
+texture = ExtResource("4_addgl")
+texture_margin_top = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+draw_center = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ogrbi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7o826"]
+
+[resource]
+Button/colors/font_color = Color(0.133333, 0.12549, 0.203922, 1)
+Button/constants/outline_size = 1
+Button/font_sizes/font_size = 75
+Button/fonts/font = ExtResource("1_axxmt")
+Button/styles/disabled = SubResource("StyleBoxEmpty_icy0w")
+Button/styles/focus = SubResource("StyleBoxEmpty_6282s")
+Button/styles/hover = SubResource("StyleBoxEmpty_51bm5")
+Button/styles/normal = SubResource("StyleBoxFlat_ogrbi")
+Button/styles/pressed = SubResource("StyleBoxFlat_q43c6")
+HSlider/constants/grabber_offset = -14
+HSlider/icons/grabber = ExtResource("2_5x5b2")
+HSlider/icons/grabber_disabled = ExtResource("2_5x5b2")
+HSlider/icons/grabber_highlight = ExtResource("2_5x5b2")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_5x5b2")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_5x5b2")
+HSlider/styles/slider = SubResource("StyleBoxTexture_mxuud")
+Label/colors/font_color = Color(0.133333, 0.12549, 0.203922, 1)
+Label/colors/font_outline_color = Color(0.133333, 0.12549, 0.203922, 1)
+Label/font_sizes/font_size = 75
+Label/fonts/font = ExtResource("1_axxmt")
+Panel/styles/panel = SubResource("StyleBoxEmpty_ogrbi")
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_7o826")
