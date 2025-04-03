@@ -45,6 +45,7 @@ func _ready():
 
 
 func _process(_delta):
+	_keybind_select_logic(id)
 	_handle_button_logic()
 	_set_inputs()
 	
@@ -152,8 +153,6 @@ func clear_input_slot(slot_id):
 
 
 func _handle_button_logic():
-	_keybind_select(id)
-	
 	if (!hovered): return
 
 	if (Input.is_action_just_pressed("select")):
@@ -210,7 +209,7 @@ static func get_symbol_texture(id):
 		300: return "res://assets/symbols/moon2_symbol.png"
 
 
-func _keybind_select(id):
+func _keybind_select_logic(id):
 	# Hack.rjy This way you don't have to create a bunch of 'if' comparisons
 	# This handles Tens, otherwise there would be a bunch of errors since selectBeacon10 doesn't exist
 	if (id == 10):
