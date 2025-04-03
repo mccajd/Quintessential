@@ -45,4 +45,3 @@ func set_item(item_name):
 
 func _on_puzzle_won():
 	room_complete.emit(for_room)
-

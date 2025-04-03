@@ -86,4 +86,3 @@ func _get_win_status():
 	for recepticle_name in recepticle_names:
 		if !get_node(recepticle_name).complete(): return false
 	return true
-

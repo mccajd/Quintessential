@@ -152,6 +152,8 @@ func clear_input_slot(slot_id):
 
 
 func _handle_button_logic():
+	_keybind_select(id)
+	
 	if (!hovered): return
 
 	if (Input.is_action_just_pressed("select")):
@@ -206,3 +208,17 @@ static func get_symbol_texture(id):
 		100: return "res://assets/symbols/moon_symbol.png"
 		200: return "res://assets/symbols/sun_symbol.png"
 		300: return "res://assets/symbols/moon2_symbol.png"
+
+
+func _keybind_select(id):
+	# Hack.rjy This way you don't have to create a bunch of 'if' comparisons
+	# This handles Tens, otherwise there would be a bunch of errors since selectBeacon10 doesn't exist
+	if (id == 10):
+		if (Input.is_action_just_pressed("selectBeacon0")):
+			$SelectionSprite2D.visible = true
+			selected.emit(self)
+		return
+
+	if (Input.is_action_just_pressed("selectBeacon"+str(id))):
+		$SelectionSprite2D.visible = true
+		selected.emit(self)
