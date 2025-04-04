@@ -123,60 +123,70 @@ z_index = 1
 position = Vector2(100, 566)
 id = 1
 availableNodeIds = Array[int]([2, 4, 3])
+keybindSelect = "selectBeacon1"
 
 [node name="BeaconNode2" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
 position = Vector2(-17, 473)
 id = 2
 availableNodeIds = Array[int]([5, 4, 1])
+keybindSelect = "selectBeacon2"
 
 [node name="BeaconNode3" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
 position = Vector2(217, 481)
 id = 3
 availableNodeIds = Array[int]([6, 1, 4])
+keybindSelect = "selectBeacon3"
 
 [node name="BeaconNode4" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
 position = Vector2(102, 381)
 id = 4
 availableNodeIds = Array[int]([7, 6, 3, 1, 2, 5])
+keybindSelect = "selectBeacon4"
 
 [node name="BeaconNode5" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
 position = Vector2(-30, 304)
 id = 5
 availableNodeIds = Array[int]([8, 7, 4, 2])
+keybindSelect = "selectBeacon5"
 
 [node name="BeaconNode6" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
 position = Vector2(233, 306)
 id = 6
 availableNodeIds = Array[int]([9, 3, 4, 7])
+keybindSelect = "selectBeacon6"
 
 [node name="BeaconNode7" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
 position = Vector2(101, 230)
 id = 7
 availableNodeIds = Array[int]([10, 9, 6, 4, 5, 8])
+keybindSelect = "selectBeacon7"
 
 [node name="BeaconNode8" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
 position = Vector2(-35, 147)
 id = 8
 availableNodeIds = Array[int]([100, 10, 7, 5])
+keybindSelect = "selectBeacon8"
 
 [node name="BeaconNode9" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
 position = Vector2(238, 147)
 id = 9
 availableNodeIds = Array[int]([300, 6, 7, 10])
+keybindSelect = "selectBeacon9"
 
 [node name="BeaconNode10" parent="BeaconTower" groups=["BeaconNodes"] instance=ExtResource("3_o3mqj")]
 z_index = 1
 position = Vector2(101, 89)
 id = 10
 availableNodeIds = Array[int]([200, 300, 9, 7, 8, 100])
+keybindSelect = "selectBeacon0"
 
 [node name="Connector1-2" parent="BeaconTower" instance=ExtResource("4_642lw")]
 position = Vector2(42, 561)
