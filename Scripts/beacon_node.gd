@@ -6,6 +6,7 @@ class_name BeaconNode
 
 @export var id: int
 @export var availableNodeIds: Array[int]
+@export var keybindSelect: String
 # Four output slots = array of size 4.
 # This lets me cheat by using the slot_id as an index pointer
 var selected_destination_nodes = [-1, -1, -1, -1]
@@ -45,7 +46,7 @@ func _ready():
 
 
 func _process(_delta):
-	_keybind_select_logic(id)
+	_keybind_select_logic()
 	_handle_button_logic()
 	_set_inputs()
 	
@@ -209,15 +210,7 @@ static func get_symbol_texture(id):
 		300: return "res://assets/symbols/moon2_symbol.png"
 
 
-func _keybind_select_logic(id):
-	# Hack.rjy This way you don't have to create a bunch of 'if' comparisons
-	# This handles Tens, otherwise there would be a bunch of errors since selectBeacon10 doesn't exist
-	if (id == 10):
-		if (Input.is_action_just_pressed("selectBeacon0")):
-			$SelectionSprite2D.visible = true
-			selected.emit(self)
-		return
-
-	if (Input.is_action_just_pressed("selectBeacon"+str(id))):
+func _keybind_select_logic():
+	if (Input.is_action_just_pressed(keybindSelect)):
 		$SelectionSprite2D.visible = true
 		selected.emit(self)
