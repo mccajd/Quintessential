@@ -27,5 +27,4 @@ layout_mode = 2
 
 [node name="InputMapper" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
 layout_mode = 2
-ActionName = "testAction"
-ActionKeybind = "testKeybind"
+ActionName = "selectBeacon1"
