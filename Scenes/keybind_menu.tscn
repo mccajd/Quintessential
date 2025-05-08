@@ -18,50 +18,74 @@ offset_bottom = 40.0
 texture = ExtResource("1_uyip4")
 
 [node name="PanelContainer" type="PanelContainer" parent="TextureRect"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
+offset_top = 72.0
 offset_right = 1024.0
-offset_bottom = 768.0
+offset_bottom = 488.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/PanelContainer"]
+custom_minimum_size = Vector2(1024, 64)
 layout_mode = 2
 alignment = 1
 
 [node name="InputMapper" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 ActionName = "Select Beacon 1"
 
 [node name="InputMapper2" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 ActionName = "Select Beacon 2"
 
 [node name="InputMapper3" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 ActionName = "Select Beacon 3"
 
 [node name="InputMapper4" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 ActionName = "Select Beacon 4"
 
 [node name="InputMapper5" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 ActionName = "Select Beacon 5"
 
 [node name="InputMapper6" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 ActionName = "Select Beacon 6"
 
 [node name="InputMapper7" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 ActionName = "Select Beacon 7"
 
 [node name="InputMapper8" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 ActionName = "Select Beacon 8"
 
 [node name="InputMapper9" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 ActionName = "Select Beacon 9"
 
 [node name="InputMapper10" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 ActionName = "Select Beacon 10"
+
+[node name="ReturnButton" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+offset_left = 448.0
+offset_top = 624.0
+offset_right = 576.0
+offset_bottom = 688.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Return"
