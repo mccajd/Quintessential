@@ -29,3 +29,39 @@ alignment = 1
 [node name="InputMapper" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
 layout_mode = 2
 ActionName = "Select Beacon 1"
+
+[node name="InputMapper2" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+layout_mode = 2
+ActionName = "Select Beacon 2"
+
+[node name="InputMapper3" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+layout_mode = 2
+ActionName = "Select Beacon 3"
+
+[node name="InputMapper4" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+layout_mode = 2
+ActionName = "Select Beacon 4"
+
+[node name="InputMapper5" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+layout_mode = 2
+ActionName = "Select Beacon 5"
+
+[node name="InputMapper6" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+layout_mode = 2
+ActionName = "Select Beacon 6"
+
+[node name="InputMapper7" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+layout_mode = 2
+ActionName = "Select Beacon 7"
+
+[node name="InputMapper8" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+layout_mode = 2
+ActionName = "Select Beacon 8"
+
+[node name="InputMapper9" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+layout_mode = 2
+ActionName = "Select Beacon 9"
+
+[node name="InputMapper10" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_piyya")]
+layout_mode = 2
+ActionName = "Select Beacon 10"
